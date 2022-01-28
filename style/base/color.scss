@@ -1,0 +1,36 @@
+$color-Primary: #325372;
+$color-P-Light: #607fa1;
+$color-P-Dark: #002b46;
+$color-Secondary: #4c9acc;
+$color-S-Light: #82cbff;
+$color-S-Dark: #006c9b;
+.colorPrimary {
+  color: $color-Primary;
+}
+.colorPrimaryBack {
+  background-color: $color-Primary;
+}
+.colorPLight {
+  color: $color-P-Light;
+}
+.colorPLightBack {
+  background-color: $color-P-Light;
+}
+.colorPDark {
+  color: $color-P-Dark;
+}
+.colorPDarkBack {
+  background-color: $color-P-Dark;
+}
+.colorSecondary {
+  color: $color-Secondary;
+}
+.colorSLight {
+  color: $color-S-Light;
+}
+.colorSDark {
+  color: $color-S-Dark;
+}
+// * {
+//   outline: 3px solid $color-P-Dark;
+// }

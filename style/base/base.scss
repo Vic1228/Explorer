@@ -1,12 +1,9 @@
 $font-size-B: 32px;
 $font-size-M: 28px;
 $font-size-S: 24px;
-$color-blue: #325372;
-$color-light-blue: #4c9acc;
-$color-white: #e4e3eb;
 $font-family: serif, sans-serif, cursive, fantasy, monospace;
 .navDistance {
-  //與導航列之間的marrgin
+  //第一段跟nav的距離
   margin-top: 8rem;
 }
 .title {
@@ -16,7 +13,6 @@ $font-family: serif, sans-serif, cursive, fantasy, monospace;
     weight: bold;
   }
   font-family: $font-family;
-  color: $color-blue;
 }
 .middleTitle {
   //中標題
@@ -27,4 +23,7 @@ $font-family: serif, sans-serif, cursive, fantasy, monospace;
   //內文
   font-size: $font-size-S;
   font-family: $font-family;
+}
+.shadow {
+  box-shadow: 34px 34px 34px #945050, -34px -34px 34px #ffb2b2;
 }

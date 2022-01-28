@@ -1,12 +1,12 @@
 /*---------------------------------------------------------------*/
 /*----------------------------- nav -----------------------------*/
 /*---------------------------------------------------------------*/
-.nvaCover {
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
   list-style: none;
-  outline: 3px solid tomato;
+  /* outline: 3px solid tomato; */
 }
 
 #blur_all {
@@ -48,7 +48,7 @@ nav {
 }
 
 .nav_burger div {
-  background-color: white;
+  background-color: rgb(134, 13, 13);
   width: 22px;
   height: 2px;
   margin: 4px;
