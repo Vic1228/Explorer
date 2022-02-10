@@ -18,6 +18,18 @@
       integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
       crossorigin="anonymous"
     ></script>
+    <style>
+      #btn:hover {
+        background-color: #f50000;
+      }
+      #btn {
+        border-left-style: none;
+        /* outline: 1px solid red; */
+      }
+      #Btn2 {
+        border-right-style: none;
+      }
+    </style>
     <title>Document</title>
   </head>
 
@@ -34,12 +46,15 @@
           <p class="text">內文.text</p>
           <p class="textShadow">文字陰影.textShadow</p>
           <div class="shadow" style="height: 100px; width: 100px">
-            <p style="padding-top: 25px; padding-left: 15px">方塊陰影</br>.shadow</p>
+            <p style="padding-top: 25px; padding-left: 15px">
+              方塊陰影 <br />
+              .shadow
+            </p>
           </div>
         </div>
         <div
           class="col-4 navDistance"
-          style="margin-left: auto; margin-right: auto;"
+          style="margin-left: auto; margin-right: auto"
         >
           <div class="row">
             <div class="col-4">
@@ -106,6 +121,19 @@
       </div>
     </div>
 
+    <div class="input-group mb-3">
+      <input
+        id="Btn2"
+        type="text"
+        class="form-control"
+        placeholder="Recipient's username"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <button class="btn btn-outline-secondary" type="button" id="btn">
+        Button
+      </button>
+    </div>
     <div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
     <!-- FOOTER -->
     <script>
