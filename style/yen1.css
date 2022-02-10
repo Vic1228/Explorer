@@ -1,0 +1,195 @@
+.main {
+    margin: 150px 0 0;
+    /* background-color: tan; */
+}
+
+.maincard {
+    margin: auto;
+    width: 80%;
+    /* background-color: darkorange; */
+    display: flex;
+}
+
+/* 獎盃 */
+.maincard1 {
+    text-align: center;
+}
+
+.maincard1 img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* toptable */
+.maincard2 {
+    margin: 0px auto auto auto;
+    font-size: 1.5em;
+}
+
+.maincard20 {
+    display: flex;
+    /* background-color: indianred; */
+}
+
+.maincard20 table {
+    /* background-color: aqua; */
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+.maincard .table2 {
+    margin-left: 120px;
+}
+
+.maincard20 tr, .maincard20 td {
+    /* border: 3px solid rgb(165, 13, 211); */
+    height: 50px;
+}
+
+
+.maincard20 td.frt {
+    width: 45px;
+    text-align: center;
+}
+
+.maincard20 td.sec {
+    width: 150px;
+    max-width: 150px;
+}
+
+.maincard20 td.thr {
+    text-align: end;
+    width: 90px;
+    max-width: 150px;
+}
+
+.maincarda {
+    /* background-color: gold; */
+    text-align: center;
+}
+
+/* 彈跳視窗 */
+.light {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    right: 30%;
+    border: 3px solid orange;
+    background-color: white;
+    z-index: 1;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    box-shadow: 4px 4px 6px #464646;
+}
+
+.light h1 {
+    text-align: center;
+    margin: 0;
+}
+
+.light hr {
+    width: 75%;
+}
+
+.light table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+.light tr, .light td {
+    border-bottom: #999999 solid 2px;
+}
+
+.light .frt {
+    width: 50px;
+}
+
+.light .sec {
+    width: 150px;
+}
+
+.light p {
+    text-align: center;
+}
+
+/* hr */
+hr.width {
+    border-top: 4px solid #8c8b8b;
+}
+
+/* ------------cards--------------*/
+.cardd {
+    /* background-color: #8c8b8b; */
+}
+
+.card1 {
+    float: left;
+    display: flex;
+    width: 50%;
+    /* background-color: #3ce147; */
+    margin-bottom: 20px;
+}
+
+.card11 {
+    text-align: center;
+}
+
+.card11>h3 {
+    margin: 0;
+}
+
+.card11>p {
+    margin: 0;
+}
+
+.card11 img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* cardtable */
+.card12 {
+    /* background-color: indianred; */
+    margin: auto;
+}
+
+.card12 tr, .card12 td {
+    /* border: 3px solid blue; */
+    height: 40px;
+}
+
+.card12 table {
+    font-size: 1.5em;
+    /* background-color: aqua; */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.card12 td.frt {
+    width: 45px;
+    text-align: center;
+}
+
+.card12 td.sec {
+    width: 150px;
+    max-width: 150px;
+}
+
+.card12 td.thr {
+    text-align: end;
+    width: 90px;
+    max-width: 150px;
+}
+
+.card12>p {
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+}
+
+.card12>p>a {
+    /* background-color: darkgoldenrod; */
+}
