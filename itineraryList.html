@@ -30,10 +30,18 @@
         margin-bottom: 5px;
         width: 200px;
       }
+
+     .btn{
+       margin-left: 100px;
+      width: 200px;
+      
+     }
+     
     </style>
   </head>
 
   <body>
+    
     <div w3-include-HTML="./nav/nav.html"></div>
     <div class="container" style="margin-top: 130px">
       <div class="btn-group">
@@ -44,9 +52,10 @@
           data-bs-toggle="dropdown"
           data-bs-auto-close="true"
           aria-expanded="false"
-          style="border-radius: 20px"
+          style="border-radius: 20px" 
+          
         >
-          Default dropdown
+        <span>地&emsp;&emsp;&emsp;&emsp;區</span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
           <li><a class="dropdown-item" href="#">Menu item</a></li>
@@ -64,8 +73,9 @@
           data-bs-auto-close="inside"
           aria-expanded="false"
           style="border-radius: 20px"
+          
         >
-          Clickable outside
+          <span>目&emsp;&emsp;的&emsp;&emsp;地</span>
         </button>
         <ul
           class="dropdown-menu"
@@ -87,7 +97,7 @@
           aria-expanded="false"
           style="border-radius: 20px"
         >
-          Clickable inside
+        <span>天&emsp;&emsp;&emsp;&emsp;數</span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
           <li><a class="dropdown-item" href="#">Menu item</a></li>
@@ -96,24 +106,23 @@
         </ul>
       </div>
 
-      <div class="btn-group">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuClickable"
-          data-bs-toggle="dropdown"
-          data-bs-auto-close="false"
-          aria-expanded="false"
-          style="border-radius: 20px"
-        >
-          Manual close
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-        </ul>
-      </div>
+        <div class="btn">
+        <input type="date"
+        value="2022-01-01"
+        min="2022-01-01"
+        max="2022-12-31"
+        step="0"></div>
+        
+        
+        
+        <div class="input-group mb-3 " style="width: 800px;">
+          <input type="text" class="form-control " placeholder="收尋景點" aria-label="Recipient's username" aria-describedby="button-addon2"style="border-radius: 20px 0 0 20px; border-right-style: none; ">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2 " style="width: 60px;border-radius: 0 20px 20px 0;"><img src="search.png"style="width: 24px;" alt=""></button>
+        </div>
+
+       
+    
+  
 
       <div class="card mb-3 mx-auto" style="max-width: 1080px">
         <div class="row g-0">
