@@ -24,20 +24,22 @@
   <body>
     <div w3-include-HTML="./nav/nav.html"></div>
 
-    <div class="container">
+    <div class="container navDistance">
       <div class="row">
-        <div class="col-3" style="margin-left: auto; margin-right: auto">
-          <p class="navDistance">與NAV的距離.navDistance</p>
-          <p class="title">大標題.title</p>
-          <p class="middleTitle">中標題.middleTitle</p>
+        <div class="col-4" style="margin-left: auto; margin-right: auto">
+          <p class="">與NAV的距離.navDistance</p>
+          <p class="title">大.title</p>
+          <p class="middleTitle">中.middleTitle</p>
+          <p class="smallTitle">小.smallTitle</p>
           <p class="text">內文.text</p>
+          <p class="textShadow">文字陰影.textShadow</p>
           <div class="shadow" style="height: 100px; width: 100px">
-            <p style="padding-top: 40px; padding-left: 2px">陰影.shadow</p>
+            <p style="padding-top: 25px; padding-left: 15px">方塊陰影</br>.shadow</p>
           </div>
         </div>
         <div
-          class="col-5 navDistance"
-          style="margin-left: auto; margin-right: auto"
+          class="col-4 navDistance"
+          style="margin-left: auto; margin-right: auto;"
         >
           <div class="row">
             <div class="col-4">
@@ -50,10 +52,10 @@
                 ></div>
               </div>
               <div style="margin: auto; text-align: center; margin-top: 20px">
-                <p>副色-1 <br />顏色<br />.colorPrimary</p>
-                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <p>副色-1 <br />顏色<br />.colorSecondary</p>
+                <p style="margin-top: -13px">背景色<br />.colorSecondaryBack</p>
                 <div
-                  class="colorPrimaryBack"
+                  class="colorSecondaryBack"
                   style="height: 80px; width: 80px; margin: auto"
                 ></div>
               </div>
@@ -68,10 +70,10 @@
                 ></div>
               </div>
               <div style="margin: auto; text-align: center; margin-top: 20px">
-                <p>副色-2 <br />顏色<br />.colorPrimary</p>
-                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <p>副色-2 <br />顏色<br />.colorSLight</p>
+                <p style="margin-top: -13px">背景色<br />.colorSLightBack</p>
                 <div
-                  class="colorPrimaryBack"
+                  class="colorSLightBack"
                   style="height: 80px; width: 80px; margin: auto"
                 ></div>
               </div>
@@ -86,10 +88,10 @@
                 ></div>
               </div>
               <div style="margin: auto; text-align: center; margin-top: 20px">
-                <p>副色-3 <br />顏色<br />.colorPrimary</p>
-                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <p>副色-3 <br />顏色<br />.colorSDark</p>
+                <p style="margin-top: -13px">背景色<br />.colorSDarkBack</p>
                 <div
-                  class="colorPrimaryBack"
+                  class="colorSDarkBack"
                   style="height: 80px; width: 80px; margin: auto"
                 ></div>
               </div>
@@ -104,9 +106,12 @@
       </div>
     </div>
 
+    <div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
+    <!-- FOOTER -->
     <script>
       w3.includeHTML();
     </script>
     <script src="./nav/nav.js"></script>
+    <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
   </body>
 </html>

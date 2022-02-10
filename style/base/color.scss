@@ -25,11 +25,20 @@ $color-S-Dark: #006c9b;
 .colorSecondary {
   color: $color-Secondary;
 }
+.colorSecondaryBack {
+  background-color: $color-Secondary;
+}
 .colorSLight {
   color: $color-S-Light;
 }
+.colorSLightBack {
+  background-color: $color-S-Light;
+}
 .colorSDark {
   color: $color-S-Dark;
+}
+.colorSDarkBack {
+  background-color: $color-S-Dark;
 }
 // * {
 //   outline: 3px solid $color-P-Dark;
