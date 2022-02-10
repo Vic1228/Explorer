@@ -1,0 +1,50 @@
+.person{
+margin: auto;
+width: 80%;
+text-align: center;
+}
+.person h2{
+    margin-top: 0;
+}
+.person img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        object-fit: cover;
+}
+
+/* describe */
+.describe{
+    margin: auto;
+    width: 80%;
+    display: flex;
+    /* background-color: aqua; */
+}
+.describe1{
+    text-align: center;
+    margin: 50px 0 auto auto;
+    /* background-color: blue; */
+}
+.describe1>p{
+    font-size: 1.3em;
+    margin: 0;
+}
+.radar{
+    /* background-color: aqua; */
+    width: 300px;
+    height: 300px;
+}
+.describe2{
+    text-align: center;
+    margin: auto auto auto 50px;
+    /* background-color: rgb(30, 107, 40); */
+}
+.describe2 span{
+    display: inline-block;
+    padding: 20px;
+    font-size: 1.5em;
+}
+.textbox1{
+    width: 400px;
+    height: 300px;
+}
