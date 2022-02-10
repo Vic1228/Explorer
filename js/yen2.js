@@ -8,7 +8,7 @@ const data = {
     ],
     datasets: [{
         label: '王曉明',
-        data: [65, 59, 100, 81, 56],
+        data: [2, 3, 5, 6, 8],
         fill: true,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgb(255, 99, 132)',
@@ -38,26 +38,31 @@ const config = {
             }
         },
         scale: {
+            beginAtZero: true,
+            min: 0,
+            max: 10,
             ticks: {
-                beginAtZero: true,
-                min: 0,
-                max: 100,
-                stepSize: 10,
+                stepSize: 1,
                 font: {
-                    size: 15
+                    size: 0
                 }
             },
-
-
         },
         scales: {
             r: {
                 pointLabels: {
+                    color: 'black',
                     font: {
                         size: 25
                     }
+                },
+                grid: {
+                    color: "#C2C2C2"
+                },
+                ticks: {
+                    display: false
                 }
-            }
+            },
         }
     },
 

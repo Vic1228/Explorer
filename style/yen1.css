@@ -73,10 +73,10 @@
 .light {
     display: none;
     position: absolute;
-    top: 20%;
+    top: 18%;
     left: 30%;
     right: 30%;
-    border: 3px solid orange;
+    /* border: 3px solid orange; */
     background-color: white;
     z-index: 1;
     border-radius: 20px;
@@ -86,37 +86,43 @@
 
 .light h1 {
     text-align: center;
-    margin: 0;
+    /* margin: 0; */
 }
 
 .light hr {
     width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .light table {
     border-collapse: collapse;
     margin: auto;
+    font-size: large;
 }
 
 .light tr, .light td {
-    border-bottom: #999999 solid 2px;
+    /* border-bottom: #999999 solid 2px; */
+    
 }
 
 .light .frt {
-    width: 50px;
+    width: 60px;
 }
 
 .light .sec {
-    width: 150px;
+    width: 200px;
 }
 
 .light p {
+    margin-top: 30px;
     text-align: center;
 }
 
 /* hr */
-hr.width {
-    border-top: 4px solid #8c8b8b;
+hr.container{
+    margin-bottom: 50px;
+    border-top: 4px solid #252525;
 }
 
 /* ------------cards--------------*/
@@ -153,7 +159,7 @@ hr.width {
 /* cardtable */
 .card12 {
     /* background-color: indianred; */
-    margin: auto;
+    margin: auto auto auto 50px;
 }
 
 .card12 tr, .card12 td {
@@ -166,11 +172,11 @@ hr.width {
     /* background-color: aqua; */
     border-collapse: collapse;
     margin-bottom: 20px;
+    /* background-color: aqua; */
 }
 
 .card12 td.frt {
     width: 45px;
-    text-align: center;
 }
 
 .card12 td.sec {
