@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./nav/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.js"
+      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div w3-include-HTML="./nav/nav.html"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3" style="margin-left: auto; margin-right: auto">
+          <p class="navDistance">與NAV的距離.navDistance</p>
+          <p class="title">大標題.title</p>
+          <p class="middleTitle">中標題.middleTitle</p>
+          <p class="text">內文.text</p>
+          <div class="shadow" style="height: 100px; width: 100px">
+            <p style="padding-top: 40px; padding-left: 2px">陰影.shadow</p>
+          </div>
+        </div>
+        <div
+          class="col-5 navDistance"
+          style="margin-left: auto; margin-right: auto"
+        >
+          <div class="row">
+            <div class="col-4">
+              <div style="margin: auto; text-align: center">
+                <p>主色-1 <br />顏色<br />.colorPrimary</p>
+                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <div
+                  class="colorPrimaryBack"
+                  style="height: 80px; width: 80px; margin: auto"
+                ></div>
+              </div>
+              <div style="margin: auto; text-align: center; margin-top: 20px">
+                <p>副色-1 <br />顏色<br />.colorPrimary</p>
+                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <div
+                  class="colorPrimaryBack"
+                  style="height: 80px; width: 80px; margin: auto"
+                ></div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div style="margin: auto; text-align: center">
+                <p>主色-2<br />顏色<br />.colorPLight</p>
+                <p style="margin-top: -13px">背景色<br />.colorPLightBack</p>
+                <div
+                  class="colorPLightBack"
+                  style="height: 80px; width: 80px; margin: auto"
+                ></div>
+              </div>
+              <div style="margin: auto; text-align: center; margin-top: 20px">
+                <p>副色-2 <br />顏色<br />.colorPrimary</p>
+                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <div
+                  class="colorPrimaryBack"
+                  style="height: 80px; width: 80px; margin: auto"
+                ></div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div style="margin: auto; text-align: center">
+                <p>主色-3<br />顏色<br />.colorPDark</p>
+                <p style="margin-top: -13px">背景色<br />.colorPDarkBack</p>
+                <div
+                  class="colorPDarkBack"
+                  style="height: 80px; width: 80px; margin: auto"
+                ></div>
+              </div>
+              <div style="margin: auto; text-align: center; margin-top: 20px">
+                <p>副色-3 <br />顏色<br />.colorPrimary</p>
+                <p style="margin-top: -13px">背景色<br />.colorPrimaryBack</p>
+                <div
+                  class="colorPrimaryBack"
+                  style="height: 80px; width: 80px; margin: auto"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 navDistance">
+          <div style="margin-left: auto; margin-right: auto">
+            <p>123</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="./nav/nav.js"></script>
+  </body>
+</html>
