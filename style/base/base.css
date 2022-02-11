@@ -1,0 +1,38 @@
+.navDistance {
+  margin-top: 8rem;
+}
+
+.footerDistance {
+  margin-top: 70px;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: sans-serif, cursive, fantasy, monospace;
+}
+
+.middleTitle {
+  font-size: 40px;
+  font-family: sans-serif, cursive, fantasy, monospace;
+}
+
+.smallTitle {
+  font-size: 30px;
+  font-family: sans-serif, cursive, fantasy, monospace;
+}
+
+.text {
+  font-size: 20px;
+  font-family: sans-serif, cursive, fantasy, monospace;
+}
+
+.shadow {
+  -webkit-box-shadow: 34px 34px 34px #945050, -34px -34px 34px #ffb2b2;
+  box-shadow: 34px 34px 34px #945050, -34px -34px 34px #ffb2b2;
+}
+
+.textShadow {
+  text-shadow: 0.1em 0.1em 0.2em black;
+}
+/*# sourceMappingURL=base.css.map */
