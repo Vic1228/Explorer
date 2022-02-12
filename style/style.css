@@ -11124,22 +11124,22 @@ textarea.form-control-lg {
 .title {
   font-size: 50px;
   font-weight: bold;
-  font-family: serif, sans-serif, cursive, fantasy, monospace;
+  font-family: sans-serif;
 }
 
 .middleTitle {
   font-size: 40px;
-  font-family: serif, sans-serif, cursive, fantasy, monospace;
+  font-family: sans-serif;
 }
 
 .smallTitle {
   font-size: 30px;
-  font-family: serif, sans-serif, cursive, fantasy, monospace;
+  font-family: sans-serif;
 }
 
 .text {
   font-size: 20px;
-  font-family: serif, sans-serif, cursive, fantasy, monospace;
+  font-family: sans-serif;
 }
 
 .shadow {

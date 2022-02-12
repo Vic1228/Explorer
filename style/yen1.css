@@ -10,7 +10,7 @@
     display: flex;
 }
 
-/* 獎盃 */
+/* 獎盃圖 */
 .maincard1 {
     text-align: center;
 }
@@ -21,7 +21,7 @@
     padding: 5px;
 }
 
-/* toptable */
+/* 大表格 */
 .maincard2 {
     margin: 0px auto auto auto;
     font-size: 1.1em;
@@ -46,7 +46,6 @@
     /* border: 3px solid rgb(165, 13, 211); */
     height: 40px;
 }
-
 
 .maincard20 td.frt {
     width: 45px;
@@ -125,7 +124,7 @@ hr.container{
     border-top: 4px solid #252525;
 }
 
-/* ------------cards--------------*/
+/* ------------其他獎盃區--------------*/
 .cardd {
     /* background-color: #8c8b8b; */
 }
@@ -159,7 +158,7 @@ hr.container{
     margin-bottom: 20px;
 }
 
-/* cardtable */
+/* 獎盃表格 */
 .card12 {
     /* background-color: indianred; */
     margin: auto auto auto 50px;
