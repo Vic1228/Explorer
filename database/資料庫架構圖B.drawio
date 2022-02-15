@@ -1,0 +1,145 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="efa7a0a1-bf9b-a30e-e6df-94a7791c09e9">
+        <mxGraphModel dx="2075" dy="885" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="826" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="25" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;使用者&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;strong&gt;Users&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;userId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userName&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userAccount&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userPassword&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;userPhoto&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;userPhone&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;userEmail&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 8px&quot;&gt;userExpenience&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-760" y="40" width="160" height="178.36" as="geometry"/>
+                </mxCell>
+                <mxCell id="5XHWenP0DDk_uuIquULA-114" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;能力表&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;strong&gt;UserStats&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;userId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;leadership&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;teamwork&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;strength&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;heal&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;surriral&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;direction&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;commentCount&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-760" y="280" width="160" height="178.36" as="geometry"/>
+                </mxCell>
+                <mxCell id="5XHWenP0DDk_uuIquULA-115" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Times New Roman;entryX=-0.008;entryY=0.328;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=0" parent="1" target="5XHWenP0DDk_uuIquULA-114" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-761" y="100" as="sourcePoint"/>
+                        <mxPoint x="-580" y="180" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-800" y="100"/>
+                            <mxPoint x="-800" y="339"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5XHWenP0DDk_uuIquULA-118" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;行程管理聊天室&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;strong&gt;TripMessageBoards&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;tripId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userId&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripMessageTime&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripMessageText&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripMessageImg&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-760" y="520" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="5XHWenP0DDk_uuIquULA-129" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Times New Roman;entryX=-0.004;entryY=0.527;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=0" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-800" y="339" as="sourcePoint"/>
+                        <mxPoint x="-761.64" y="592.7800000000001" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-800" y="593"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;私人裝備&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;strong&gt;PrivateItems&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;tripId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;privateItemName&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;privateItemCount&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;privateItemNote&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-40" y="200" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;公用裝備&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;strong&gt;ShareItems&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;tripId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;sharedItemName&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;sharedItemCount&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userId&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-40" y="363.36" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;景點&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;strong&gt;Spots&lt;/strong&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;spotId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotName&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotCoordinate&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotDetail&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotImg&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotArea&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-520" y="40" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;景點留言板&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;SpotMessageBoards&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;spotId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userId&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotMessageDate&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotMessageText&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotMessageImg&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-520" y="240" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;行程詳情&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;Trips&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;tripId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripName&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;spotId&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripStartDate&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripEndDate&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;tripNote&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-280" y="40" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;行程表&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;TripSchedules&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;tripId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;day&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;startTime&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;endTime&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;schedule&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-280" y="240" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;行程成員&lt;/p&gt;&lt;p style=&quot;text-align: center ; margin: 4px 0px 0px ; text-decoration: underline&quot;&gt;&lt;b&gt;TripMembers&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;&lt;u&gt;tripId&lt;/u&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;userId&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 8px&quot;&gt;positionState&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Times New Roman;html=1;strokeColor=#666666;shadow=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-40" y="40" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="endArrow=classic;html=1;exitX=-0.004;exitY=0.392;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.004;entryY=0.428;entryDx=0;entryDy=0;entryPerimeter=0;rounded=0;" parent="1" source="28" target="29" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-550" y="110" as="sourcePoint"/>
+                        <mxPoint x="-440" y="320" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-550" y="99"/>
+                            <mxPoint x="-550" y="300"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.007;entryY=0.59;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="30" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-550" y="100" as="sourcePoint"/>
+                        <mxPoint x="-360" y="70" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-550" y="20"/>
+                            <mxPoint x="-340" y="20"/>
+                            <mxPoint x="-340" y="128"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.011;entryY=0.537;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="29" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-800" y="593" as="sourcePoint"/>
+                        <mxPoint x="-500" y="413" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-800" y="690"/>
+                            <mxPoint x="-550" y="690"/>
+                            <mxPoint x="-550" y="315"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.889;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="27" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-550" y="470" as="sourcePoint"/>
+                        <mxPoint x="-270" y="380" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.003;entryY=0.664;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="32" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-70" y="470" as="sourcePoint"/>
+                        <mxPoint x="-42.24000000000012" y="120.91" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-70" y="113"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="51" value="" style="endArrow=classic;html=1;rounded=0;exitX=-0.006;exitY=0.398;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.005;entryY=0.541;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="30" target="32" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-260" y="170" as="sourcePoint"/>
+                        <mxPoint x="-210" y="120" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-310" y="100"/>
+                            <mxPoint x="-310" y="20"/>
+                            <mxPoint x="-90" y="20"/>
+                            <mxPoint x="-90" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="26" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-90" y="100" as="sourcePoint"/>
+                        <mxPoint x="-130" y="230" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-90" y="260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.005;entryY=0.495;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="27" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-90" y="245" as="sourcePoint"/>
+                        <mxPoint x="-90" y="395" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-90" y="423"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.429;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="31" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-310" y="100" as="sourcePoint"/>
+                        <mxPoint x="-300" y="290" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-310" y="300"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
