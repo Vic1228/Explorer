@@ -14,6 +14,7 @@
   <script src="https://www.w3schools.com/lib/w3.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
 </head>
 
@@ -21,14 +22,14 @@
   <!-- NAV BAR -->
   <div w3-include-HTML="./nav/nav.html"></div>
   <!-- NAV BAR -->
-  <div class="main container col-12">
+  <div class="navDistance container col-12">
     <div class="maincard">
-      <div class="maincard1">
+      <div class="maincard1 col-3">
         <img src="img/yen/2.png">
         <h2>人氣王</h2>
         <p>(評價次數最多)</p>
       </div>
-      <div class="maincard2">
+      <div class="maincard2 col-9">
         <div class="maincard20">
           <table>
             <tr>
@@ -90,7 +91,7 @@
         </div>
         <!-- 彈跳視窗 -->
         <div id="light" class="light">
-          <a href="#" id="closebt" class="closebt"><img src="/Explorer/img/yen/close.png" alt=""></a>
+          <p id="closebt" class="closebt"><img src="/img/yen/close.png"></p>
           <table>
             <h1>冒險王</h1>
             <hr>
@@ -160,53 +161,251 @@
   <!-- 分界線 -->
   <hr class="container">
   <!-- 卡片 -->
-  <div class="container cardd">
-    <div class="card1 col-12  col-lg-6">
-      <div class="card11">
-        <img src="img/yen/monkey.jpg">
-        <h3>野猴子</h3>
-        <p>(體能最高分)</p>
-      </div>
-      <div class="card12">
-        <table>
-          <tr>
-            <td class="frt">1.</td>
-            <td class="sec">希特勒</td>
-            <td class="thr">6.7</td>
-          </tr>
-          <tr>
-            <td class="frt">2.</td>
-            <td class="sec">犬</td>
-            <td class="thr">6.6</td>
-          </tr>
-          <tr>
-            <td class="frt">3.</td>
-            <td class="sec">小安</td>
-            <td class="thr">3.8</td>
-          </tr>
-          <tr>
-            <td class="frt">4.</td>
-            <td class="sec">阿泉</td>
-            <td class="thr">1.2</td>
-          </tr>
-          <tr>
-            <td class="frt">5.</td>
-            <td class="sec">失明</td>
-            <td class="thr">9.9</td>
-          </tr>
-        </table>
-        <div class="maincarda">
-          <p class="opener" style="display: inline;"><u>查看更多...</u></p>
-        </div>
-      </div>
+  <div class="row">
+    <!-- <div class="col-1"></div> -->
+      <div class="col-11 mid">
+          <div class="card1">
+            <div class="card11">
+              <img src="img/yen/monkey.jpg">
+              <h4>野猴子</h4>
+              <p>(體能最高分)</p>
+            </div>
+            <div class="card12">
+              <table>
+                <tr>
+                  <td class="frt">1.</td>
+                  <td class="sec">希特勒</td>
+                  <td class="thr">6.7</td>
+                </tr>
+                <tr>
+                  <td class="frt">2.</td>
+                  <td class="sec">犬</td>
+                  <td class="thr">6.6</td>
+                </tr>
+                <tr>
+                  <td class="frt">3.</td>
+                  <td class="sec">小安</td>
+                  <td class="thr">3.8</td>
+                </tr>
+                <tr>
+                  <td class="frt">4.</td>
+                  <td class="sec">阿泉</td>
+                  <td class="thr">1.2</td>
+                </tr>
+                <tr>
+                  <td class="frt">5.</td>
+                  <td class="sec">失明</td>
+                  <td class="thr">9.9</td>
+                </tr>
+              </table>
+              <div class="maincarda">
+                <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+              </div>
+            </div>
+          </div>
+          <div class="card1">
+            <div class="card11">
+              <img src="img/yen/doctor.jpg">
+              <h4>怪醫黑傑克</h4>
+              <p>(醫術最高分)</p>
+            </div>
+            <div class="card12">
+              <table>
+                <tr>
+                  <td class="frt">1.</td>
+                  <td class="sec">希特勒</td>
+                  <td class="thr">6.7</td>
+                </tr>
+                <tr>
+                  <td class="frt">2.</td>
+                  <td class="sec">犬</td>
+                  <td class="thr">6.6</td>
+                </tr>
+                <tr>
+                  <td class="frt">3.</td>
+                  <td class="sec">小安</td>
+                  <td class="thr">3.8</td>
+                </tr>
+                <tr>
+                  <td class="frt">4.</td>
+                  <td class="sec">阿泉</td>
+                  <td class="thr">1.2</td>
+                </tr>
+                <tr>
+                  <td class="frt">5.</td>
+                  <td class="sec">失明</td>
+                  <td class="thr">9.9</td>
+                </tr>
+              </table>
+              <div class="maincarda">
+                <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+              </div>
+            </div>
+          </div>
+          <div class="card1">
+            <div class="card11">
+              <img src="img/yen/bey.jpg">
+              <h4>東方貝爺</h4>
+              <p>(求生技術最高分)</p>
+            </div>
+            <div class="card12">
+              <table>
+                <tr>
+                  <td class="frt">1.</td>
+                  <td class="sec">希特勒</td>
+                  <td class="thr">6.7</td>
+                </tr>
+                <tr>
+                  <td class="frt">2.</td>
+                  <td class="sec">犬</td>
+                  <td class="thr">6.6</td>
+                </tr>
+                <tr>
+                  <td class="frt">3.</td>
+                  <td class="sec">小安</td>
+                  <td class="thr">3.8</td>
+                </tr>
+                <tr>
+                  <td class="frt">4.</td>
+                  <td class="sec">阿泉</td>
+                  <td class="thr">1.2</td>
+                </tr>
+                <tr>
+                  <td class="frt">5.</td>
+                  <td class="sec">失明</td>
+                  <td class="thr">9.9</td>
+                </tr>
+              </table>
+              <div class="maincarda">
+                <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+              </div>
+            </div>
+          </div>
+          <div class="card1">
+            <div class="card11">
+              <img src="img/yen/imlost.jpg">
+              <h4>公車不搭反方向</h4>
+              <p>(方向感最高分)</p>
+            </div>
+            <div class="card12">
+              <table>
+                <tr>
+                  <td class="frt">1.</td>
+                  <td class="sec">希特勒</td>
+                  <td class="thr">6.7</td>
+                </tr>
+                <tr>
+                  <td class="frt">2.</td>
+                  <td class="sec">犬</td>
+                  <td class="thr">6.6</td>
+                </tr>
+                <tr>
+                  <td class="frt">3.</td>
+                  <td class="sec">小安</td>
+                  <td class="thr">3.8</td>
+                </tr>
+                <tr>
+                  <td class="frt">4.</td>
+                  <td class="sec">阿泉</td>
+                  <td class="thr">1.2</td>
+                </tr>
+                <tr>
+                  <td class="frt">5.</td>
+                  <td class="sec">失明</td>
+                  <td class="thr">9.9</td>
+                </tr>
+              </table>
+              <div class="maincarda">
+                <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+              </div>
+            </div>
+          </div>
+          <div class="card1">
+            <div class="card11">
+              <img src="img/yen/sidada.jpg">
+              <h4>董事長</h4>
+              <p>(領導力最高分)</p>
+            </div>
+            <div class="card12">
+              <table>
+                <tr>
+                  <td class="frt">1.</td>
+                  <td class="sec">希特勒</td>
+                  <td class="thr">6.7</td>
+                </tr>
+                <tr>
+                  <td class="frt">2.</td>
+                  <td class="sec">犬</td>
+                  <td class="thr">6.6</td>
+                </tr>
+                <tr>
+                  <td class="frt">3.</td>
+                  <td class="sec">小安</td>
+                  <td class="thr">3.8</td>
+                </tr>
+                <tr>
+                  <td class="frt">4.</td>
+                  <td class="sec">阿泉</td>
+                  <td class="thr">1.2</td>
+                </tr>
+                <tr>
+                  <td class="frt">5.</td>
+                  <td class="sec">失明</td>
+                  <td class="thr">9.9</td>
+                </tr>
+              </table>
+              <div class="maincarda">
+                <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+              </div>
+            </div>
+          </div>
+          <div class="card1">
+            <div class="card11">
+              <img src="img/yen/binbin.jpg">
+              <h4>三個臭皮匠</h4>
+              <p>(團隊意識最高分)</p>
+            </div>
+            <div class="card12">
+              <table>
+                <tr>
+                  <td class="frt">1.</td>
+                  <td class="sec">希特勒</td>
+                  <td class="thr">6.7</td>
+                </tr>
+                <tr>
+                  <td class="frt">2.</td>
+                  <td class="sec">犬</td>
+                  <td class="thr">6.6</td>
+                </tr>
+                <tr>
+                  <td class="frt">3.</td>
+                  <td class="sec">小安</td>
+                  <td class="thr">3.8</td>
+                </tr>
+                <tr>
+                  <td class="frt">4.</td>
+                  <td class="sec">阿泉</td>
+                  <td class="thr">1.2</td>
+                </tr>
+                <tr>
+                  <td class="frt">5.</td>
+                  <td class="sec">失明</td>
+                  <td class="thr">9.9</td>
+                </tr>
+              </table>
+              <div class="maincarda">
+                <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+              </div>
+            </div>
+          </div>
     </div>
+    <!-- <div class="col-1"></div> -->
   </div>
 
 
 
-
   <!-- FOOTER -->
-  <div w3-include-HTML="./footer/footer.html" class=""></div>
+  <!-- <div w3-include-HTML="./footer/footer.html" class=""></div> -->
   <!-- FOOTER -->
   <script>
     w3.includeHTML();
