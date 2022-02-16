@@ -119,20 +119,26 @@
                             <div id="textBoard">
                                 聊天記錄
                             </div>
-                            <form id="textSendContainer" action="">
-                                <input id="uploadImg" class="inputFile uploadImg" type="file" accept=".png, .jpg, .jpeg"
-                                    multiple>
-                                <label for="uploadImg">
-                                    <div class="uploadImgIconContainer">
-                                        <img src="img/uploadImg.png" alt="">
+                            <div>
+                                <form id="textSendContainer" action="">
+                                    <label class="col-1" id="uploadImgContainer">
+                                        <input id="uploadImg" class="inputFile uploadImg" type="file"
+                                            accept=".png, .jpg, .jpeg" multiple>
+                                        <img class="uploadImgIcon d-block" src="img/uploadImg.png" alt="">
+                                    </label>
+                                    <div class="col-10 d-flex">
+                                        <div id="fileCount">
+                                            <img id="fileCountCancel" class="cancelIcon" src="img/cancel.png" alt="">
+                                            <span></span>
+                                        </div>
+                                        <input id="chatroomText" class="px-2" type="text" placeholder="留言...">
                                     </div>
-                                    <span>上傳圖片</span>
-                                </label>
-                                <div>
-                                    <input type="text">
-                                    <input type="button" value="submit">
-                                </div>
-                            </form>
+                                    <label class="col-1">
+                                        <input class="d-none" type="button" value="submit">
+                                        <img class="d-block" class="sendMessageIcon" src="img/send-message.png" alt="">
+                                    </label>
+                                </form>
+                            </div>
                         </div>
                         <div id="tripMember" class="container tab-pane fade">
                             <h4 class="tableTitle" data-toggle="collapse" data-target="#joinedMemberContainer">
@@ -213,7 +219,8 @@
                                     <td>
                                         <div class="plusContainer">
                                             <img class="plusIcon" src="img/plus.png" alt="" data-toggle="modal"
-                                                data-target="#publicItemProvide"></div>
+                                                data-target="#publicItemProvide">
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
@@ -305,7 +312,6 @@
                     </div>
                 </div>
             </div>
-
             <!------- Rigtht: schedule End ------->
 
         </div>
@@ -315,16 +321,15 @@
     <!--------------------------- modal ------------------------------>
     <!---------------------------------------------------------------->
     <div id="tripNameEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header px-2">
                     <h5 class="modal-title">冒險團新名稱</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body mx-auto">
-                    <input style="width:25vw" type="text" placeholder="#####">
+                    <form action="">
+                        <input style="width:15vw" type="text" placeholder="#####">
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
@@ -335,65 +340,14 @@
     </div>
 
     <div id="tripScheduleEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <form action="post">
                     <div class="modal-header">
                         <h5 class="modal-title">探險計畫編輯</h5>
-                        <button type="button" class="btn-close" data-dismiss="modal">
-                            <span>&times;</span>
-                        </button>
                     </div>
                     <div class="modal-body px-5">
-                        <div class="scheduleDay">
-                            <h4 data-toggle="collapse" data-target="#DAY1">
-                                DAY 1<img class="downArrow" src="img/down-arrow.png" alt="">
-                            </h4>
-                            <div id="DAY1" class="collapse show">
-                                <table>
-                                    <tr>
-                                        <td>10:00</td>
-                                        <td>吃早餐</td>
-                                        <td>
-                                            <img class="plusIcon" src="img/plus.png" alt="">
-                                            <img class="cancelIcon" src="img/cancel.png" alt="">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>12:00</td>
-                                        <td>吃午餐</td>
-                                    </tr>
-                                    <tr>
-                                        <td>21:00</td>
-                                        <td>吃晚餐</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <ul>
-
-                            </ul>
-                        </div>
-                        <div class="scheduleDay">
-                            <h4 data-toggle="collapse" data-target="#DAY2">
-                                DAY 2<img class="downArrow" src="img/down-arrow.png" alt="">
-                            </h4>
-                            <div id="DAY2" class="collapse show ">
-                                <table>
-                                    <tr>
-                                        <td>10:00</td>
-                                        <td>吃早餐</td>
-                                    </tr>
-                                    <tr>
-                                        <td>12:00</td>
-                                        <td>吃午餐</td>
-                                    </tr>
-                                    <tr>
-                                        <td>21:00</td>
-                                        <td>吃晚餐</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+                        123
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">Save changes</button>
@@ -408,13 +362,12 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">tripNoteEdit</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
+                    <h5 class="modal-title">注意事項編輯</h5>
                 </div>
                 <div class="modal-body">
-                    <p>tripNoteEdit</p>
+                    <form action="">
+                        <input type="text" value="text...">
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">Save changes</button>
@@ -428,17 +381,73 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">statComment</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
+                    <h5 class="modal-title">小強</h5>
                 </div>
                 <div class="modal-body">
-                    <p>statComment</p>
+                    <form action="">
+                        <table style="width:80%">
+                            <tr>
+                                <th></th>
+                                <th>5</th>
+                                <th>4</th>
+                                <th>3</th>
+                                <th>2</th>
+                                <th>1</th>
+                            </tr>
+                            <tr>
+                                <td>體能</td>
+                                <td><input type="radio" name="strength" value="5"></td>
+                                <td><input type="radio" name="strength" value="4"></td>
+                                <td><input type="radio" name="strength" value="3"></td>
+                                <td><input type="radio" name="strength" value="2"></td>
+                                <td><input type="radio" name="strength" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>醫術</td>
+                                <td><input type="radio" name="heal" value="5"></td>
+                                <td><input type="radio" name="heal" value="4"></td>
+                                <td><input type="radio" name="heal" value="3"></td>
+                                <td><input type="radio" name="heal" value="2"></td>
+                                <td><input type="radio" name="heal" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>方向感</td>
+                                <td><input type="radio" name="direction" value="5"></td>
+                                <td><input type="radio" name="direction" value="4"></td>
+                                <td><input type="radio" name="direction" value="3"></td>
+                                <td><input type="radio" name="direction" value="2"></td>
+                                <td><input type="radio" name="direction" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>求生技能</td>
+                                <td><input type="radio" name="survival" value="5"></td>
+                                <td><input type="radio" name="survival" value="4"></td>
+                                <td><input type="radio" name="survival" value="3"></td>
+                                <td><input type="radio" name="survival" value="2"></td>
+                                <td><input type="radio" name="survival" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>團隊意識</td>
+                                <td><input type="radio" name="teamwork" value="5"></td>
+                                <td><input type="radio" name="teamwork" value="4"></td>
+                                <td><input type="radio" name="teamwork" value="3"></td>
+                                <td><input type="radio" name="teamwork" value="2"></td>
+                                <td><input type="radio" name="teamwork" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>領導力</td>
+                                <td><input type="radio" name="leadership" value="5"></td>
+                                <td><input type="radio" name="leadership" value="4"></td>
+                                <td><input type="radio" name="leadership" value="3"></td>
+                                <td><input type="radio" name="leadership" value="2"></td>
+                                <td><input type="radio" name="leadership" value="1"></td>
+                            </tr>
+                        </table>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">完成</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>
@@ -448,17 +457,11 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">memberApplyReject</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>memberApplyReject</p>
+                    <h5 class="modal-title">是否確認拒絕？</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>
@@ -468,77 +471,91 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">memberApplyConfirm</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>memberApplyConfirm</p>
+                    <h5 class="modal-title">是否確認同意？</h5>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="publicItemListEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">publicItemListEdit</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>publicItemListEdit</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                <form action="">
+                    <div class="modal-header">
+                        <h5 class="modal-title">公共裝備清單編輯</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table>
+                            <tr>
+                                <th>裝備名稱</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" value="三人帳">
+                                </td>
+                                <td>
+                                    <img class="cancelIcon" src="img/cancel.png" alt="">
+                                </td>
+                            </tr>
+                        </table>
+                        <img class="plusIcon d-block mx-auto mt-3" src="img/plus.png" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     <div id="privateItemListEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">privateItemListEdit</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
+                    <h5 class="modal-title">私人裝備清單編輯</h5>
                 </div>
                 <div class="modal-body">
-                    <p>privateItemListEdit</p>
+                    <table>
+                        <tr>
+                            <th>裝備名稱</th>
+                            <th>個數／人</th>
+
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="電蚊拍"></td>
+                            <td><input type="text" value="1"></td>
+                            <td>
+                                <img class="cancelIcon" src="img/cancel.png" alt="">
+                            </td>
+                        </tr>
+                    </table>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="publicItemProvide" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">publicItemProvide</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
+                    <h5 class="modal-title">提供三人帳</h5>
                 </div>
                 <div class="modal-body">
-                    <p>publicItemProvide</p>
+                    <input type="text">個
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">確認</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>

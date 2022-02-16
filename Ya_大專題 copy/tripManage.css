@@ -35,8 +35,8 @@ nav{
 }
 
 img[class*="Icon"]{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 }
 
@@ -283,32 +283,45 @@ header a:hover{
     align-items: center;
 }
 
-.uploadImgIconContainer{
-    width:25px;
-    height:25px;
+
+
+#fileCount{
+    max-height: 28px;
+    text-align: center;
+    overflow: hidden;
+    width: 0%;
+    opacity:0;
+    transition: all 0.3s ease;
 }
 
-.uploadImgIconContainer img{
-    max-width: 100%;
-    max-height: 100%;
-    width:auto;
-    height:auto;
+#chatroomText{
+    width:100%;
+    opacity:1;
+    transition: all 0.3s ease;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
 }
 
-.inputFile:focus + label,
-.inputFile + label:hover{
-    background-color: rgb(226, 226, 226);
+#textSendContainer img{
+    width:28px;
+    height: 28px;
+    cursor: pointer;
+    margin:auto;
 }
+#textSendContainer
 
-.inputFile:focus + label{
-    outline: 1px dotted rgb(255, 0, 0);
-    outline: -webkit-focus-ring-color auto 3px;
-}
+
+
 
 /* ----- 團員待審核 ----- */
 table{
     width: 100%;
 }
+
+table{
+    width: 100%;
+}
+
 
 th,td{
     text-align: center;
@@ -318,7 +331,6 @@ th,td{
 .tableRow{
     font-weight: 500;
 }
-
 
 #tripMember .tableTitle:not(:first-of-type){
     margin-top: 6vh;
@@ -334,12 +346,9 @@ th,td{
 
 
 /* ------裝備清單----- */
-
 .plusContainer{
     margin: auto;
 }
-
-
 
 #privateItemTable{
     width:45%;
@@ -374,4 +383,9 @@ th,td{
     padding: 5px;
     text-align: left;
     border: 1px solid rgb(230, 230, 230);
+}
+
+/* ---------- modal---------- */
+div[id*="ItemListEdit"] th:first-child, div[id*="ItemListEdit"] td:first-child{
+    text-align: left;
 }
