@@ -1,53 +1,72 @@
-.person{
-text-align: center;
+/* -----------------大頭貼----------------- */
+.profile{
+  margin-left:auto;
+  margin-right:auto;
+  width: 100px; 
+  height: 100px; 
+  background-color: rgb(100, 99, 132, 0.4);
+} 
+/* -----------------能力表----------------- */
+.ability-chart{
+  width: 64%;
+  height: 17rem;
+  margin: auto;
 }
 
-.person img{
-        width: 100px;
-        height: 100px;
-        border-radius: 50px;
-        object-fit: cover;
-        margin-bottom: 2%;
+.expeirence-textarea{
+  padding: 1rem;
+  resize: none;
 }
-.person input{
-    border-style: none;
-    border-bottom: 1px solid;
+/* -----------------活動名稱----------------- */
+.act-textarea{
+  padding: 1rem;
+  resize: none;
 }
-.person input:focus{
-    outline: none;
+.day-count{
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+/* -----------------行程規劃----------------- */
+th ,td{
+  height: 4rem;
+  text-align: center;
 }
 
-/* describe */
-.describe{
-    display: flex;
-    margin-bottom: 10%;
-    /* background-color: aqua; */
+.add-delete-btn{
+  width: 1.5rem;
+  background-color: grey;
+  color: white;
+  margin: 0;
 }
-.describe1{
-    text-align: center;
-    margin: 50px 0 auto auto;
-    /* background-color: blue; */
+.time-input{
+  width: 50%;
 }
-.describe1>p{
-    font-size: 1.3em;
-    margin: 0;
+.act-input{
+  width: 60%;
 }
-.radar{
-    /* background-color: aqua; */
-    width: 300px;
-    height: 300px;
+/* -----------------裝備清單----------------- */
+
+/* -------------------按鈕------------------- */
+.backtohome{
+  width: 6rem;
+  color: #fff;
+  text-align: center;
+  display: none;
+  text-decoration: none;
+  margin: 0 auto;
 }
-.describe2{
-    text-align: center;
-    margin: auto auto auto 50px;
-    /* background-color: rgb(30, 107, 40); */
+
+.backtohome:hover{
+  color: white;
 }
-.describe2 span{
-    display: inline-block;
-    padding: 20px;
-    font-size: 1.5em;
+
+.submit-btn{
+  display: none;
+  margin: 0 auto;
 }
-.textbox1{
-    width: 400px;
-    height: 300px;
+
+/* 表單 */
+/* 沒輸入時的顏色 */
+input.invalid {
+  background-color: #ffdddd;
 }
