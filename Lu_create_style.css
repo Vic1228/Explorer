@@ -1,0 +1,110 @@
+/* ------------------------共用------------------------- */
+*{
+    box-sizing: border-box;
+    /* outline: 1px black solid; */
+}
+
+input:focus{
+  outline: none;
+}
+
+textarea:focus{
+  outline: none;
+}
+
+.bd-bot{
+  border: 0;
+  border-bottom: 1px solid #000;
+}
+.table-btn{
+  cursor: pointer;
+}
+.tab{
+  display: none;
+}
+
+/* -----------------流程圖----------------- */
+.step {
+    z-index: 1; 
+    cursor: pointer; 
+    background-color: #5c5a5a;
+    border: none;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+/* 步驟進行中 */
+.step.active {
+    opacity: 1;
+}
+/* -----------------大頭貼----------------- */
+.profile{
+  margin: 0 auto;
+  width: 100px; 
+  height: 100px; 
+  background-color: rgb(100, 99, 132, 0.4);
+} 
+/* -----------------能力表----------------- */
+.ability-chart{
+  width: 64%;
+  height: 17rem;
+  margin: auto;
+}
+/* -----------------活動名稱----------------- */
+.adventureEx{
+  line-height: 2.5rem;
+}
+
+/* -----------------活動名稱----------------- */
+.act-textarea{
+  padding: 1rem;
+  resize: none;
+}
+.day-count{
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+/* -----------------行程規劃----------------- */
+th ,td{
+  height: 4rem;
+  text-align: center;
+}
+
+.add-delete-btn{
+  width: 1.5rem;
+  background-color: grey;
+  color: white;
+  margin: 0;
+}
+.time-input{
+  width: 50%;
+}
+.act-input{
+  width: 60%;
+}
+/* -----------------裝備清單----------------- */
+
+/* -------------------按鈕------------------- */
+.backtohome{
+  width: 6rem;
+  color: #fff;
+  text-align: center;
+  display: none;
+  text-decoration: none;
+  margin: 0 auto;
+}
+
+.backtohome:hover{
+  color: white;
+}
+
+.submit-btn{
+  display: none;
+  margin: 0 auto;
+}
+
+/* 表單 */
+/* 沒輸入時的顏色 */
+input.invalid {
+  background-color: #ffdddd;
+}
