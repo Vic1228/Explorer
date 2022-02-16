@@ -6,6 +6,7 @@
   /* border: 3px solid tomato;  */
 }
 
+<<<<<<< HEAD
 #blur_all {
   display: none;
   position: fixed;
@@ -195,6 +196,8 @@ header a:hover {
   }
 }
 
+=======
+>>>>>>> 3d768d1cdc50743f762c6747133a0e961942d07c
 /* -------------------------------------------------------------------------- */
 /* ----------------------------- section 1 ---------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -226,6 +229,7 @@ header a:hover {
   text-align: center;
 }
 
+<<<<<<< HEAD
 #tripSelContainer ul {
   position: relative;
   right: 2vh;
@@ -233,6 +237,20 @@ header a:hover {
 
 #createdTripContainer {
   margin-bottom: 5vh;
+=======
+#tripSelContainer ul{
+    margin-top: 2vh;
+    position:relative;
+    right: 2vh;
+}
+
+#tripSelContainer li{
+    margin-bottom: 1vh;
+}
+
+#createdTripContainer{
+    margin-bottom: 10vh
+>>>>>>> 3d768d1cdc50743f762c6747133a0e961942d07c
 }
 
 /* ------- Middle: management Start ------- */
