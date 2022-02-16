@@ -140,5 +140,38 @@ function submitBtnClick() {
     document.createForm.submit();
 }
 /*---------------------------------------------------------------*/
-/*--------------------------- form-step -------------------------*/
+/*------------------------- table-control -----------------------*/
 /*---------------------------------------------------------------*/
+
+// 變數
+
+// 方法
+
+function addTableRow() {
+    const tableRow = `<tr>
+                <td>
+                  <select id="" name=”mySelect” class="border-0 text-center h-100">
+                    <option value="" selected disabled>第?天</option>
+                    <option value=”Taipei”>第1天</option>
+                    <option value=”Taoyuan”>第2天</option>
+                    <option value=”Hsinchu”>第3天</option>
+                    <option value=”Miaoli”>第4天</option>
+                  </select>
+                </td>
+                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
+                </td>
+                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
+                    placeholder="請輸入活動名稱">
+                  <p onclick="deleteTableRow()" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
+                    x</p>
+                  <p onclick="addTableRow()" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                </td>
+              </tr>`;
+    dispatchEvent.innerHTML(tableRow);
+}
+function deleteTableRow() {
+    
+}
+

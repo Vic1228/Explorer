@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- 1.tr增加刪除 -->
+<!-- 2.onclick事件讓畫面滑到頂端 -->
+<!-- 3.燈號 -->
+<!-- 4.必填 -->
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./style/style.css" />
   <link rel="stylesheet" href="./nav/nav.css" />
-  <!--  -->
-  <link rel="stylesheet" href="./Lu_create_style.css" />
+  <link rel="stylesheet" href="./style/Lu_create_style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,28 +49,28 @@
     </div>
     <!-- TODO: 發起人 -->
     <div class="tab">
-      <!-- 大頭貼 -->
+      <!-- TODO: 大頭貼 -->
       <div class="profile profile-name rounded-circle"></div>
-      <!-- 姓名 -->
+      <!-- TODO: 姓名 -->
       <h5 class="text-center" style="margin-top: 3vh; margin-bottom: 2vh;">王小明</h5>
-      <!-- 電話 -->
       <label class="d-block text-center" style="margin-bottom: 2vh;">
+        <!-- TODO: 電話 -->
         <p>0934-445-873</p>
       </label>
-      <!-- 信箱 -->
       <label class="d-block text-center">
+        <!-- TODO: 信箱 -->
         <p>brad123@gmail.com</p>
       </label>
-      <!-- 能力值 -->
       <div class="container d-flex" style="margin-top: 10vh;">
         <div class="col-1"></div>
         <div class="col-4">
           <h5 class="text-center" style="margin-bottom: 4vh;">能力值</h5>
-          <!-- 能力表 -->
           <div class="ability-chart">
+            <!-- TODO: 能力值-->
             <canvas id="myChart"></canvas>
           </div>
           <p class="text-center" style="margin-top: 4vh;">評價人次：
+            <!-- TODO: -->
             <span>?</span>
           </p>
         </div>
@@ -76,9 +80,10 @@
           <div class="w-100" style="margin-bottom: 2vh;">
             <div style="position: relative; top: 2rem;">
               <p class="adventureEx">
+                <!-- TODO: -->
                 培根說過一句富有哲理的話，合理安排時間，就等於節約時間。這啟發了我。這是不可避免的。想必大家都能了解冒險的重要性。透過逆向歸納，得以用最佳的策略去分析冒險。那麼，對我個人而言，冒險不僅僅是一個重大的事件，還可能會改變我的人生。
               </p>
-              <span>※此處將同步更新至個人資料</span>
+              <span class="text-danger">※此處將同步更新至個人資料</span>
             </div>
           </div>
         </div>
@@ -90,20 +95,24 @@
       <div class="container d-flex">
         <div class="col-5">
           <h5 style="margin-bottom: 2vh;">活動名稱:</h5>
+          <!-- TODO: 活動名稱 -->
           <input class="act-textarea w-100" type="text" style="margin-bottom: 2vh;">
           <h5 style="margin-bottom: 2vh;">活動描述:</h5>
+          <!-- TODO: 活動描述 -->
           <textarea class="act-textarea w-100" name="" id="" style="height: 7rem; margin-bottom: 2vh;"></textarea>
           <h5 style="margin-bottom: 2vh;">日期:</h5>
-          <!--  -->
+          <!-- TODO: 開始日期 -->
           <p><input class="act-textarea" type="date" name="" id=""> ~
+            <!-- TODO: 結束日期 -->
             <input class="act-textarea" type="date" name="" id="">
+            <!-- TODO: 累計日期 -->
             <span class="day-count"> 共 ? 日 </span>
           </p>
         </div>
         <div class="col-1"></div>
         <div class="col-6">
           <h5 style="margin-bottom: 2vh;">目的地:</h5>
-          <!-- 地圖 -->
+          <!-- TODO: 地圖 -->
           <div style="width: 100%; height: 22rem; outline: 1px rgb(145, 145, 145) solid;"></div>
         </div>
       </div>
@@ -129,6 +138,7 @@
               </tr>
             </thead>
             <tbody>
+              <!-- 1 -->
               <tr>
                 <td>
                   <select id="" name=”mySelect” class="border-0 text-center h-100">
@@ -143,112 +153,14 @@
                 </td>
                 <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
                     placeholder="請輸入活動名稱">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
+                  <p onclick="deleteTableRow()" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
                     x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
+                  <p onclick="addTableRow()" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100">
-                    <option value="" selected disabled>第?天</option>
-                    <option value=”Taipei”>第1天</option>
-                    <option value=”Taoyuan”>第2天</option>
-                    <option value=”Hsinchu”>第3天</option>
-                    <option value=”Miaoli”>第4天</option>
-                  </select>
-                </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
-                </td>
-                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
-                    placeholder="請輸入活動名稱">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100">
-                    <option value="" selected disabled>第?天</option>
-                    <option value=”Taipei”>第1天</option>
-                    <option value=”Taoyuan”>第2天</option>
-                    <option value=”Hsinchu”>第3天</option>
-                    <option value=”Miaoli”>第4天</option>
-                  </select>
-                </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
-                </td>
-                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
-                    placeholder="請輸入活動名稱">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100">
-                    <option value="" selected disabled>第?天</option>
-                    <option value=”Taipei”>第1天</option>
-                    <option value=”Taoyuan”>第2天</option>
-                    <option value=”Hsinchu”>第3天</option>
-                    <option value=”Miaoli”>第4天</option>
-                  </select>
-                </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
-                </td>
-                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
-                    placeholder="請輸入活動名稱">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100">
-                    <option value="" selected disabled>第?天</option>
-                    <option value=”Taipei”>第1天</option>
-                    <option value=”Taoyuan”>第2天</option>
-                    <option value=”Hsinchu”>第3天</option>
-                    <option value=”Miaoli”>第4天</option>
-                  </select>
-                </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
-                </td>
-                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
-                    placeholder="請輸入活動名稱">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100">
-                    <option value="" selected disabled>第?天</option>
-                    <option value=”Taipei”>第1天</option>
-                    <option value=”Taoyuan”>第2天</option>
-                    <option value=”Hsinchu”>第3天</option>
-                    <option value=”Miaoli”>第4天</option>
-                  </select>
-                </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
-                </td>
-                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
-                    placeholder="請輸入活動名稱">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
+              <!-- 放這裡 -->
             </tbody>
           </table>
         </div>
@@ -273,18 +185,6 @@
               </th>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
-                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75" placeholder="請輸入數量">
-                </td>
-                <td>
-                  <input type="text" class="text-center border-0 h-100" placeholder="備註">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
               <tr>
                 <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
                 <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75" placeholder="請輸入數量">
@@ -322,15 +222,6 @@
                     +</p>
                 </td>
               </tr>
-              <tr>
-                <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
-                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50" placeholder="請輸入數量">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
@@ -355,7 +246,7 @@
   <div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
   <!-- FOOTER -->
   <!-- create.js -->
-  <script src="./Lu_create.js"></script>
+  <script src="./js/Lu_create.js"></script>
   <script>
     w3.includeHTML();
   </script>
