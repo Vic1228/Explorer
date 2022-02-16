@@ -231,12 +231,17 @@ header a:hover{
 }
 
 #tripSelContainer ul{
+    margin-top: 2vh;
     position:relative;
     right: 2vh;
 }
 
+#tripSelContainer li{
+    margin-bottom: 1vh;
+}
+
 #createdTripContainer{
-    margin-bottom: 5vh
+    margin-bottom: 10vh
 }
 
 /* ------- Middle: management Start ------- */
