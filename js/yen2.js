@@ -71,3 +71,32 @@ const myChart = new Chart(
     document.getElementById('myChart'),
     config
 );
+
+
+// 上傳檔案-------------
+
+const inputelement = document.getElementById("upload");
+// console.log(inputelement)
+
+const reader = new FileReader()
+inputelement.addEventListener('change', (a) => {
+
+    // 獲取FileList陣列
+    const files = a.target.files[0];
+    const size = files.size;
+    reader.readAsDataURL(files)
+
+    const img = document.getElementById('imagegrid');
+    reader.addEventListener('load', (a) => {
+        // 檢視檔案大小並顯示
+        if (size < 1024 * 1024) {
+            img.src = a.target.result;
+            img.alt = files.name;
+            $("#imagegrid").show();
+            alert('success');
+        } else {
+            $("#imagegrid").hide();
+            alert('too big');
+        }
+    });
+})

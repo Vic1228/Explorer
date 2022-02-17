@@ -1,72 +1,43 @@
 /* -----------------大頭貼----------------- */
-.profile{
-  margin-left:auto;
-  margin-right:auto;
-  width: 100px; 
-  height: 100px; 
+.profile {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100px;
+  height: 100px;
   background-color: rgb(100, 99, 132, 0.4);
-} 
+  position: relative;
+  border:solid 1px black;
+  text-align: center;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  object-fit: cover;
+  z-index: -1;
+  margin: auto;
+}
+.profile label{
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 1;
+  position: absolute;
+  top: 70%;
+  left: 70%;
+}
+.material-icons {
+
+}
+
 /* -----------------能力表----------------- */
-.ability-chart{
+.ability-chart {
   width: 64%;
   height: 17rem;
   margin: auto;
 }
 
-.expeirence-textarea{
+.expeirence-textarea {
   padding: 1rem;
   resize: none;
-}
-/* -----------------活動名稱----------------- */
-.act-textarea{
-  padding: 1rem;
-  resize: none;
-}
-.day-count{
-  margin-left: 1rem;
-  font-size: 1.2rem;
-}
-/* -----------------行程規劃----------------- */
-th ,td{
-  height: 4rem;
-  text-align: center;
-}
-
-.add-delete-btn{
-  width: 1.5rem;
-  background-color: grey;
-  color: white;
-  margin: 0;
-}
-.time-input{
-  width: 50%;
-}
-.act-input{
-  width: 60%;
-}
-/* -----------------裝備清單----------------- */
-
-/* -------------------按鈕------------------- */
-.backtohome{
-  width: 6rem;
-  color: #fff;
-  text-align: center;
-  display: none;
-  text-decoration: none;
-  margin: 0 auto;
-}
-
-.backtohome:hover{
-  color: white;
-}
-
-.submit-btn{
-  display: none;
-  margin: 0 auto;
-}
-
-/* 表單 */
-/* 沒輸入時的顏色 */
-input.invalid {
-  background-color: #ffdddd;
 }
