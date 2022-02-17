@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h3 class="title">My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    
+
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <!-- -->
+       
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places" async defer></script>
+       
+        <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&libraries=places&callback=initMap&libraries=localContext&v=beta"
+        async
+      ></script> -->
+</body>
+
+</html>
