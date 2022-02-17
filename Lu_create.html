@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- 1.tr增加刪除 -->
-<!-- 2.onclick事件讓畫面滑到頂端 -->
+<!-- TODO: -->
 <!-- 3.燈號 -->
 <!-- 4.必填 -->
+
 
 <head>
   <meta charset="UTF-8" />
@@ -29,7 +28,7 @@
   <div w3-include-HTML="./nav/nav.html"></div>
   <!-- NAV BAR -->
   <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
-  <form action="/action_form.js" name="createForm">
+  <form action="/action_form.js" name="createForm" method="post">
     <div class="container d-flex" style="margin-bottom: 10vh;">
       <div class="col-2"></div>
       <div class="col-8">
@@ -49,16 +48,16 @@
     </div>
     <!-- TODO: 發起人 -->
     <div class="tab">
-      <!-- TODO: 大頭貼 -->
+      <!-- 大頭貼 -->
       <div class="profile profile-name rounded-circle"></div>
-      <!-- TODO: 姓名 -->
+      <!-- 姓名 -->
       <h5 class="text-center" style="margin-top: 3vh; margin-bottom: 2vh;">王小明</h5>
       <label class="d-block text-center" style="margin-bottom: 2vh;">
-        <!-- TODO: 電話 -->
+        <!-- 電話 -->
         <p>0934-445-873</p>
       </label>
       <label class="d-block text-center">
-        <!-- TODO: 信箱 -->
+        <!-- 信箱 -->
         <p>brad123@gmail.com</p>
       </label>
       <div class="container d-flex" style="margin-top: 10vh;">
@@ -66,11 +65,11 @@
         <div class="col-4">
           <h5 class="text-center" style="margin-bottom: 4vh;">能力值</h5>
           <div class="ability-chart">
-            <!-- TODO: 能力值-->
+            <!-- 能力值-->
             <canvas id="myChart"></canvas>
           </div>
           <p class="text-center" style="margin-top: 4vh;">評價人次：
-            <!-- TODO: -->
+            <!-- 評價人次 -->
             <span>?</span>
           </p>
         </div>
@@ -95,18 +94,19 @@
       <div class="container d-flex">
         <div class="col-5">
           <h5 style="margin-bottom: 2vh;">活動名稱:</h5>
-          <!-- TODO: 活動名稱 -->
-          <input class="act-textarea w-100" type="text" style="margin-bottom: 2vh;">
+          <!-- 活動名稱 -->
+          <input class="act-textarea w-100 form-input" type="text" style="margin-bottom: 2vh;">
           <h5 style="margin-bottom: 2vh;">活動描述:</h5>
-          <!-- TODO: 活動描述 -->
-          <textarea class="act-textarea w-100" name="" id="" style="height: 7rem; margin-bottom: 2vh;"></textarea>
+          <!-- 活動描述 -->
+          <textarea class="act-textarea w-100 form-input" name="" id=""
+            style="height: 7rem; margin-bottom: 2vh;"></textarea>
           <h5 style="margin-bottom: 2vh;">日期:</h5>
-          <!-- TODO: 開始日期 -->
-          <p><input class="act-textarea" type="date" name="" id=""> ~
-            <!-- TODO: 結束日期 -->
-            <input class="act-textarea" type="date" name="" id="">
+          <!-- 開始日期 -->
+          <p><input class="act-textarea form-input" type="date" name="" id="startDate"> ~
+            <!-- 結束日期 -->
+            <input class="act-textarea form-input" type="date" name="" id="endDate">
             <!-- TODO: 累計日期 -->
-            <span class="day-count"> 共 ? 日 </span>
+            <span class="day-count"> 共 <span id="dayCount"></span> 日 </span>
           </p>
         </div>
         <div class="col-1"></div>
@@ -123,7 +123,7 @@
         <div class="col-1"></div>
         <div class="col-10">
           <!-- 表格 -->
-          <table class="table table-bordered text-center">
+          <table id="ItineraryTable" class="table table-bordered text-center">
             <thead>
               <tr>
                 <th class="h-100">
@@ -141,7 +141,7 @@
               <!-- 1 -->
               <tr>
                 <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100">
+                  <select id="" name=”mySelect” class="border-0 text-center h-100 form-input">
                     <option value="" selected disabled>第?天</option>
                     <option value=”Taipei”>第1天</option>
                     <option value=”Taoyuan”>第2天</option>
@@ -149,15 +149,15 @@
                     <option value=”Miaoli”>第4天</option>
                   </select>
                 </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
+                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input form-input">
                 </td>
-                <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
+                <td><input class="h-100 border-0 act-input text-center form-input" type="text" class="border-0"
                     placeholder="請輸入活動名稱">
-                  <p onclick="deleteTableRow()" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                  <p onclick="addTableRow()" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
+                  <p class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem; visibility:hidden">
+                    x</p>
                 </td>
               </tr>
               <!-- 放這裡 -->
@@ -172,7 +172,7 @@
       <div class="container d-flex">
         <div class="col-7">
           <h5 style="margin-bottom: 3vh">私人裝備</h5>
-          <table class="table table-bordered text-center">
+          <table id="privateItemTable" class="table table-bordered text-center">
             <thead>
               <th class="h-100">
                 <h5>物品名稱</h5>
@@ -186,15 +186,17 @@
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
-                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75" placeholder="請輸入數量">
+                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"></td>
+                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75 form-input"
+                    placeholder="請輸入數量">
                 </td>
                 <td>
-                  <input type="text" class="text-center border-0 h-100" placeholder="備註">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
+                  <input type="text" class="text-center border-0 h-100 form-input" placeholder="備註">
+                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
+                  <p class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem; visibility:hidden">
+                    x</p>
                 </td>
               </tr>
             </tbody>
@@ -203,7 +205,7 @@
         <div class="col-1"></div>
         <div class="col-4">
           <h5 style="margin-bottom: 3vh">公用裝備</h5>
-          <table class="table table-bordered text-center">
+          <table id="sharedItemTable" class="table table-bordered text-center">
             <thead>
               <th class="h-100">
                 <h5>物品名稱</h5>
@@ -214,12 +216,14 @@
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
-                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50" placeholder="請輸入數量">
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                    x</p>
-                  <p class="d-inline-block rounded-circle add-delete-btn table-btn">
+                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"></td>
+                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50 form-input"
+                    placeholder="請輸入數量">
+                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
+                  <p class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem; visibility:hidden">
+                    x</p>
                 </td>
               </tr>
             </tbody>
@@ -230,16 +234,15 @@
     <!-- TODO: 按鈕 -->
     <div class="container text-center" style="margin-top: 5vh;">
       <!-- 返回  -->
-      <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn btn-secondary"
-        style="margin-right: 1rem;">返回</button>
+      <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn btn-secondary" style="margin-right: 1rem;">返回
+      </button>
       <!-- 下一步  -->
-      <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn btn-secondary"
-        style="margin-left: 1rem;">下一步</button>
+      <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn btn-secondary" style="margin-left: 1rem;">下一步
+      </button>
       <!-- TODO: 提交 -->
       <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn btn-secondary"
         style="margin-left: 1rem; display: none;"></button>
     </div>
-
   </form>
   <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
   <!-- FOOTER -->
