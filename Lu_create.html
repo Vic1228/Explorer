@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- TODO: -->
-<!-- 3.燈號 -->
-<!-- 4.必填 -->
+<!-- invalid問題tr -->
 
+<!-- submit問題 -->
 
 <head>
   <meta charset="UTF-8" />
@@ -93,27 +93,30 @@
     <div class="tab">
       <div class="container d-flex">
         <div class="col-5">
-          <h5 style="margin-bottom: 2vh;">活動名稱:</h5>
+          <h5 style="margin-bottom: 2vh;">活動名稱</h5>
           <!-- 活動名稱 -->
-          <input class="act-textarea w-100 form-input" type="text" style="margin-bottom: 2vh;">
-          <h5 style="margin-bottom: 2vh;">活動描述:</h5>
+          <input class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
+            type="text" style="margin-bottom: 2vh;">
+          <h5 style="margin-bottom: 2vh;">活動描述</h5>
           <!-- 活動描述 -->
-          <textarea class="act-textarea w-100 form-input" name="" id=""
-            style="height: 7rem; margin-bottom: 2vh;"></textarea>
-          <h5 style="margin-bottom: 2vh;">日期:</h5>
+          <textarea class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
+            name="" id="" style="height: 7rem; margin-bottom: 2vh;"></textarea>
+          <h5 style="margin-bottom: 2vh;">日期</h5>
           <!-- 開始日期 -->
-          <p><input class="act-textarea form-input" type="date" name="" id="startDate"> ~
+          <p><input class="act-textarea form-input" oninput="this.className = 'act-textarea form-input'" type="date"
+              name="" id="startDate"> ~
             <!-- 結束日期 -->
-            <input class="act-textarea form-input" type="date" name="" id="endDate">
+            <input class="act-textarea form-input" oninput="this.className = 'act-textarea form-input'" type="date"
+              name="" id="endDate">
             <!-- TODO: 累計日期 -->
-            <span class="day-count"> 共 <span id="dayCount"></span> 日 </span>
+            <!-- <span class="day-count"> 共 <span id="dayCount"></span> 日 </span> -->
           </p>
         </div>
         <div class="col-1"></div>
         <div class="col-6">
-          <h5 style="margin-bottom: 2vh;">目的地:</h5>
+          <h5 style="margin-bottom: 2vh;">目的地</h5>
           <!-- TODO: 地圖 -->
-          <div style="width: 100%; height: 22rem; outline: 1px rgb(145, 145, 145) solid;"></div>
+          <div id="map" style="width: 100%; height: 22rem; outline: 1px rgb(145, 145, 145) solid;"></div>
         </div>
       </div>
     </div>
@@ -138,10 +141,11 @@
               </tr>
             </thead>
             <tbody>
-              <!-- 1 -->
+              <!-- tr -->
               <tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100 form-input">
+                <td class="form-td">
+                  <select id="" name=”mySelect” class="border-0 text-center h-100 form-input"
+                    oninput="this.className = 'border-0 text-center h-100 form-input'">
                     <option value="" selected disabled>第?天</option>
                     <option value=”Taipei”>第1天</option>
                     <option value=”Taoyuan”>第2天</option>
@@ -149,10 +153,13 @@
                     <option value=”Miaoli”>第4天</option>
                   </select>
                 </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input form-input">
+                <td class="form-td"><input type="time" name="" id=""
+                    class="text-center border-0 h-100 time-input form-input"
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input'">
                 </td>
-                <td><input class="h-100 border-0 act-input text-center form-input" type="text" class="border-0"
-                    placeholder="請輸入活動名稱">
+                <td class="form-td"><input class="h-100 border-0 act-input text-center form-input" type="text"
+                    class="border-0" placeholder="請輸入活動名稱"
+                    oninput="this.className = 'h-100 border-0 act-input text-center form-input'">
                   <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p class="d-inline-block rounded-circle add-delete-btn table-btn"
@@ -186,12 +193,14 @@
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"></td>
-                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75 form-input"
-                    placeholder="請輸入數量">
+                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input"
+                    placeholder="請輸入物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="w-25 form-td"><input type="number" class="text-center border-0 h-100 w-75 form-input"
+                    placeholder="請輸入數量" oninput="this.className = 'text-center border-0 h-100 w-75 form-input'">
                 </td>
-                <td>
-                  <input type="text" class="text-center border-0 h-100 form-input" placeholder="備註">
+                <td class="form-td">
+                  <input type="text" class="text-center border-0 h-100 form-input" placeholder="備註"
+                    oninput="this.className = 'text-center border-0 h-100 form-input'">
                   <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p class="d-inline-block rounded-circle add-delete-btn table-btn"
@@ -216,9 +225,11 @@
             </thead>
             <tbody>
               <tr>
-                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"></td>
-                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50 form-input"
-                    placeholder="請輸入數量">
+                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input"
+                    placeholder="請輸入物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input type="number" name="" id=""
+                    class="text-center border-0 h-100 w-50 form-input" placeholder="請輸入數量"
+                    oninput="this.className = 'text-center border-0 h-100 w-50 form-input'">
                   <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p class="d-inline-block rounded-circle add-delete-btn table-btn"
@@ -255,6 +266,9 @@
   </script>
   <script src="./nav/nav.js"></script>
   <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places"
+    async defer></script>
 </body>
 
 </html>

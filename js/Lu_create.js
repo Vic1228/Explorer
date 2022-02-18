@@ -1,12 +1,7 @@
 /*---------------------------------------------------------------*/
 /*----------------------------- date ---------------------------*/
 /*---------------------------------------------------------------*/
-// let startDate = document.getElementById("startDate").value;
-// let endDate = document.getElementById("endDate").value;
-// let dayCount = document.getElementById("dayCount").value;
 
-// console.log(endDate);
-// console.log(startDate);
 
 /*---------------------------------------------------------------*/
 /*----------------------------- chart ---------------------------*/
@@ -120,13 +115,13 @@ function showTab(nowPage) {
         document.getElementById("nextBtn").innerHTML = "下一步";
         document.getElementById("nextBtn").style.display = "inline";
     }
-    // TODO: 執行步驟燈方法(目前步驟)
-        // fixStepIndicator(nowPage);
+    // 執行步驟燈方法(目前步驟)
+        fixStepIndicator(nowPage);
 }
 // 換頁 0/1
 function nextPrev(turn) {
     const tabArray = document.getElementsByClassName("tab");
-    // TODO:沒輸入資訊無法下一頁
+    // 沒輸入資訊無法下一頁
         if (turn == 1 && !validForm()) return false;
     // 當前步驟隱藏
     tabArray[currentTab].style.display = "none";
@@ -138,17 +133,22 @@ function nextPrev(turn) {
     showTab(currentTab);
 }
 
+// 是否有效
 function validForm() {
     // 設定變數
     let valid = true;
     const tabArray = document.getElementsByClassName("tab");
-    const inputArray = tabArray[currentTab].getElementsByClassName("form-input")
+    const inputArray = tabArray[currentTab].getElementsByClassName("form-input");
+    // const trArray = tabArray[currentTab].getElementsByTagName("tr");
     
     // 檢查input是不是沒有東西
+    
     for (let i = 0; i < inputArray.length; i++){
         if (inputArray[i].value == "" || inputArray[i].value == undefined) {
             // 增加 invalid的樣式
             inputArray[i].className += " invalid";
+            // trArray[i].className += " invalid";
+            
             valid = false;
         }
     }
@@ -156,73 +156,78 @@ function validForm() {
 }
 
 function submitBtnClick() {
-    let valid = true;
-    const tabArray = document.getElementsByClassName("tab");
-    const inputArray = tabArray[currentTab].getElementsByClassName("form-input")
-    
-    // 檢查input是不是沒有東西
-    for (let i = 0; i < inputArray.length; i++){
-        if (inputArray[i].value == "" || inputArray[i].value == undefined) {
-            // 提醒東西沒有填
-            inputArray[i].className += " invalid";
-            valid = false;
-        } else {
-            // 
-        }
-    }
-    // 
-    console.log("123");
-    document.createForm.submit();
-    return valid;
+  validForm();
+  if (valid == true)
+  document.createForm.submit();
+  }
 
-}
+
+ function fixStepIndicator(currentStep) {
+        // 刪除所有active燈號
+        var step = document.getElementsByClassName("step");
+        for (let i = 0; i < step.length; i++) {
+          step[i].className = step[i].className.replace(" active", "");
+        }
+        // 目前步驟加上燈號
+        step[currentStep].className += " active";
+      }
 /*---------------------------------------------------------------*/
 /*------------------------- table-control -----------------------*/
 /*---------------------------------------------------------------*/
 
 // 變數
 
+// 
 const itineraryRow = `<tr>
-            <td>
-              <select id="" name=”mySelect” class="border-0 text-center h-100">
-                <option value="" selected disabled>第?天</option>
-                <option value=”Taipei”>第1天</option>
-                <option value=”Taoyuan”>第2天</option>
-                <option value=”Hsinchu”>第3天</option>
-                <option value=”Miaoli”>第4天</option>
-              </select>
-            </td>
-            <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input">
-            </td>
-            <td><input class="h-100 border-0 act-input text-center" type="text" class="border-0"
-                placeholder="請輸入活動名稱">
-                <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                +</p>
-                <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn delete123"
-                   style="margin-inline: 1rem;">
-                   x</p>
-            </td>
-          </tr>`;
+                <td>
+                  <select id="" name=”mySelect” class="border-0 text-center h-100 form-input"
+                    oninput="this.className = 'border-0 text-center h-100 form-input'">
+                    <option value="" selected disabled>第?天</option>
+                    <option value=”Taipei”>第1天</option>
+                    <option value=”Taoyuan”>第2天</option>
+                    <option value=”Hsinchu”>第3天</option>
+                    <option value=”Miaoli”>第4天</option>
+                  </select>
+                </td>
+                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input form-input"
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input'">
+                </td>
+                <td><input class="h-100 border-0 act-input text-center form-input" type="text" class="border-0"
+                    placeholder="請輸入活動名稱" oninput="this.className = 'h-100 border-0 act-input text-center form-input'">
+                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
+                    x</p>
+                </td>
+              </tr>`;
 
 const privateItem = `<tr>
-                <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
-                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75" placeholder="請輸入數量">
+                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"
+                    oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75 form-input"
+                    placeholder="請輸入數量" oninput="this.className = 'text-center border-0 h-100 w-75 form-input'">
                 </td>
                 <td>
-                  <input type="text" class="text-center border-0 h-100" placeholder="備註">
+                  <input type="text" class="text-center border-0 h-100 form-input" placeholder="備註"
+                    oninput="this.className = 'text-center border-0 h-100 form-input'">
                   <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                  +</p>
-                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
+                    +</p>
+                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
                     x</p>
                 </td>
               </tr>`
 const sharedItem = `<tr>
-                <td><input type="text" class="text-center border-0 h-100" placeholder="請輸入物品名稱"></td>
-                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50" placeholder="請輸入數量">
-                <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                +</p>
-                <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn" style="margin-inline: 1rem;">
-                  x</p>
+                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"
+                    oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50 form-input"
+                    placeholder="請輸入數量" oninput="this.className = 'text-center border-0 h-100 w-50 form-input'">
+                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
+                    x</p>
                 </td>
               </tr>`
 
@@ -250,4 +255,130 @@ function deletePrivateItemRow(p) {
 }
 function deleteSharedItemRow(p) {
     $(p).closest("tr").remove();
+}
+
+/*---------------------------------------------------------------*/
+/*----------------------------- 地圖 ----------------------------*/
+/*---------------------------------------------------------------*/
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat:23.58044082121914, lng:120.86312406425326},
+      zoom: 6.8
+    });
+
+    
+    const infowindow = new google.maps.InfoWindow();
+    const service = new google.maps.places.PlacesService(map);
+    // Location 1
+    const request = {
+      placeId: 'ChIJraeA2rarQjQRPBBjyR3RxKw',
+      fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total']
+    };
+    service.getDetails(request, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+        //   map.setCenter(place.geometry.location)
+          const marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            infowindow.setContent("<div class='infowindow-container'>"+
+            "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +"'></img>"+
+            "<div class='inner'><h3>" + 
+            '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +'台北101</a>'+
+            "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
+            "</p><p style='margin-left:15px'>地址:"+ place.formatted_address + "</p>" +"<button>參加</button>"+"</div></div>")
+          });
+        }
+      });
+
+      const req2={
+        placeId: 'ChIJ_a1qN2SiaDQRZHNavQE-JnM',
+        fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total','address_component']
+      }
+      service.getDetails(req2, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            infowindow.setContent("<div class='infowindow-container'>"+
+            "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +"'></img>"+
+            "<div class='inner'><h3>" + 
+            '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +'翡翠谷</a>'+
+            "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
+            "</p><p style='margin-left:15px'>地址:"+ place.formatted_address + "</p>"+"<button>參加</button>"+"</div></div>")
+          });
+        }
+      });
+
+      const req3={
+        placeId: 'ChIJCQG9vQwFaTQRLe7JGdAOZVk',
+        fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total','address_component']
+      }
+      service.getDetails(req3, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            infowindow.setContent("<div class='infowindow-container'>"+
+            "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +"'></img>"+
+            "<div class='inner'><h3>" + 
+            '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +'火炎山</a>'+
+            "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
+            "</p><p style='margin-left:15px'>地址:"+ place.formatted_address + "</p>"+"<a href=`/marker/?${req3.placeId}`>隨便</a>"+"</div></div>")
+          });
+        }
+      });
+
+      const req4={
+        placeId: 'ChIJ30vCQtzpZzQRY_ZjcfWOjDk',
+        fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total','address_component']
+      }
+      service.getDetails(req4, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            infowindow.setContent("<div class='infowindow-container'>"+
+            "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +"'></img>"+
+            "<div class='inner'><h3>" + 
+            '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +'玻璃海灘</a>'+
+            "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
+            "</p><p style='margin-left:15px'>地址:"+ place.formatted_address + "</p>"+"<button>參加</button>"+"</div></div>")
+          });
+        }
+      });
+      
+      const req5={
+        placeId: 'ChIJB8psq07CZzQRLiwOajyFoQ8',
+        fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total','address_component']
+      }
+      service.getDetails(req5, function(place, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+            infowindow.setContent("<div class='infowindow-container'>"+
+            "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +" class='image''></img>"+
+            "<div class='inner'><h3>" + 
+            '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +'烏岩角無人沙灘</a>'+
+            "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
+            "</p><p style='margin-left:15px'>地址:"+ place.formatted_address + "</p>" +"<button>參加</button>"+"</div></div>")
+          });
+        }
+      });
 }

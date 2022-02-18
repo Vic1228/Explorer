@@ -12,9 +12,10 @@ body{
   padding: 0;
 }
 
+/* TODO: 改大小 */
 #map{
     height: 80vh;
-    width: 100%;
+    width: 50%;
 }
 
 .title{
