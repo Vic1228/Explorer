@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+// const ejs = require('ejs')
 const app = express();
 const path = require('path');
 const mysql = require('mysql');
@@ -17,8 +18,8 @@ app.use(session({
 var conn = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
-    password: 'root',
-    port: '3307',
+    password: '',
+    port: '3306',
     database:'test'
 });
 conn.connect((err) => {
@@ -35,8 +36,8 @@ app.listen(3000, () => {
 
 // routing
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/yen.html'))
-    // res.render("yen1.ejs");
+    // res.sendFile(path.join(__dirname, '/views/yen.html'))
+    res.render('yen1.ejs');
 
 });
 
