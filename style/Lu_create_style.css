@@ -54,7 +54,6 @@ outline: 0;
 
 /* -----------------活動名稱----------------- */
 .act-textarea{
-  padding: 1rem;
   resize: none;
 }
 .day-count{
@@ -72,12 +71,6 @@ th ,td{
   background-color: grey;
   color: white;
   margin: 0;
-}
-.time-input{
-  width: 50%;
-}
-.act-input{
-  width: 60%;
 }
 /* -----------------裝備清單----------------- */
 

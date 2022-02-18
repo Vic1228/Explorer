@@ -112,7 +112,7 @@ function showTab(nowPage) {
 // 換頁 0/1
 function nextPrev(turn) {
   const tabArray = document.getElementsByClassName("tab");
-  // 沒輸入資訊無法下一頁
+  // TODO: 沒輸入資訊無法下一頁
   if (turn == 1 && !validForm()) return false;
   // 當前步驟隱藏
   tabArray[currentTab].style.display = "none";
@@ -127,7 +127,7 @@ var valid;
 
 // 是否有效
 function validForm() {
-  // 設定變數
+  // TODO: 設定變數
   valid = true;
   const tabArray = document.getElementsByClassName("tab");
   const inputArray = tabArray[currentTab].getElementsByClassName("form-input");
@@ -169,21 +169,23 @@ function fixStepIndicator(currentStep) {
 
 //
 const itineraryRow = `<tr>
-                <td>
-                  <select id="" name=”mySelect” class="border-0 text-center h-100 form-input"
-                    oninput="this.className = 'border-0 text-center h-100 form-input'">
+                <td class="form-td">
+                  <select id="" name="" class="border-0 text-center h-100 form-input w-100"
+                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
                     <option value="" selected disabled>第?天</option>
-                    <option value=”Taipei”>第1天</option>
-                    <option value=”Taoyuan”>第2天</option>
-                    <option value=”Hsinchu”>第3天</option>
-                    <option value=”Miaoli”>第4天</option>
+                    <option value="1">第1天</option>
+                    <option value="2">第2天</option>
+                    <option value="3">第3天</option>
+                    <option value="4">第4天</option>
                   </select>
                 </td>
-                <td><input type="time" name="" id="" class="text-center border-0 h-100 time-input form-input"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input'">
+                <td class="form-td"><input type="time" name="" id=""
+                    class="text-center border-0 h-100 time-input form-input w-100"
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
                 </td>
-                <td><input class="h-100 border-0 act-input text-center form-input" type="text" class="border-0"
-                    placeholder="請輸入活動名稱" oninput="this.className = 'h-100 border-0 act-input text-center form-input'">
+                <td class="form-td"><input class="h-100 w-75 border-0 act-input text-center form-input" type="text"
+                    class="border-0" oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
+                    placeholder="活動名稱" style="margin-right: 1rem;">
                   <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
@@ -193,14 +195,10 @@ const itineraryRow = `<tr>
               </tr>`;
 
 const privateItem = `<tr>
-                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"
+                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
                     oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="w-25"><input type="number" class="text-center border-0 h-100 w-75 form-input"
-                    placeholder="請輸入數量" oninput="this.className = 'text-center border-0 h-100 w-75 form-input'">
-                </td>
-                <td>
-                  <input type="text" class="text-center border-0 h-100 form-input" placeholder="備註"
-                    oninput="this.className = 'text-center border-0 h-100 form-input'">
+                <td class="form-td"><input type="number" class="text-center border-0 w-25 h-100 form-input"
+                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
                   <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
@@ -209,10 +207,11 @@ const privateItem = `<tr>
                 </td>
               </tr>`;
 const sharedItem = `<tr>
-                <td><input type="text" class="text-center border-0 h-100 form-input" placeholder="請輸入物品名稱"
+                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
                     oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td><input type="number" name="" id="" class="text-center border-0 h-100 w-50 form-input"
-                    placeholder="請輸入數量" oninput="this.className = 'text-center border-0 h-100 w-50 form-input'">
+                <td class="form-td"><input type="number" name="" id=""
+                    class="text-center border-0 h-100 form-input w-50"
+                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
                   <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
