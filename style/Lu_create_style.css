@@ -1,7 +1,7 @@
 /* ------------------------共用------------------------- */
 *{
     box-sizing: border-box;
-    /* outline: 1px black solid; */
+    /* outline: 1px rgb(196, 101, 101) solid; */
 }
 
 input:focus{
@@ -40,20 +40,17 @@ outline: 0;
 /* -----------------大頭貼----------------- */
 .profile{
   margin: 0 auto;
-  width: 100px; 
-  height: 100px; 
+  width: 70px; 
+  height: 70px; 
   background-color: rgb(100, 99, 132, 0.4);
 } 
 /* -----------------能力表----------------- */
 .ability-chart{
-  width: 64%;
-  height: 17rem;
-  margin: auto;
+  width: 100%;
+  height: 70%;
 }
 /* -----------------活動名稱----------------- */
-.adventureEx{
-  line-height: 2.5rem;
-}
+
 
 /* -----------------活動名稱----------------- */
 .act-textarea{

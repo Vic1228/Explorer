@@ -23,13 +23,13 @@
   <style></style>
 </head>
 
-<body style="margin-top: 25vh;">
+<body style="padding-top: 25vh;">
   <!-- NAV BAR -->
   <div w3-include-HTML="./nav/nav.html"></div>
   <!-- NAV BAR -->
   <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
   <form action="/action_form.js" name="createForm" method="post">
-    <div class="container d-flex" style="margin-bottom: 10vh;">
+    <div class="container d-flex" style="padding-bottom: 10vh;">
       <div class="col-2"></div>
       <div class="col-8">
         <!-- 步驟 -->
@@ -51,48 +51,48 @@
       <!-- 大頭貼 -->
       <div class="profile profile-name rounded-circle"></div>
       <!-- 姓名 -->
-      <h5 class="text-center" style="margin-top: 3vh; margin-bottom: 2vh;">王小明</h5>
-      <label class="d-block text-center" style="margin-bottom: 2vh;">
-        <!-- 電話 -->
-        <p>0934-445-873</p>
-      </label>
-      <label class="d-block text-center">
-        <!-- 信箱 -->
-        <p>brad123@gmail.com</p>
-      </label>
+      <h6 class="text-center m-0" style="padding-top: 2vh;">王小明</h6>
+      <!-- 電話 -->
+      <p class="text-center m-0" style="font-size: 10px; padding-top: 2vh;">0934-445-873</p>
+      <p class="text-center m-0" style="font-size: 10px;">brad123@gmail.com</p>
+      <!-- 信箱 -->
+
       <div class="container d-flex" style="margin-top: 10vh;">
-        <div class="col-1"></div>
-        <div class="col-4">
-          <h5 class="text-center" style="margin-bottom: 4vh;">能力值</h5>
+        <div class="col-2"></div>
+        <div class="col-3">
+          <h6 class="text-center" style="margin-bottom: 4vh;">能力值</h6>
           <div class="ability-chart">
             <!-- 能力值-->
             <canvas id="myChart"></canvas>
           </div>
-          <p class="text-center" style="margin-top: 4vh;">評價人次：
+          <p class="text-center" style="margin-top: 4vh; font-size: 10px;">評價人次：
             <!-- 評價人次 -->
             <span>?</span>
           </p>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
         <div class="col-4">
-          <h5 class="text-center" style="margin-bottom: 4vh;">冒險經歷</h5>
-          <div class="w-100" style="margin-bottom: 2vh;">
-            <div style="position: relative; top: 2rem;">
-              <p class="adventureEx">
+          <h6 class="text-center" style="margin-bottom: 4vh;">冒險經歷</h6>
+          <div style="margin-bottom: 2vh;">
+            <div>
+              <p style="font-size: 10px; line-height: 2rem; padding-top: 2rem;">
                 <!-- TODO: -->
                 培根說過一句富有哲理的話，合理安排時間，就等於節約時間。這啟發了我。這是不可避免的。想必大家都能了解冒險的重要性。透過逆向歸納，得以用最佳的策略去分析冒險。那麼，對我個人而言，冒險不僅僅是一個重大的事件，還可能會改變我的人生。
               </p>
-              <span class="text-danger">※此處將同步更新至個人資料</span>
+              <span class="text-danger" style="font-size: 10px;">※此處將同步更新至個人資料</span>
             </div>
           </div>
         </div>
-        <div class="col-1"></div>
+        <div class="col-2"></div>
       </div>
     </div>
     <!-- TODO: 活動 -->
     <div class="tab">
       <div class="container d-flex">
-        <div class="col-5">
+        <!-- 23142 -->
+        <div class="col-2"></div>
+
+        <div class="col-3">
           <h5 style="margin-bottom: 2vh;">活動名稱</h5>
           <!-- 活動名稱 -->
           <input class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
@@ -113,11 +113,12 @@
           </p>
         </div>
         <div class="col-1"></div>
-        <div class="col-6">
+        <div class="col-4">
           <h5 style="margin-bottom: 2vh;">目的地</h5>
           <!-- TODO: 地圖 -->
           <div id="map" style="width: 100%; height: 22rem; outline: 1px rgb(145, 145, 145) solid;"></div>
         </div>
+        <div class="col-2"></div>
       </div>
     </div>
     <!-- TODO: 行程 -->
