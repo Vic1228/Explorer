@@ -6,9 +6,11 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Style -->
   <link rel="stylesheet" href="../style/style.css" />
   <link rel="stylesheet" href="../nav/nav.css" />
   <link rel="stylesheet" href="../style/Lu_create_style.css" />
+  <!-- Library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,8 +26,8 @@
   <!-- NAV BAR -->
   <div w3-include-HTML="../nav/nav.html"></div>
   <!-- NAV BAR -->
-  <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
-  <form action="/action_form.js" name="createForm" method="post">
+  <!-- FORM -->
+  <form action="/response" name="createForm" method="post">
     <div class="container d-flex" style="padding-bottom: 10vh;">
       <div class="col-2"></div>
       <div class="col-8">
@@ -43,7 +45,7 @@
       </div>
       <div class="col-2"></div>
     </div>
-    <!-- TODO: 發起人 -->
+    <!-- TODO: 發起人簡介tab -->
     <div class="tab">
       <!-- 大頭貼 -->
       <div class="profile profile-name rounded-circle"></div>
@@ -53,7 +55,6 @@
       <p class="text-center m-0" style="font-size: 10px; padding-top: 2vh;">0934-445-873</p>
       <p class="text-center m-0" style="font-size: 10px;">brad123@gmail.com</p>
       <!-- 信箱 -->
-
       <div class="container d-flex" style="margin-top: 10vh;">
         <div class="col-2"></div>
         <div class="col-3">
@@ -86,28 +87,26 @@
       <div class="col-2"></div>
     </div>
     </div>
-    <!-- TODO: 活動 -->
+    <!-- TODO: 活動簡介tab -->
     <div class="tab">
       <div class="container d-flex">
         <div class="col-1"></div>
         <div class="col-4">
           <h6 style="margin-bottom: 2vh;">活動名稱</h6>
-          <!-- 活動名稱 -->
+          <!-- TODO: 活動名稱 -->
           <input class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
             type="text" style="margin-bottom: 2vh;">
           <h6 style="margin-bottom: 2vh;">活動描述</h6>
-          <!-- 活動描述 -->
+          <!-- TODO: 活動描述 -->
           <textarea class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
             name="" id="" style="height: 7rem; margin-bottom: 2vh;"></textarea>
           <h6 style="margin-bottom: 2vh;">日期</h6>
-          <!-- 開始日期 -->
+          <!-- TODO: 開始日期 -->
           <p><input class="act-textarea form-input w-50 mb-3"
               oninput="this.className = 'act-textarea form-input w-50 mb-3'" type="date" name="" id="startDate">
-            <!-- 結束日期 -->
+            <!-- TODO: 結束日期 -->
             <input class="act-textarea form-input w-50" oninput="this.className = 'act-textarea form-input w-50'"
               type="date" name="" id="endDate">
-            <!-- TODO: 累計日期 -->
-            <!-- <span class="day-count"> 共 <span id="dayCount"></span> 日 </span> -->
           </p>
         </div>
         <div class="col-1"></div>
@@ -119,7 +118,7 @@
         <div class="col-1"></div>
       </div>
     </div>
-    <!-- TODO: 行程 -->
+    <!-- TODO: 行程規劃tab -->
     <div class="tab">
       <div class="container d-flex">
         <div class="col-1"></div>
@@ -140,8 +139,8 @@
               </tr>
             </thead>
             <tbody>
-              <!-- tr -->
               <tr>
+                <!-- TODO: 第幾天 -->
                 <td class="form-td">
                   <select id="" name="" class="border-0 text-center h-100 form-input w-100"
                     oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
@@ -152,10 +151,12 @@
                     <option value="4">第4天</option>
                   </select>
                 </td>
+                <!-- TODO: 時間 -->
                 <td class="form-td"><input type="time" name="" id=""
                     class="text-center border-0 h-100 time-input form-input w-100"
                     oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
                 </td>
+                <!-- TODO: 活動名稱 -->
                 <td class="form-td"><input class="h-100 w-75 border-0 act-input text-center form-input" type="text"
                     class="border-0" oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
                     placeholder="活動名稱" style="margin-right: 1rem;">
@@ -166,14 +167,13 @@
                     x</p>
                 </td>
               </tr>
-              <!-- 放這裡 -->
             </tbody>
           </table>
         </div>
         <div class="col-1"></div>
       </div>
     </div>
-    <!-- TODO: 裝備 -->
+    <!-- TODO: 裝備清單tab -->
     <div class="tab">
       <div class="container d-flex">
         <div class="col-5">
@@ -189,8 +189,10 @@
             </thead>
             <tbody>
               <tr>
+                <!-- TODO: 裝備名稱 -->
                 <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
                     oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <!-- TODO: 數量 -->
                 <td class="form-td"><input type="number" class="text-center border-0 w-25 h-100 form-input"
                     oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
                   <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
@@ -217,8 +219,10 @@
             </thead>
             <tbody>
               <tr>
+                <!-- TODO: 裝備名稱 -->
                 <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
                     oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <!-- TODO: 數量 -->
                 <td class="form-td"><input type="number" name="" id=""
                     class="text-center border-0 h-100 form-input w-50"
                     oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
@@ -247,11 +251,11 @@
         style="margin-left: 1rem; display: none;"></button>
     </div>
   </form>
-  <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
+  <!-- FORM -->
   <!-- FOOTER -->
   <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
   <!-- FOOTER -->
-  <!-- create.js -->
+  <!-- Library -->
   <script src="../js/Lu_create.js"></script>
   <script>
     w3.includeHTML();
@@ -261,6 +265,7 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places"
     async defer></script>
+  <!-- Library -->
 </body>
 
 </html>

@@ -8,7 +8,7 @@ app.set('views',__dirname + '/views');
 
 // =========== body-parser ===========
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 // ============= mysql ===============
@@ -33,14 +33,14 @@ app.use(express.static("js"));
 app.use(express.static("nav"));
 app.use(express.static("footer"));
 
-// 測試查詢用 by 政霖
-connection.query("SELECT * from trips", function (err, data, fields) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-  console.log(data);
-});
-// 測試查詢用
+// 呂學奇 creatTrip Form post
+app.post("/response", (req, res) => {
+  // body parser顯示在終端機
+  console.log(req.body);
+  // 渲染
+  res.render("ok.ejs");
+})
+
+// 拿到node
 
 connection.end();
