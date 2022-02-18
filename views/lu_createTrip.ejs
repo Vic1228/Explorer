@@ -94,19 +94,20 @@
         <div class="col-4">
           <h6 style="margin-bottom: 2vh;">活動名稱</h6>
           <!-- TODO: 活動名稱 -->
-          <input class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
-            type="text" style="margin-bottom: 2vh;">
+          <input name="test" class="act-textarea w-100 form-input"
+            oninput="this.className = 'act-textarea w-100 form-input'" type="text" style="margin-bottom: 2vh;">
           <h6 style="margin-bottom: 2vh;">活動描述</h6>
           <!-- TODO: 活動描述 -->
-          <textarea class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
-            name="" id="" style="height: 7rem; margin-bottom: 2vh;"></textarea>
+          <textarea name="test" class="act-textarea w-100 form-input"
+            oninput="this.className = 'act-textarea w-100 form-input'" id=""
+            style="height: 7rem; margin-bottom: 2vh;"></textarea>
           <h6 style="margin-bottom: 2vh;">日期</h6>
           <!-- TODO: 開始日期 -->
-          <p><input class="act-textarea form-input w-50 mb-3"
-              oninput="this.className = 'act-textarea form-input w-50 mb-3'" type="date" name="" id="startDate">
+          <p><input name="test" class="act-textarea form-input w-50 mb-3"
+              oninput="this.className = 'act-textarea form-input w-50 mb-3'" type="date" id="startDate">
             <!-- TODO: 結束日期 -->
-            <input class="act-textarea form-input w-50" oninput="this.className = 'act-textarea form-input w-50'"
-              type="date" name="" id="endDate">
+            <input name="test" class="act-textarea form-input w-50"
+              oninput="this.className = 'act-textarea form-input w-50'" type="date" id="endDate">
           </p>
         </div>
         <div class="col-1"></div>
@@ -142,7 +143,7 @@
               <tr>
                 <!-- TODO: 第幾天 -->
                 <td class="form-td">
-                  <select id="" name="" class="border-0 text-center h-100 form-input w-100"
+                  <select id="" class="border-0 text-center h-100 form-input w-100"
                     oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
                     <option value="" selected disabled>第?天</option>
                     <option value="1">第1天</option>
@@ -152,14 +153,15 @@
                   </select>
                 </td>
                 <!-- TODO: 時間 -->
-                <td class="form-td"><input type="time" name="" id=""
+                <td class="form-td"><input name="test" type="time" id=""
                     class="text-center border-0 h-100 time-input form-input w-100"
                     oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
                 </td>
                 <!-- TODO: 活動名稱 -->
-                <td class="form-td"><input class="h-100 w-75 border-0 act-input text-center form-input" type="text"
-                    class="border-0" oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
-                    placeholder="活動名稱" style="margin-right: 1rem;">
+                <td class="form-td"><input name="test" class="h-100 w-75 border-0 act-input text-center form-input"
+                    type="text" class="border-0"
+                    oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'" placeholder="活動名稱"
+                    style="margin-right: 1rem;">
                   <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
                   <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
@@ -190,10 +192,10 @@
             <tbody>
               <tr>
                 <!-- TODO: 裝備名稱 -->
-                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
-                    oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input name="test" type="text" class="text-center border-0 h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
                 <!-- TODO: 數量 -->
-                <td class="form-td"><input type="number" class="text-center border-0 w-25 h-100 form-input"
+                <td class="form-td"><input name="test" type="number" class="text-center border-0 w-25 h-100 form-input"
                     oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
                   <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
                     +</p>
@@ -220,10 +222,10 @@
             <tbody>
               <tr>
                 <!-- TODO: 裝備名稱 -->
-                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
-                    oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input name="test" type="text" class="text-center border-0 h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
                 <!-- TODO: 數量 -->
-                <td class="form-td"><input type="number" name="" id=""
+                <td class="form-td"><input name="test" type="number" id=""
                     class="text-center border-0 h-100 form-input w-50"
                     oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
                   <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">

@@ -38,7 +38,7 @@ app.post("/response", (req, res) => {
   // body parser顯示在終端機
   console.log(req.body);
   // 渲染
-  res.render("ok.ejs");
+  res.render("createFormComplete.ejs");
 })
 
 // 拿到node
