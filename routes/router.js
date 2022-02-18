@@ -33,6 +33,7 @@ router.get('/profile',function(req,res){
     res.render('yen_profile.ejs')
 })
 
+// 呂學奇 
 router.get('/createTrip',function(req,res){
     res.render('lu_createTrip.ejs')
 })

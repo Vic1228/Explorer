@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- TODO: -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style/style.css" />
+  <link rel="stylesheet" href="../nav/nav.css" />
+  <link rel="stylesheet" href="../style/Lu_create_style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+  <title>Document</title>
+  <style></style>
+</head>
+
+<body style="padding-top: 25vh;">
+  <!-- NAV BAR -->
+  <div w3-include-HTML="../nav/nav.html"></div>
+  <!-- NAV BAR -->
+  <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
+  <form action="/action_form.js" name="createForm" method="post">
+    <div class="container d-flex" style="padding-bottom: 10vh;">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <!-- 步驟 -->
+        <div class="d-flex justify-content-around">
+          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
+          <span>發起人簡介</span>
+          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
+          <span>活動簡介</span>
+          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
+          <span>行程規劃</span>
+          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
+          <span>裝備清單</span>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    <!-- TODO: 發起人 -->
+    <div class="tab">
+      <!-- 大頭貼 -->
+      <div class="profile profile-name rounded-circle"></div>
+      <!-- 姓名 -->
+      <h6 class="text-center m-0" style="padding-top: 2vh;">王小明</h6>
+      <!-- 電話 -->
+      <p class="text-center m-0" style="font-size: 10px; padding-top: 2vh;">0934-445-873</p>
+      <p class="text-center m-0" style="font-size: 10px;">brad123@gmail.com</p>
+      <!-- 信箱 -->
+
+      <div class="container d-flex" style="margin-top: 10vh;">
+        <div class="col-2"></div>
+        <div class="col-3">
+          <h6 class="text-center" style="margin-bottom: 4vh;">能力值</h6>
+          <div class="ability-chart">
+            <!-- 能力值-->
+            <canvas id="myChart"></canvas>
+          </div>
+          <p class="text-center" style="margin-top: 4vh; font-size: 10px;">評價人次：
+            <!-- 評價人次 -->
+            <span>?</span>
+          </p>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4">
+          <h6 class="text-center" style="margin-bottom: 4vh;">冒險經歷</h6>
+          <div class="d-flex" style="margin-bottom: 2vh;">
+            <div class="col-2"></div>
+            <div class="col-9">
+              <p style="font-size: 10px; line-height: 2rem;">
+                <!-- TODO: -->
+                培根說過一句富有哲理的話，合理安排時間，就等於節約時間。這啟發了我。這是不可避免的。想必大家都能了解冒險的重要性。透過逆向歸納，得以用最佳的策略去分析冒險。那麼，對我個人而言，冒險不僅僅是一個重大的事件，還可能會改變我的人生。
+              </p>
+              <span class="text-danger" style="font-size: 10px;">※此處將同步更新至個人資料</span>
+            </div>
+            <div class="col-1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    </div>
+    <!-- TODO: 活動 -->
+    <div class="tab">
+      <div class="container d-flex">
+        <div class="col-1"></div>
+        <div class="col-4">
+          <h6 style="margin-bottom: 2vh;">活動名稱</h6>
+          <!-- 活動名稱 -->
+          <input class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
+            type="text" style="margin-bottom: 2vh;">
+          <h6 style="margin-bottom: 2vh;">活動描述</h6>
+          <!-- 活動描述 -->
+          <textarea class="act-textarea w-100 form-input" oninput="this.className = 'act-textarea w-100 form-input'"
+            name="" id="" style="height: 7rem; margin-bottom: 2vh;"></textarea>
+          <h6 style="margin-bottom: 2vh;">日期</h6>
+          <!-- 開始日期 -->
+          <p><input class="act-textarea form-input w-50 mb-3"
+              oninput="this.className = 'act-textarea form-input w-50 mb-3'" type="date" name="" id="startDate">
+            <!-- 結束日期 -->
+            <input class="act-textarea form-input w-50" oninput="this.className = 'act-textarea form-input w-50'"
+              type="date" name="" id="endDate">
+            <!-- TODO: 累計日期 -->
+            <!-- <span class="day-count"> 共 <span id="dayCount"></span> 日 </span> -->
+          </p>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <h6 style="margin-bottom: 2vh;">目的地</h6>
+          <!-- TODO: 地圖 -->
+          <div id="map" style="width: 100%; height: 60vh; outline: 1px rgb(145, 145, 145) solid;"></div>
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </div>
+    <!-- TODO: 行程 -->
+    <div class="tab">
+      <div class="container d-flex">
+        <div class="col-1"></div>
+        <div class="col-10">
+          <!-- 表格 -->
+          <table id="ItineraryTable" class="table table-bordered text-center">
+            <thead>
+              <tr>
+                <th class="h-100">
+                  <h6>行程</h6>
+                </th>
+                <th class="h-100">
+                  <h6>時間</h6>
+                </th>
+                <th class="h-100">
+                  <h6>活動</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- tr -->
+              <tr>
+                <td class="form-td">
+                  <select id="" name="" class="border-0 text-center h-100 form-input w-100"
+                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
+                    <option value="" selected disabled>第?天</option>
+                    <option value="1">第1天</option>
+                    <option value="2">第2天</option>
+                    <option value="3">第3天</option>
+                    <option value="4">第4天</option>
+                  </select>
+                </td>
+                <td class="form-td"><input type="time" name="" id=""
+                    class="text-center border-0 h-100 time-input form-input w-100"
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
+                </td>
+                <td class="form-td"><input class="h-100 w-75 border-0 act-input text-center form-input" type="text"
+                    class="border-0" oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
+                    placeholder="活動名稱" style="margin-right: 1rem;">
+                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem; visibility:hidden">
+                    x</p>
+                </td>
+              </tr>
+              <!-- 放這裡 -->
+            </tbody>
+          </table>
+        </div>
+        <div class="col-1"></div>
+      </div>
+    </div>
+    <!-- TODO: 裝備 -->
+    <div class="tab">
+      <div class="container d-flex">
+        <div class="col-5">
+          <h6 style="margin-bottom: 3vh">私人裝備</h6>
+          <table id="privateItemTable" class="table table-bordered text-center">
+            <thead>
+              <th class="h-100">
+                <h6>物品名稱</h6>
+              </th>
+              <th class="h-100">
+                <h6>數量</h6>
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
+                    oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input type="number" class="text-center border-0 w-25 h-100 form-input"
+                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
+                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem; visibility:hidden">
+                    x</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-6">
+          <h6 style="margin-bottom: 3vh">公用裝備</h6>
+          <table id="sharedItemTable" class="table table-bordered text-center">
+            <thead>
+              <th class="h-100">
+                <h6>物品名稱</h6>
+              </th>
+              <th class="h-100">
+                <h6>能提供數量</h6>
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="form-td"><input type="text" class="text-center border-0 h-100 form-input" placeholder="物品名稱"
+                    oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input type="number" name="" id=""
+                    class="text-center border-0 h-100 form-input w-50"
+                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
+                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem; visibility:hidden">
+                    x</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- TODO: 按鈕 -->
+    <div class="container text-center" style="margin-top: 5vh;">
+      <!-- 返回  -->
+      <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn btn-secondary" style="margin-right: 1rem;">返回
+      </button>
+      <!-- 下一步  -->
+      <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn btn-secondary" style="margin-left: 1rem;">下一步
+      </button>
+      <!-- TODO: 提交 -->
+      <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn btn-secondary"
+        style="margin-left: 1rem; display: none;"></button>
+    </div>
+  </form>
+  <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
+  <!-- FOOTER -->
+  <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
+  <!-- FOOTER -->
+  <!-- create.js -->
+  <script src="../js/Lu_create.js"></script>
+  <script>
+    w3.includeHTML();
+  </script>
+  <script src="../nav/nav.js"></script>
+  <script src="../style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places"
+    async defer></script>
+</body>
+
+</html>

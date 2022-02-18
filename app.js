@@ -25,6 +25,13 @@ connection.connect();
 var router = require('./routes/router.js');
 app.use('/',router);
 
+// ============= static file ===============
+app.use(express.static(__dirname));
+app.use(express.static("image"));
+app.use(express.static("css"));
+app.use(express.static("js"));
+app.use(express.static("nav"));
+app.use(express.static("footer"));
 
 // 測試查詢用 by 政霖
 connection.query("SELECT * from trips", function (err, data, fields) {
