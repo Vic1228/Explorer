@@ -1,6 +1,6 @@
 // 透過express架設伺服器
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 // express的模組化路由方法
 const router = express.Router();
@@ -14,8 +14,8 @@ app.use(express.static("css"));
 app.use(express.static("js"));
 
 // 資料庫
-var mysql = require("mysql");
-var connection = mysql.createConnection({
+const mysql = require("mysql");
+const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
