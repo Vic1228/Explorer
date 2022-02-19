@@ -40,6 +40,9 @@ app.use(express.static("footer"));
 app.post("/response", (req, res) => {
   // req.body => body parser
   let data = req.body;
+  // let data = req.body;
+  // let data = req.body;
+  // let data = req.body;
   connection.query("INSERT INTO VALUES(?)", data.toString(), function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
@@ -48,12 +51,14 @@ app.post("/response", (req, res) => {
   res.render("createFormComplete.ejs");
 })
 
+//  測試用 by 學奇
 //     connection.query("INSERT INTO `names` (name) VALUES (?)", username.toString(), function(err, result){
-//         if(err) throw err;
-//             console.log("1 record inserted");
-//         });
-//     res.send(username);
-// });
+  //         if(err) throw err;
+  //             console.log("1 record inserted");
+  //         });
+  //     res.send(username);
+  // });
+  //  測試用 by 學奇
 
 
 
