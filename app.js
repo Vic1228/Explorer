@@ -1,3 +1,6 @@
+// 記得打開mysql apache
+// mac使用者請看23行 設定mysql密碼
+
 var express = require('express');
 var app = express();
 app.listen(3000);
@@ -33,14 +36,30 @@ app.use(express.static("js"));
 app.use(express.static("nav"));
 app.use(express.static("footer"));
 
-// 呂學奇 creatTrip Form post
+// 呂學奇 creatTrip Form post / action: /response
 app.post("/response", (req, res) => {
-  // body parser顯示在終端機
-  console.log(req.body);
+  // req.body => body parser
+  let data = req.body;
+  connection.query("INSERT INTO VALUES(?)", data.toString(), function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+  })
   // 渲染
   res.render("createFormComplete.ejs");
 })
 
+//     connection.query("INSERT INTO `names` (name) VALUES (?)", username.toString(), function(err, result){
+//         if(err) throw err;
+//             console.log("1 record inserted");
+//         });
+//     res.send(username);
+// });
+
+
+
+
 // 拿到node
 
 connection.end();
+
+// 
