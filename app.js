@@ -22,7 +22,6 @@ var connection = mysql.createConnection({
   password: "",      //if mac ,須設定為root
   database: "explorer",
 });
-connection.connect();
 
 // ============= router ===============
 var router = require('./routes/router.js');
@@ -36,35 +35,23 @@ app.use(express.static("js"));
 app.use(express.static("nav"));
 app.use(express.static("footer"));
 
+// 呂學奇 creatTrip Form 抓到個人主頁的資料 成功!!!!!!
+
+connection.connect();
+
+connection.query('SELECT * FROM `trips`',
+  function (err, result, fields) {
+  if(err) throw err;
+  console.log(result);
+});
+
 // 呂學奇 creatTrip Form post / action: /response
-app.post("/response", (req, res) => {
-  // req.body => body parser
-  let data = req.body;
-  // let data = req.body;
-  // let data = req.body;
-  // let data = req.body;
-  connection.query("INSERT INTO VALUES(?)", data.toString(), function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  })
-  // 渲染
-  res.render("createFormComplete.ejs");
-})
+connection.query("INSERT INTO `trips` SET `tripName`='玉山上吃火鍋', `spotId`='1', `tripStartDate`='2022-12-25', `tripEndDate`='2022-12-26', `tripDesc`='好冷但好爽'",
+function (err, result) {
+  if(err) throw err;
+  console.log(result);
+  });
 
-//  測試用 by 學奇
-//     connection.query("INSERT INTO `names` (name) VALUES (?)", username.toString(), function(err, result){
-  //         if(err) throw err;
-  //             console.log("1 record inserted");
-  //         });
-  //     res.send(username);
-  // });
-  //  測試用 by 學奇
-
-
-
-
-// 拿到node
+// 呂學奇 creatTrip Form post / action: /response
 
 connection.end();
-
-// 
