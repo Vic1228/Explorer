@@ -35,7 +35,7 @@ app.use(express.static("js"));
 app.use(express.static("nav"));
 app.use(express.static("footer"));
 
-// 呂學奇 creatTrip Form 抓到個人主頁的資料 成功!!!!!!
+// 呂學奇 讀取資料庫 成功!!
 
 connection.connect();
 
@@ -45,12 +45,13 @@ connection.query('SELECT * FROM `trips`',
   console.log(result);
 });
 
-// 呂學奇 creatTrip Form post / action: /response
-connection.query("INSERT INTO `trips` SET `tripName`='玉山上吃火鍋', `spotId`='1', `tripStartDate`='2022-12-25', `tripEndDate`='2022-12-26', `tripDesc`='好冷但好爽'",
-function (err, result) {
-  if(err) throw err;
-  console.log(result);
-  });
+// 呂學奇 寫入資料庫 成功!!
+// connection.query("INSERT INTO `trips` SET `tripName`='玉山上吃火鍋', `spotId`='1', `tripStartDate`='2022-12-25', `tripEndDate`='2022-12-26', `tripDesc`='好冷但好爽'",
+// function (err, result) {
+//   if(err) throw err;
+//   console.log(result);
+//   });
+
 
 // 呂學奇 creatTrip Form post / action: /response
 
