@@ -9,6 +9,7 @@
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
   <title>Document</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/style/try.css">
 
 </head>
 
@@ -22,39 +23,44 @@
 
 
   <!-- 姓名 -->
+ 
   <form action="/rename" method="POST">
-    <h5>王小明</h5>
     <input type="text" name="name" id="name">
     <label for="name">
-      <button>
-        <img src="/public/edit.png" alt="">
+      <button id="namebtn">
+        <img src="/img/edit.png" alt="">
       </button>
     </label>
   </form>
   <br>
-  <img src="../public/img/下載.jpg" alt="">
+
   <!-- 電話 -->
   <label>
     Phone:
     <input type="tel" name="tel" id="tel" class="text-center bd-bot">
-    <img src="/vertwo/public/img/edit.png" alt="">
   </label>
+  <button id="telbtn">
+    <img src="/img/edit.png" alt="">
+  </button>
   <br>
+
+
   <!-- 信箱 -->
   <label>
     E-mail:
-    <input type="email" name="email" id="email" class="text-center bd-bot">
-    <img src="/vertwo/public/img/edit.png" alt="">
+    <input type="email" name="email" id="email" class="text-center bd-bot" readonly>
+    <img src="/img/edit.png" alt="">
   </label>
   <br>
   <h5>冒險經歷</h5>
   <label for="text">
-    <img src="/vertwo/public/img/edit.png" alt="">
+    <img src="/img/edit.png" alt="">
   </label>
   <br>
   <!-- 輸入框 -->
   <textarea class="expeirence-textarea w-100" name="" id="text" rows="10" style="margin-bottom: 2vh;"></textarea>
-
+<script src="/yentest.js">
+</script>
 </body>
 
 </html>
