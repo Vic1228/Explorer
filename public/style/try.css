@@ -8,3 +8,9 @@ body {
     background-color: rgb(101, 86, 86);
     color: rgba(255, 255, 255);
 }
+.noborder{
+    border-style: none;
+}
+#tel:focus{
+border-style: none;
+}
