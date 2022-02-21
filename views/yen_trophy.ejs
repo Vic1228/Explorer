@@ -5,93 +5,418 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="./nav/nav.css" />
+  <link rel="stylesheet" href="./style/yen1.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>Document</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="/style/try.css">
-
 </head>
 
 <body>
-  <!-- 大頭貼 -->
-  <div class="profile profile-name rounded-circle navDistance ">
-    <img id="imagegrid" src="" alt="" style="display: none;">
-    <label for="upload"><i class="material-icons" style="font-size: 30px;">add_a_photo</i></label>
-    <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
+  <!-- NAV BAR -->
+  <div w3-include-HTML="./nav/nav.html"></div>
+  <!-- NAV BAR -->
+
+  <div class="navDistance container col-12">
+    <div class="maincard">
+      <div class="maincard1 col-3">
+        <img src="img/yen/2.png">
+        <h2>人氣王</h2>
+        <p>(評價次數最多)</p>
+      </div>
+      <div class="maincard2 col-9">
+        <div class="maincard20">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">李白</td>
+              <td class="thr"><span>199</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">小路</td>
+              <td class="thr"><span>166</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">兆恩</td>
+              <td class="thr"><span>77</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">輝家</td>
+              <td class="thr"><span>45</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">文</td>
+              <td class="thr"><span>33</span>次</td>
+            </tr>
+          </table>
+          <table class="table2">
+            <tr>
+              <td class="frt">6.</td>
+              <td class="sec">蔡政府</td>
+              <td class="thr"><span>32</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">7.</td>
+              <td class="sec">三星蔥</td>
+              <td class="thr"><span>24</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">8.</td>
+              <td class="sec">八股</td>
+              <td class="thr"><span>21</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">9.</td>
+              <td class="sec">玲</td>
+              <td class="thr"><span>9</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">10.</td>
+              <td class="sec">真心鎮小智</td>
+              <td class="thr"><span>2</span>次</td>
+            </tr>
+          </table>
+        </div>
+        <div class="maincarda">
+          <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+        </div>
+        <!-- 彈跳視窗 -->
+        <div id="light" class="light">
+          <p id="closebt" class="closebt"><img src="/img/yen/close.png"></p>
+          <table>
+            <h1>冒險王</h1>
+            <hr>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">圈圈</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">叉叉</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">三角形</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">正方形</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">錢錢</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">6.</td>
+              <td class="sec">摳摳</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">7.</td>
+              <td class="sec">三塊錢</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">8.</td>
+              <td class="sec">Ken</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">9.</td>
+              <td class="sec">來來</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+            <tr>
+              <td class="frt">10.</td>
+              <td class="sec">阿張</td>
+              <td class="thr"><span>?</span>次</td>
+            </tr>
+          </table>
+          <p>
+            <a href="#">第一頁</a>
+            <span class="out">
+              <span>1</span>
+              <span>/?</span>
+            </span>
+            <a href="#">最後一頁</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- 分界線 -->
+  <hr class="container">
+  <!-- 卡片 -->
+  <!-- <div class="row"> -->
+  <!-- <div class="col-1"></div> -->
+
+  <div class="container">
+    <div class="col-12 mid">
+      <div class="card1">
+        <div class="card11">
+          <img src="img/yen/monkey.jpg">
+          <h4>野猴子</h4>
+          <p>(體能最高分)</p>
+        </div>
+        <div class="card12">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">希特勒</td>
+              <td class="thr">6.7</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">犬</td>
+              <td class="thr">6.6</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">小安</td>
+              <td class="thr">3.8</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">阿泉</td>
+              <td class="thr">1.2</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">失明</td>
+              <td class="thr">9.9</td>
+            </tr>
+          </table>
+          <div class="maincarda">
+            <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+          </div>
+        </div>
+      </div>
+      <div class="card1">
+        <div class="card11">
+          <img src="img/yen/doctor.jpg">
+          <h4>怪醫黑傑克</h4>
+          <p>(醫術最高分)</p>
+        </div>
+        <div class="card12">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">希特勒</td>
+              <td class="thr">6.7</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">犬</td>
+              <td class="thr">6.6</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">小安</td>
+              <td class="thr">3.8</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">阿泉</td>
+              <td class="thr">1.2</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">失明</td>
+              <td class="thr">9.9</td>
+            </tr>
+          </table>
+          <div class="maincarda">
+            <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+          </div>
+        </div>
+      </div>
+      <div class="card1">
+        <div class="card11">
+          <img src="img/yen/bey.jpg">
+          <h4>東方貝爺</h4>
+          <p>(求生技術最高分)</p>
+        </div>
+        <div class="card12">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">希特勒</td>
+              <td class="thr">6.7</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">犬</td>
+              <td class="thr">6.6</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">小安</td>
+              <td class="thr">3.8</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">阿泉</td>
+              <td class="thr">1.2</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">失明</td>
+              <td class="thr">9.9</td>
+            </tr>
+          </table>
+          <div class="maincarda">
+            <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+          </div>
+        </div>
+      </div>
+      <div class="card1">
+        <div class="card11">
+          <img src="img/yen/imlost.jpg">
+          <h4>公車不搭反方向</h4>
+          <p>(方向感最高分)</p>
+        </div>
+        <div class="card12">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">希特勒</td>
+              <td class="thr">6.7</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">犬</td>
+              <td class="thr">6.6</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">小安</td>
+              <td class="thr">3.8</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">阿泉</td>
+              <td class="thr">1.2</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">失明</td>
+              <td class="thr">9.9</td>
+            </tr>
+          </table>
+          <div class="maincarda">
+            <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+          </div>
+        </div>
+      </div>
+      <div class="card1">
+        <div class="card11">
+          <img src="img/yen/sidada.jpg">
+          <h4>董事長</h4>
+          <p>(領導力最高分)</p>
+        </div>
+        <div class="card12">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">希特勒</td>
+              <td class="thr">6.7</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">犬</td>
+              <td class="thr">6.6</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">小安</td>
+              <td class="thr">3.8</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">阿泉</td>
+              <td class="thr">1.2</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">失明</td>
+              <td class="thr">9.9</td>
+            </tr>
+          </table>
+          <div class="maincarda">
+            <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+          </div>
+        </div>
+      </div>
+      <div class="card1">
+        <div class="card11">
+          <img src="img/yen/binbin.jpg">
+          <h4>三個臭皮匠</h4>
+          <p>(團隊意識最高分)</p>
+        </div>
+        <div class="card12">
+          <table>
+            <tr>
+              <td class="frt">1.</td>
+              <td class="sec">希特勒</td>
+              <td class="thr">6.7</td>
+            </tr>
+            <tr>
+              <td class="frt">2.</td>
+              <td class="sec">犬</td>
+              <td class="thr">6.6</td>
+            </tr>
+            <tr>
+              <td class="frt">3.</td>
+              <td class="sec">小安</td>
+              <td class="thr">3.8</td>
+            </tr>
+            <tr>
+              <td class="frt">4.</td>
+              <td class="sec">阿泉</td>
+              <td class="thr">1.2</td>
+            </tr>
+            <tr>
+              <td class="frt">5.</td>
+              <td class="sec">失明</td>
+              <td class="thr">9.9</td>
+            </tr>
+          </table>
+          <div class="maincarda">
+            <p class="opener" style="display: inline;"><u>查看更多...</u></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col-1"></div> -->
+  <!-- </div> -->
 
 
-  <!-- 姓名 -->
-  <form action="/rename" method="POST" style="display: inline;" class="d-block text-center">
-    <input type="text" name="name" id="name" value="<%= userName %>" readonly class="text-center">
-    <button id="namebtn2" style="display: none;">
-      <span id="namespan2">save</span>
-      <img id="nameimg2" src="/img/save.png" alt="">
-    </button>
-  </form>
-  <button id="namebtn" type="submit" class="d-block text-center">
-    <span id="namespan">edit</span>
-    <img id="nameimg" src="/img/edit.png" alt="">
-  </button>
-  <br>
 
-  <!-- 電話 -->
-  <label class="d-block text-center" style="margin-bottom: 2vh;">
-    Phone:
-  </label>
-  <form action="/rephone" method="POST" style="display: inline;" class="d-block text-center">
-    <input type="tel" name="tel" id="tel" class="text-center bd-bot" readonly value='<%= userPhone %>'>
-    <button id="telbtn2" style="display: none;">
-      <span id="telspan2">save</span>
-      <img id="telimg2" src="/img/save.png" alt="">
-    </button>
-  </form>
-  <button id="telbtn" type="submit" class="d-block text-center">
-    <span id="telspan">edit</span>
-    <img id="telimg" src="/img/edit.png" alt="">
-  </button>
-  <br>
-
-
-  <!-- 信箱 -->
-  <label class="d-block text-center">
-    E-mail:
-  </label>
-  <form action="/remail" method="POST" style="display: inline;" class="text-center bd-bot">
-    <input type="mail" name="mail" id="mail" class="text-center bd-bot" readonly value='<%= userEmail %>'>
-    <button id="mailbtn2" style="display: none;">
-      <span id="mailbtn2">save</span>
-      <img id="mailbtn2" src="/img/save.png" alt="">
-    </button>
-  </form>
-  <button id="mailbtn" type="submit" class="d-block text-center">
-    <span id="mailspan">edit</span>
-    <img id="mailimg" src="/img/edit.png" alt="">
-  </button>
-  <br>
-
-  <!-- 經驗輸入框 -->
-  冒險經驗:
-  <form action="/retext" method="POST" style="display: inline;">
-    <textarea class="expeirence-textarea w-100" name="text" id="text" rows="10"
-      readonly><%= userExprnience %></textarea>
-    <button id="textbtn2" style="display: none;">
-      <span id="textbtn2">save</span>
-      <img id="textbtn2" src="/img/save.png" alt="">
-    </button>
-  </form>
-  <button id="textbtn" type="submit">
-    <span id="textspan">edit</span>
-    <img id="textimg" src="/img/edit.png" alt="">
-  </button>
-  <br>
-
-
-
-  <script src="/yentest.js">
+  <!-- FOOTER -->
+  <!-- <div w3-include-HTML="./footer/footer.html" class=""></div> -->
+  <!-- FOOTER -->
+  <script>
+    w3.includeHTML();
   </script>
-
+  <script src="/js/yen1.js"></script>
+  <script src="./nav/nav.js"></script>
+  <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
