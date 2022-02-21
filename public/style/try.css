@@ -4,13 +4,10 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: rgb(101, 86, 86);
-    color: rgba(255, 255, 255);
+
+input{
+    border: none;
+    padding: 6px 3px;
 }
-.noborder{
-    border-style: none;
-}
-#tel:focus{
-border-style: none;
+input:focus{
 }

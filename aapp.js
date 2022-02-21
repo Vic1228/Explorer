@@ -8,8 +8,14 @@ const mysql = require('mysql');
 app.set('view engine', 'ejs');
 app.set('views', './views');
 // static files
+app.use(express.static(__dirname));
+app.use(express.static("image"));
 app.use(express.static("public"));
 app.use(express.static("js"));
+app.use(express.static("nav"));
+app.use(express.static("footer"));
+app.use(express.static("css"));
+app.use(express.static("style"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -40,51 +46,54 @@ app.listen(3000, () => {
 
 
 // routing
-app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname, '/views/yen.html'))
-    res.render('yen1.ejs');
-});
 
-app.post('/rename', (req, res) => {
-    // console.log('HI')
-    let name = req.body.name;
-    // console.log(typeof name);
-    let sql = `UPDATE users SET userName ='${name}' WHERE userID = 1`;
-    conn.query(sql, (err, result, fields) => {
-        if (err) throw err;
-        // console.log(result)
-    });
-    let sqlres = `SELECT userName FROM users where userID=1`;
+app.get('/', (req, res) => {
+    let sqlres = `SELECT * FROM users where userID=1`;
     conn.query(sqlres, (err, result, fields) => {
         if (err) throw err;
         let a = result[0]
-        console.log(a)
-        // res.render('yen1.ejs',req.body)
+        // console.log(a)
+        res.render('yen2.ejs', a);
     });
-    console.log(req.body)
-    res.end();
+});
+
+
+
+app.post('/rename', (req, res) => {
+    let name = req.body.name;
+    let sql = `UPDATE users SET userName ='${name}' WHERE userID = 1`;
+    conn.query(sql, (err, result, fields) => {
+        if (err) throw err;
+        console.log(result)
+    });
+    res.redirect('/')
 })
 app.post('/rephone', (req, res) => {
-    // console.log('HI')
     let tel = req.body.tel;
-    console.log(typeof tel)
     let sql = `UPDATE users SET userPhone ='${tel}' WHERE userID = 1`;
     conn.query(sql, (err, result, fields) => {
         if (err) throw err
         console.log(result)
     });
-    res.end()
+    res.redirect('/')
 })
 app.post('/remail', (req, res) => {
-    // console.log('HI')
-    let email = req.body.email;
-    console.log(typeof email)
+    let email = req.body.mail;
     let sql = `UPDATE users SET userEmail ='${email}' WHERE userID = 1`;
     conn.query(sql, (err, result, fields) => {
         if (err) throw err
         console.log(result)
     });
-    res.end()
+    res.redirect('/')
+})
+app.post('/retext', (req, res) => {
+    let text = req.body.text;
+    let sql = `UPDATE users SET userExprnience ='${text}' WHERE userID = 1`;
+    conn.query(sql, (err, result, fields) => {
+        if (err) throw err
+        console.log(result)
+    });
+    res.redirect('/')
 })
 
 
