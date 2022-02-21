@@ -25,6 +25,7 @@ router.get('/tripInfo',function(req,res){
     res.render('han_tripInfo.ejs')
 })
 
+
 router.get('/trophy',function(req,res){
     res.render('yen_trophy.ejs')
 })
@@ -37,6 +38,7 @@ router.get('/profile',function(req,res){
 router.get('/createTrip',function(req,res){
     res.render('lu_createTrip.ejs')
 })
+
 
 router.get('/tripManage',function(req,res){
     res.render('song_tripManage.ejs')

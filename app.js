@@ -39,17 +39,17 @@ app.use(express.static("footer"));
 // session的引用請放這裡
 
 
-
+// ============= form post ===============
 // 呂學奇 讀取資料庫 成功!!
 connection.connect();
 
-connection.query('SELECT * FROM `trips`',
-  function (err, result, fields) {
-  if(err) throw err;
-  console.log(result);
-});
+// connection.query('SELECT * FROM `trips`',
+//   function (err, result, fields) {
+//   if(err) throw err;
+//   console.log(result);
+// });
 
-// 呂學奇 寫入資料庫 成功!!
+// 呂學奇 單純寫入資料庫 成功!!
 // connection.query("INSERT INTO `trips` SET `tripName`='玉山上吃火鍋', `spotId`='1', `tripStartDate`='2022-12-25', `tripEndDate`='2022-12-26', `tripDesc`='好冷但好爽'",
 // function (err, result) {
 //   if(err) throw err;
@@ -57,24 +57,28 @@ connection.query('SELECT * FROM `trips`',
 //   });
 
 
-// TODO: 呂學奇 creatTrip Form post / action: /response
+// TODO: 呂學奇 傳送表單的資料進資料庫
+
+app.post('/response', (req, res) => {
+  let trip = req.body.trip;
+  let schedule = req.body.schedule;
+  let private = req.body.private;
+  let shared = req.body.shared;
+
+  // console.log(trip);
+  // trip[0]活動名稱 trip[1]活動描述 trip[2]活動描述 trip[3]活動描述
+  // console.log(schedule);
+  // schedule[0]
+  // console.log(private);
+  // console.log(shared);
+
+  //  trip
+  let sql = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) VALUES (NULL, "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`
+    connection.query(sql, (err, result, fields) => {
+        if (err) throw err;
+    });
+    res.render("createFormComplete.ejs");
+  })
 
 
-// app.post('/submit',urlencodedParser, function(req, res, next) {
-//     console.log(req.body.name);
-//     console.log(req.body.email);
-//     console.log(req.body.description);
-//     con.connect(function(err) {
-//   if (err) throw  err;
-//   console.log("connected");
-//   var sql = "INSERT INTO `form`(`name`,`email`, `description`) VALUES ('"+req.body.name+"','"+req.body.email+"','"+req.body.description+"')";
-//   con.query(sql, function(err, result)  {
-//    if(err) throw err;
-//    console.log("table created");
-//   });
-// });
-
-//   res.render('index', { title: 'Express' });
-// });
-
-connection.end();
+// connection.end();
