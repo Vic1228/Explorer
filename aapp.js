@@ -19,6 +19,9 @@ app.use(express.static("footer"));
 app.use(express.static("css"));
 app.use(express.static("style"));
 app.use(express.static("MAP_Hong"));
+// router
+var router = require('./routes/router.js');
+app.use('/',router);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -51,8 +54,8 @@ app.listen(3000, () => {
 // routing
 
 app.get('/map', (req, res) => {
-    // res.sendFile(__dirname+'/MAP_Hong/map.html')
-    res.render('views/map2')
+    res.sendFile(__dirname+'/MAP_Hong/map.ejs')
+    // res.render('map2')
 });
 
 app.get('/cup', (req, res) => {
@@ -61,7 +64,7 @@ app.get('/cup', (req, res) => {
         if (err) throw err;
         let a = result[0]
         // console.log(a)
-        res.render('yen2.ejs', a);
+        res.render('yen_trophy.ejs', a);
     });
 });
 
