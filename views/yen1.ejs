@@ -9,6 +9,7 @@
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
   <title>Document</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/style/try.css">
 
 </head>
 
@@ -22,38 +23,74 @@
 
 
   <!-- 姓名 -->
-  <form action="/rename" method="POST">
-    <h5>王小明</h5>
-    <input type="text" name="name" id="name">
-    <label for="name">
-      <button>
-        <img src="/public/edit.png" alt="">
-      </button>
-    </label>
+  <form action="/rename" method="POST" style="display: inline;" class="d-block text-center">
+    <input type="text" name="name" id="name" value="<%= userName %>" readonly class="text-center">
+    <button id="namebtn2" style="display: none;">
+      <span id="namespan2">save</span>
+      <img id="nameimg2" src="/img/save.png" alt="">
+    </button>
   </form>
+  <button id="namebtn" type="submit" class="d-block text-center">
+    <span id="namespan">edit</span>
+    <img id="nameimg" src="/img/edit.png" alt="">
+  </button>
   <br>
-  <img src="../public/img/下載.jpg" alt="">
+
   <!-- 電話 -->
-  <label>
+  <label class="d-block text-center" style="margin-bottom: 2vh;">
     Phone:
-    <input type="tel" name="tel" id="tel" class="text-center bd-bot">
-    <img src="/vertwo/public/img/edit.png" alt="">
   </label>
+  <form action="/rephone" method="POST" style="display: inline;" class="d-block text-center">
+    <input type="tel" name="tel" id="tel" class="text-center bd-bot" readonly value='<%= userPhone %>'>
+    <button id="telbtn2" style="display: none;">
+      <span id="telspan2">save</span>
+      <img id="telimg2" src="/img/save.png" alt="">
+    </button>
+  </form>
+  <button id="telbtn" type="submit" class="d-block text-center">
+    <span id="telspan">edit</span>
+    <img id="telimg" src="/img/edit.png" alt="">
+  </button>
   <br>
+
+
   <!-- 信箱 -->
-  <label>
+  <label class="d-block text-center">
     E-mail:
-    <input type="email" name="email" id="email" class="text-center bd-bot">
-    <img src="/vertwo/public/img/edit.png" alt="">
   </label>
+  <form action="/remail" method="POST" style="display: inline;" class="text-center bd-bot">
+    <input type="mail" name="mail" id="mail" class="text-center bd-bot" readonly value='<%= userEmail %>'>
+    <button id="mailbtn2" style="display: none;">
+      <span id="mailbtn2">save</span>
+      <img id="mailbtn2" src="/img/save.png" alt="">
+    </button>
+  </form>
+  <button id="mailbtn" type="submit" class="d-block text-center">
+    <span id="mailspan">edit</span>
+    <img id="mailimg" src="/img/edit.png" alt="">
+  </button>
   <br>
-  <h5>冒險經歷</h5>
-  <label for="text">
-    <img src="/vertwo/public/img/edit.png" alt="">
-  </label>
+
+  <!-- 經驗輸入框 -->
+  冒險經驗:
+  <form action="/retext" method="POST" style="display: inline;">
+    <textarea class="expeirence-textarea w-100" name="text" id="text" rows="10"
+      readonly><%= userExprnience %></textarea>
+    <button id="textbtn2" style="display: none;">
+      <span id="textbtn2">save</span>
+      <img id="textbtn2" src="/img/save.png" alt="">
+    </button>
+  </form>
+  <button id="textbtn" type="submit">
+    <span id="textspan">edit</span>
+    <img id="textimg" src="/img/edit.png" alt="">
+  </button>
   <br>
-  <!-- 輸入框 -->
-  <textarea class="expeirence-textarea w-100" name="" id="text" rows="10" style="margin-bottom: 2vh;"></textarea>
+
+
+
+  <script src="/yentest.js">
+  </script>
 
 </body>
 
