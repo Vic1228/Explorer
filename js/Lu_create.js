@@ -10,7 +10,7 @@ const data = {
   datasets: [
     {
       label: "王曉明",
-      data: [6, 6, 7, 8, 5, 10],
+      data: [5, 3, 5, 4, 5, 5],
       fill: true,
       backgroundColor: "rgb(100, 99, 132, 0.2)",
       borderColor: "rgb(100, 99, 132, 0.1)",
@@ -44,7 +44,7 @@ const config = {
     scale: {
       beginAtZero: true,
       min: 1,
-      max: 10,
+      max: 5,
       ticks: {
         stepSize: 1,
         font: {

@@ -35,8 +35,12 @@ app.use(express.static("js"));
 app.use(express.static("nav"));
 app.use(express.static("footer"));
 
-// 呂學奇 讀取資料庫 成功!!
+// ============= session ===============
+// session的引用請放這裡
 
+
+
+// 呂學奇 讀取資料庫 成功!!
 connection.connect();
 
 connection.query('SELECT * FROM `trips`',
@@ -53,6 +57,24 @@ connection.query('SELECT * FROM `trips`',
 //   });
 
 
-// 呂學奇 creatTrip Form post / action: /response
+// TODO: 呂學奇 creatTrip Form post / action: /response
+
+
+// app.post('/submit',urlencodedParser, function(req, res, next) {
+//     console.log(req.body.name);
+//     console.log(req.body.email);
+//     console.log(req.body.description);
+//     con.connect(function(err) {
+//   if (err) throw  err;
+//   console.log("connected");
+//   var sql = "INSERT INTO `form`(`name`,`email`, `description`) VALUES ('"+req.body.name+"','"+req.body.email+"','"+req.body.description+"')";
+//   con.query(sql, function(err, result)  {
+//    if(err) throw err;
+//    console.log("table created");
+//   });
+// });
+
+//   res.render('index', { title: 'Express' });
+// });
 
 connection.end();
