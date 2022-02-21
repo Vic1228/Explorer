@@ -1,6 +1,8 @@
+const { __express } = require('ejs');
 const express = require('express');
 const session = require('express-session');
 const app = express();
+const axios = require('axios')
 // const ejs = require('ejs')
 // const path = require('path');
 const mysql = require('mysql');
@@ -16,6 +18,7 @@ app.use(express.static("nav"));
 app.use(express.static("footer"));
 app.use(express.static("css"));
 app.use(express.static("style"));
+app.use(express.static("MAP_Hong"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -47,7 +50,12 @@ app.listen(3000, () => {
 
 // routing
 
-app.get('/', (req, res) => {
+app.get('/map', (req, res) => {
+    // res.sendFile(__dirname+'/MAP_Hong/map.html')
+    res.render('views/map2')
+});
+
+app.get('/cup', (req, res) => {
     let sqlres = `SELECT * FROM users where userID=1`;
     conn.query(sqlres, (err, result, fields) => {
         if (err) throw err;
@@ -66,7 +74,7 @@ app.post('/rename', (req, res) => {
         if (err) throw err;
         console.log(result)
     });
-    res.redirect('/')
+    res.redirect('/cup')
 })
 app.post('/rephone', (req, res) => {
     let tel = req.body.tel;
@@ -75,7 +83,7 @@ app.post('/rephone', (req, res) => {
         if (err) throw err
         console.log(result)
     });
-    res.redirect('/')
+    res.redirect('/cup')
 })
 app.post('/remail', (req, res) => {
     let email = req.body.mail;
@@ -84,7 +92,7 @@ app.post('/remail', (req, res) => {
         if (err) throw err
         console.log(result)
     });
-    res.redirect('/')
+    res.redirect('/cup')
 })
 app.post('/retext', (req, res) => {
     let text = req.body.text;
@@ -93,7 +101,7 @@ app.post('/retext', (req, res) => {
         if (err) throw err
         console.log(result)
     });
-    res.redirect('/')
+    res.redirect('/cup')
 })
 
 
