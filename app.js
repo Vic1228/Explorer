@@ -1,18 +1,18 @@
 // 記得打開mysql apache
 // mac使用者請看23行 設定mysql密碼
-var express = require('express');
+var express = require("express");
 var app = express();
-app.listen(3000,()=>{
-  console.log('server running')
+app.listen(3000, () => {
+  console.log("server running");
 });
 
 // ============== ejs ================
-app.set('view enjine','ejs');
-app.set('views',__dirname + '/views');
+app.set("view enjine", "ejs");
+app.set("views", __dirname + "/views");
 
 // =========== body-parser ===========
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:true}));
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // ============= mysql ===============
@@ -20,14 +20,14 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",      //if mac ,須設定為root
+  password: "", //if mac ,須設定為root
   database: "explorer",
-  port:'3306'
+  port: "3306",
 });
 
 // ============= router ===============
-var router = require('./routes/router.js');
-app.use('/',router);
+var router = require("./routes/router.js");
+app.use("/", router);
 
 // ============= static file ===============
 app.use(express.static(__dirname));
@@ -41,7 +41,6 @@ app.use(express.static("style"));
 
 // ============= session ===============
 // session的引用請放這裡
-
 
 // ============= form post ===============
 // 呂學奇 讀取資料庫 成功!!
@@ -60,10 +59,9 @@ connection.connect();
 //   console.log(result);
 //   });
 
-
 // TODO: 呂學奇 傳送表單的資料進資料庫
 
-app.post('/response', (req, res) => {
+app.post("/response", (req, res) => {
   let trip = req.body.trip;
   let schedule = req.body.schedule;
   let private = req.body.private;
@@ -77,12 +75,11 @@ app.post('/response', (req, res) => {
   // console.log(shared);
 
   //  trip
-  let sql = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) VALUES (NULL, "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`
-    connection.query(sql, (err, result, fields) => {
-        if (err) throw err;
-    });
-    res.render("createFormComplete.ejs");
-  })
-
+  let sql = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) VALUES (NULL, "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  connection.query(sql, (err, result, fields) => {
+    if (err) throw err;
+  });
+  res.render("createFormComplete.ejs");
+});
 
 // connection.end();
