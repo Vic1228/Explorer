@@ -2,7 +2,9 @@
 // mac使用者請看23行 設定mysql密碼
 var express = require('express');
 var app = express();
-app.listen(3000);
+app.listen(3000,()=>{
+  console.log('server running')
+});
 
 // ============== ejs ================
 app.set('view enjine','ejs');

@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var app = express()
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",      //if mac ,須設定為root
+    database: "test",
+    port:'3307'
+  });
+
 
 router.get('/',function(req,res){
     res.render('vic_homepage.ejs')
@@ -30,9 +38,9 @@ router.get('/tripInfo',function(req,res){
 router.get('/trophy',function(req,res){
     res.render('yen_trophy.ejs')
 })
-app.get('/profile',(req,res)=>{
+router.get('/profile',(req,res)=>{
     let sqlres = `SELECT * FROM users where userID=1`;
-    conn.query(sqlres, (err, result, fields) => {
+    connection.query(sqlres, (err, result, fields) => {
         if (err) throw err;
         let a = result[0]
         console.log(a)
@@ -40,37 +48,37 @@ app.get('/profile',(req,res)=>{
     });
 })
 
-app.post('/rename', (req, res) => {
+router.post('/rename', (req, res) => {
     let name = req.body.name;
     let sql = `UPDATE users SET userName ='${name}' WHERE userID = 1`;
-    conn.query(sql, (err, result, fields) => {
+    connection.query(sql, (err, result, fields) => {
         if (err) throw err;
         console.log(result)
     });
     res.redirect('/profile')
 })
-app.post('/rephone', (req, res) => {
+router.post('/rephone', (req, res) => {
     let tel = req.body.tel;
     let sql = `UPDATE users SET userPhone ='${tel}' WHERE userID = 1`;
-    conn.query(sql, (err, result, fields) => {
+    connection.query(sql, (err, result, fields) => {
         if (err) throw err
         console.log(result)
     });
     res.redirect('/profile')
 })
-app.post('/remail', (req, res) => {
+router.post('/remail', (req, res) => {
     let email = req.body.mail;
     let sql = `UPDATE users SET userEmail ='${email}' WHERE userID = 1`;
-    conn.query(sql, (err, result, fields) => {
+    connection.query(sql, (err, result, fields) => {
         if (err) throw err
         console.log(result)
     });
     res.redirect('/profile')
 })
-app.post('/retext', (req, res) => {
+router.post('/retext', (req, res) => {
     let text = req.body.text;
     let sql = `UPDATE users SET userExprnience ='${text}' WHERE userID = 1`;
-    conn.query(sql, (err, result, fields) => {
+    connection.query(sql, (err, result, fields) => {
         if (err) throw err
         console.log(result)
     });
