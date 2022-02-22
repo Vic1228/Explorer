@@ -20,8 +20,8 @@ app.use(express.static("css"));
 app.use(express.static("style"));
 app.use(express.static("MAP_Hong"));
 // router
-var router = require('./routes/router.js');
-app.use('/',router);
+// var router = require('./routes/router.js');
+// app.use('/',router);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -54,8 +54,8 @@ app.listen(3000, () => {
 // routing
 
 app.get('/map', (req, res) => {
-    res.sendFile(__dirname+'/MAP_Hong/map.ejs')
-    // res.render('map2')
+
+    res.render('yen3.ejs')
 });
 
 app.get('/cup', (req, res) => {

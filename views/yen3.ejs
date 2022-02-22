@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../nav/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.js"
+      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style></style>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <!-- 地圖的檔案連結 資料幾乎都在 script.js裡面-->
+    <link rel="stylesheet" href="/MAP_Hong/style.css">
+    <script src="/public/js/script.js"></script>
+  </head>
+  <body>
+    <!-- NAV BAR -->
+    <div w3-include-HTML="../nav/nav.html"></div>
+    <!-- NAV BAR -->
+    <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
+    <div class="navDistance wrap main">
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+
+
+
+
+       
+    </div>
+    <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
+    <!-- FOOTER -->
+    <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
+    <!-- FOOTER -->
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="../nav/nav.js"></script>
+    <script src="../style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places" async defer></script>
+  </body>
+</html>
