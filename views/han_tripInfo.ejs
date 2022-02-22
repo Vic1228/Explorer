@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./nav/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.js"
+      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- NAV BAR -->
+    <div w3-include-HTML="./nav/nav.html"></div>
+    <!-- NAV BAR -->
+    <div class="container navDistance">
+      <div class="row">
+        <div class="col">
+          <img src="20.jpg" width="250px" height="200px" />
+        </div>
+        <div class="col">
+          <p>活動名稱:冒險營</p>
+          <p>目的地:台北陽明山</p>
+          <P>日期:2022/02/11~2022/02/13(3天)</P>
+        </div>
+        <div class="col">
+          <P>王小明</P>
+          <p>手機:09123456</p>
+          <p>emali:aa000@gmail.com</p>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            style="border-radius: 20px"
+          >
+            報名行程
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="container">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                      <p style="font-size: 25px"><strong>注意!!!</strong></p>
+                      <p style="font-size: 20px">申請前請先詳閱行程資訊</p>
+
+                      <P style="text-align: center; font-size: 15px"
+                        >可　提　供　之　公　共　裝　備</P
+                      >
+                    </h5>
+
+                    <hr style="margin-top: -12px" />
+
+                    <div class="row" style="text-align: center">
+                      <div class="col">
+                        <p>登山杖</p>
+                        <p>雨　傘</p>
+                        <p>繩　索</p>
+                        <p>烤肉架</p>
+                        <p>入營燈</p>
+                      </div>
+                      <div class="col">
+                        <p>1/支</p>
+                        <p>1/把</p>
+                        <p>1/捆(30m)</p>
+                        <p>2/個</p>
+                        <p>1/盞</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-check" style="margin-top: 30px">
+                    <input
+                      class="form-check-input"
+                      name="Checkbox[]"
+                      type="checkbox"
+                      value=""
+                      id="defaultCheck1"
+                    />
+                    <label class="form-check-label" for="defaultCheck1">
+                      同意傳送個人基本資料以便發起人審核
+                    </label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    離開
+                  </button>
+                  <button type="button" id="button" class="btn btn-primary">
+                    確認
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 200px">
+        <div class="col" style="text-align: center">
+          <h1>行程詳情</h1>
+          <hr />
+        </div>
+        <div class="col" style="text-align: center">
+          <h1>必帶私人裝備</h1>
+          <hr />
+        </div>
+
+        <div class="row">
+          <div class="col-3" style="line-height: 30px; text-align: center">
+            <p style="padding-right: 60px">Day 1▼</p>
+            <p>　10:00</p>
+            <p>　10:15</p>
+            <p>　11:00</p>
+            <p>　11:00</p>
+            <p>　12:00</p>
+            <p style="margin-top: 40px; padding-right: 60px">Day 2▼</p>
+            <p>　10:00</p>
+            <p>　10:15</p>
+            <p>　12:00</p>
+            <p>　13:00</p>
+            <p>　21:00</p>
+            <p style="margin-top: 40px; padding-right: 60px">Day 3▼</p>
+            <p>　10:00</p>
+            <p>　10:15</p>
+            <p>　12:00</p>
+            <p>　13:00</p>
+            <p>　21:00</p>
+          </div>
+          <div class="col-3" style="line-height: 30px; text-align: center">
+            <p style="margin-top: 45px"></p>
+            <p>起　床</p>
+            <p>吃早餐</p>
+            <p>吃午餐</p>
+            <p>搭帳棚</p>
+            <p>睡　覺</p>
+            <p style="margin-top: 41px">&emsp;</p>
+            <p>起　床</p>
+            <p>吃早餐</p>
+            <p>吃午餐</p>
+            <p>搭帳棚</p>
+            <p>睡　覺</p>
+
+            <p style="margin-top: 38px">&emsp;</p>
+            <p>起　床</p>
+            <p>吃早餐</p>
+            <p>吃午餐</p>
+            <p>搭帳棚</p>
+            <p>睡　覺</p>
+          </div>
+
+          <div class="col-6">
+            <!-- <img src="20.jpg" width="400px"height="300px"> -->
+
+            <div class="col" style="margin-top: 50px; text-align: center">
+              <div class="row">
+                <div class="col">
+                  <p>登山帽</p>
+                  <p>帳　篷</p>
+                  <p>靴　子</p>
+                  <p>手電筒</p>
+                  <p>雨　衣</p>
+                </div>
+                <div class="col">
+                  <p>1/頂</p>
+                  <p>1/個</p>
+                  <p>1/雙</p>
+                  <p>2/支</p>
+                  <p>1/件</p>
+                </div>
+              </div>
+
+              <div class="col" style="margin-top: 200px; text-align: center">
+                <h1>已有公共裝備</h1>
+                <hr />
+
+                <div class="row">
+                  <div class="col">
+                    <p>登山杖</p>
+                    <p>與　傘</p>
+                    <p>繩　索</p>
+                    <p>烤肉架</p>
+                    <p>露營燈</p>
+                  </div>
+                  <div class="col">
+                    <p>1/支</p>
+                    <p>1/把</p>
+                    <p>1/捆(30m)</p>
+                    <p>2/個</p>
+                    <p>1/盞</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col" style="margin-top: 200px; text-align: center">
+                <h1>注意事項</h1>
+                <hr />
+
+                <div class="row">
+                  <div class="col">
+                    <p>NO1.</p>
+                    <p>NO2.</p>
+                    <p>NO3.</p>
+                    <p>NO4.</p>
+                    <p>NO5.</p>
+                    <p>NO6.</p>
+                    <p>NI7</p>
+                  </div>
+                  <div class="col">
+                    <p>登山隊伍不可拉太長</p>
+                    <p>隨時注意隊友狀況</p>
+                    <p>喝水時不可狂飲</p>
+                    <p>否則汗量增加</p>
+                    <p>更容易造成身體疲勞</p>
+                    <p>不可忽快忽慢</p>
+                    <p>勿自行攀登無人跡山路</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col">col</div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div w3-include-HTML="./footer/footer.html" class="mt-5"></div>
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="./nav/nav.js"></script>
+
+    <script src="./22.js"></script>
+    <script src="./333.js"></script>
+  </body>
+</html>
