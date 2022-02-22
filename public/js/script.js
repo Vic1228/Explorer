@@ -27,16 +27,7 @@ function initMap() {
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '天狗溪噴泉</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button> 參加行程</button>" +
-          "<button id='btn'>建立行程</button></p>" + "</div></div>")
-        let btn = document.getElementById('btn');
-        console.log(btn)
-        // function myFunction() {
-        //   const node = document.createElement("li");
-        //   const textnode = document.createTextNode("Water");
-        //   node.appendChild(textnode);
-        //   document.getElementById("btn").appendChild(node);
-        // }
-        // btn.addEventListener('click', myFunction)
+          "<button id='btn'><a href='http://localhost:3000/lu'>建立行程</a></button></p>" + "</div></div>")
       });
     }
   });

@@ -54,19 +54,25 @@ app.listen(3000, () => {
 // routing
 
 app.get('/map', (req, res) => {
-
     res.render('yen3.ejs')
 });
 
+app.get('/lu', (req, res) => {
+    res.render('lu_createTrip.ejs')
+})
 app.get('/cup', (req, res) => {
+    res.render('yen_trophy.ejs');
+});
+
+app.get('/profile',(req,res)=>{
     let sqlres = `SELECT * FROM users where userID=1`;
     conn.query(sqlres, (err, result, fields) => {
         if (err) throw err;
         let a = result[0]
-        // console.log(a)
-        res.render('yen_trophy.ejs', a);
+        console.log(a)
+        res.render('yen_profile.ejs',a)
     });
-});
+})
 
 
 
@@ -77,7 +83,7 @@ app.post('/rename', (req, res) => {
         if (err) throw err;
         console.log(result)
     });
-    res.redirect('/cup')
+    res.redirect('/profile')
 })
 app.post('/rephone', (req, res) => {
     let tel = req.body.tel;
@@ -86,7 +92,7 @@ app.post('/rephone', (req, res) => {
         if (err) throw err
         console.log(result)
     });
-    res.redirect('/cup')
+    res.redirect('/profile')
 })
 app.post('/remail', (req, res) => {
     let email = req.body.mail;
@@ -95,7 +101,7 @@ app.post('/remail', (req, res) => {
         if (err) throw err
         console.log(result)
     });
-    res.redirect('/cup')
+    res.redirect('/profile')
 })
 app.post('/retext', (req, res) => {
     let text = req.body.text;
@@ -104,7 +110,7 @@ app.post('/retext', (req, res) => {
         if (err) throw err
         console.log(result)
     });
-    res.redirect('/cup')
+    res.redirect('/profile')
 })
 
 

@@ -1,6 +1,5 @@
 // 記得打開mysql apache
 // mac使用者請看23行 設定mysql密碼
-
 var express = require('express');
 var app = express();
 app.listen(3000);
@@ -19,8 +18,9 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",      //if mac ,須設定為root
-  database: "explorer",
+  password: "root",      //if mac ,須設定為root
+  database: "test",
+  port:'3307'
 });
 
 // ============= router ===============
@@ -34,6 +34,8 @@ app.use(express.static("css"));
 app.use(express.static("js"));
 app.use(express.static("nav"));
 app.use(express.static("footer"));
+app.use(express.static("public"));
+app.use(express.static("style"));
 
 // ============= session ===============
 // session的引用請放這裡
