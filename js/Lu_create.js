@@ -113,7 +113,7 @@ function showTab(nowPage) {
 function nextPrev(turn) {
   const tabArray = document.getElementsByClassName("tab");
   // TODO: 沒輸入資訊無法下一頁
-  if (turn == 1 && !validForm()) return false;
+  // if (turn == 1 && !validForm()) return false;
   // 當前步驟隱藏
   tabArray[currentTab].style.display = "none";
   // 目前頁面變數更新
@@ -148,8 +148,11 @@ function validForm() {
 }
 
 function submitBtnClick() {
-  validForm();
-  if (valid == true) document.createForm.submit();
+  // validForm();
+  // if (valid == true) {
+  //   document.createForm.submit();
+  // }
+  document.createForm.submit();
 }
 
 function fixStepIndicator(currentStep) {

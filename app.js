@@ -61,7 +61,7 @@ connection.connect();
 //   });
 
 
-// TODO: 呂學奇 傳送表單的資料進資料庫
+// 呂學奇 傳送表單的資料進資料庫
 
 app.post('/response', (req, res) => {
   let trip = req.body.trip;
@@ -69,20 +69,42 @@ app.post('/response', (req, res) => {
   let private = req.body.private;
   let shared = req.body.shared;
 
-  // console.log(trip);
-  // trip[0]活動名稱 trip[1]活動描述 trip[2]活動描述 trip[3]活動描述
-  // console.log(schedule);
+  console.log(trip);
+  // trip[0]活動名稱 trip[1]活動描述 trip[2]開始日期 trip[3]開始日期
+  console.log(schedule);
   // schedule[0]
-  // console.log(private);
-  // console.log(shared);
+  console.log(private);
+  console.log(shared);
 
   //  trip
-  let sql = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) VALUES (NULL, "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`
-    connection.query(sql, (err, result, fields) => {
+  let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
+  VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`
+    connection.query(tripSQL, (err, result, fields) => {
         if (err) throw err;
     });
+  //  TODO: schedule
+  // let scheduleSQL = `INSERT INTO schedule (tripId, day, startTime, activity) 
+  // VALUES ("", "${schedule[0]}", ${schedule[1]}", ${schedule[2]}")`
+  //   connection.query(scheduleSQL, (err, result, fields) => {
+  //       if (err) throw err;
+  //   });
+  
     res.render("createFormComplete.ejs");
   })
 
+  
+  // connection.end();
 
-// connection.end();
+
+  //  TODO: private
+  // let privateSQL = `INSERT INTO privateitems (tripId, privateItemName, itemCount) 
+  // VALUES (NULL, "${private[0]}", "${private[1]}")`
+  //   connection.query(privateSQL, (err, result, fields) => {
+  //       if (err) throw err;
+  //   });
+  //  TODO: shared
+  // let sharedSQL = `INSERT INTO shareditems (tripId, userId, sharedItemName, itemCount) 
+  // VALUES (NULL, NULL, "${shared[0]}", "${shared[1]}")`
+  //   connection.query(sharedSQL, (err, result, fields) => {
+  //       if (err) throw err;
+  //   });
