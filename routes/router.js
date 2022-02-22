@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",  //if mac ,須設定為root
-    database: "",
+    database: "explorer",
   });
 
 
