@@ -45,11 +45,12 @@ app.use(express.static("style"));
 // ============= form post ===============
 // 呂學奇 讀取資料庫 成功!!
 connection.connect();
-// connection.query('SELECT * FROM `trips`',
-//   function (err, result, fields) {
-//   if(err) throw err;
-//   console.log(result);
-// });
+
+connection.query('SELECT * FROM `users`',
+  function (err, result, fields) {
+  if(err) throw err;
+  console.log(result);
+});
 
 
 // 呂學奇 傳送表單的資料進資料庫
