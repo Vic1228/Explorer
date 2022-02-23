@@ -8,15 +8,17 @@ var connection = mysql.createConnection({
     database: "explorer",
   });
 
-
+// 蔡政霖開始
 router.get('/',function(req,res){
-    res.render('vic_homepage.ejs')
+  res.render('vic_homepage.ejs')
 })
-
+    
 router.get('/spotInfo',function(req,res){
     res.render('vic_spotInfo.ejs')
 })
+// 蔡政霖
 
+// 洪碩呈開始
 router.get('/map',function(req,res){
     res.render('hong_map.ejs')
 })
@@ -24,7 +26,9 @@ router.get('/map',function(req,res){
 router.get('/login',function(req,res){
     res.render('hong_login.ejs')
 })
+// 洪碩呈
 
+// 傅意涵開始
 router.get('/trips',function(req,res){
     res.render('han_trips.ejs')
 })
@@ -32,6 +36,7 @@ router.get('/trips',function(req,res){
 router.get('/tripInfo',function(req,res){
     res.render('han_tripInfo.ejs')
 })
+// 傅意涵
 
 //仲硯開始
 router.get('/trophy',function(req,res){
@@ -93,8 +98,10 @@ router.get('/createTrip',function(req,res){
 
 // 呂學奇
 
+// 葉宜松
 router.get('/tripManage',function(req,res){
     res.render('song_tripManage.ejs');
 })
+// 葉宜松
 
 module.exports = router;
