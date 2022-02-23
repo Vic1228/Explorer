@@ -20,7 +20,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root", //if mac ,須設定為root
+  password: "", //if mac ,須設定為root
   database: "explorer",
   port: "3306",
 });
@@ -52,7 +52,7 @@ connection.connect();
 // });
 
 
-// TODO: 呂學奇 傳送表單的資料進資料庫
+// 呂學奇 傳送表單的資料進資料庫
 
 app.post("/response", (req, res) => {
   let trip = req.body.trip;
@@ -69,7 +69,6 @@ app.post("/response", (req, res) => {
   
   //  TODO: schedule
   // tripId不能共用的問題
-
   for (var i = 0; i < schedule.length; i += 3){
     let scheduleSQL = `INSERT INTO schedule (day, startTime, activity) 
   VALUES ("${schedule[i+0]}", "${schedule[i+1]}", "${schedule[i+2]}")`
@@ -77,7 +76,6 @@ app.post("/response", (req, res) => {
         if (err) throw err;
     });
   }
-  
   
   //  TODO: private
   for (var i = 0; i < private.length; i += 2){
@@ -87,12 +85,6 @@ app.post("/response", (req, res) => {
         if (err) throw err;
     });
   }
-  
-  
-  // function() {
-  //   await connection.query)(-)
-  //   await
-  // }
   
   //  TODO: shared
 
