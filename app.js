@@ -46,12 +46,10 @@ app.use(express.static("style"));
 // 呂學奇 讀取資料庫 成功!!
 connection.connect();
 
-connection.query('SELECT * FROM `users`',
-  function (err, result, fields) {
-  if(err) throw err;
+connection.query("SELECT * FROM `users`", function (err, result, fields) {
+  if (err) throw err;
   console.log(result);
 });
-
 
 // 呂學奇 傳送表單的資料進資料庫
 
@@ -63,42 +61,39 @@ app.post("/response", (req, res) => {
 
   //  trip
   let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`
+  VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
   connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
   });
-  
+
   //  TODO: schedule
   // tripId不能共用的問題
-  for (var i = 0; i < schedule.length; i += 3){
+  for (var i = 0; i < schedule.length; i += 3) {
     let scheduleSQL = `INSERT INTO schedule (day, startTime, activity) 
-  VALUES ("${schedule[i+0]}", "${schedule[i+1]}", "${schedule[i+2]}")`
+  VALUES ("${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
     connection.query(scheduleSQL, (err, result, fields) => {
-        if (err) throw err;
+      if (err) throw err;
     });
   }
-  
+
   //  TODO: private
-  for (var i = 0; i < private.length; i += 2){
+  for (var i = 0; i < private.length; i += 2) {
     let privateSQL = `INSERT INTO privateItems (tripId, privateItemName, ItemCount) 
-  VALUES ("", "${private[i+0]}", "${private[i+1]}")`
+  VALUES ("", "${private[i + 0]}", "${private[i + 1]}")`;
     connection.query(privateSQL, (err, result, fields) => {
-        if (err) throw err;
+      if (err) throw err;
     });
   }
-  
+
   //  TODO: shared
 
-  for (var i = 0; i < shared.length; i += 2){
-     let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItemName, itemCount) 
-  VALUES ("", "", "${shared[i+0]}", "${shared[i+1]}")`
+  for (var i = 0; i < shared.length; i += 2) {
+    let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItemName, itemCount) 
+  VALUES ("", "", "${shared[i + 0]}", "${shared[i + 1]}")`;
     connection.query(sharedSQL, (err, result, fields) => {
-        if (err) throw err;
+      if (err) throw err;
     });
   }
 
-    res.render("createFormComplete.ejs");
-    
-  })
-
-  
+  res.render("createFormComplete.ejs");
+});
