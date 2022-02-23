@@ -4,7 +4,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",  //if mac ,須設定為root
+    password: "root",  //if mac ,須設定為root
     database: "explorer",
   });
 
