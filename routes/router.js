@@ -93,7 +93,7 @@ router.get('/createTrip',function(req,res){
 
 
 router.get('/tripManage',function(req,res){
-    res.render('song_tripManage.ejs')
+    res.render('song_tripManage.ejs');
 })
 
 module.exports = router;

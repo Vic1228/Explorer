@@ -20,7 +20,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "", //if mac ,須設定為root
+  password: "root", //if mac ,須設定為root
   database: "explorer",
   port: "3306",
 });
@@ -105,6 +105,7 @@ app.post("/response", (req, res) => {
   }
 
     res.render("createFormComplete.ejs");
+    
   })
 
   
