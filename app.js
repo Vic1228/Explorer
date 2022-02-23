@@ -95,5 +95,5 @@ app.post("/response", (req, res) => {
     });
   }
 
-  res.render("createFormComplete.ejs");
+  res.render("lu_createFormComplete.ejs");
 });
