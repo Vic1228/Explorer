@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form validation in HTML & CSS | CodingNepal</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./login/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
@@ -37,10 +37,8 @@
             <input type="submit" id='login' name="login" value="登入">
 
         </div>
-        <div class="sign-txt">還不是會員？<a href="./signup.html" class="regi">註冊</a> </div>
+        <div class="sign-txt">還不是會員？<a href="/signup" class="regi">註冊</a> </div>
     </div>
-
-    <div><input class="logout " type="submit" id='logout' name="logout" value="登出"></div>
 </body>
 
 <script type="module">
@@ -85,6 +83,7 @@
                 })
 
                 alert('User loged in!');
+                window.location = '/';
                 // ...
             })
             .catch((error) => {
@@ -104,7 +103,7 @@
             const uid = user.uid;
 
             //登入後導回首頁
-            // window.location = 'home.html';
+            // window.location = '/';
         } else {
             // User is signed out
             // ...

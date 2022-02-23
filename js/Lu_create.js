@@ -9,7 +9,7 @@ const data = {
   labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
   datasets: [
     {
-      label: "王曉明",
+      label: "王小明",
       data: [5, 3, 5, 4, 5, 5],
       fill: true,
       backgroundColor: "rgb(100, 99, 132, 0.2)",
@@ -113,7 +113,7 @@ function showTab(nowPage) {
 function nextPrev(turn) {
   const tabArray = document.getElementsByClassName("tab");
   // TODO: 沒輸入資訊無法下一頁
-  // if (turn == 1 && !validForm()) return false;
+  if (turn == 1 && !validForm()) return false;
   // 當前步驟隱藏
   tabArray[currentTab].style.display = "none";
   // 目前頁面變數更新
@@ -131,7 +131,7 @@ function validForm() {
   valid = true;
   const tabArray = document.getElementsByClassName("tab");
   const inputArray = tabArray[currentTab].getElementsByClassName("form-input");
-  // const trArray = tabArray[currentTab].getElementsByTagName("tr");
+
 
   // 檢查input是不是沒有東西
 
@@ -139,7 +139,7 @@ function validForm() {
     if (inputArray[i].value == "" || inputArray[i].value == undefined) {
       // 增加 invalid的樣式
       inputArray[i].className += " invalid";
-      // trArray[i].className += " invalid";
+    
 
       valid = false;
     }
@@ -148,10 +148,10 @@ function validForm() {
 }
 
 function submitBtnClick() {
-  // validForm();
-  // if (valid == true) {
-  //   document.createForm.submit();
-  // }
+  validForm();
+  if (valid == true) {
+    document.createForm.submit();
+  }
   document.createForm.submit();
 }
 

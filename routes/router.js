@@ -16,6 +16,9 @@ router.get('/',function(req,res){
 router.get('/spotInfo',function(req,res){
     res.render('vic_spotInfo.ejs')
 })
+router.get('/spotId',function(req,res){
+    res.render('vic_spotInfo.ejs')
+})
 // 蔡政霖
 
 // 洪碩呈開始
@@ -25,6 +28,9 @@ router.get('/map',function(req,res){
 
 router.get('/login',function(req,res){
     res.render('hong_login.ejs')
+})
+router.get('/signup',function(req,res){
+    res.render('hong_signup.ejs')
 })
 // 洪碩呈
 
@@ -102,6 +108,6 @@ router.get('/createTrip',function(req,res){
 router.get('/tripManage',function(req,res){
     res.render('song_tripManage.ejs');
 })
-// 葉宜松
 
+// 葉宜松
 module.exports = router;

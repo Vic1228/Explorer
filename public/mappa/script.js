@@ -24,9 +24,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '天狗溪噴泉</a>' +
+          '<a href="/spotId?id=1">' + '天狗溪噴泉</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
@@ -46,9 +46,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '翡翠谷</a>' +
+          '<a href="/spotId?id=2">' + '翡翠谷</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
@@ -68,9 +68,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '火炎山</a>' +
+          '<a href="/spotId?id=3">' + '火炎山</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
@@ -92,9 +92,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '玻璃海灘</a>' +
+          '<a href="/spotId?id=4">' + '玻璃海灘</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
@@ -114,9 +114,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + " class='image''></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '燭台沙灘</a>' +
+          '<a href="/spotId?id=5">' + '燭台沙灘</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
@@ -136,9 +136,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + " class='image''></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '蝙蝠洞瀑布</a>' +
+          '<a href="/spotId?id=6">' + '蝙蝠洞瀑布</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
@@ -158,9 +158,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + " class='image''></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '金樽陸連島</a>' +
+          '<a href="/spotId?id=7">' + '金樽陸連島</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button class='button'>參加行程</button>" + "<button class='button'>建立行程</button></p>" + "</div></div>")
       });
     }
   });
@@ -180,9 +180,9 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[3].getUrl({ maxWidth: 200, maxHeight: 150 }) + " class='image''></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '雲龍瀑布</a>' +
+          '<a href="/spotId?id=8">' + '雲龍瀑布</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>"+ "</div></div>")
       });
     }
   });
@@ -201,10 +201,10 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[3].getUrl({ maxWidth: 200, maxHeight: 150 }) + " class='image''></img>" +
-          "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '北大武山步道</a>' +
-          "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "<div class='inner'><h4>" +
+          '<a href="/spotId?id=9">' + '北大武山步道</a>' +
+          "</h4><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>"+ "</div></div>")
       });
     }
   });
@@ -224,13 +224,14 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[3].getUrl({ maxWidth: 200, maxHeight: 150 }) + " class='image''></img>" +
           "<div class='inner'><h3>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '精英瀑布</a>' +
+          '<a href="/spotId?id=10">' + '精英瀑布</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button>參加行程</button>" + "<button>建立行程</button></p>" + "</div></div>")
+          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
     }
   });
 
+ 
 
 
 
