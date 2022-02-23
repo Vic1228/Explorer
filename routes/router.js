@@ -91,6 +91,7 @@ router.get('/createTrip',function(req,res){
     res.render('lu_createTrip.ejs')
 })
 
+// 呂學奇
 
 router.get('/tripManage',function(req,res){
     res.render('song_tripManage.ejs');
