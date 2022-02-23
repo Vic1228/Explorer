@@ -21,7 +21,6 @@
 .header {
   padding: 10px 40px;
   position: fixed;
-  
   width: 100%;
   top: 0px;
   z-index: 999;
@@ -134,7 +133,7 @@ header a:hover {
   transform: translateY(0px);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
   /* ------header------- */
   header {
     padding: 0px 10px;

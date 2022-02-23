@@ -1,13 +1,17 @@
 // 記得打開mysql apache
 // mac使用者請看23行 設定mysql密碼
 var express = require("express");
+var router = express.Router();
 var app = express();
-app.listen(3000, () => {
-  console.log("server running");
+app.listen(3000, (error) => {
+  if (error) throw error;
+  else {
+    console.log("server running in port 3000.");
+  }
 });
 
 // ============== ejs ================
-app.set("view enjine", "ejs");
+app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 // =========== body-parser ===========
@@ -20,13 +24,18 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root", //if mac ,須設定為root
+  password: "", //if mac ,須設定為root
   database: "explorer",
   port: "3306",
 });
 
 // ============= router ===============
 var router = require("./routes/router.js");
+var homepageRouter = require("./routes/vic_homepage");
+var spotInfoRouter = require("./routes/vic_spotInfo");
+app.use("/", homepageRouter);
+app.use("/spotInfo", spotInfoRouter);
+app.use("/spotId", spotInfoRouter);
 app.use("/", router);
 
 // ============= static file ===============
