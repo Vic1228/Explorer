@@ -29,6 +29,9 @@ router.get('/map',function(req,res){
 router.get('/login',function(req,res){
     res.render('hong_login.ejs')
 })
+router.get('/signup',function(req,res){
+    res.render('hong_signup.ejs')
+})
 // 洪碩呈
 
 // 傅意涵開始
