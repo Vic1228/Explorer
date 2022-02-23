@@ -28,6 +28,14 @@ var connection = mysql.createConnection({
   database: "explorer",
   port: "3306",
 });
+connection.connect(function (error) {
+  if (!!error) {
+    console.log(error);
+    console.log("連結資料庫失敗！");
+  } else {
+    console.log("已成功連結資料庫！");
+  }
+});
 
 // ============= router ===============
 var router = require("./routes/router.js");
@@ -53,7 +61,6 @@ app.use(express.static("style"));
 
 // ============= form post ===============
 // 呂學奇 讀取資料庫 成功!!
-connection.connect();
 
 connection.query("SELECT * FROM `users`", function (err, result, fields) {
   if (err) throw err;
