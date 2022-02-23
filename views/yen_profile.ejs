@@ -40,7 +40,7 @@
     <!-- 姓名(記得補上ejs變數) -->
     <div class="nameformm">
       <form class="nameform" action="/rename" method="POST">
-        <input type="text" name="name" id="name" value='<%= userName %>' readonly class="text-center" size="8"
+        <input type="text" name="name" id="name" value='' readonly class="text-center" size="8"
           style="font-size: 1.3em; background-color: none;">
         <button id="namebtn2" style="display: none;" class="btn">
           <img id="nameimg2" src="/img/save.png" alt="">
@@ -57,7 +57,7 @@
     <div class="nameformm">
       <form action="/rephone" method="POST" style="" class="nameform">
         <span>Phone：</span>
-        <input type="tel" name="tel" id="tel" class="text-center" readonly value='<%= userPhone %>' size="20">
+        <input type="tel" name="tel" id="tel" class="text-center" readonly value='' size="20">
         <button id="telbtn2" style="display: none;" class="btn">
           <img id="telimg2" src="/img/save.png" alt="">
         </button>
@@ -72,7 +72,7 @@
     <div class="nameformm">
       <form action="/remail" method="POST" style="" class="nameform">
         <span>E-mail：</span>
-        <input type="mail" name="mail" id="mail" class="text-center " readonly value='<%= userEmail %>' size="20">
+        <input type="mail" name="mail" id="mail" class="text-center " readonly value='' size="20">
         <button id="mailbtn2" style="display: none;" class="btn">
           <img id="mailbtn2" src="/img/save.png" alt="">
         </button>
@@ -115,7 +115,7 @@
               </div>
               <div style="height: 20vh; position: relative;">
                 <textarea class="expeirence-textarea w-100" name="text" id="text" cols="30" rows="12"
-                  readonly><%= userExprnience %></textarea>
+                  readonly></textarea>
               </div>
             </form>
           </div>
