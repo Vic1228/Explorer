@@ -16,6 +16,9 @@ router.get('/',function(req,res){
 router.get('/spotInfo',function(req,res){
     res.render('vic_spotInfo.ejs')
 })
+router.get('/spotId',function(req,res){
+    res.render('vic_spotInfo.ejs')
+})
 // 蔡政霖
 
 // 洪碩呈開始
