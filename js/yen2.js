@@ -87,27 +87,13 @@ inputelement.addEventListener('change', (a) => {
             img.src = a.target.result;
             img.alt = files.name;
             $("#imagegrid").show();
-            alert('success');
         } else {
             $("#imagegrid").hide();
-            alert('too big');
         }
     });
 })
 
 // ----------------------按鈕
-$('#telbtn').click(function () {
-    let val = document.getElementById('tel').value
-    var result = document.getElementById('tel').hasAttribute('readonly');
-    let a = document.getElementById("tel");
-    a.focus()
-    if (result == true) {
-        $('#telbtn2').show()
-        $('#telbtn').hide()
-        $('#tel').val(val);
-        $('#tel').prop('readonly', false);
-    }
-});
 $('#namebtn').click(function () {
     let val = document.getElementById('name').value
     var result = document.getElementById('name').hasAttribute('readonly');
@@ -118,6 +104,18 @@ $('#namebtn').click(function () {
         $('#namebtn').hide()
         $('#name').val(val);
         $('#name').prop('readonly', false);
+    }
+});
+$('#telbtn').click(function () {
+    let val = document.getElementById('tel').value
+    var result = document.getElementById('tel').hasAttribute('readonly');
+    let a = document.getElementById("tel");
+    a.focus()
+    if (result == true) {
+        $('#telbtn2').show()
+        $('#telbtn').hide()
+        $('#tel').val(val);
+        $('#tel').prop('readonly', false);
     }
 });
 $('#mailbtn').click(function () {
