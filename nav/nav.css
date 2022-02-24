@@ -6,7 +6,7 @@
   padding: 0px;
   box-sizing: border-box;
   list-style: none;
-  /* outline: 3px solid tomato; */
+  /* outline: 3px solid rgb(255, 255, 255);   */
 }
 
 #blur_all {
@@ -19,13 +19,13 @@
 
 /* ------------------------header------------------------- */
 .header {
-  padding: 10px 40px;
+  padding: 10px 40px 0px 40px;
   position: sticky;
 
   width: 100%;
   top: 0px;
   z-index: 999;
-  background-color: rgba(247, 247, 247, 0.842);
+  background-color: #ffffff;
 }
 /* 
 .header.active{
@@ -67,12 +67,10 @@ nav {
 }
 
 /* ------------logo----------- */
-.nav_logo {
-  width: 200px;
-}
 
-.nav_logo_img {
-  width: 100%;
+.nav_logo img {
+  width: 38px;
+  height: 38px;
 }
 
 /* ---------nav bar---------- */
@@ -81,6 +79,11 @@ nav {
   width: 100%;
   justify-content: space-around;
   list-style: none;
+}
+
+header{
+  font-size: 16px;
+  font-weight: 600;
 }
 
 header a:hover {
@@ -95,14 +98,12 @@ header a:hover {
 
   padding: 15px 10px;
 
-  font-size: 18px;
-  font-weight: 500;
 
   min-width: 100px;
   min-width: max-content;
   height: 50px;
 
-  text-shadow: 1px 1px rgba(71, 71, 71, 0.397);
+  /* text-shadow: 1px 1px rgba(71, 71, 71, 0.397); */
 }
 
 /* ------------------------- member ---------------------- */
@@ -110,20 +111,28 @@ header a:hover {
   position: relative;
 }
 
+#nav_member img{
+  width: 24px !important;
+  height: 24px;
+}
+
 #member {
   visibility: hidden;
   position: absolute;
   flex-direction: column;
-  right: 0px;
+  top:-8px;
+  right: -40px;
   opacity: 0;
   transform: translateY(-20px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 #member a {
+  color: black;
   display: block;
   padding-top: 13px;
   text-align: center;
+  text-decoration: none;
   min-height: 50px;
   min-width: 300px;
 }
@@ -134,14 +143,31 @@ header a:hover {
   transform: translateY(0px);
 }
 
+#member li:not(:first-child){
+  background-color: rgb(255, 255, 255) !important;
+}
+
+#member a:hover{
+  color:gray
+}
+
+
+
+
+
+/*---------------------------------------------------------------*/
+/*-------------------------- 響應式設定 ---------------------------*/
+/*----------------------------------------------------------------*/
+
+
+
+
+
+
 @media screen and (max-width: 800px) {
   /* ------header------- */
   header {
-    padding: 0px 10px;
-  }
-
-  .nav_logo {
-    width: 100px;
+    padding: 0px 10px;;
   }
 
   .nav_links_container {
@@ -197,10 +223,4 @@ header a:hover {
   }
 }
 
-#section1 img {
-  width: 100%;
-}
 
-/*---------------------------------------------------------------*/
-/*----------------------------- nav -----------------------------*/
-/*---------------------------------------------------------------*/

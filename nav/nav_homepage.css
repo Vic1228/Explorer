@@ -21,7 +21,6 @@
 .header {
   padding: 10px 40px;
   position: fixed;
-  
   width: 100%;
   top: 0px;
   z-index: 999;
@@ -67,12 +66,10 @@ nav {
 }
 
 /* ------------logo----------- */
-.nav_logo {
-  width: 200px;
-}
 
-.nav_logo_img {
-  width: 100%;
+.nav_logo img {
+  width: 45px;
+  height: 45px;
 }
 
 /* ---------nav bar---------- */
@@ -134,7 +131,13 @@ header a:hover {
   transform: translateY(0px);
 }
 
-@media screen and (max-width: 800px) {
+
+
+
+
+
+
+@media screen and (max-width: 1200px) {
   /* ------header------- */
   header {
     padding: 0px 10px;

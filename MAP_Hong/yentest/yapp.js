@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "root",  //if mac ,須設定為root
-  database: "test",
+  database: "explorer",
   port: '3307'
 });
 //參考連結
@@ -41,13 +41,12 @@ async function Hello() {
     .catch(function (error) {
       console.log(error);
     })
-  console.log(result.result.formatted_address);
-  // let sql = `UPDATE spots SET spotDetail ='' WHERE userID = 1`;
-  // connection.query(sql, (err, result, fields) => {
-  //   if (err) throw err;
-  //   console.log(result)
-  // });
-  // res.redirect('/profile')
+  let spotdetail = result.result.formatted_address
+  let sql = `UPDATE spots SET spotDetail ='${spotdetail}' WHERE spotId = 1`;
+  connection.query(sql, (err, result, fields) => {
+    if (err) throw err;
+    console.log(result)
+  });
 }
 //呼叫function,取得json資料
 Hello();
