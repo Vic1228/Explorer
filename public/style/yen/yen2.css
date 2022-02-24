@@ -5,45 +5,29 @@
   width: 100px;
   height: 100px;
   background-color: rgb(100, 99, 132, 0.4);
+  margin-bottom: 20px;
   position: relative;
-  border: solid 1px black;
-  text-align: center;
-  margin-bottom: 25px;
 }
 
-.profile img {
+#imagegrid {
   width: 100px;
   height: 100px;
-  border-radius: 50px;
   object-fit: cover;
-  z-index: -1;
-
-}
-
-.profile label {
-  background-color: #fff;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 0;
+}
+
+.profile button {
   position: absolute;
-  top: 70%;
-  left: 70%;
+  top: 70px;
+  left: 70px;
+  border-radius: 13px;
+  background-color: aliceblue;
+  z-index: 1;
 }
 
-/*  */
+/* 基本資料 */
 
-
-.nameformm {
-  /* background-color: saddlebrown; */
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-.nameformm button {}
-
-.nameform {
-  /* background-color: aqua; */
-  display: inline-block;
-}
 
 .nameform input {
   border-bottom: solid black 2px;
@@ -52,7 +36,6 @@
 
 #name {
   border: none;
-  margin-bottom: 1.5vh;
 }
 
 input :focus {
@@ -60,6 +43,7 @@ input :focus {
 }
 
 input {
+  margin-bottom: 1.5vh;
   outline-style: none;
   border: none;
 }
@@ -68,18 +52,18 @@ input {
 /* -----------------能力表----------------- */
 .ability-chart {
   margin: auto;
-  height:250px;
+  height: 250px;
   width: 250px;
 }
 
-.expeirence-textarea {
- 
-}
 textarea {
   resize: none;
-  resize: both;
-}
-.exp :focus{
+  padding: 2px;
+  margin: auto;
+  outline-color: black;
   outline-style: none;
-  padding: 4px;
+}
+
+textarea:focus {
+  outline-color: black;
 }

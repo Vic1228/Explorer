@@ -1,3 +1,9 @@
+body{
+    background-image: url(/public/img/yen/worn\ paper.png);
+    background-size: 100%;
+}
+
+
 .maincard {
     margin: auto;
     width: 74%;
