@@ -42,8 +42,6 @@ w3.includeHTML(function () {
         }
       });
 
-      console.log($);
-
       //Burger Animation
       burger.classList.toggle("toggle");
     });
