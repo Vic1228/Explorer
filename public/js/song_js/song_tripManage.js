@@ -118,7 +118,7 @@ $(function () {
 
 
 
-        
+
 
     }
 })
@@ -179,15 +179,100 @@ const config = {
 }
 new Chart(document.getElementById('myChart'), config);
 
-function hoverdiv(e,showStat){
-    var left  = e.clientX + 3 + "px";
-    var top  = e.clientY - 150+ "px";
+function hoverdiv(e, showStat) {
+    var left = e.clientX + 3 + "px";
+    var top = e.clientY - 150 + "px";
 
     var div = document.getElementById('showStat');
 
     div.style.left = left;
     div.style.top = top;
 
-    $("#"+showStat).toggle();
+    $("#" + showStat).toggle();
     return false;
 }
+
+
+// 裝備清單編輯
+{
+    const itineraryRow = `<tr>
+                <td class="form-td">
+                  <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
+                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
+                    <option value="" selected disabled>第?天</option>
+                    <option value="1">第1天</option>
+                    <option value="2">第2天</option>
+                    <option value="3">第3天</option>
+                    <option value="4">第4天</option>
+                  </select>
+                </td>
+                <td class="form-td"><input name="schedule" type="time" id=""
+                    class="text-center border-0 h-100 time-input form-input w-100"
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
+                </td>
+                <td class="form-td"><input name="schedule" class="h-100 w-75 border-0 act-input text-center form-input"
+                    type="text" class="border-0"
+                    oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'" placeholder="活動名稱"
+                    style="margin-right: 1rem;">
+                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
+                    x</p>
+                </td>
+              </tr>`;
+
+    const privateItem = `<tr>
+                <td class="form-td"><input name="private" type="text" class="text-center border-0 h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input name="private" type="number"
+                    class="text-center border-0 w-25 h-100 form-input"
+                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
+                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
+                    x</p>
+                </td>
+              </tr>`;
+    const sharedItem = `<tr>
+                <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input name="shared" type="number" id=""
+                    class="text-center border-0 h-100 form-input w-50"
+                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
+                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    +</p>
+                  <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="margin-inline: 1rem;">
+                    x</p>
+                </td>
+              </tr>`;
+
+    // 方法
+
+    // 增加列
+    function addItineraryRow(p) {
+        // $("#ItineraryTable>tbody").append(itineraryRow);
+        $(p).closest("tr").after(itineraryRow);
+    }
+    function addPrivateItemRow(p) {
+        $(p).closest("tr").after(privateItem);
+    }
+    function addSharedItemRow(p) {
+        $(p).closest("tr").after(sharedItem);
+    }
+
+    // 刪除列
+    // <p onclick="deleteItineraryRow(this)" 第165行
+    function deleteItineraryRow(p) {
+        $(p).closest("tr").remove();
+    }
+    function deletePrivateItemRow(p) {
+        $(p).closest("tr").remove();
+    }
+    function deleteSharedItemRow(p) {
+        $(p).closest("tr").remove();
+    }
+}
+
