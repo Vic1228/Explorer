@@ -66,12 +66,10 @@ nav {
 }
 
 /* ------------logo----------- */
-.nav_logo {
-  width: 200px;
-}
 
-.nav_logo_img {
-  width: 100%;
+.nav_logo img {
+  width: 45px;
+  height: 45px;
 }
 
 /* ---------nav bar---------- */
