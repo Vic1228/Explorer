@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="/style/yen2.css">
+  <link rel="stylesheet" href="/style/yen/yen2.css">
   <link rel="stylesheet" href="../style/style.css" />
   <link rel="stylesheet" href="../nav/nav.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,11 +43,11 @@
         <input type="text" name="name" id="name" value='' readonly class="text-center" size="8"
           style="font-size: 1.3em; background-color: none;">
         <button id="namebtn2" style="display: none;" class="btn">
-          <img id="nameimg2" src="/img/save.png" alt="">
+          <img id="nameimg2" src="/img/yen/save.png" alt="">
         </button>
       </form>
       <button id="namebtn" type="submit" class="text-center btn">
-        <img id="nameimg" src="/img/edit.png" alt="">
+        <img id="nameimg" src="/img/yen/edit.png" alt="">
       </button>
     </div>
 
@@ -59,11 +59,11 @@
         <span>Phone：</span>
         <input type="tel" name="tel" id="tel" class="text-center" readonly value='' size="20">
         <button id="telbtn2" style="display: none;" class="btn">
-          <img id="telimg2" src="/img/save.png" alt="">
+          <img id="telimg2" src="/img/yen/save.png" alt="">
         </button>
       </form>
       <button id="telbtn" type="submit" class="text-center btn">
-        <img id="telimg" src="/img/edit.png" alt="">
+        <img id="telimg" src="/img/yen/edit.png" alt="">
       </button>
     </div>
 
@@ -74,11 +74,11 @@
         <span>E-mail：</span>
         <input type="mail" name="mail" id="mail" class="text-center " readonly value='' size="20">
         <button id="mailbtn2" style="display: none;" class="btn">
-          <img id="mailbtn2" src="/img/save.png" alt="">
+          <img id="mailbtn2" src="/img/yen/save.png" alt="">
         </button>
       </form>
       <button id="mailbtn" type="submit" class="text-center btn">
-        <img id="mailimg" src="/img/edit.png" alt="">
+        <img id="mailimg" src="/img/yen/edit.png" alt="">
       </button>
     </div>
 
@@ -101,27 +101,26 @@
         <div style="text-align: center;">
           <h5 style="display: inline;;" id="exph5">冒險經歷</h5>
           <button id="textbtn" type="submit" class="btn">
-            <img id="textimg" src="/img/edit.png" alt="">
+            <img id="textimg" src="/img/yen/edit.png" alt="">
           </button>
         </div>
         <!-- 輸入框 -->
-        <div style="position: relative;">
-          <div style="height:30px;">
-            <form action="/retext" method="POST" style="display: inline;">
+        <div style="">
+          <div style="">
+            <form action="/retext" method="POST" style="">
               <div>
-                <button id="textbtn2" style="display: none; position: absolute; left: 235px;top: -30px;" class="btn">
-                  <img id="textbtn2" src="/img/save.png" alt="">
+                <button id="textbtn2" style="display: none;" class="btn">
+                  <img id="textbtn2" src="/img/yen/save.png" alt="">
                 </button>
               </div>
-              <div style="height: 20vh; position: relative;">
-                <textarea class="expeirence-textarea w-100" name="text" id="text" cols="30" rows="12"
-                  readonly></textarea>
+              <div style="">
+                <textarea class="expeirence-textarea" name="text" id="text" cols="50" rows="12" readonly></textarea>
               </div>
             </form>
           </div>
-          <div style="height: 30px; position: absolute; top: 28vh;" >
+          <div style="">
             <span style="">※此處將同步更新至個人資料</span>
-            <span style="float: right;">
+            <span style="margin-left: 130px;">
               <input type="checkbox" id="vehicle1" name="vehicle1" value="no" style="">
               <label for="vehicle1" style="">不公開</label><br>
             </span>

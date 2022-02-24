@@ -34,6 +34,7 @@
       .btn {
         margin-left: 100px;
         width: 200px;
+        display: flex;
       }
 
       /* * {
@@ -47,134 +48,165 @@
     <div w3-include-HTML="./nav/nav.html"></div>
     <!-- NAV BAR -->
     <div class="container navDistance">
-      <div class="btn-group">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="defaultDropdown"
-          data-bs-toggle="dropdown"
-          data-bs-auto-close="true"
-          aria-expanded="false"
-          style="border-radius: 20px"
-        >
-          <span>地&emsp;&emsp;&emsp;&emsp;區</span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-        </ul>
-      </div>
+      <div class="row">
+        <div class="col">
+          <div class="btn-group">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="defaultDropdown"
+              data-bs-toggle="dropdown"
+              data-bs-auto-close="true"
+              aria-expanded="false"
+              style="border-radius: 20px"
+            >
+              <span>　　地　　　　區</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="btn-group">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuClickableOutside"
-          data-bs-toggle="dropdown"
-          data-bs-auto-close="inside"
-          aria-expanded="false"
-          style="border-radius: 20px"
-        >
-          <span>目&emsp;&emsp;的&emsp;&emsp;地</span>
-        </button>
-        <ul
-          class="dropdown-menu"
-          aria-labelledby="dropdownMenuClickableOutside"
-        >
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-        </ul>
-      </div>
+        <div class="col">
+          <div class="btn-group">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuClickableOutside"
+              data-bs-toggle="dropdown"
+              data-bs-auto-close="inside"
+              aria-expanded="false"
+              style="border-radius: 20px"
+            >
+              <span>　　目&emsp;&emsp;的&emsp;&emsp;地</span>
+            </button>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuClickableOutside"
+            >
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="btn-group">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuClickableInside"
-          data-bs-toggle="dropdown"
-          data-bs-auto-close="outside"
-          aria-expanded="false"
-          style="border-radius: 20px"
-        >
-          <span>天&emsp;&emsp;&emsp;&emsp;數</span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-          <li><a class="dropdown-item" href="#">Menu item</a></li>
-        </ul>
-      </div>
+        <div class="col">
+          <div class="btn-group">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuClickableInside"
+              data-bs-toggle="dropdown"
+              data-bs-auto-close="outside"
+              aria-expanded="false"
+              style="border-radius: 20px"
+            >
+              <span>　　天&emsp;&emsp;&emsp;數</span>
+            </button>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="dropdownMenuClickableInside"
+            >
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li><a class="dropdown-item" href="#">Menu item</a></li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="btn">
-        <input
-          type="date"
-          value="2022-01-01"
-          min="2022-01-01"
-          max="2022-12-31"
-          step="0"
-        />
-      </div>
-
-      <div
-        class="input-group mb-3"
-        style="width: 800px; margin-top: 45px; margin-left: 200px"
-      >
-        <input
-          type="text"
-          class="form-control"
-          placeholder="收尋景點"
-          aria-label="Recipient's username"
-          aria-describedby="button-addon2"
-          style="border-radius: 20px 0 0 20px; border-right-style: none"
-        />
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          id="button-addon2 "
-          style="width: 60px; border-radius: 0 20px 20px 0"
-        >
-          <img src="search.png" style="width: 24px" alt="" />
-        </button>
-      </div>
-
-      <div
-        class="card mb-3 mx-auto"
-        style="max-width: 1080px; margin-top: 90px"
-      >
-        <div class="row g-0">
-          <div class="col-md-3" style="text-align: center">
-            <img
-              src="./nav/img/img/12.jpg"
-              class="img-fluid rounded-start egg"
-              alt="..."
+        <div class="col">
+          <div class="btn">
+            <input
+              type="date"
+              value="2022-01-01"
+              min="2022-01-01"
+              max="2022-12-31"
+              step="0"
             />
           </div>
-          <div class="col-md-9">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-8">
-                  <p class="card-text">活動名稱: 冒險營</p>
-                  <p class="card-text">目的地:台灣</p>
-                  <p class="card-text">日期:2022/2/9~2022/2/11(3天)</p>
-                  <button
-                    class="btn btn-outline-secondary"
-                    type="button"
-                    id="button-addon2 "
-                    style="
-                      width: 30px;
-                      height: 30px;
-                      border-radius: 999em;
-                      margin-left: 750px;
-                    "
-                  >
-                    <!-- <img src="" style="width: 24px" alt="" /> -->
-                  </button>
-                </div>
-                <div class="col-4">
-                  <p class="card-text">發起人: 王 小 明</p>
-                </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 45px">
+        <div class="col-8">
+          <div class="input-group mb-3" style="width: 700px; margin-left: 10vw">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="搜尋景點"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              style="border-radius: 20px 0 0 20px; border-right-style: none"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2 "
+              style="width: 60px; border-radius: 0 20px 20px 0"
+            >
+              <img src="search.png" style="width: 24px" alt="" />
+            </button>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="button-addon2 "
+            style="width: 100px; border-radius: 20px"
+            onclick="Apple()"
+          >
+            發起行程
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3 mx-auto" style="max-width: 1080px; margin-top: 90px">
+      <div class="row g-0">
+        <div class="col-md-3" style="text-align: center">
+          <img
+            src="./nav/img/img/12.jpg"
+            class="img-fluid rounded-start egg"
+            alt="..."
+          />
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-8">
+                <p class="card-text">活動名稱: 冒險營</p>
+                <p class="card-text">目的地:台灣</p>
+                <p class="card-text">日期:2022/2/9~2022/2/11(3天)</p>
+                <button
+                  class="btn btn-outline-secondary"
+                  id="button-addon2 "
+                  style="
+                    width: 90px;
+                    height: 30px;
+                    border-radius: 999em;
+                    margin-left: 700px;
+                    visibility: hidden;
+                  "
+                >
+                  ...
+                  <!-- <img src="" style="width: 24px" alt="" /> -->
+                </button>
+              </div>
+              <div class="col-4">
+                <p class="card-text">發起人: 王 小 明</p>
+                <button
+                  class="btn btn-outline-secondary"
+                  style="width: 100px; margin-top: 8vh"
+                  onclick="mouse()"
+                >
+                  行程詳情
+                </button>
               </div>
             </div>
           </div>
@@ -185,6 +217,15 @@
     <div w3-include-HTML="./footer/footer.html" class="mt-5"></div>
     <script>
       w3.includeHTML();
+    </script>
+    <script>
+      function Apple() {
+        console.log("123");
+        location.href = "/createTrip";
+      }
+      function mouse() {
+        location.href = "/tripInfo";
+      }
     </script>
     <script src="./nav/nav.js"></script>
   </body>

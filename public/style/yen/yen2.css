@@ -67,9 +67,9 @@ input {
 
 /* -----------------能力表----------------- */
 .ability-chart {
-  width: 64%;
-  height: 17rem;
   margin: auto;
+  height:250px;
+  width: 250px;
 }
 
 .expeirence-textarea {
@@ -82,14 +82,4 @@ textarea {
 .exp :focus{
   outline-style: none;
   padding: 4px;
-}
-#exph5{
- 
-}
-#textbtn{
- 
-}
-#textbtn2{
-  
-
 }
