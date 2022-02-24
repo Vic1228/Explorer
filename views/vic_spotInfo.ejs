@@ -61,6 +61,7 @@
             type="button"
             class="btn btn-primary TopAndBottonSize"
             style="margin-left: 1rem"
+            onclick="crate()"
           >
             建立行程
           </button>
@@ -238,5 +239,10 @@
     </script>
     <script src="./nav/nav.js"></script>
     <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    <script>
+      function crate() {
+        location.href = "/createTrip";
+      }
+    </script>
   </body>
 </html>
