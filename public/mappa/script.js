@@ -9,7 +9,7 @@ function initMap() {
   const service = new google.maps.places.PlacesService(map);
   // Location 1
   const request = {
-    placeId: 'ChIJ6Sql71hxaDQRH_2A8h3A1es',
+    placeId: 'ChIJH0OLXIhfaDQRe2M3VHul_nY',
     fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total']
   };
   service.getDetails(request, function (place, status) {
@@ -24,7 +24,7 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
           "<div class='inner'><h3>" +
-          '<a href="/spotId?id=1">' + '天狗溪噴泉</a>' +
+          '<a href="/spotId?id=1">' + '雪山</a>' +
           "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
       });
