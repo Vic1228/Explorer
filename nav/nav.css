@@ -81,6 +81,11 @@ nav {
   list-style: none;
 }
 
+header{
+  font-size: 16px;
+  font-weight: 600;
+}
+
 header a:hover {
   color: gray;
 }
@@ -93,8 +98,6 @@ header a:hover {
 
   padding: 15px 10px;
 
-  font-size: 18px;
-  font-weight: 100;
 
   min-width: 100px;
   min-width: max-content;
