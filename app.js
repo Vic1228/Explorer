@@ -77,22 +77,39 @@ app.post("/response", async function(req, res){
   let shared = req.body.shared;
 
   //  trip
-  
-  let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  let tripSQL = `INSERT INTO trips (userId, tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
+  VALUES ("100", "", "${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
   await connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
+    console.log(trip[0]);
   });
   
   // 後面三個表去抓tripId
-
-  // select * from table order by Sn desc limit 0,1
-  // let tripIdSQL = `SELECT * FROM trips order by Sn desc limit 0,1`;
-  // connection.query(tripIdSQL, (err, result, fields) => {
+  // var box;
+  // let selectTripId = `SELECT tripId FROM trips WHERE (userId = 100 AND tripStartDate = "${trip[2]}")`
+  // await connection.query(selectTripId, async (err, result, fields) => {
   //   if (err) throw err;
-  //   console.log(result);
-  // })
+    // box = JSON.parse(result);
+    // box = await result;
+    // await console.log(box);
+    // await console.log(box[0].tripId);
+  //    let apple = `INSERT INTO schedule (tripId) VALUES ("${box[0].tripId}")`
+  //   await connection.query(apple, (err, result, fields) => {
+  //   if (err) throw err;
+  // });
+  // });
   
+// await console.log(box);
+// await console.log(box[0].tripId);
+//  let apple = `INSERT INTO schedule (tripId) VALUES ("${box[0].tripId}")`
+//   await connection.query(apple, (err, result, fields) => {
+//     if (err) throw err;
+//   });
+  
+  // let apple = `INSERT INTO schedule (tripId) VALUES ("${box[0].tripId}")`
+  // await connection.query(apple, (err, result, fields) => {
+  //   if (err) throw err;
+  // });
 
   //  TODO: schedule
   // tripId不能共用的問題 因為join是取資料用的
