@@ -63,28 +63,41 @@ app.use(express.static("style"));
 // ============= form post ===============
 // 呂學奇 讀取資料庫 成功!!
 
-connection.query("SELECT * FROM `users`", function (err, result, fields) {
+connection.query("SELECT userName,userPhone,userEmail,userExperience FROM users WHERE userId = 1", function (err, result, fields) {
   if (err) throw err;
   console.log(result);
 });
 
 // 呂學奇 傳送表單的資料進資料庫
 
-app.post("/response", (req, res) => {
+app.post("/response", async function(req, res){
   let trip = req.body.trip;
   let schedule = req.body.schedule;
   let private = req.body.private;
   let shared = req.body.shared;
 
   //  trip
+  
   let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
   VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
-  connection.query(tripSQL, (err, result, fields) => {
+  await connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
   });
+  
+  // 後面三個表去抓tripId
+
+  // select * from table order by Sn desc limit 0,1
+  // let tripIdSQL = `SELECT * FROM trips order by Sn desc limit 0,1`;
+  // connection.query(tripIdSQL, (err, result, fields) => {
+  //   if (err) throw err;
+  //   console.log(result);
+  // })
+  
 
   //  TODO: schedule
-  // tripId不能共用的問題
+  // tripId不能共用的問題 因為join是取資料用的
+  // input name取一樣的 在拆開來存?
+
   for (var i = 0; i < schedule.length; i += 3) {
     let scheduleSQL = `INSERT INTO schedule (day, startTime, activity) 
   VALUES ("${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
