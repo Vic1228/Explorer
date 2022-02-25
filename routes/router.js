@@ -84,13 +84,6 @@ router.post("/retext", (req, res) => {
 
 // 仲硯結束
 
-// 呂學奇
-router.get("/createTrip", function (req, res) {
-  res.render("lu_createTrip.ejs");
-});
-
-// 呂學奇
-
 // 葉宜松
 router.get("/tripManage", function (req, res) {
   res.render("song_tripManage.ejs");
