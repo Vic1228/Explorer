@@ -1,5 +1,9 @@
 // 記得打開mysql apache
-// mac使用者請看27行 設定mysql密碼
+// mac使用者 引用mysql需設定密碼 root
+// database名稱 explorer
+
+// ============ express ==============
+
 var express = require("express");
 var router = express.Router();
 var app = express();
@@ -11,15 +15,18 @@ app.listen(3000, (error) => {
 });
 
 // ============== ejs ================
+
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 // =========== body-parser ===========
+
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // ============= mysql ===============
+
 var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
@@ -38,6 +45,7 @@ connection.connect(function (error) {
 });
 
 // ============= router ===============
+
 var router = require("./routes/router.js");
 var createTrip = require("./routes/lu_routes/lu_createTrip");
 var homepageRouter = require("./routes/vic_routes/vic_homepage");
@@ -50,6 +58,7 @@ app.use("/createTrip", createTrip);
 app.use("/", router);
 
 // ============= static file ===============
+
 app.use(express.static(__dirname));
 app.use(express.static("image"));
 app.use(express.static("css"));
