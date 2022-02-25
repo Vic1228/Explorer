@@ -66,70 +66,59 @@ app.use(express.static("style"));
 // ============= session ===============
 // session的引用請放這裡
 
-// ============= form post ===============
-// 呂學奇 讀取資料庫 成功!!
+// ============= 呂學奇 ===============
+app.post("/response", function (req, res) {
+    let trip = req.body.trip;
+    let schedule = req.body.schedule;
+    let private = req.body.private;
+    let shared = req.body.shared;
 
-// connection.query("SELECT userName,userPhone,userEmail,userExperience FROM users WHERE userId = 1", function (err, result, fields) {
-//   if (err) throw err;
-//   console.log(result);
-// });
-
-// 呂學奇 傳送表單的資料進資料庫
-
-app.post("/response", async function(req, res){
-  let trip = req.body.trip;
-  let schedule = req.body.schedule;
-  let private = req.body.private;
-  let shared = req.body.shared;
-
-  //  trip
+    //  trip
   
-  // let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  // VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
-  // await connection.query(tripSQL, (err, result, fields) => {
-  //   if (err) throw err;
-  // });
-  
-  // 後面三個表去抓tripId
+    // 查詢舊的tripId存入變數
+    var tripId;
+    var day;
+    connection.query(
+      "SELECT * FROM trips WHERE tripId",
+      function (error, results) {
+        if (error) throw error;
+        else {
+          tripId = results[results.length - 1].tripId;
+        }
+        let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
+        VALUES ("", "${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+        connection.query(tripSQL, (err, result, fields) => {
+          if (err) throw err;
+        });
+      
+        // schedule
+        tripId++;
+        for (var i = 0; i < schedule.length; i += 3) {
+          let scheduleSQL = `INSERT INTO schedule (tripId, day, startTime, activity) 
+          VALUES ("${tripId}", "${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
+          connection.query(scheduleSQL, (err, result, fields) => {
+            if (err) throw err;
+          });
+        }
 
-  // select * from table order by Sn desc limit 0,1
-  // let tripIdSQL = `SELECT * FROM trips order by Sn desc limit 0,1`;
-  // connection.query(tripIdSQL, (err, result, fields) => {
-  //   if (err) throw err;
-  //   console.log(result);
-  // })
-  
+        // private
+        for (var i = 0; i < private.length; i += 2) {
+          let privateSQL = `INSERT INTO privateItems (tripId, privateItemName, ItemCount) 
+          VALUES ("${tripId}", "${private[i + 0]}", "${private[i + 1]}")`;
+          connection.query(privateSQL, (err, result, fields) => {
+            if (err) throw err;
+          });
+        }
 
-  //  TODO: schedule
-  // tripId不能共用的問題 因為join是取資料用的
-  // input name取一樣的 在拆開來存?
-
-  for (var i = 0; i < schedule.length; i += 3) {
-    let scheduleSQL = `INSERT INTO schedule (day, startTime, activity) 
-  VALUES ("${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
-    connection.query(scheduleSQL, (err, result, fields) => {
-      if (err) throw err;
-    });
-  }
-
-  //  TODO: private
-  for (var i = 0; i < private.length; i += 2) {
-    let privateSQL = `INSERT INTO privateItems (tripId, privateItemName, ItemCount) 
-  VALUES ("", "${private[i + 0]}", "${private[i + 1]}")`;
-    connection.query(privateSQL, (err, result, fields) => {
-      if (err) throw err;
-    });
-  }
-
-  //  TODO: shared
-
-  for (var i = 0; i < shared.length; i += 2) {
-    let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItemName, itemCount) 
-  VALUES ("", "", "${shared[i + 0]}", "${shared[i + 1]}")`;
-    connection.query(sharedSQL, (err, result, fields) => {
-      if (err) throw err;
-    });
-  }
-
-  res.render("lu_createFormComplete.ejs");
-});
+        // shared
+        for (var i = 0; i < shared.length; i += 2) {
+          let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItemName, itemCount) 
+          VALUES ("${tripId}", "", "${shared[i + 0]}", "${shared[i + 1]}")`;
+          connection.query(sharedSQL, (err, result, fields) => {
+            if (err) throw err;
+          });
+        }
+      });
+    // 渲染
+    res.render("lu_createFormComplete.ejs");
+  });
