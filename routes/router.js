@@ -91,10 +91,6 @@ router.get("/createTrip", function (req, res) {
 
 // 呂學奇
 
-// 葉宜松
-router.get("/tripManage", function (req, res) {
-  res.render("song_tripManage.ejs");
-});
 
 // 葉宜松
 module.exports = router;

@@ -41,10 +41,12 @@ connection.connect(function (error) {
 var router = require("./routes/router.js");
 var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
+var tripManage = require('./routes/song_routes/song_tripManage')
 const { promiseImpl } = require("ejs");
 app.use("/", homepageRouter);
 app.use("/spotInfo", spotInfoRouter);
 app.use("/spotId", spotInfoRouter);
+app.use('/tripManage',tripManage);
 app.use("/", router);
 
 // ============= static file ===============
@@ -63,10 +65,10 @@ app.use(express.static("style"));
 // ============= form post ===============
 // 呂學奇 讀取資料庫 成功!!
 
-connection.query("SELECT userName,userPhone,userEmail,userExperience FROM users WHERE userId = 1", function (err, result, fields) {
-  if (err) throw err;
-  console.log(result);
-});
+// connection.query("SELECT userName,userPhone,userEmail,userExperience FROM users WHERE userId = 1", function (err, result, fields) {
+//   if (err) throw err;
+//   console.log(result);
+// });
 
 // 呂學奇 傳送表單的資料進資料庫
 
@@ -78,11 +80,11 @@ app.post("/response", async function(req, res){
 
   //  trip
   
-  let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
-  await connection.query(tripSQL, (err, result, fields) => {
-    if (err) throw err;
-  });
+  // let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
+  // VALUES ("", "${trip[0]}", "", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  // await connection.query(tripSQL, (err, result, fields) => {
+  //   if (err) throw err;
+  // });
   
   // 後面三個表去抓tripId
 
