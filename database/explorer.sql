@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-02-23 09:32:11
+-- 產生時間： 2022-02-25 09:09:30
 -- 伺服器版本： 10.4.22-MariaDB
 -- PHP 版本： 8.1.1
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `privateitems` (
   `number` int(20) NOT NULL,
   `tripId` int(20) NOT NULL,
-  `privateItemName` varchar(20) NOT NULL,
+  `privateItem` varchar(20) NOT NULL,
   `itemCount` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -58,7 +58,7 @@ CREATE TABLE `shareditems` (
   `number` int(20) NOT NULL,
   `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
-  `sharedItemName` varchar(20) NOT NULL,
+  `sharedItem` varchar(20) NOT NULL,
   `itemCount` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -131,6 +131,13 @@ CREATE TABLE `trips` (
   `tripDesc` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `trips`
+--
+
+INSERT INTO `trips` (`tripId`, `tripName`, `spotId`, `tripStartDate`, `tripEndDate`, `tripDesc`) VALUES
+(1, '不能刪', 0, '0000-00-00', '0000-00-00', '');
+
 -- --------------------------------------------------------
 
 --
@@ -140,12 +147,11 @@ CREATE TABLE `trips` (
 CREATE TABLE `users` (
   `userId` int(20) NOT NULL,
   `userName` varchar(20) NOT NULL,
-  `userAccount` varchar(12) NOT NULL,
+  `userEmail` varchar(20) NOT NULL,
   `userPassword` varchar(15) NOT NULL,
   `userPhoto` longblob NOT NULL,
   `userPhone` varchar(10) NOT NULL,
-  `userEmail` varchar(20) NOT NULL,
-  `userExprnience` varchar(80) NOT NULL
+  `userExp` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -261,7 +267,7 @@ ALTER TABLE `spots`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `trips`
 --
 ALTER TABLE `trips`
-  MODIFY `tripId` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `tripId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
