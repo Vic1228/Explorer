@@ -29,13 +29,15 @@
 /* 基本資料 */
 
 
-.nameform input {
+.inputborder input{
   border-bottom: solid black 2px;
   padding: 2px 2px;
 }
 
 #name {
   border: none;
+  padding-left: 50px;
+  /* background-color: aqua; */
 }
 
 input :focus {
