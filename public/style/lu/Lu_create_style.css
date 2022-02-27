@@ -1,7 +1,6 @@
 /* ------------------------共用------------------------- */
 *{
     box-sizing: border-box;
-    /* outline: 1px rgb(196, 101, 101) solid; */
 }
 
 input:focus{
@@ -27,7 +26,7 @@ outline: 0;
 .step {
     z-index: 1; 
     cursor: pointer; 
-    background-color: #000000;
+    background-color: #4c9acc;
     border: none;
     border-radius: 50%;
     opacity: 0.3;
@@ -35,7 +34,7 @@ outline: 0;
 
 /* 步驟進行中 */
 .step.active {
-    opacity: 0.8;
+    opacity: 1;
 }
 /* -----------------大頭貼----------------- */
 .profile{
@@ -50,8 +49,13 @@ outline: 0;
   width: 14vw;
   margin: 0 auto;
 }
-/* -----------------活動名稱----------------- */
-
+/* -----------------封面圖----------------- */
+.create-trip-photo{
+  background-image: url(../..//img/lu/253-1440x500.jpg); 
+  width: auto; 
+  height: 60vh; 
+  background-size: cover;
+}
 
 /* -----------------活動名稱----------------- */
 .act-textarea{
