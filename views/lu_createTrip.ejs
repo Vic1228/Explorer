@@ -21,7 +21,7 @@
   <title>Document</title>
   <style>
     * {
-      /* border: 1px black solid; */
+      border: 1px black solid;
     }
   </style>
 </head>
@@ -29,41 +29,56 @@
 <body style="height: 100vh;">
   <!-- NAV BAR -->
   <div w3-include-HTML="../nav/nav.html"></div>
-  <!-- NAV BAR -->
-  <!-- TODO: FORM -->
+  <!-- FORM -->
   <form action="/response" name="createForm" method="post">
-    <div class="container d-flex" style="padding-block: 15vh;">
+    <!-- 圖片 -->
+    <div class="create-trip-photo">
+    </div>
+    <div class="container d-flex" style="padding-block: 12vh;">
       <div class="col-2"></div>
       <div class="col-8">
         <!-- 步驟 -->
         <div class="d-flex justify-content-around">
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>發起人簡介</span>
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>行程介紹</span>
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>行程規劃</span>
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>裝備清單</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span style="font-size: 1.5rem;">發起人簡介</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span style="font-size: 1.5rem;">行程介紹</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span style="font-size: 1.5rem;">行程規劃</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span style="font-size: 1.5rem;">裝備清單</span>
         </div>
       </div>
       <div class="col-2"></div>
     </div>
     <!-- TODO: 發起人簡介tab -->
-    <!-- 串接的資料表 users  -->
     <div class="tab">
-      <!-- 大頭貼 -->
-      <div class="profile profile-name rounded-circle"></div>
-      <!-- 姓名 -->
-      <h6 class="text-center m-0" style="padding-top: 2vh;">王小明</h6>
-      <!-- 電話 -->
-      <p class="text-center m-0" style="font-size: 10px; padding-top: 2vh;">0934-445-873</p>
-      <!-- 信箱 -->
-      <p class="text-center m-0" style="font-size: 10px;">brad123@gmail.com</p>
+      <div class="container d-flex">
+        <div class="col-4"></div>
+        <!-- 大頭貼 -->
+        <div class="col-1">
+          <div class="profile profile-name rounded-circle m-auto"></div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-2">
+          <!-- 姓名 -->
+          <p class="m-0">王小明</p>
+          <!-- 電話 -->
+          <p class="m-0">0934-445-873</p>
+          <!-- 信箱 -->
+          <p class="m-0">brad123@gmail.com</p>
+        </div>
+        <div class="col-4"></div>
+      </div>
+
+
+
+
+
       <div class="container d-flex" style="margin-top: 10vh;">
         <div class="col-2"></div>
         <div class="col-3">
-          <h6 class="text-center" style="margin-bottom: 4vh;">能力值</h6>
+          <h6 class="text-center" style="margin-bottom: 6vh; font-size: 1.4rem;">能力值</h6>
           <div class="ability-chart">
             <!-- 能力值-->
             <canvas id="myChart"></canvas>
@@ -75,15 +90,15 @@
         </div>
         <div class="col-1"></div>
         <div class="col-4">
-          <h6 class="text-center" style="margin-bottom: 4vh;">冒險經歷</h6>
-          <div class="d-flex" style="margin-top: 8vh;">
+          <h6 class="text-center" style="margin-bottom: 6vh; font-size: 1.4rem;">冒險經歷</h6>
+          <div class="d-flex">
             <div class="col-2"></div>
             <div class="col-9">
-              <p style="font-size: 10px; line-height: 2rem;">
-                <!-- TODO: -->
+              <!-- 冒險經歷 -->
+              <p style="font-size: 1.1rem; line-height: 2rem;">
                 完成台灣百岳的第一人、世界四大極地超級馬拉松巡迴賽總冠軍、發起擁抱絲路計劃，帶團隊穿越絲路等壯舉，希望能找到熱愛登山的夥伴。
               </p>
-              <span class="text-danger" style="font-size: 10px;">※此處將同步更新至個人資料</span>
+              <span class="text-danger" style="font-size: 0.8rem;">※此處將同步更新至個人資料</span>
             </div>
             <div class="col-1"></div>
           </div>
@@ -265,7 +280,6 @@
   <!-- FORM -->
   <!-- FOOTER -->
   <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
-  <!-- FOOTER -->
   <!-- Library -->
   <script src="../public/js/lu/Lu_create.js"></script>
   <script>
