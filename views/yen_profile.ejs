@@ -31,27 +31,32 @@
     <div>
       <!-- 大頭貼 -->
       <div class="profile profile-name rounded-circle">
-        <img id="imagegrid" src="" alt="" style="display: none;">
-        <button>
+        <img id="imagegrid" src='/public/img/yen/photo/<%= userEmail %>.png' alt="">
+        <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
+          <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
+        </form>
+        <button id="photobtn">
           <label for="upload">
             <img src="/public/img/yen/photo.png" alt="" style="width: 25px; height: 25px;">
           </label>
         </button>
-        <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
+        <button form="aa" type="submit" id="photobtn2" style="display: none;">
+          <img src="/img/yen/save.png" alt="" style="width: 25px; height: 25px;">
+        </button>
       </div>
 
 
       <!-- 姓名(記得補上ejs變數 加在value) -->
       <div style="text-align: center;">
         <form class="nameform" action="/rename" method="POST" id="nameform" style="display: inline-block;">
-          <input type="text" name="name" id="name" value='<%= userName %>' readonly class="text-center" size="8"
+          <input type="text" name="name" id="name" value='<%= userName %>' readonly class="text-center" size="5"
             style="font-size: 1.3em;">
         </form>
         <!-- save -->
         <button id="namebtn2" style="display: none;" class="btn" form="nameform">
           <img id="nameimg2" src="/img/yen/save.png" alt="">
         </button>
-        <!-- edie -->
+        <!-- edit -->
         <button id="namebtn" class="text-center btn">
           <img id="nameimg" src="/img/yen/edit.png" alt="">
         </button>
@@ -60,7 +65,7 @@
 
       <!-- 電話 -->
       <div style="text-align: center;">
-        <form action="/rephone" method="POST" style="display: inline-block;" class="nameform" id="telform">
+        <form action="/rephone" method="POST" style="display: inline-block;" class="inputborder" id="telform">
           <span>Phone：</span>
           <input type="tel" name="tel" id="tel" class="text-center" readonly value='<%= userPhone %>' size="20">
         </form>
@@ -77,15 +82,15 @@
 
       <!-- 信箱 -->
       <div style="text-align: center;">
-        <form action="/remail" method="POST" style="display: inline-block;" class="nameform" id="mailform">
+        <form action="/remail" method="POST" style="display: inline-block;" class="inputborder" id="mailform">
           <span>E-mail：</span>
           <input type="mail" name="mail" id="mail" class="text-center " readonly value='<%= userEmail %>' size="20">
         </form>
-        <!-- edit -->
+        <!-- save -->
         <button id="mailbtn2" style="display: none;" class="btn" form="mailform">
           <img id="mailbtn2" src="/img/yen/save.png" alt="">
         </button>
-        <!-- save -->
+        <!-- edit -->
         <button id="mailbtn" class="text-center btn">
           <img id="mailimg" src="/img/yen/edit.png" alt="">
         </button>
@@ -103,7 +108,9 @@
           <canvas id="myChart"></canvas>
         </div>
         <p class="text-center" style="margin-top: 4vh;">評價人次：
-          <span>?</span>
+          <span>
+            <%= commentCount%>
+          </span>
         </p>
       </div>
 
@@ -128,7 +135,7 @@
         <!-- 輸入框 -->
         <div style="margin-left: 30px;">
           <form action="/retext" method="POST" style="" id="textarea">
-            <textarea name="text" id="text" cols="40" rows="12" readonly><%= userExprnience %></textarea>
+            <textarea name="text" id="text" cols="40" rows="12" readonly><%= userExp %></textarea>
           </form>
         </div>
         <div style="margin-left: 30px;">
@@ -145,11 +152,80 @@
 
   <!-- FOOTER -->
   <div w3-include-HTML="/footer.html" class="footerDistance" style="margin-top: 0;"></div>
+  <!-- position: fixed;bottom: 0; -->
   <!-- FOOTER -->
   <script>
     w3.includeHTML();
   </script>
   <script src="./yen2.js"></script>
+  <script>
+    const data = {
+      labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
+      datasets: [
+        {
+          label: '<%= userName %>',
+          data: ['<%= leadership %>', '<%= teamwork %>', '<%= strength%>', '<%= heal %>', '<%= surriral%>', '<%= direction %>'],
+          fill: true,
+          backgroundColor: "rgb(100, 99, 132, 0.2)",
+          borderColor: "rgb(100, 99, 132, 0.1)",
+          pointBackgroundColor: "rgb(100, 99, 132, 0.5)",
+          pointBorderColor: "rgb(100, 99, 132)",
+          pointHoverBackgroundColor: "rgb(100, 99, 132)",
+          pointHoverBorderColor: "rgb(100, 99, 132)",
+          pointRadius: 3,
+        },
+      ],
+    };
+    const config = {
+      type: "radar",
+      data: data,
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            displayColors: false,
+            caretSize: 10,
+            backgroundColor: "rgb(100, 99, 132)",
+          },
+        },
+        elements: {
+          line: {
+            borderWidth: 1
+          },
+        },
+        scale: {
+          beginAtZero: true,
+          min: 1,
+          max: 10,
+          ticks: {
+            stepSize: 1,
+            font: {
+              size: 0,
+            },
+          },
+        },
+        scales: {
+          r: {
+            pointLabels: {
+              font: {
+                size: 14,
+              },
+            },
+            grid: {
+              // 框線顏色
+              color: "rgb(100, 99, 132, 0.4)",
+            },
+            ticks: {
+              display: false,
+            },
+          },
+        },
+      },
+    };
+    const myChart = new Chart(document.getElementById("myChart"), config);
+  </script>
   <script src="./nav.js"></script>
 
 
