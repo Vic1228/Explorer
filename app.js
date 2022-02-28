@@ -55,6 +55,7 @@ app.use("/spotId", spotInfoRouter);
 app.use('/tripManage', tripManage);
 app.use('/createTrip',createTrip)
 app.use('/response',createTrip)
+app.use('/',yenpage)
 app.use("/", router);
 // app.use("/signup",signupRouter )
 

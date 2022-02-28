@@ -1,70 +1,5 @@
 // chartJS----------------
-const data = {
-labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
-    datasets: [
-        {
-            label: "王曉明",
-            data: [6, 6, 7, 8, 5, 10],
-            fill: true,
-            backgroundColor: "rgb(100, 99, 132, 0.2)",
-            borderColor: "rgb(100, 99, 132, 0.1)",
-            pointBackgroundColor: "rgb(100, 99, 132, 0.5)",
-            pointBorderColor: "rgb(100, 99, 132)",
-            pointHoverBackgroundColor: "rgb(100, 99, 132)",
-            pointHoverBorderColor: "rgb(100, 99, 132)",
-            pointRadius: 3,
-        },
-    ],
-};
-const config = {
-    type: "radar",
-    data: data,
-    options: {
-        plugins: {
-            legend: {
-                display: false,
-            },
-            tooltip: {
-                displayColors: false,
-                caretSize: 10,
-                backgroundColor: "rgb(100, 99, 132)",
-            },
-        },
-        elements: {
-            line: {
-                borderWidth: 1,
-            },
-        },
-        scale: {
-            beginAtZero: true,
-            min: 1,
-            max: 10,
-            ticks: {
-                stepSize: 1,
-                font: {
-                    size: 0,
-                },
-            },
-        },
-        scales: {
-            r: {
-                pointLabels: {
-                    font: {
-                        size: 14,
-                    },
-                },
-                grid: {
-                    // 框線顏色
-                    color: "rgb(100, 99, 132, 0.4)",
-                },
-                ticks: {
-                    display: false,
-                },
-            },
-        },
-    },
-};
-const myChart = new Chart(document.getElementById("myChart"), config);
+
 
 
 // 上傳檔案-------------
@@ -93,7 +28,17 @@ inputelement.addEventListener('change', (a) => {
     });
 })
 
+
+
+
 // ----------------------按鈕
+// 照片按鈕
+$('#photobtn').click(function () {
+    $('#photobtn2').show()
+    $('#photobtn').hide()
+});
+
+// 姓名按鈕
 $('#namebtn').click(function () {
     let val = document.getElementById('name').value
     var result = document.getElementById('name').hasAttribute('readonly');
@@ -106,6 +51,7 @@ $('#namebtn').click(function () {
         $('#name').prop('readonly', false);
     }
 });
+// 電話按鈕
 $('#telbtn').click(function () {
     let val = document.getElementById('tel').value
     var result = document.getElementById('tel').hasAttribute('readonly');
@@ -118,6 +64,7 @@ $('#telbtn').click(function () {
         $('#tel').prop('readonly', false);
     }
 });
+// 信箱按鈕
 $('#mailbtn').click(function () {
     let val = document.getElementById('mail').value
     var result = document.getElementById('mail').hasAttribute('readonly');
@@ -130,6 +77,7 @@ $('#mailbtn').click(function () {
         $('#mail').prop('readonly', false);
     }
 });
+// 經驗按鈕
 $('#textbtn').click(function () {
     let val = document.getElementById('text').value
     var result = document.getElementById('text').hasAttribute('readonly');

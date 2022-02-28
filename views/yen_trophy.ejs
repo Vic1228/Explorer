@@ -33,58 +33,38 @@
       <div class="maincard2 col-9">
         <div class="maincard20">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">李白</td>
-              <td class="thr"><span>199</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">小路</td>
-              <td class="thr"><span>166</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">兆恩</td>
-              <td class="thr"><span>77</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">輝家</td>
-              <td class="thr"><span>45</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">文</td>
-              <td class="thr"><span>33</span>次</td>
-            </tr>
+            <% json7.forEach((data,index)=>{%>
+              <%if(index<=4){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.commentCount%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
-          <table class="table2">
-            <tr>
-              <td class="frt">6.</td>
-              <td class="sec">蔡政府</td>
-              <td class="thr"><span>32</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">7.</td>
-              <td class="sec">三星蔥</td>
-              <td class="thr"><span>24</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">8.</td>
-              <td class="sec">八股</td>
-              <td class="thr"><span>21</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">9.</td>
-              <td class="sec">玲</td>
-              <td class="thr"><span>9</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">10.</td>
-              <td class="sec">真心鎮小智</td>
-              <td class="thr"><span>2</span>次</td>
-            </tr>
+          <table>
+            <% json7.forEach((data,index)=>{%>
+              <%if(index>=5&&index<10){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.commentCount%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
           </table>
         </div>
         <div class="maincarda">
@@ -93,59 +73,24 @@
         <!-- 彈跳視窗 -->
         <div id="light" class="light">
           <p id="closebt" class="closebt"><img src="/img/yen/close.png"></p>
+          <h1>冒險王</h1>
+          <hr>
           <table>
-            <h1>冒險王</h1>
-            <hr>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">圈圈</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">叉叉</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">三角形</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">正方形</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">錢錢</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">6.</td>
-              <td class="sec">摳摳</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">7.</td>
-              <td class="sec">三塊錢</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">8.</td>
-              <td class="sec">Ken</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">9.</td>
-              <td class="sec">來來</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
-            <tr>
-              <td class="frt">10.</td>
-              <td class="sec">阿張</td>
-              <td class="thr"><span>?</span>次</td>
-            </tr>
+            <% json7.forEach((data,index)=>{%>
+              <%if(index>=10&&index<=19){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.commentCount%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <p>
             <a href="#">第一頁</a>
@@ -175,31 +120,21 @@
         </div>
         <div class="card12">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">希特勒</td>
-              <td class="thr">6.7</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">犬</td>
-              <td class="thr">6.6</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">小安</td>
-              <td class="thr">3.8</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">阿泉</td>
-              <td class="thr">1.2</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">失明</td>
-              <td class="thr">9.9</td>
-            </tr>
+            <% json1.forEach((data,index)=>{%>
+              <%if(index<5){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.strength%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <div class="maincarda">
             <p class="opener" style="display: inline;"><u>查看更多...</u></p>
@@ -214,31 +149,21 @@
         </div>
         <div class="card12">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">希特勒</td>
-              <td class="thr">6.7</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">犬</td>
-              <td class="thr">6.6</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">小安</td>
-              <td class="thr">3.8</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">阿泉</td>
-              <td class="thr">1.2</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">失明</td>
-              <td class="thr">9.9</td>
-            </tr>
+            <% json2.forEach((data,index)=>{%>
+              <%if(index<5){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.heal%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <div class="maincarda">
             <p class="opener" style="display: inline;"><u>查看更多...</u></p>
@@ -253,31 +178,21 @@
         </div>
         <div class="card12">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">希特勒</td>
-              <td class="thr">6.7</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">犬</td>
-              <td class="thr">6.6</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">小安</td>
-              <td class="thr">3.8</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">阿泉</td>
-              <td class="thr">1.2</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">失明</td>
-              <td class="thr">9.9</td>
-            </tr>
+            <% json3.forEach((data,index)=>{%>
+              <%if(index<5){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.surriral%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <div class="maincarda">
             <p class="opener" style="display: inline;"><u>查看更多...</u></p>
@@ -292,31 +207,21 @@
         </div>
         <div class="card12">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">希特勒</td>
-              <td class="thr">6.7</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">犬</td>
-              <td class="thr">6.6</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">小安</td>
-              <td class="thr">3.8</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">阿泉</td>
-              <td class="thr">1.2</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">失明</td>
-              <td class="thr">9.9</td>
-            </tr>
+            <% json4.forEach((data,index)=>{%>
+              <%if(index<5){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.direction%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <div class="maincarda">
             <p class="opener" style="display: inline;"><u>查看更多...</u></p>
@@ -331,31 +236,21 @@
         </div>
         <div class="card12">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">希特勒</td>
-              <td class="thr">6.7</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">犬</td>
-              <td class="thr">6.6</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">小安</td>
-              <td class="thr">3.8</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">阿泉</td>
-              <td class="thr">1.2</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">失明</td>
-              <td class="thr">9.9</td>
-            </tr>
+            <% json5.forEach((data,index)=>{%>
+              <%if(index<5){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.leadership%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <div class="maincarda">
             <p class="opener" style="display: inline;"><u>查看更多...</u></p>
@@ -370,31 +265,21 @@
         </div>
         <div class="card12">
           <table>
-            <tr>
-              <td class="frt">1.</td>
-              <td class="sec">希特勒</td>
-              <td class="thr">6.7</td>
-            </tr>
-            <tr>
-              <td class="frt">2.</td>
-              <td class="sec">犬</td>
-              <td class="thr">6.6</td>
-            </tr>
-            <tr>
-              <td class="frt">3.</td>
-              <td class="sec">小安</td>
-              <td class="thr">3.8</td>
-            </tr>
-            <tr>
-              <td class="frt">4.</td>
-              <td class="sec">阿泉</td>
-              <td class="thr">1.2</td>
-            </tr>
-            <tr>
-              <td class="frt">5.</td>
-              <td class="sec">失明</td>
-              <td class="thr">9.9</td>
-            </tr>
+            <% json6.forEach((data,index)=>{%>
+              <%if(index<5){%>
+                <tr>
+                  <td class="frt">
+                    <%= index+1 +'.'%>
+                  </td>
+                  <td class="sec">
+                    <%= data.userName%>
+                  </td>
+                  <td class="thr">
+                    <%= data.teamwork%>
+                  </td>
+                </tr>
+                <%}%>
+                  <% }) %>
           </table>
           <div class="maincarda">
             <p class="opener" style="display: inline;"><u>查看更多...</u></p>

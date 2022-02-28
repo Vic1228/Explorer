@@ -1,23 +1,19 @@
 /*---------------------------------------------------------------*/
-/*----------------------------- input ---------------------------*/
-/*---------------------------------------------------------------*/
-
-/*---------------------------------------------------------------*/
 /*----------------------------- chart ---------------------------*/
 /*---------------------------------------------------------------*/
 const data = {
   labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
   datasets: [
     {
-      label: "王小明",
+      // TODO: 動態產生
       data: [5, 3, 5, 4, 5, 5],
       fill: true,
-      backgroundColor: "rgb(100, 99, 132, 0.2)",
-      borderColor: "rgb(100, 99, 132, 0.1)",
-      pointBackgroundColor: "rgb(100, 99, 132, 0.5)",
-      pointBorderColor: "rgb(100, 99, 132)",
-      pointHoverBackgroundColor: "rgb(100, 99, 132)",
-      pointHoverBorderColor: "rgb(100, 99, 132)",
+      backgroundColor: "rgb(0, 108, 155, 0.2)",
+      borderColor: "rgb(0, 108, 155, 0.1)",
+      pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
+      pointBorderColor: "rgb(0, 108, 155)",
+      pointHoverBackgroundColor: "rgb(0, 108, 155)",
+      pointHoverBorderColor: "rgb(0, 108, 155)",
       pointRadius: 3,
     },
   ],
@@ -33,7 +29,7 @@ const config = {
       tooltip: {
         displayColors: false,
         caretSize: 10,
-        backgroundColor: "rgb(100, 99, 132)",
+        backgroundColor: "rgb(0, 108, 155)",
       },
     },
     elements: {
@@ -56,12 +52,13 @@ const config = {
       r: {
         pointLabels: {
           font: {
-            size: 14,
+            size: 20,
           },
+          color: "rgb(0, 108, 155)"
         },
         grid: {
           // 框線顏色
-          color: "rgb(100, 99, 132, 0.4)",
+          color: "rgb(0, 108, 155, 0.4)",
         },
         ticks: {
           display: false,
@@ -159,11 +156,14 @@ function submitBtnClick() {
 function fixStepIndicator(currentStep) {
   // 刪除所有active燈號
   var step = document.getElementsByClassName("step");
+  var stepText = document.getElementsByClassName("step-text")
   for (let i = 0; i < step.length; i++) {
     step[i].className = step[i].className.replace(" active", "");
+    stepText[i].className = stepText[i].className.replace(" active", "");
   }
   // 目前步驟加上燈號
   step[currentStep].className += " active";
+  stepText[currentStep].className += " active";
 }
 /*---------------------------------------------------------------*/
 /*------------------------- table-control -----------------------*/
@@ -173,7 +173,7 @@ function fixStepIndicator(currentStep) {
 const itineraryRow = `<tr>
                 <td class="form-td">
                   <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
-                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
+                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'" style="font-size:1.4rem;">
                     <option value="" selected disabled>第?天</option>
                     <option value="1">第1天</option>
                     <option value="2">第2天</option>
@@ -183,43 +183,47 @@ const itineraryRow = `<tr>
                 </td>
                 <td class="form-td"><input name="schedule" type="time" id=""
                     class="text-center border-0 h-100 time-input form-input w-100"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'" style="font-size:1.4rem; opacity: 0.5;">
                 </td>
-                <td class="form-td"><input name="schedule" class="h-100 w-75 border-0 act-input text-center form-input"
-                    type="text" class="border-0"
-                    oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'" placeholder="活動名稱"
-                    style="margin-right: 1rem;">
-                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                <td class="form-td"><input name="schedule" class="h-100 w-50 border-0 act-input text-center form-input"
+                    type="text" oninput="this.className = 'h-100 w-50 border-0 act-input text-center form-input'"
+                    placeholder="活動名稱" style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 2.8rem;">
+                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="position: relative; left: 4rem; background-color: #006c9b;">
                     +</p>
                   <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
+                    style="margin-inline: 0.5rem; position: relative; left: 4rem; background-color: #006c9b;">
                     x</p>
                 </td>
               </tr>`;
 
 const privateItem = `<tr>
-                <td class="form-td"><input name="private" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="form-td"><input name="private" type="number"
-                    class="text-center border-0 w-25 h-100 form-input"
-                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
-                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                <td class="form-td"><input name="private" type="text" class=" border-0 text-center h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'text-center h-100 form-input'" style="font-size: 1.4rem;"></td>
+                <td class="form-td">
+                  <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
+                    oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
+                    style="position: relative; left: 2.7rem; font-size: 1.4rem;" placeholder="0">
+                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="position: relative; left: 3.7rem; background-color: #006c9b;">
                     +</p>
                   <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
+                    style="margin-inline: 0.5rem; position: relative; left: 3.7rem; background-color: #006c9b;">
                     x</p>
                 </td>
               </tr>`;
 const sharedItem = `<tr>
                 <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="form-td"><input name="shared" type="number" id=""
-                    class="text-center border-0 h-100 form-input w-50"
-                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
-                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'" style="font-size: 1.4rem;"></td>
+                <td class="form-td"><input name="shared" type="number"
+                    class="text-center border-0 h-100 form-input w-25"
+                    oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
+                    style="margin-right: 1rem; position: relative; left: 3.2rem; font-size: 1.4rem;" placeholder="0">
+                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="position: relative; left: 3.5rem; background-color: #006c9b;">
                     +</p>
                   <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
+                    style="margin-inline: 0.5rem; position: relative; left: 3.5rem; background-color: #006c9b;">
                     x</p>
                 </td>
               </tr>`;
@@ -280,7 +284,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '天狗溪噴泉</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -301,7 +304,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '翡翠谷</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -322,7 +324,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '火炎山</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px font-size: 8px;'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -344,7 +345,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '玻璃海灘</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -365,7 +365,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '燭台沙灘</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -386,7 +385,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '蝙蝠洞瀑布</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -407,7 +405,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '金樽陸連島</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -428,7 +425,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '雲龍瀑布</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -449,7 +445,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '北大武山步道</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
@@ -470,7 +465,6 @@ function initMap() {
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
           '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '精英瀑布</a>' +
-          "</h5><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
           "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
