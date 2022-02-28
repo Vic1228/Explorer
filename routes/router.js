@@ -18,8 +18,13 @@ router.get("/login", function (req, res) {
 });
 router.get("/signup", function (req, res) {
   res.render("hong_signup.ejs");
-});
+  });
 // 洪碩呈
+// router.post("/register", (req, res) => {
+//   // 將資料INSERT INTO上去
+//   console.log(req.body.signup);
+//   res.redirect("/hong_signup.ejs");
+// });
 
 // 傅意涵開始
 router.get("/trips", function (req, res) {
