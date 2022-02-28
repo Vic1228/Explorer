@@ -1,8 +1,14 @@
-body{
-    background-image: url(/public/img/yen/worn\ paper.png);
+.ttop {
+    background-image: url(/public/img/yen/trophytop.jpg);
     background-size: 100%;
 }
 
+#pagename {
+    text-align: center;
+    margin-top: 3vh;
+    color: black;
+    font-size: 2.5em;
+}
 
 .maincard {
     margin: auto;
@@ -40,14 +46,15 @@ body{
     /* background-color: aqua; */
     border-collapse: collapse;
     margin-left: 10%;
+    font-size: 1.2em;
 }
 
 .maincard .table2 {
     margin-left: 15%;
+    font-size: 1.2em;
 }
 
 .maincard20 td {
-    /* border: 3px solid rgb(165, 13, 211); */
     height: 40px;
 }
 
@@ -103,7 +110,7 @@ body{
 .light table {
     border-collapse: collapse;
     margin: auto;
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 .light tr, .light td {
@@ -181,7 +188,7 @@ hr.container {
 }
 
 .card12 table {
-    font-size: 2.2vh;
+    font-size: 1.4em;
     /* background-color: aqua; */
     border-collapse: collapse;
     margin-bottom: 20px;

@@ -26,31 +26,39 @@
   <!-- NAV BAR -->
   <div w3-include-HTML="../nav/nav.html"></div>
   <!-- NAV BAR -->
-
-  <div class="container navDistance">
-    <div>
-      <!-- 大頭貼 -->
+  <div style="height: 10vh;" class="ttop">
+    <h1 id="pagename">
+      <%= userName %> 的主頁
+    </h1>
+  </div>
+  <div style="height: 5vh;"></div>
+  <div class="d-flex container">
+    <div class="col-2"></div>
+    <!-- 大頭貼 -->
+    <div class="col-3">
       <div class="profile profile-name rounded-circle">
-        <img id="imagegrid" src='/public/img/yen/photo/<%= userEmail %>.png' alt="">
+        <img id="imagegrid" src='/public/img/yen/photo/<%= userEmail %>.png' class="img-thumbnail" alt="請補上照片">
         <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
           <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
         </form>
         <button id="photobtn">
           <label for="upload">
-            <img src="/public/img/yen/photo.png" alt="" style="width: 25px; height: 25px;">
+            <img src="/public/img/yen/photo.png" alt="" style="width: 35px; height: 35px;">
           </label>
         </button>
         <button form="aa" type="submit" id="photobtn2" style="display: none;">
-          <img src="/img/yen/save.png" alt="" style="width: 25px; height: 25px;">
+          <img src="/img/yen/save.png" alt="" style="width: 35px; height: 35px;">
         </button>
       </div>
-
-
-      <!-- 姓名(記得補上ejs變數 加在value) -->
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3 apple">
+      <!-- 姓名-->
       <div style="text-align: center;">
-        <form class="nameform" action="/rename" method="POST" id="nameform" style="display: inline-block;">
+        <!-- 輸入框 -->
+        <form action="/rename" method="POST" id="nameform" style="display: inline-block;">
           <input type="text" name="name" id="name" value='<%= userName %>' readonly class="text-center" size="5"
-            style="font-size: 1.3em;">
+          style="font-size: 2rem;">
         </form>
         <!-- save -->
         <button id="namebtn2" style="display: none;" class="btn" form="nameform">
@@ -65,9 +73,10 @@
 
       <!-- 電話 -->
       <div style="text-align: center;">
+        <!-- 輸入框 -->
         <form action="/rephone" method="POST" style="display: inline-block;" class="inputborder" id="telform">
           <span>Phone：</span>
-          <input type="tel" name="tel" id="tel" class="text-center" readonly value='<%= userPhone %>' size="20">
+          <input type="tel" style="font-size: 1.2rem;" name="tel" id="tel" class="text-center" readonly value='<%= userPhone %>' size="17">
         </form>
         <!-- save -->
         <button id="telbtn2" style="display: none;" class="btn" form="telform">
@@ -82,9 +91,10 @@
 
       <!-- 信箱 -->
       <div style="text-align: center;">
+        <!-- 輸入框 -->
         <form action="/remail" method="POST" style="display: inline-block;" class="inputborder" id="mailform">
           <span>E-mail：</span>
-          <input type="mail" name="mail" id="mail" class="text-center " readonly value='<%= userEmail %>' size="20">
+          <input type="mail" style="font-size: 1.2rem;" name="mail" id="mail" class="text-center " readonly value='<%= userEmail %>' size="17">
         </form>
         <!-- save -->
         <button id="mailbtn2" style="display: none;" class="btn" form="mailform">
@@ -96,57 +106,54 @@
         </button>
       </div>
     </div>
+    <div class="col-2"></div>
+  </div>
+  <div style="height: 5vh;"></div>
 
+  <hr class="m-auto w-75">
 
-    <!-- 能力值 -->
-    <div class="container col-11 d-flex" style="margin-top: 2vh;">
-      <div class="col-1"></div>
-      <div class="col-4">
-        <h5 class="text-center" style="margin-bottom: 4vh;">能力值</h5>
+  <div style="height: 5vh;"></div>
+  <!-- 能力值 -->
+  <div class="container d-flex h-100" style="padding-top: 2vh;">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
         <!-- 能力表 -->
-        <div class="ability-chart">
-          <canvas id="myChart"></canvas>
-        </div>
-        <p class="text-center" style="margin-top: 4vh;">評價人次：
+        <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
+        <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
           <span>
             <%= commentCount%>
           </span>
         </p>
-      </div>
-
-      <div class="col-1"></div>
-
-      <!-- 冒險經歷 -->
-      <div class="col-5">
-        <div style="">
-          <div style="margin-left: auto; margin-right: auto; width: 150px; text-align: center;">
-            <h5 id="exph5">冒險經歷
-              <!-- edit -->
-              <button id="textbtn" type="submit" class="btn">
-                <img id="textimg" src="/img/yen/edit.png" alt="">
-              </button>
-              <!-- save -->
-              <button id="textbtn2" style="display: none;" class="btn" type="submit" form="textarea">
-                <img id="textbtn2" src="/img/yen/save.png" alt="">
-              </button>
-            </h5>
-          </div>
-        </div>
-        <!-- 輸入框 -->
-        <div style="margin-left: 30px;">
-          <form action="/retext" method="POST" style="" id="textarea">
-            <textarea name="text" id="text" cols="40" rows="12" readonly><%= userExp %></textarea>
-          </form>
-        </div>
-        <div style="margin-left: 30px;">
-          <span style="">※此處將同步更新至個人資料</span>
-        </div>
-      </div>
-
-      <!-- <div class="col-1"></div> -->
     </div>
-    </form>
+
+    <div class="col-1"></div>
+
+    <!-- 冒險經歷 -->
+    <div class="col-4">
+        <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷
+          <!-- edit -->
+          <button id="textbtn" type="submit" class="btn">
+            <img id="textimg" src="/img/yen/edit.png" alt="">
+          </button>
+          <!-- save -->
+          <button id="textbtn2" style="display: none;" class="btn" type="submit" form="textarea">
+            <img id="textbtn2" src="/img/yen/save.png" alt="">
+          </button>
+        </h5>
+      <!-- 輸入框 -->
+      <div style="margin-top: 2vh;">
+        <form action="/retext" method="POST" id="textarea">
+          <textarea name="text" id="text" cols="46" rows="12" readonly><%= userExp %></textarea>
+        </form>
+      </div>
+      <div>
+        <span>※此處將同步更新至個人資料</span>
+      </div>
+    </div>
+    <!-- <div class="col-1"></div> -->
   </div>
+  </form>
 
 
 
@@ -166,12 +173,12 @@
           label: '<%= userName %>',
           data: ['<%= leadership %>', '<%= teamwork %>', '<%= strength%>', '<%= heal %>', '<%= surriral%>', '<%= direction %>'],
           fill: true,
-          backgroundColor: "rgb(100, 99, 132, 0.2)",
-          borderColor: "rgb(100, 99, 132, 0.1)",
-          pointBackgroundColor: "rgb(100, 99, 132, 0.5)",
-          pointBorderColor: "rgb(100, 99, 132)",
-          pointHoverBackgroundColor: "rgb(100, 99, 132)",
-          pointHoverBorderColor: "rgb(100, 99, 132)",
+          backgroundColor: "rgb(0, 108, 155, 0.2)",
+          borderColor: "rgb(0, 108, 155, 0.1)",
+          pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
+          pointBorderColor: "rgb(0, 108, 155)",
+          pointHoverBackgroundColor: "rgb(0, 108, 155)",
+          pointHoverBorderColor: "rgb(0, 108, 155)",
           pointRadius: 3,
         },
       ],
@@ -187,7 +194,7 @@
           tooltip: {
             displayColors: false,
             caretSize: 10,
-            backgroundColor: "rgb(100, 99, 132)",
+            backgroundColor: "rgb(0, 108, 155)",
           },
         },
         elements: {
@@ -197,8 +204,8 @@
         },
         scale: {
           beginAtZero: true,
-          min: 1,
-          max: 10,
+          min: 0,
+          max: 5,
           ticks: {
             stepSize: 1,
             font: {
@@ -210,12 +217,13 @@
           r: {
             pointLabels: {
               font: {
-                size: 14,
+                size: 20,
               },
+              color: "rgb(0, 108, 155)"
             },
             grid: {
               // 框線顏色
-              color: "rgb(100, 99, 132, 0.4)",
+              color: "rgb(0, 108, 155,0.4)",
             },
             ticks: {
               display: false,
