@@ -1,6 +1,7 @@
 /* ------------------------共用------------------------- */
 *{
     box-sizing: border-box;
+    color: #006c9b;
 }
 
 input:focus{
@@ -21,49 +22,47 @@ outline: 0;
 .tab{
   display: none;
 }
+/* -----------------封面圖----------------- */
+.create-trip-photo{
+  background-image: url(../..//img/lu/253-1440x500.jpg); 
+  width: auto; 
+  height: 40vh; 
+  background-size: cover;
+}
 
 /* -----------------流程圖----------------- */
 .step {
     z-index: 1; 
     cursor: pointer; 
-    background-color: #4c9acc;
+    background-color: #006c9b;
     border: none;
     border-radius: 50%;
     opacity: 0.3;
 }
-
+.step-text {
+  cursor: pointer;
+  color: #006c9b;
+  opacity: 0.5;
+}
 /* 步驟進行中 */
 .step.active {
     opacity: 1;
 }
-/* -----------------大頭貼----------------- */
-.profile{
-  margin: 0 auto;
-  width: 70px; 
-  height: 70px; 
-  background-color: rgb(100, 99, 132, 0.4);
-} 
-/* -----------------能力表----------------- */
-.ability-chart{
-  height: 30vh;
-  width: 14vw;
-  margin: 0 auto;
+.step-text.active {
+    opacity: 1;
 }
-/* -----------------封面圖----------------- */
-.create-trip-photo{
-  background-image: url(../..//img/lu/253-1440x500.jpg); 
-  width: auto; 
-  height: 60vh; 
-  background-size: cover;
-}
-
 /* -----------------活動名稱----------------- */
 .act-textarea{
   resize: none;
+  transition: 0.5s;
+  opacity: 0.5;
 }
 .day-count{
   margin-left: 1rem;
   font-size: 1.2rem;
+}
+.act-textarea:focus{
+  opacity: 1;
 }
 /* -----------------行程規劃----------------- */
 th ,td{
@@ -77,8 +76,10 @@ th ,td{
   color: white;
   margin: 0;
 }
-/* -----------------裝備清單----------------- */
 
+::placeholder{
+  color: #006c9b;
+}
 /* -------------------按鈕------------------- */
 .backtohome{
   width: 6rem;
@@ -103,55 +104,3 @@ th ,td{
   border: 0;
   background-color: rgb(247, 227, 227);
 }
-/* -------------------地圖------------------- */
-
-html{
-    box-sizing: border-box;
-    font-size: 100%;
-}
-
-*, *::before, *::after{
-    box-sizing: inherit;
-}
-
-body{
-  margin: 0;
-  padding: 0;
-}
-
-/* TODO: 改大小 */
-#map{
-    height: 80vh;
-    width: 50%;
-}
-
-.title{
-   padding: auto;
-   margin-left: 45%;
-}
-
-.infowindow-container {
-  display: flex;
-  overflow: hidden;
-  }
-
-  .inner{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .image{
-    object-fit: cover;
-    width: 100%;
-  }
-
-  button{
-    border:0;
-    background-color:#003C9D;
-    color:#fff;
-    border-radius:10px;
-    cursor:pointer;
-  }
