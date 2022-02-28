@@ -47,6 +47,7 @@ var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
 var tripManage = require('./routes/song_routes/song_tripManage');
 var createTrip = require('./routes/lu_routes/lu_createTrip')
+var yenpage = require('./routes/yen_routes/yen_routes')
 // var signupRouter = require('./routes/hong_routes/hong_login')
 const { promiseImpl } = require("ejs");
 app.use("/", homepageRouter);
