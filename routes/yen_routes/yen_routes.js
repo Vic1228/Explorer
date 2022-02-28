@@ -8,7 +8,7 @@ const path = require('path')
 
 const { CLIENT_CONNECT_WITH_DB } = require("mysql/lib/protocol/constants/client");
 const e = require("express");
-// const myChart = new Chart();
+
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -93,6 +93,14 @@ router.get("/profile", (req, res) => {
         sqltwo = `SELECT * FROM userstats where userId=3`
         connection.query(sqltwo, (err, result2) => {
             if (err) throw err;
+            let b = result2[0];
+            let a = result[0];
+            var obj = Object.assign(a, b);
+            // console.log(obj)
+            res.render("yen_profile.ejs", obj);
+
+
+
             // 要怎麼利用主檔名搜尋檔案
             // let filename = path.basename(result[0].userEmail)
             // let fileext = path.extname(result[0].userEmail)
@@ -100,11 +108,11 @@ router.get("/profile", (req, res) => {
             // console.log(fileext)
             // var fs = require('fs');
 
-            fs.readdir('public/img/yen/photo/', function (err, files) {
-                console.log(files)
-                    // .filter(function (file) { return file.substr(-5) === '.html'; })
-                    // .forEach(function (file) { fs.readFile(file, 'utf-8', function (err, contents) { inspectFile(contents); }); });
-            });
+            // fs.readdir('public/img/yen/photo/', function (err, files) {
+            //     console.log(files)
+            //         .filter(function (file) { return file.substr(-5) === '.html'; })
+            //         .forEach(function (file) { fs.readFile(file, 'utf-8', function (err, contents) { inspectFile(contents); }); });
+            // });
 
             // function inspectFile(contents) {
             //     if (contents.indexOf('data-template="home"') != -1) {
@@ -119,11 +127,6 @@ router.get("/profile", (req, res) => {
             //     console.log(err)
             // })
 
-            let b = result2[0];
-            let a = result[0];
-            var obj = Object.assign(a, b);
-            // console.log(obj)
-            res.render("yen_profile.ejs", obj);
         })
     });
 });
