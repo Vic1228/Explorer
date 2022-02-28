@@ -4,7 +4,8 @@ var mysql = require("mysql");
 const session = require('express-session');
 const multer = require('multer');
 const fs = require('fs')
-const Chart = require('chart.js');
+
+const { CLIENT_CONNECT_WITH_DB } = require("mysql/lib/protocol/constants/client");
 // const myChart = new Chart();
 
 var connection = mysql.createConnection({
@@ -19,7 +20,7 @@ connection.connect(function (error) {
         console.log(error);
         console.log("連結資料庫失敗！");
     } else {
-        console.log("已成功連結資料庫！");
+        console.log("仲硯已成功連結資料庫！");
     }
 });
 
@@ -27,7 +28,58 @@ connection.connect(function (error) {
 
 // 獎盃路由
 router.get("/trophy", function (req, res) {
-    res.render("yen_trophy.ejs");
+    let sql1 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by strength desc limit 10'
+    let sql2 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by heal desc limit 10'
+    let sql3 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by surriral desc limit 10'
+    let sql4 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by direction desc limit 10'
+    let sql5 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by leadership desc limit 10'
+    let sql6 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by teamwork desc limit 10'
+    let sql7 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by commentCount desc limit 20'
+    connection.query(sql1, (err, result1, fields) => {
+        if (err) throw err;
+        var string1 = JSON.stringify(result1);
+        var json1 = JSON.parse(string1);
+
+        connection.query(sql2, (err, result2, fields) => {
+            if (err) throw err;
+            var string2 = JSON.stringify(result2);
+            var json2 = JSON.parse(string2);
+
+            connection.query(sql3, (err, result3, fields) => {
+                if (err) throw err;
+                var string3 = JSON.stringify(result3);
+                var json3 = JSON.parse(string3);
+
+                connection.query(sql4, (err, result4, fields) => {
+                    if (err) throw err;
+                    var string4 = JSON.stringify(result4);
+                    var json4 = JSON.parse(string4);
+
+                    connection.query(sql5, (err, result5, fields) => {
+                        if (err) throw err;
+                        var string5 = JSON.stringify(result5);
+                        var json5 = JSON.parse(string5);
+
+                        connection.query(sql6, (err, result6, fields) => {
+                            if (err) throw err;
+                            var string6 = JSON.stringify(result6);
+                            var json6 = JSON.parse(string6);
+
+                            connection.query(sql7, (err, result7, fields) => {
+                                if (err) throw err;
+                                var string7 = JSON.stringify(result7);
+                                var json7 = JSON.parse(string7);
+                                console.log(json7)
+                                // var total = Object.assign(one,two);
+                                // console.log('total>>>>' + total)
+                                res.render("yen_trophy.ejs", { json1, json2, json3, json4, json5, json6, json7});
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
 });
 
 // 個人資料路由
@@ -37,13 +89,13 @@ router.get("/profile", (req, res) => {
     connection.query(sqlone, (err, result, fields) => {
         if (err) throw err;
         sqltwo = `SELECT * FROM userstats where userId=1`
-        connection.query(sqltwo,(err,result2)=>{
+        connection.query(sqltwo, (err, result2) => {
             if (err) throw err;
             let b = result2[0];
             console.log(b);
             let a = result[0];
             console.log(a);
-            var obj = Object.assign(a,b);
+            var obj = Object.assign(a, b);
             // res.render("yen_profile.ejs", a,b);
             console.log(obj)
             res.render("yen_profile.ejs", obj);

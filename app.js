@@ -46,6 +46,7 @@ var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
 var tripManage = require('./routes/song_routes/song_tripManage');
 var createTrip = require('./routes/lu_routes/lu_createTrip')
+var yenpage = require('./routes/yen_routes/yen_routes')
 const { promiseImpl } = require("ejs");
 app.use("/", homepageRouter);
 app.use("/spotInfo", spotInfoRouter);
@@ -53,6 +54,7 @@ app.use("/spotId", spotInfoRouter);
 app.use('/tripManage', tripManage);
 app.use('/createTrip',createTrip)
 app.use('/response',createTrip)
+app.use('/',yenpage)
 app.use("/", router);
 
 // ============= static file ===============
