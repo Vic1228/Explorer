@@ -1,17 +1,27 @@
+.ttop{
+  background-image: url(/public/img/yen/082608329.jpg);
+ background-size: 100%;
+}
+#pagename{
+  text-align: center;
+  margin-top: 3vh;
+  color: black;
+  font-size: 2.5em;
+  font-weight: 500;
+}
 /* -----------------大頭貼----------------- */
 .profile {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100px;
-  height: 100px;
+  margin: auto;
+  width: 150px;
+  height: 150px;
   background-color: rgb(100, 99, 132, 0.4);
   margin-bottom: 20px;
   position: relative;
 }
 
 #imagegrid {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 50%;
   z-index: 0;
@@ -19,9 +29,9 @@
 
 .profile button {
   position: absolute;
-  top: 70px;
-  left: 70px;
-  border-radius: 13px;
+  top: 105px;
+  left: 105px;
+  border-radius: 50%;
   background-color: aliceblue;
   z-index: 1;
 }
@@ -30,7 +40,7 @@
 
 
 .inputborder input{
-  border-bottom: solid black 2px;
+  border-bottom: solid #006c9b 2px;
   padding: 2px 2px;
 }
 
@@ -45,18 +55,15 @@ input :focus {
 }
 
 input {
-  margin-bottom: 1.5vh;
   outline-style: none;
   border: none;
 }
 
+.apple input{
+  margin-bottom: 2vh;
+}
 
 /* -----------------能力表----------------- */
-.ability-chart {
-  margin: auto;
-  height: 250px;
-  width: 250px;
-}
 
 textarea {
   resize: none;

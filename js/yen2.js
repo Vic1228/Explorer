@@ -18,13 +18,9 @@ inputelement.addEventListener('change', (a) => {
     const img = document.getElementById('imagegrid');
     reader.addEventListener('load', (a) => {
         // 檢視檔案大小並顯示
-        if (size < 1024 * 1024) {
-            img.src = a.target.result;
-            img.alt = files.name;
-            $("#imagegrid").show();
-        } else {
-            $("#imagegrid").hide();
-        }
+        img.src = a.target.result;
+        img.alt = files.name;
+        $("#imagegrid").show();
     });
 })
 
