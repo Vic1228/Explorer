@@ -24,6 +24,29 @@ img[class*="Icon"]{
 
 
 /* -------------------------------------------------------------------------- */
+/* ----------------------------- section 0 ---------------------------------- */
+/* -------------------------------------------------------------------------- */
+#section0{
+    margin: auto;
+    width:100vw;
+    height:400px;
+    overflow:hidden;
+     /* background-image:linear-gradient(rgb(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)),url('../../img/song_img/view1.jpg');
+    background-image:url('../../img/song_img/view1.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%; */
+}
+
+#section0 img{
+    width: 100%;
+    height: 100%; 
+
+}
+
+
+
+/* -------------------------------------------------------------------------- */
 /* ----------------------------- section 1 ---------------------------------- */
 /* -------------------------------------------------------------------------- */
 #section1{
@@ -35,7 +58,7 @@ img[class*="Icon"]{
 }
 
 .downArrow{
-    width:12px !important; 
+    width:12px !important;
 }
 
 .edit{
@@ -51,18 +74,16 @@ img[class*="Icon"]{
 
 /* ------- Left: trip select Start ------- */
 #tripSelContainer{
-    padding: 5vh 10vh;
+    padding: 5vh 13vh;
     text-align: center !important;
 }
 
 #tripSelContainer ul{
-    margin-top: 2vh;
-    position:relative;
-    right: 2vh;
+    margin-left: -45px;
 }
 
 #tripSelContainer li{
-    margin-bottom: 1vh;
+    margin: 3vh auto;
 }
 
 #createdTripContainer{
@@ -175,7 +196,7 @@ th,td{
 
 /* ------裝備清單----- */
 #itemList td {
-    padding:6px 0px 
+    padding:6px 0px
 }
 
 #itemList li {
@@ -192,7 +213,7 @@ th,td{
 
 /* ------- Rigtht: schedule Start ------- */
 #scheduleContainer{
-    padding: 5vh 10vh;
+    padding: 5vh 13vh;
     text-align: center;
 }
 
