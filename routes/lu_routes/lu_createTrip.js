@@ -22,7 +22,8 @@ var connection = mysql.createConnection({
 // 查詢users表的資料
 
 var userProfile;
-// var userStats;
+// TODO:
+var userStats;
 lu_createTrip_router.get("/", function (req, res) {
   // TODO: user判斷
   let test1 = `SELECT * FROM users`;
@@ -33,9 +34,9 @@ lu_createTrip_router.get("/", function (req, res) {
       console.log(results);
       userProfile = results[0];
       // use ejs
-      res.render('lu_createTrip', userProfile);
+      // res.render('lu_createTrip', userProfile);
     }
-    
+    // TODO: 
     //  let test2 = `SELECT * FROM userstats`;
     //  connection.query(test2, (err, results2, fields) => {
     //    if (err) throw err;
@@ -43,6 +44,7 @@ lu_createTrip_router.get("/", function (req, res) {
     //      userStats = results2[0];
     //      console.log(results2);
     //      console.log(userStats);
+         
     //    }
   })
 });
