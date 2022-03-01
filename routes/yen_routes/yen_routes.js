@@ -20,7 +20,7 @@ var connection = mysql.createConnection({
 connection.connect(function (error) {
     if (!!error) {
         console.log(error);
-        console.log("連結資料庫失敗！");
+        console.log("仲硯連結資料庫失敗！");
     } else {
         console.log("仲硯已成功連結資料庫！");
     }
@@ -71,9 +71,10 @@ router.get("/trophy", function (req, res) {
                                 if (err) throw err;
                                 var string7 = JSON.stringify(result7);
                                 var json7 = JSON.parse(string7);
-                                console.log(json7)
-                                // var total = Object.assign(one,two);
-                                // console.log('total>>>>' + total)
+                                console.log(json7[0])
+                                var total = Object.assign(json1[0],json2[1]);
+                                console.log(total)
+                                
                                 res.render("yen_trophy.ejs", { json1, json2, json3, json4, json5, json6, json7 });
                             })
                         })
@@ -87,10 +88,10 @@ router.get("/trophy", function (req, res) {
 // 個人資料路由
 
 router.get("/profile", (req, res) => {
-    let sqlone = `SELECT * FROM users where userId=3`;
+    let sqlone = `SELECT * FROM users where userId=1`;
     connection.query(sqlone, (err, result, fields) => {
         if (err) throw err;
-        sqltwo = `SELECT * FROM userstats where userId=3`
+        sqltwo = `SELECT * FROM userstats where userId=1`
         connection.query(sqltwo, (err, result2) => {
             if (err) throw err;
             let b = result2[0];
