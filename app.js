@@ -236,4 +236,3 @@ app.get('/logout', function (req, res) {
 app.listen(3001, function () {
   console.log('http://127.0.0.1:3001')
 })
-
