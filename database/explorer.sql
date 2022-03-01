@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- 主機： 127.0.0.1
--- 產生時間： 2022-02-25 09:34:06
--- 伺服器版本： 10.4.22-MariaDB
--- PHP 版本： 8.1.1
+-- 主機： localhost:8889
+-- 產生時間： 2022 年 03 月 01 日 09:20
+-- 伺服器版本： 5.7.34
+-- PHP 版本： 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫: `Explorer`
+-- 資料庫： `explorer`
 --
 
 -- --------------------------------------------------------
@@ -153,9 +153,16 @@ CREATE TABLE `users` (
   `userEmail` varchar(20) NOT NULL,
   `userPassword` varchar(15) NOT NULL,
   `userPhone` varchar(10) NOT NULL,
-  `userExp` varchar(80) NOT NULL,
-  `userImgNum` int(20) NOT NULL
+  `userExp` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `users`
+--
+
+INSERT INTO `users` (`userId`, `userName`, `userEmail`, `userPassword`, `userPhone`, `userExp`) VALUES
+(1, '你好', '123@123', '123', '12345678', '你好'),
+(4, 'abc', 'abc@abc', 'abc', '', '');
 
 -- --------------------------------------------------------
 
@@ -173,6 +180,13 @@ CREATE TABLE `userstats` (
   `direction` int(20) DEFAULT NULL,
   `commentCount` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `userstats`
+--
+
+INSERT INTO `userstats` (`userId`, `leadership`, `teamwork`, `strength`, `heal`, `surriral`, `direction`, `commentCount`) VALUES
+(1, 2, 3, 4, 5, 4, 4, '2');
 
 --
 -- 已傾印資料表的索引
@@ -282,13 +296,7 @@ ALTER TABLE `trips`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `userstats`
---
-ALTER TABLE `userstats`
-  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

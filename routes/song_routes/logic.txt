@@ -1,0 +1,30 @@
+trip priority =>
+1. 過期 && 發起
+2. 發起
+4. 過期 && 參加
+5. 參加
+
+
+
+selecttrip{
+
+    if ( user == creater ){
+        該trip放在“發起的行程”
+
+    } 
+    else {
+        該trip放在“參加的行程”
+    }
+
+
+    if ( trip過期 ){
+        1. SelTrip清單上該trip名字旁加上驚嘆號
+        2. 團員／待審核旁加上驚嘆號
+        3. activate"我要評分"
+        4. deactivate"edit"
+        5. clear 申請名單
+    }
+    else 
+
+
+}
