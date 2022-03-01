@@ -19,129 +19,135 @@
   <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
   <title>Document</title>
-  <style>
-    * {
-      /* border: 1px black solid; */
-    }
-  </style>
+
 </head>
 
-<body style="height: 100vh;">
+<body>
   <!-- NAV BAR -->
   <div w3-include-HTML="../nav/nav.html"></div>
-  <!-- NAV BAR -->
-  <!-- TODO: FORM -->
+  <!-- FORM -->
   <form action="/response" name="createForm" method="post">
-    <div class="container d-flex" style="padding-block: 15vh;">
+    <!-- 圖片 -->
+    <div class="create-trip-photo">
+    </div>
+    <div class="container d-flex" style="padding-block: 6vh;">
       <div class="col-2"></div>
       <div class="col-8">
         <!-- 步驟 -->
         <div class="d-flex justify-content-around">
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>發起人簡介</span>
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>行程介紹</span>
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>行程規劃</span>
-          <span id="step" class="step" style="width: 20px; height: 20px;"></span>
-          <span>裝備清單</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span class="step-text" style="font-size: 1.5rem;">發起人簡介</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span class="step-text" style="font-size: 1.5rem;">行程介紹</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span class="step-text" style="font-size: 1.5rem;">行程規劃</span>
+          <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
+          <span class="step-text" style="font-size: 1.5rem;">裝備清單</span>
         </div>
       </div>
       <div class="col-2"></div>
     </div>
     <!-- TODO: 發起人簡介tab -->
-    <!-- 串接的資料表 users  -->
     <div class="tab">
-      <!-- 大頭貼 -->
-      <div class="profile profile-name rounded-circle"></div>
-      <!-- 姓名 -->
-      <h6 class="text-center m-0" style="padding-top: 2vh;">王小明</h6>
-      <!-- 電話 -->
-      <p class="text-center m-0" style="font-size: 10px; padding-top: 2vh;">0934-445-873</p>
-      <!-- 信箱 -->
-      <p class="text-center m-0" style="font-size: 10px;">brad123@gmail.com</p>
-      <div class="container d-flex" style="margin-top: 10vh;">
+      <div class="container d-flex" style="padding-bottom: 6vh;">
+        <div class="col-2"></div>
+        <!-- 大頭貼 -->
+        <div class="col-3">
+          <div class="rounded-circle m-auto w-50">
+            <img class="img-thumbnail rounded-circle" src="../public/img/lu/profile.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3 m-auto text-center">
+          <!-- 姓名 -->
+          <p class="m-0" style="font-size: 2rem;">阿寶</p>
+          <!-- 電話 -->
+          <p class="m-0" style="font-size: 1.2rem;">0934-445-873</p>
+          <!-- 信箱 -->
+          <p class="m-0" style="font-size: 1.2rem;">finn123@gmail.com</p>
+        </div>
+        <div class="col-2"></div>
+      </div>
+
+      <hr class="m-auto w-75">
+      <!--  -->
+      <div class="container d-flex h-100" style="padding-top: 6vh;">
         <div class="col-2"></div>
         <div class="col-3">
-          <h6 class="text-center" style="margin-bottom: 4vh;">能力值</h6>
-          <div class="ability-chart">
-            <!-- 能力值-->
-            <canvas id="myChart"></canvas>
-          </div>
-          <p class="text-center" style="margin-top: 3vh; font-size: 10px;">評價人次：
+          <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
+          <!-- 能力值-->
+          <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
+          <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
             <!-- 評價人次 -->
             <span>?</span>
           </p>
         </div>
         <div class="col-1"></div>
         <div class="col-4">
-          <h6 class="text-center" style="margin-bottom: 4vh;">冒險經歷</h6>
-          <div class="d-flex" style="margin-top: 8vh;">
-            <div class="col-2"></div>
-            <div class="col-9">
-              <p style="font-size: 10px; line-height: 2rem;">
-                <!-- TODO: -->
-                完成台灣百岳的第一人、世界四大極地超級馬拉松巡迴賽總冠軍、發起擁抱絲路計劃，帶團隊穿越絲路等壯舉，希望能找到熱愛登山的夥伴。
-              </p>
-              <span class="text-danger" style="font-size: 10px;">※此處將同步更新至個人資料</span>
-            </div>
-            <div class="col-1"></div>
+          <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷</h6>
+          <!-- 冒險經歷 -->
+          <div style="padding-block: 2.5rem; padding-inline: 3rem;">
+            <p style="font-size: 1.3rem; line-height: 2.5rem;">
+              完成台灣百岳的第一人、世界四大極地超級馬拉松巡迴賽總冠軍、發起擁抱絲路計劃，帶團隊穿越絲路等壯舉，希望能找到熱愛登山的夥伴一起探索台灣的美。
+            </p>
           </div>
         </div>
-        <div class="col-2"></div>
       </div>
     </div>
+    <div class="col-2"></div>
+    </div>
+    </div>
     <!-- TODO: 活動簡介tab -->
-    <!-- 存入的資料表 name="trips" #tripId# #spotId# / tripName, tripDesc, tripStartDate, tripEndDate-->
     <div class="tab">
-      <div class="container d-flex">
+      <div class="container d-flex" style="padding-bottom: 6vh;">
         <div class="col-1"></div>
         <div class="col-4">
-          <h6 style="margin-bottom: 2vh;">活動名稱</h6>
+          <h6 style="font-size: 1.7rem;">活動名稱</h6>
           <!-- TODO: 活動名稱 -->
-          <input name="trip" class="act-textarea w-100 form-input"
-            oninput="this.className = 'act-textarea w-100 form-input'" type="text" style="margin-bottom: 2vh;">
-          <h6 style="margin-bottom: 2vh;">活動描述</h6>
+          <input name="trip" class="act-textarea w-100 form-input p-2"
+            oninput="this.className = 'act-textarea w-100 form-input p-2'" type="text"
+            style="border: 2px solid #006c9b;">
+          <h6 style="font-size: 1.7rem; padding-top: 1rem;">活動描述</h6>
           <!-- TODO: 活動描述 -->
-          <textarea name="trip" class="act-textarea w-100 form-input"
-            oninput="this.className = 'act-textarea w-100 form-input'" id=""
-            style="height: 7rem; margin-bottom: 2vh;"></textarea>
-          <h6 style="margin-bottom: 2vh;">日期</h6>
+          <textarea name="trip" class="act-textarea w-100 form-input p-2"
+            oninput="this.className = 'act-textarea w-100 form-input p-2'" id=""
+            style="height: 7rem; border: 2px solid #006c9b;"></textarea>
+          <h6 style="font-size: 1.7rem; padding-top: 1rem;">日期</h6>
           <!-- TODO: 開始日期 -->
-          <p><input name="trip" class="act-textarea form-input w-50 mb-3"
-              oninput="this.className = 'act-textarea form-input w-50 mb-3'" type="date" id="startDate">
-            <!-- TODO: 結束日期 -->
-            <input name="trip" class="act-textarea form-input w-50"
-              oninput="this.className = 'act-textarea form-input w-50'" type="date" id="endDate">
-          </p>
+          <input name="trip" class="act-textarea form-input p-2"
+            oninput="this.className = 'act-textarea form-input p-2'" type="date" id="startDate"
+            style="width: 45%; margin-right: 1rem; border: 2px solid #006c9b;">
+          <!-- TODO: 結束日期 -->
+          <input name="trip" class="act-textarea form-input p-2"
+            oninput="this.className = 'act-textarea form-input p-2'" type="date" id="endDate"
+            style="width: 45%; border: 2px solid #006c9b;">
         </div>
         <div class="col-1"></div>
         <div class="col-5">
-          <h6 style="margin-bottom: 2vh;">目的地</h6>
+          <h6 style="font-size: 1.7rem;">目的地</h6>
           <!-- TODO: 地圖 -->
-          <div id="map" style="width: 100%; height: 60vh; outline: 1px rgb(145, 145, 145) solid;"></div>
+          <div id="map" style="width: 100%; height: 59vh;"></div>
         </div>
         <div class="col-1"></div>
       </div>
     </div>
     <!-- TODO: 行程規劃tab -->
-    <!-- 存入的資料表 name="schedules" #tripId# / day, startTime, activity-->
     <div class="tab">
       <div class="container d-flex">
         <div class="col-1"></div>
         <div class="col-10">
           <!-- 表格 -->
-          <table id="ItineraryTable" class="table table-bordered text-center">
+          <table id="ItineraryTable" class="table table-bordered text-center" style="border-color: #006c9b;">
             <thead>
               <tr>
                 <th class="h-100">
-                  <h6>行程</h6>
+                  <h4 class="m-auto">行程</h4>
                 </th>
                 <th class="h-100">
-                  <h6>時間</h6>
+                  <h4 class="m-auto">時間</h4>
                 </th>
                 <th class="h-100">
-                  <h6>活動</h6>
+                  <h4 class="m-auto">活動</h4>
                 </th>
               </tr>
             </thead>
@@ -150,7 +156,7 @@
                 <!-- TODO: 第幾天 -->
                 <td class="form-td">
                   <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
-                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
+                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'" style="font-size: 1.4rem;">
                     <option value="" selected disabled>第?天</option>
                     <option value="1">第1天</option>
                     <option value="2">第2天</option>
@@ -161,17 +167,18 @@
                 <!-- TODO: 時間 -->
                 <td class="form-td"><input name="schedule" type="time" id=""
                     class="text-center border-0 h-100 time-input form-input w-100"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'"
+                    style="font-size: 1.4rem; opacity: 0.5;">
                 </td>
                 <!-- TODO: 活動名稱 -->
-                <td class="form-td"><input name="schedule" class="h-100 w-75 border-0 act-input text-center form-input"
-                    type="text" class="border-0"
-                    oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'" placeholder="活動名稱"
-                    style="margin-right: 1rem;">
-                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                <td class="form-td"><input name="schedule" class="h-100 w-50 border-0 act-input text-center form-input"
+                    type="text" oninput="this.className = 'h-100 w-50 border-0 act-input text-center form-input'"
+                    placeholder="活動名稱" style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 2.8rem;">
+                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="position: relative; left: 4rem; background-color: #006c9b;">
                     +</p>
                   <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem; visibility:hidden">
+                    style="margin-inline: 0.5rem; visibility:hidden; background-color: #006c9b;">
                     x</p>
                 </td>
               </tr>
@@ -182,65 +189,68 @@
       </div>
     </div>
     <!-- TODO: 裝備清單tab -->
-    <!-- 存入的資料表 name="privateitems" #tripId# / privateItemName itemCount -->
-    <!-- 存入的資料表 name="shareditems" #tripId# #userId# / sharedItemName itemCount -->
     <div class="tab">
       <div class="container d-flex">
-        <div class="col-5">
-          <h6 style="margin-bottom: 3vh">私人裝備</h6>
-          <table id="privateItemTable" class="table table-bordered text-center">
+        <div class="col-6">
+          <h3 class="text-center">私人裝備</h3>
+          <table id="privateItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
             <thead>
               <th class="h-100">
-                <h6>物品名稱</h6>
+                <h4 class="m-auto">物品名稱</h4>
               </th>
               <th class="h-100">
-                <h6>數量</h6>
+                <h4 class="m-auto">數量</h4>
               </th>
             </thead>
             <tbody>
               <tr>
                 <!-- TODO: 裝備名稱 -->
-                <td class="form-td"><input name="private" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                <td class="form-td"><input name="private" type="text" class="border-0 text-center h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'border-0 text-center h-100 form-input'"
+                    style="font-size: 1.4rem;"></td>
                 <!-- TODO: 數量 -->
-                <td class="form-td"><input name="private" type="number"
-                    class="text-center border-0 w-25 h-100 form-input"
-                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
-                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                <td class="form-td">
+                  <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
+                    oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
+                    style="position: relative; left: 2.7rem; font-size: 1.4rem;" placeholder="0">
+                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="position: relative; left: 3.7rem; background-color: #006c9b;">
                     +</p>
                   <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem; visibility:hidden">
+                    style="margin-inline: 0.5rem; position: relative; left: 3.7rem; visibility:hidden; background-color: #006c9b;">
                     x</p>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="col-1"></div>
         <div class="col-6">
-          <h6 style="margin-bottom: 3vh">公用裝備</h6>
-          <table id="sharedItemTable" class="table table-bordered text-center">
+          <h3 class="text-center">公用裝備</h3>
+          <table id="sharedItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
             <thead>
               <th class="h-100">
-                <h6>物品名稱</h6>
+                <h4 class="m-auto">物品名稱</h4>
               </th>
               <th class="h-100">
-                <h6>能提供數量</h6>
+                <h4 class="m-auto">能提供數量</h4>
               </th>
             </thead>
             <tbody>
               <tr>
                 <!-- TODO: 裝備名稱 -->
                 <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"
+                    style="font-size: 1.4rem;"></td>
                 <!-- TODO: 數量 -->
-                <td class="form-td"><input name="shared" type="number" id=""
-                    class="text-center border-0 h-100 form-input w-50"
-                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
-                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
+                <td class="form-td"><input name="shared" type="number"
+                    class="text-center border-0 h-100 form-input w-25"
+                    oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
+                    style="margin-right: 1rem; position: relative; left: 3.2rem; font-size: 1.4rem;" placeholder="0">
+                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                    style="position: relative; left: 3.5rem; background-color: #006c9b;">
                     +</p>
                   <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem; visibility:hidden">
+                    style="margin-inline: 0.5rem; position: relative; left: 3.5rem; visibility:hidden; background-color: #006c9b;">
                     x</p>
                 </td>
               </tr>
@@ -250,22 +260,23 @@
       </div>
     </div>
     <!-- TODO: 按鈕 -->
-    <div class="container text-center" style="margin-top: 5vh;">
+    <div class="container text-center" style="padding-block: 5vh;">
       <!-- 返回  -->
-      <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn btn-secondary" style="margin-right: 1rem;">返回
+      <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn"
+        style="margin-right: 1rem; background-color: #006c9b; color: whitesmoke;">返回
       </button>
       <!-- 下一步  -->
-      <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn btn-secondary" style="margin-left: 1rem;">下一步
+      <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn"
+        style="margin-left: 1rem; background-color: #006c9b; color: whitesmoke;">下一步
       </button>
       <!-- TODO: 提交 -->
-      <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn btn-secondary"
-        style="margin-left: 1rem; display: none;"></button>
+      <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn"
+        style="margin-left: 1rem; display: none; background-color: #006c9b; color: whitesmoke;"></button>
     </div>
   </form>
   <!-- FORM -->
   <!-- FOOTER -->
-  <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
-  <!-- FOOTER -->
+  <div w3-include-HTML="../footer/footer.html" class="footerDistance m-0"></div>
   <!-- Library -->
   <script src="../public/js/lu/Lu_create.js"></script>
   <script>
