@@ -31,8 +31,8 @@
     <div class="create-trip-photo">
     </div>
     <div class="container d-flex" style="padding-block: 6vh;">
-      <div class="col-2"></div>
-      <div class="col-8">
+      <div class="col-1"></div>
+      <div class="col-10">
         <!-- 步驟 -->
         <div class="d-flex justify-content-around">
           <span id="step" class="step" style="width: 1.5rem; height: 1.5rem; margin: auto;"></span>
@@ -45,7 +45,7 @@
           <span class="step-text" style="font-size: 1.5rem;">裝備清單</span>
         </div>
       </div>
-      <div class="col-2"></div>
+      <div class="col-1"></div>
     </div>
     <!-- TODO: 發起人簡介tab -->
     <div class="tab">
@@ -59,12 +59,18 @@
         </div>
         <div class="col-1"></div>
         <div class="col-3 m-auto text-center">
-          <!-- 姓名 -->
-          <p class="m-0" style="font-size: 2rem;">阿寶</p>
+          <p class="m-0" style="font-size: 2rem;">
+            <!-- 姓名 -->
+            <%= userName %>
+          </p>
           <!-- 電話 -->
-          <p class="m-0" style="font-size: 1.2rem;">0934-445-873</p>
+          <p class="m-0" style="font-size: 1.2rem;">
+            <%= userPhone %>
+          </p>
           <!-- 信箱 -->
-          <p class="m-0" style="font-size: 1.2rem;">finn123@gmail.com</p>
+          <p class="m-0" style="font-size: 1.2rem;">
+            <%= userEmail %>
+          </p>
         </div>
         <div class="col-2"></div>
       </div>
@@ -86,9 +92,9 @@
         <div class="col-4">
           <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷</h6>
           <!-- 冒險經歷 -->
-          <div style="padding-block: 2.5rem; padding-inline: 3rem;">
-            <p style="font-size: 1.3rem; line-height: 2.5rem;">
-              完成台灣百岳的第一人、世界四大極地超級馬拉松巡迴賽總冠軍、發起擁抱絲路計劃，帶團隊穿越絲路等壯舉，希望能找到熱愛登山的夥伴一起探索台灣的美。
+          <div style="padding-top: 3rem; padding-inline: 2.5rem;">
+            <p style="font-size: 1.3rem; line-height: 3rem;">
+              <%= userExp %>
             </p>
           </div>
         </div>
@@ -287,7 +293,78 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places"
     async defer></script>
-  <!-- Library -->
+  <!-- chart.js -->
+  <script>
+    /*---------------------------------------------------------------*/
+    /*----------------------------- chart ---------------------------*/
+    /*---------------------------------------------------------------*/
+    const data = {
+      labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
+      datasets: [
+        {
+          // TODO: 動態產生
+          data: [5, 3, 5, 4, 2, 5],
+          fill: true,
+          backgroundColor: "rgb(0, 108, 155, 0.2)",
+          borderColor: "rgb(0, 108, 155, 0.1)",
+          pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
+          pointBorderColor: "rgb(0, 108, 155)",
+          pointHoverBackgroundColor: "rgb(0, 108, 155)",
+          pointHoverBorderColor: "rgb(0, 108, 155)",
+          pointRadius: 3,
+        },
+      ],
+    };
+    const config = {
+      type: "radar",
+      data: data,
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            displayColors: false,
+            caretSize: 10,
+            backgroundColor: "rgb(0, 108, 155)",
+          },
+        },
+        elements: {
+          line: {
+            borderWidth: 1,
+          },
+        },
+        scale: {
+          beginAtZero: true,
+          min: 0,
+          max: 5,
+          ticks: {
+            stepSize: 1,
+            font: {
+              size: 0,
+            },
+          },
+        },
+        scales: {
+          r: {
+            pointLabels: {
+              font: {
+                size: 20,
+              },
+              color: "rgb(0, 108, 155)"
+            },
+            grid: {
+              color: "rgb(0, 108, 155, 0.4)",
+            },
+            ticks: {
+              display: true,
+            },
+          },
+        },
+      },
+    };
+    const myChart = new Chart(document.getElementById("myChart"), config);
+  </script>
 </body>
 
 </html>

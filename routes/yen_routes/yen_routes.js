@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
     user: "root",
     password: "root", //if mac ,須設定為root
     database: "explorer",
-    port: "3307",
+    port: "3306",
 });
 connection.connect(function (error) {
     if (!!error) {

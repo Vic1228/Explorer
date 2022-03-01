@@ -27,16 +27,37 @@ connection.connect(function (error) {
 
 // ============= form ===============
 
-// post
-lu_createTrip_router.get("/", function (req, res) {
-  res.render("lu_createTrip.ejs");
-});
-
 // 查詢users表的資料
-// connection.query("SELECT userName,userPhone,userEmail,userExperience FROM users WHERE userId = 1", function (err, result, fields) {
-//   if (err) throw err;
-//   console.log(result);
-// });
+
+var userProfile;
+// var userStats;
+lu_createTrip_router.get("/", function (req, res) {
+  // TODO: user判斷
+  let test1 = `SELECT * FROM users`;
+  connection.query(test1, (err, results, fields) => {
+
+    if (err) throw err;
+    else {
+      console.log(results);
+      userProfile = results[0];
+      // use ejs
+      res.render('lu_createTrip', userProfile);
+    }
+    
+    //  let test2 = `SELECT * FROM userstats`;
+    //  connection.query(test2, (err, results2, fields) => {
+    //    if (err) throw err;
+    //    else {
+    //      userStats = results2[0];
+    //      console.log(results2);
+    //      console.log(userStats);
+    //    }
+  })
+});
+  
+
+
+// 查詢userstats表的資料
 
 // 傳送表單的資料進資料庫
 
