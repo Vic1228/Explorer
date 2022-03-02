@@ -16,6 +16,10 @@ var connection = mysql.createConnection({
   database: "explorer",
   port: "3306",
 });
+connection.connect((err) => {
+  if (err) throw err
+})
+
 
 // ============= form ===============
 
@@ -25,43 +29,40 @@ var connection = mysql.createConnection({
 var userProfile;
 var userStats;
 lu_createTrip_router.get("/", function (req, res) {
-  // TODO: user判斷
+
+  //  user判斷
   let test1 = `SELECT * FROM users`;
   connection.query(test1, (err, results, fields) => {
 
     if (err) throw err;
-    console.log(results);
     userProfile = results[0];
-    // use ejs
-    // res.render('lu_createTrip', userProfile);
-    // TODO:
+
+    
     let test2 = `SELECT * FROM userstats`;
     connection.query(test2, (err, results2, fields) => {
       if (err) throw err;
-      console.log(results2);
       userStats = results2[0];
       var obj = Object.assign(userStats, userProfile);
-      console.log(obj);
       // use ejs
       res.render('lu_createTrip', obj);
     });
-    // 
     });
 });
 
 // 傳送表單的資料進資料庫
 
 lu_createTrip_router.post("/response", function (req, res) {
+  console.log('hi')
   let trip = req.body.trip;
   let schedule = req.body.schedule;
   let private = req.body.private;
   let shared = req.body.shared;
 
-  //  trip
 
+
+  //  trip
   // 查詢舊的tripId存入變數
   var tripId;
-  var day;
   connection.query(
     "SELECT * FROM trips WHERE tripId",
     function (error, results) {
@@ -69,8 +70,8 @@ lu_createTrip_router.post("/response", function (req, res) {
       else {
         tripId = results[results.length - 1].tripId;
       };
-      let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-        VALUES ("", "${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+      let tripSQL = `INSERT INTO trips (tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
+        VALUES ("${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
       connection.query(tripSQL, (err, result, fields) => {
         if (err) throw err;
       });
@@ -87,7 +88,7 @@ lu_createTrip_router.post("/response", function (req, res) {
 
       // private
       for (var i = 0; i < private.length; i += 2) {
-        let privateSQL = `INSERT INTO privateItems (tripId, privateItemName, ItemCount) 
+        let privateSQL = `INSERT INTO privateItems (tripId, privateItem, ItemCount) 
           VALUES ("${tripId}", "${private[i + 0]}", "${private[i + 1]}")`;
         connection.query(privateSQL, (err, result, fields) => {
           if (err) throw err;
@@ -96,16 +97,15 @@ lu_createTrip_router.post("/response", function (req, res) {
 
       // shared
       for (var i = 0; i < shared.length; i += 2) {
-        let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItemName, itemCount) 
+        let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItem, itemCount) 
           VALUES ("${tripId}", "", "${shared[i + 0]}", "${shared[i + 1]}")`;
         connection.query(sharedSQL, (err, result, fields) => {
           if (err) throw err;
         });
       };
     });
+    res.render("lu_createFormComplete.ejs");
   // 渲染
-  res.render("lu_createFormComplete.ejs");
 });
-
 
 module.exports = lu_createTrip_router;

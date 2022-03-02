@@ -12,37 +12,37 @@
 
 <body>
   <div class="wrapper">
-      <header>會員登入</header>
+    <header>會員登入</header>
 
-      <form id="userLogin" action="/login" method="POST">
+    <form id="userLogin" action="/login" method="POST">
 
-          <div class="field email">
-              <div class="input-area">
-                  <input type="email" class="loginEmail" name="useremail" placeholder="E-mail" />
-                  <i class="icon fas fa-envelope"></i>
-                  <i class="error error-icon fas fa-exclamation-circle"></i>
-              </div>
-              <div class="error error-txt">Email不能是空的</div>
-          </div>
+      <div class="field email">
+        <div class="input-area">
+          <input type="email" class="loginEmail" name="useremail" placeholder="E-mail" />
+          <i class="icon fas fa-envelope"></i>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">Email不能是空的</div>
+      </div>
 
-          <div class="field password">
-              <div class="input-area">
-                  <input type="password" class="loginPassword" name="userpassword" placeholder="密碼">
-                  <i class="icon fas fa-lock"></i>
-                  <i class="error error-icon fas54y1<%- 671 %>  fa-exclamation-circle"></i>
-              </div>
-              <div class="error error-txt">密碼不能是空的</div>
-          </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" class="loginPassword" name="userpassword" placeholder="密碼">
+          <i class="icon fas fa-lock"></i>
+          <i class="error error-icon fas54y1<%- 671 %>  fa-exclamation-circle"></i>
+        </div>
+        <div class="error error-txt">密碼不能是空的</div>
+      </div>
 
-          <div class="forgetPwBtn"><a href="/" class="forget">HOME</a></div>
-          <input type="submit" class="loginBtn" name="login" value="登入">
+      <div class="forgetPwBtn"><a href="/" class="forget">HOME</a></div>
+      <input type="submit" class="loginBtn" name="login" value="登入">
 
-      </form>
-      <div class="sign-txt">還不是會員？<a href="/signup" class="signup">註冊</a> </div>
+    </form>
+    <div class="sign-txt">還不是會員？<a href="/signup" class="signup">註冊</a></div>
   </div>
 
   <script>
-    
+
     // $('.userLogin').submit(function () {
     //   e.preventDefault();
     //   var formData = new FormData();
