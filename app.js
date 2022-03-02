@@ -31,14 +31,7 @@ var connection = mysql.createConnection({
   database: "explorer",
   port: "3306",
 });
-// connection.connect(function (error) {
-//   if (!!error) {
-//     console.log(error);
-//     console.log("連結資料庫失敗！");
-//   } else {
-//     console.log("已成功連結資料庫！");
-//   }
-// });
+
 
 // ============= router ===============
 
@@ -55,7 +48,7 @@ app.use("/spotInfo", spotInfoRouter);
 app.use("/spotId", spotInfoRouter);
 app.use('/tripManage', tripManage);
 app.use('/createTrip', createTrip)
-app.use('/response', createTrip)
+app.use('/', createTrip)
 app.use('/', yenpage)
 app.use("/", router);
 // app.use("/signup",signupRouter )

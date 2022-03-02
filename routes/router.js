@@ -39,16 +39,6 @@ router.get("/tripInfo", function (req, res) {
 //仲硯
 
 
-// 呂學奇
-router.get("/createTrip", function (req, res) {
-  res.render("lu_createTrip.ejs");
-});
-router.post("/response", function (req, res) {
-  res.render("lu_createFormComplete.ejs");
-});
-
-// 呂學奇
-
 
 // 葉宜松
 module.exports = router;
