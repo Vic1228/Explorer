@@ -1,22 +1,55 @@
 var express = require("express");
 var lu_createTrip_router = express.Router();
+var app = express();
+var session = require('express-session');
 
 
-// 呂學奇
-lu_createTrip_router.get("/", function (req, res) {
-  res.render("lu_createTrip.ejs");
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root", //if mac ,須設定為root
+  database: "explorer",
+  port: "3306",
 });
 
 // ============= form ===============
 
 // 查詢users表的資料
-// connection.query("SELECT userName,userPhone,userEmail,userExperience FROM users WHERE userId = 1", function (err, result, fields) {
-//   if (err) throw err;
-//   console.log(result);
-// });
+
+// TODO:
+var userProfile;
+var userStats;
+lu_createTrip_router.get("/", function (req, res) {
+  // TODO: user判斷
+  let test1 = `SELECT * FROM users`;
+  connection.query(test1, (err, results, fields) => {
+
+    if (err) throw err;
+    console.log(results);
+    userProfile = results[0];
+    // use ejs
+    // res.render('lu_createTrip', userProfile);
+    // TODO:
+    let test2 = `SELECT * FROM userstats`;
+    connection.query(test2, (err, results2, fields) => {
+      if (err) throw err;
+      console.log(results2);
+      userStats = results2[0];
+      var obj = Object.assign(userStats, userProfile);
+      console.log(obj);
+      // use ejs
+      res.render('lu_createTrip', obj);
+    });
+    // 
+    });
+});
 
 // 傳送表單的資料進資料庫
-
 
 lu_createTrip_router.post("/response", function (req, res) {
   let trip = req.body.trip;
@@ -35,7 +68,7 @@ lu_createTrip_router.post("/response", function (req, res) {
       if (error) throw error;
       else {
         tripId = results[results.length - 1].tripId;
-      }
+      };
       let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
         VALUES ("", "${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
       connection.query(tripSQL, (err, result, fields) => {
@@ -50,7 +83,7 @@ lu_createTrip_router.post("/response", function (req, res) {
         connection.query(scheduleSQL, (err, result, fields) => {
           if (err) throw err;
         });
-      }
+      };
 
       // private
       for (var i = 0; i < private.length; i += 2) {
@@ -59,7 +92,7 @@ lu_createTrip_router.post("/response", function (req, res) {
         connection.query(privateSQL, (err, result, fields) => {
           if (err) throw err;
         });
-      }
+      };
 
       // shared
       for (var i = 0; i < shared.length; i += 2) {
@@ -68,7 +101,7 @@ lu_createTrip_router.post("/response", function (req, res) {
         connection.query(sharedSQL, (err, result, fields) => {
           if (err) throw err;
         });
-      }
+      };
     });
   // 渲染
   res.render("lu_createFormComplete.ejs");

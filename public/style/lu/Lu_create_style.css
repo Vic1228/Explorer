@@ -26,7 +26,7 @@ outline: 0;
 .create-trip-photo{
   background-image: url(../..//img/lu/253-1440x500.jpg); 
   width: auto; 
-  height: 40vh; 
+  height: 45vh; 
   background-size: cover;
 }
 
@@ -54,8 +54,6 @@ outline: 0;
 /* -----------------活動名稱----------------- */
 .act-textarea{
   resize: none;
-  transition: 0.5s;
-  opacity: 0.5;
 }
 .day-count{
   margin-left: 1rem;
