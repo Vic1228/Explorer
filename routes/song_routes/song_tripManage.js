@@ -1,13 +1,13 @@
-// 建立server
+// ---------------------- express---------------------- 
 var express = require('express');
 var song_tripManage_router = express.Router();
 
-// body-parser
+// ---------------------- body-parser ---------------------- 
 var bodyParser = require('body-parser');
 song_tripManage_router.use(bodyParser.json());
 song_tripManage_router.use(bodyParser.urlencoded({ extended: false }));
 
-// 連到資料庫
+// ---------------------- mysql ---------------------- 
 var mysql = require('mysql');
 var conn = mysql.createConnection({
     host: "localhost",
@@ -16,22 +16,21 @@ var conn = mysql.createConnection({
     database: "explorer",
     multipleStatements: true
 });
-conn.connect();
 
-// bluebird
+// ---------------------- bluebird ---------------------- 
 var bluebird = require('bluebird');
 bluebird.promisifyAll(conn);
 
 
-// -----------------------------------------------------------
-// ------------------------  request -------------------------
-// -----------------------------------------------------------
-song_tripManage_router.get('/', async function (req, res) {
-    var userId = 1;
 
+// ---------------------- request ---------------------- 
+song_tripManage_router.get('/',function (req, res) {
+    var userId = 1;
     var data = {
         userName: '',
+        createTripIdList: [],
         createTripNameList: [],
+        joinTripIdList: [],
         joinTripNameList: [],
         //以下為trip詳細資料
         tripchatboard: [
@@ -97,17 +96,34 @@ song_tripManage_router.get('/', async function (req, res) {
                 ]
             }
         ],
-        tripNotes: ''
+        tripNotes:''
     };
+
 
     
 
-    conn.queryAsync(`SELECT tripId, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY positionState DESC`).
-    then(result1 => {
-        console.log(result1)
-    })
-});
-
+    conn.queryAsync(`SELECT tripId, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY positionState DESC`)
+        .then(apple => {
+            // function
+            apple.forEach( item => {
+                if ( item.positionState == 2 ){
+                    data.createTripIdList.push(item.tripId);
+                }
+                else if ( item.positionState == 1 ){
+                    data.joinTripIdList.push(item.tripId);
+                }
+            })
+            console.log(data.createTripIdList);
+            console.log(data.joinTripIdList);
+            return conn.queryAsync(`SELECT tripId, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY positionState`);
+        })
+        .then(bee => {
+            // console.log(apple);
+           return res.render('song_tripManage.ejs');;
+        })
+        .catch( err => console.log(err) );
+       
+})
 
 song_tripManage_router.post('/', function (req, res) {
     console.log(req.body.tripName);
