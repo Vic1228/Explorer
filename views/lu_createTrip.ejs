@@ -85,7 +85,9 @@
           <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
           <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
             <!-- 評價人次 -->
-            <span>?</span>
+            <span>
+              <%= commentCount %>
+            </span>
           </p>
         </div>
         <div class="col-1"></div>
@@ -298,12 +300,13 @@
     /*---------------------------------------------------------------*/
     /*----------------------------- chart ---------------------------*/
     /*---------------------------------------------------------------*/
+
     const data = {
       labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
       datasets: [
         {
           // TODO: 動態產生
-          data: [5, 3, 5, 4, 2, 5],
+          data: ["<%= leadership %>", "<%= heal %>", "<%= direction %>", "<%= teamwork %>", "<%= strength %>", "<%= survival %>"],
           fill: true,
           backgroundColor: "rgb(0, 108, 155, 0.2)",
           borderColor: "rgb(0, 108, 155, 0.1)",
