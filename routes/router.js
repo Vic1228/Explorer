@@ -43,6 +43,9 @@ router.get("/tripInfo", function (req, res) {
 router.get("/createTrip", function (req, res) {
   res.render("lu_createTrip.ejs");
 });
+router.post("/response", function (req, res) {
+  res.render("lu_createFormComplete.ejs");
+});
 
 // 呂學奇
 
