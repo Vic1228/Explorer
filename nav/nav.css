@@ -69,8 +69,9 @@ nav {
 /* ------------logo----------- */
 
 .nav_logo img {
-  width: 38px;
-  height: 38px;
+  width: 90px;
+  height: 60px;
+  opacity: 0.9;
 }
 
 /* ---------nav bar---------- */
@@ -222,5 +223,4 @@ header a:hover {
     transform: translateX(0px);
   }
 }
-
 
