@@ -8,6 +8,7 @@ const path = require('path')
 
 const { CLIENT_CONNECT_WITH_DB } = require("mysql/lib/protocol/constants/client");
 const e = require("express");
+const { redirect } = require("express/lib/response");
 
 
 var connection = mysql.createConnection({
@@ -72,9 +73,9 @@ router.get("/trophy", function (req, res) {
                                 var string7 = JSON.stringify(result7);
                                 var json7 = JSON.parse(string7);
                                 console.log(json7[0])
-                                var total = Object.assign(json1[0],json2[1]);
+                                var total = Object.assign(json1[0], json2[1]);
                                 console.log(total)
-                                
+
                                 res.render("yen_trophy.ejs", { json1, json2, json3, json4, json5, json6, json7 });
                             })
                         })
@@ -88,48 +89,52 @@ router.get("/trophy", function (req, res) {
 // 個人資料路由
 
 router.get("/profile", (req, res) => {
-    let sqlone = `SELECT * FROM users where userId=1`;
-    connection.query(sqlone, (err, result, fields) => {
-        if (err) throw err;
-        sqltwo = `SELECT * FROM userstats where userId=1`
-        connection.query(sqltwo, (err, result2) => {
+    if (req.session.userEmail == null) {
+        res.redirect('/login')
+    } else {
+        let sqlone = `SELECT * FROM users where userId=1`;
+        connection.query(sqlone, (err, result, fields) => {
             if (err) throw err;
-            let b = result2[0];
-            let a = result[0];
-            var obj = Object.assign(a, b);
-            // console.log(obj)
-            res.render("yen_profile.ejs", obj);
+            sqltwo = `SELECT * FROM userstats where userId=1`
+            connection.query(sqltwo, (err, result2) => {
+                if (err) throw err;
+                let b = result2[0];
+                let a = result[0];
+                var obj = Object.assign(a, b);
+                // console.log(obj)
+                res.render("yen_profile.ejs", obj);
 
 
 
-            // 要怎麼利用主檔名搜尋檔案
-            // let filename = path.basename(result[0].userEmail)
-            // let fileext = path.extname(result[0].userEmail)
-            // console.log(filename)
-            // console.log(fileext)
-            // var fs = require('fs');
+                // 要怎麼利用主檔名搜尋檔案
+                // let filename = path.basename(result[0].userEmail)
+                // let fileext = path.extname(result[0].userEmail)
+                // console.log(filename)
+                // console.log(fileext)
+                // var fs = require('fs');
 
-            // fs.readdir('public/img/yen/photo/', function (err, files) {
-            //     console.log(files)
-            //         .filter(function (file) { return file.substr(-5) === '.html'; })
-            //         .forEach(function (file) { fs.readFile(file, 'utf-8', function (err, contents) { inspectFile(contents); }); });
-            // });
+                // fs.readdir('public/img/yen/photo/', function (err, files) {
+                //     console.log(files)
+                //         .filter(function (file) { return file.substr(-5) === '.html'; })
+                //         .forEach(function (file) { fs.readFile(file, 'utf-8', function (err, contents) { inspectFile(contents); }); });
+                // });
 
-            // function inspectFile(contents) {
-            //     if (contents.indexOf('data-template="home"') != -1) {
-            //         // do something
-            //     }
-            // }
-            // let photopath = 'public/img/yen/photo/';
-            // console.log(fs.readdir(photopath+result[0].userEmail, (err) => {
-            //     console.log(err)
-            // }))
-            // fs.readFile(filename, (err) => {
-            //     console.log(err)
-            // })
+                // function inspectFile(contents) {
+                //     if (contents.indexOf('data-template="home"') != -1) {
+                //         // do something
+                //     }
+                // }
+                // let photopath = 'public/img/yen/photo/';
+                // console.log(fs.readdir(photopath+result[0].userEmail, (err) => {
+                //     console.log(err)
+                // }))
+                // fs.readFile(filename, (err) => {
+                //     console.log(err)
+                // })
 
-        })
-    });
+            })
+        });
+    }
 });
 
 

@@ -56,7 +56,7 @@ app.use("/spotId", spotInfoRouter);
 app.use('/tripManage', tripManage);
 app.use('/createTrip', createTrip)
 app.use('/response', createTrip)
-app.use('/',yenpage)
+app.use('/', yenpage)
 app.use("/", router);
 // app.use("/signup",signupRouter )
 
@@ -134,7 +134,6 @@ app.use(express.static("style"));
 
 // 洪碩呈 登入註冊
 var compareEmail = 0; // 比對email狀態 1 = true
-let databaseUserInformation = [];
 
 // 下面三行設定渲染的引擎模板
 app.set('view engine', 'ejs');
@@ -142,6 +141,7 @@ app.set('views', __dirname + "/views"); //設定模板的目錄
 // =========== body-parser ===========
 
 var bodyParser = require("body-parser");
+const { RejectionError } = require("bluebird");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -151,7 +151,7 @@ app.use(session({
   resave: true,
   saveUninitialized: false, // 是否儲存未初始化的會話
   cookie: {
-    maxAge: 1000 * 60 * 30, // 設定 session 的有效時間，單位毫秒
+    maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
   },
 }));
 
@@ -160,60 +160,89 @@ connection.connect(function (error) {
   if (error) {
     console.log(error);
   } else {
-    //連接成功接收資料庫資料
-    connection.query(`SELECT * FROM users`, function (err, rows) {
-      databaseUserInformation = rows;
-    })
     console.log('database is working');
 
   }
 });
-// 使用者登入
-app.post('/login', function (req, res) {
-  compareEmail = 0;
-  connection.query(`SELECT * FROM users`, function (err, rows) {
-    rows.forEach(item => {
-      if (req.body.useremail == item.userEmail && req.body.userpassword == item.userPassword) {
-        req.session.userEmail = req.body.useremail; // 登入成功，設定 session username = email
-        // res.render('/yen_profile', { username: req.session.userName });
-        console.log(req.session.userEmail);
-        res.redirect('/');
-        // res.send("SUCCESS")
-        compareEmail = 1;
-        return false;
-      }
-      if (compareEmail == 0) {
-        console.log('error');
-        res.json({ ret_code: 1, ret_msg: '帳號或密碼錯誤' });// 若登入失敗，重定向到登入頁面
-      }
-    })
-  })
-  
+// 使用者登入(舊)
+// app.post('/login', function (req, res) {
+//   compareEmail = 0;
+//   connection.query(`SELECT * FROM users`, function (err, rows) {
+//     console.log(rows)
+//     rows.forEach(item => {
+//       if (req.body.useremail == item.userEmail && req.body.userpassword == item.userPassword) {
+//         console.log(item.userId)
+//         req.session.userEmail = req.body.useremail; // 登入成功，設定 session username = email
+//         console.log(req.session.userEmail);
+//         res.redirect('/');
+//         return false
+//         console.log(didi)
+//       } else {
+//         console.log(item.userId)
+//         console.log('error');
+//         res.json({ ret_code: 1, ret_msg: '帳號或密碼錯誤' });// 若登入失敗，重定向到登入頁面
+//       }
+//     })
+//   })
+// });
 
+
+// 使用者登入(新)
+app.post("/login", function (req, res) {
+  const email = req.body.useremail;
+  const password = req.body.userpassword;
+  req.session.userEmail = req.body.useremail;
+  const member = `select * from users where userEmail='${email}'and userPassword='${password}'`;
+  // 比對
+  connection.query(member, function (err, result, LL) {
+    if (result[0] == null) {
+      res.redirect('/login');
+    } else {
+      console.log("success!");
+      console.log(req.session.userEmail)
+      res.redirect("/");
+    }
+  })
 });
 
 // 使用者註冊
-app.post('/register', function (req, res) {  // /register從註冊頁面 form的action
-  compareEmail = 0; //狀態初始
-  databaseUserInformation.forEach(item => {
-    if (item.email == req.body.useremail) {
-      //帳號已存在
-      compareEmail = 1;
-      return false;
+// app.post('/register', function (req, res) {  // /register從註冊頁面 form的action
+//   compareEmail = 0; //狀態初始
+//   databaseUserInformation.forEach(item => {
+//     if (item.email == req.body.useremail) {
+//       //帳號已存在
+//       compareEmail = 1;
+//       return false;
+//     }
+//   })
+//   //將資料存入資料庫
+//   if (compareEmail == 0) {
+//     //可以註冊帳號
+//     connection.query(`INSERT INTO users (userName,userEmail, userPassword, userPhone, userExp) VALUES ('${req.body.username}', '${req.body.useremail}', '${req.body.userpassword}', '', '')`, (error, rows) => {
+//       if (error) {
+//         console.log(error);
+//       }
+//     })
+//   };
+//   res.redirect('/login'); //跳轉頁面
+// })
+app.post("/register", function (req, res) {
+  const name = req.body.username;
+  const email = req.body.useremail;
+  const password = req.body.userpassword;
+  // 比對
+  const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
+  connection.query(custormers,(err,result,field) =>{
+    console.log(result)
+    if (result==undefined) {
+      console.log("錯誤，已註冊過");
+      res.render('signuperr')
+    } else {
+      console.log("1 record inserted");
+      res.redirect('/')
     }
-  })
-  //將資料存入資料庫
-  if (compareEmail == 0) {
-    //可以註冊帳號
-    connection.query(`INSERT INTO users (userName,userEmail, userPassword, userPhone, userExp,userImgNum) VALUES ('${req.body.username}', '${req.body.useremail}', '${req.body.userpassword}', '', '', 1)`, (error, rows) => {
-      if (error) {
-        console.log(error);
-      }
-    })
-  };
-  res.redirect('/login'); //跳轉頁面
-})
-
+  });
+});
 // 使用者忘記密碼
 // app.post('/forgetpassword', function (req, res) {
 //   databaseUserInformation.forEach(item => {
@@ -224,19 +253,10 @@ app.post('/register', function (req, res) {  // /register從註冊頁面 form的
 //   });
 // })
 
-//獲取主頁
-// app.get('/', function (req, res) {
-//   if (req.session.userName) { //判斷session 狀態，如果有效，則返回主頁，否則轉到登入頁面
-//     res.render('/');
-//   } else {
-//     res.redirect('/login');
-//   }
-// })
-
 //退出
 app.get('/logout', function (req, res) {
   req.session.userEmail = null; // 刪除session
-  console.log( req.session.userEmail);
+  console.log(req.session.userEmail);
   res.redirect('/');
 });
 
