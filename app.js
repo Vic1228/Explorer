@@ -151,7 +151,7 @@ app.use(session({
   resave: true,
   saveUninitialized: false, // 是否儲存未初始化的會話
   cookie: {
-    maxAge: 1000 * 60 * 30, // 設定 session 的有效時間，單位毫秒
+    maxAge: 1000 * 60 * 300, // 設定 session 的有效時間，單位毫秒
   },
 }));
 
@@ -175,9 +175,8 @@ app.post('/login', function (req, res) {
     rows.forEach(item => {
       if (req.body.useremail == item.userEmail && req.body.userpassword == item.userPassword) {
         req.session.userEmail = req.body.useremail; // 登入成功，設定 session username = email
-        // res.render('/yen_profile', { username: req.session.userName });
         console.log(req.session.userEmail);
-        res.redirect('/');
+        // res.redirect('/');
         // res.send("SUCCESS")
         compareEmail = 1;
         return false;
@@ -205,7 +204,7 @@ app.post('/register', function (req, res) {  // /register從註冊頁面 form的
   //將資料存入資料庫
   if (compareEmail == 0) {
     //可以註冊帳號
-    connection.query(`INSERT INTO users (userName,userEmail, userPassword, userPhone, userExp,userImgNum) VALUES ('${req.body.username}', '${req.body.useremail}', '${req.body.userpassword}', '', '', 1)`, (error, rows) => {
+    connection.query(`INSERT INTO users (userName,userEmail, userPassword, userPhone, userExp) VALUES ('${req.body.username}', '${req.body.useremail}', '${req.body.userpassword}', '', '')`, (error, rows) => {
       if (error) {
         console.log(error);
       }
@@ -224,7 +223,7 @@ app.post('/register', function (req, res) {  // /register從註冊頁面 form的
 //   });
 // })
 
-//獲取主頁
+// 獲取主頁
 // app.get('/', function (req, res) {
 //   if (req.session.userName) { //判斷session 狀態，如果有效，則返回主頁，否則轉到登入頁面
 //     res.render('/');
