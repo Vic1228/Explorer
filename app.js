@@ -24,7 +24,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root", //if mac ,須設定為root
+  password: "", //if mac ,須設定為root
   database: "explorer",
   port: "3306",
 });
@@ -61,4 +61,3 @@ app.use(express.static("style"));
 
 // ============= session ===============
 // session的引用請放這裡
-
