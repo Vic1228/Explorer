@@ -42,10 +42,11 @@ var router = require("./routes/router.js");
 var createTrip = require("./routes/lu_routes/lu_createTrip");
 var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
+var uploadRouter = require("./routes/vic_routes/vic_upload");
 const { promiseImpl } = require("ejs");
 app.use("/", homepageRouter);
-app.use("/spotInfo", spotInfoRouter);
 app.use("/spotId", spotInfoRouter);
+app.use("/upload", uploadRouter);
 app.use("/createTrip", createTrip);
 app.use("/", router);
 
