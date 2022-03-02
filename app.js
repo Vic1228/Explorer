@@ -128,9 +128,7 @@ app.use(express.static("style"));
 // 洪碩呈 登入註冊
 var compareEmail = 0; // 比對email狀態 1 = true
 
-// 下面三行設定渲染的引擎模板
-app.set('view engine', 'ejs');
-app.set('views', __dirname + "/views"); //設定模板的目錄
+
 // =========== body-parser ===========
 
 var bodyParser = require("body-parser");
@@ -153,7 +151,7 @@ connection.connect(function (error) {
   if (error) {
     console.log(error);
   } else {
-    console.log('database is working');
+    console.log('碩成database is working');
 
   }
 });
@@ -187,7 +185,7 @@ app.post("/login", function (req, res) {
   req.session.userEmail = req.body.useremail;
   const member = `select * from users where userEmail='${email}'and userPassword='${password}'`;
   // 比對
-  connection.query(member, function (err, result, LL) {
+  connection.query(member, function (err, result, fields) {
     if (result[0] == null) {
       res.redirect('/login');
     } else {
@@ -225,15 +223,24 @@ app.post("/register", function (req, res) {
   const password = req.body.userpassword;
   // 比對
   const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
-  connection.query(custormers,(err,result,field) =>{
-    console.log(result)
-    if (result==undefined) {
-      console.log("錯誤，已註冊過");
-      res.render('signuperr')
-    } else {
-      console.log("1 record inserted");
-      res.redirect('/')
-    }
+  const takeid = `select userId from users where userEmail='${email}'`;
+
+  connection.query(custormers, (err, result, field) => {
+    connection.query(takeid, (err, result2, field) => {
+      console.log(result2)
+      const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
+      connection.query(insertid, (err, result3, field) => {
+        console.log(err)
+        console.log(result3)
+        if (result == undefined) {
+          console.log("錯誤，已註冊過");
+          res.render('signuperr')
+        } else {
+          console.log("1 record inserted");
+          res.redirect('/')
+        }
+      });
+    });
   });
 });
 // 使用者忘記密碼
@@ -253,3 +260,4 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
+app.use('/', yenpage)

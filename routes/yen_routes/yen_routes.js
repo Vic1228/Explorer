@@ -18,14 +18,14 @@ var connection = mysql.createConnection({
     database: "explorer",
     port: "3306",
 });
-connection.connect(function (error) {
-    if (!!error) {
-        console.log(error);
-        console.log("仲硯連結資料庫失敗！");
-    } else {
-        console.log("仲硯已成功連結資料庫！");
-    }
-});
+// connection.connect(function (error) {
+//     if (!!error) {
+//         console.log(error);
+//         console.log("仲硯連結資料庫失敗！");
+//     } else {
+//         console.log("仲硯已成功連結資料庫！");
+//     }
+// });
 
 
 
@@ -89,17 +89,22 @@ router.get("/trophy", function (req, res) {
 // 個人資料路由
 
 router.get("/profile", (req, res) => {
-    if (req.session.userEmail == null) {
+    if (req.session.userEmail==undefined) {
         res.redirect('/login')
     } else {
-        let sqlone = `SELECT * FROM users where userId=1`;
+        let apple = req.session.userEmail
+        let sqlone = `SELECT * FROM users where userEmail='${apple}'`;
         connection.query(sqlone, (err, result, fields) => {
             if (err) throw err;
-            sqltwo = `SELECT * FROM userstats where userId=1`
+            let sqltwo = `SELECT * FROM userstats where userId='${result[0].userId}'`
             connection.query(sqltwo, (err, result2) => {
                 if (err) throw err;
-                let b = result2[0];
                 let a = result[0];
+                let b = result2[0];
+                console.log(a)
+                console.log(b)
+
+              
                 var obj = Object.assign(a, b);
                 // console.log(obj)
                 res.render("yen_profile.ejs", obj);
@@ -144,14 +149,15 @@ const storage = multer.diskStorage({
         cb(null, 'public/img/yen/photo')
     },
     filename: function (req, file, cb) {
-        let sqlres = `SELECT userEmail FROM users where userId= 2`;
+        let apple = req.session.userEmail
+        let sqlres = `SELECT userId FROM users where userEmail= '${apple}'`;
         connection.query(sqlres, (err, result, fields) => {
             if (err) throw err;
-            let a = result[0];
-            let b = a.userEmail
-            let name = file.originalname
-            let ext = name.split('.').pop()
-            cb(null, b + '.png')
+            let a = result[0].userId;
+            // let b = a.userId
+            // let name = file.originalname
+            // let ext = name.split('.').pop()
+            cb(null, a + '.png')
         });
     }
 
