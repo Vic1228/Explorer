@@ -38,18 +38,29 @@ connection.connect(function (error) {
 });
 
 // ============= router ===============
+const { promiseImpl } = require("ejs");
 var router = require("./routes/router.js");
-var createTrip = require("./routes/lu_routes/lu_createTrip");
+app.use("/", router);
+// 政霖
 var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
 var uploadRouter = require("./routes/vic_routes/vic_upload");
-const { promiseImpl } = require("ejs");
 app.use("/", homepageRouter);
 app.use("/spotId", spotInfoRouter);
 app.use("/upload", uploadRouter);
-app.use("/createTrip", createTrip);
-app.use("/", router);
 
+// 學奇
+var createTrip = require("./routes/lu_routes/lu_createTrip");
+app.use("/createTrip", createTrip);
+app.use("/", createTrip);
+
+// 仲晏
+var yenpage = require("./routes/yen_routes/yen_routes");
+app.use("/", yenpage);
+
+// 宜松
+var tripManage = require("./routes/song_routes/song_tripManage");
+app.use("/tripManage", tripManage);
 // ============= static file ===============
 app.use(express.static(__dirname));
 app.use(express.static("image"));
