@@ -1,131 +1,66 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form validation in HTML & CSS | CodingNepal</title>
-    <link rel="stylesheet" href="./login/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form validation in HTML & CSS | CodingNepal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="../public/login/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>會員登入</header>
+  <div class="wrapper">
+      <header>會員登入</header>
 
-        <div class="form">
+      <form id="userLogin" action="/login" method="POST">
 
-            <div class="field email">
-                <div class="input-area">
-                    <input type="text" id="email" name="email" placeholder="E-mail" />
-                    <i class="icon fas fa-envelope"></i>
-                    <i class="error error-icon fas fa-exclamation-circle"></i>
-                </div>
-                <div class="error error-txt">Email不能是空的</div>
-            </div>
+          <div class="field email">
+              <div class="input-area">
+                  <input type="email" class="loginEmail" name="useremail" placeholder="E-mail" />
+                  <i class="icon fas fa-envelope"></i>
+                  <i class="error error-icon fas fa-exclamation-circle"></i>
+              </div>
+              <div class="error error-txt">Email不能是空的</div>
+          </div>
 
-            <div class="field password">
-                <div class="input-area">
-                    <input type="password" id="password" name="password" placeholder="密碼">
-                    <i class="icon fas fa-lock"></i>
-                    <i class="error error-icon fas54y1<%- 671 %>  fa-exclamation-circle"></i>
-                </div>
-                <div class="error error-txt">密碼不能是空的</div>
-            </div>
+          <div class="field password">
+              <div class="input-area">
+                  <input type="password" class="loginPassword" name="userpassword" placeholder="密碼">
+                  <i class="icon fas fa-lock"></i>
+                  <i class="error error-icon fas54y1<%- 671 %>  fa-exclamation-circle"></i>
+              </div>
+              <div class="error error-txt">密碼不能是空的</div>
+          </div>
 
-            <div class="pass-txt"><a href="./forgetPw.html" class="forget">忘記密碼</a></div>
-            <input type="submit" id='login' name="login" value="登入">
+          <div class="forgetPwBtn"><a href="/" class="forget">HOME</a></div>
+          <input type="submit" class="loginBtn" name="login" value="登入">
 
-        </div>
-        <div class="sign-txt">還不是會員？<a href="/signup" class="regi">註冊</a> </div>
-    </div>
+      </form>
+      <div class="sign-txt">還不是會員？<a href="/signup" class="signup">註冊</a> </div>
+  </div>
+
+  <script>
+    
+    // $('.userLogin').submit(function () {
+    //   e.preventDefault();
+    //   var formData = new FormData();
+    //   formData.append("username", $('[name=""username"]').val());
+    //   event.stopPropagation();
+    //   event.preventDefault();
+    //   $.ajax({
+    //     url: $(this).arrt("action"),
+    //     data: formData,
+    //     type: 'POST',
+    //     success: function (data) {
+    //       alert(data);
+    //       // window.location('/');
+    //     }
+    //   });
+    //   // return false;
+    // })
+
+  </script>
+
 </body>
-
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
-    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyCe8s-Awiw3hEeVR9gp233R8s3D3TH9EfE",
-        authDomain: "login-72089.firebaseapp.com",
-        databaseURL: "https://login-72089-default-rtdb.firebaseio.com",
-        projectId: "login-72089",
-        storageBucket: "login-72089.appspot.com",
-        messagingSenderId: "357180497245",
-        appId: "1:357180497245:web:b0fa8d0b4237a46b9d5cb4",
-        measurementId: "G-2PEWZE7684"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase(app);
-    const auth = getAuth();
-
-
-    login.addEventListener('click', (e) => {
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        e.preventDefault()
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-
-                const dt = new Date();
-                update(ref(database, 'users/' + user.uid), {
-                    last_login: dt,
-                })
-
-                alert('User loged in!');
-                window.location = '/';
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
-                alert(errorMessage);
-            });
-
-    });
-
-    const user = auth.currentUser;
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
-
-            //登入後導回首頁
-            // window.location = '/';
-        } else {
-            // User is signed out
-            // ...
-        }
-    });
-
-    logout.addEventListener('click', (e) => {
-        e.preventDefault()
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            window.location.reload();
-            alert('user loged out');
-        }).catch((error) => {
-            // An error happened.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-
-            alert(errorMessage);
-        });
-
-    });
-
-</script>
-
-</html>

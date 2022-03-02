@@ -7,9 +7,7 @@ function initMap() {
   const infowindow = new google.maps.InfoWindow();
   const service = new google.maps.places.PlacesService(map);
   // Location 1
-  const request = {
-    placeId: 'ChIJH0OLXIhfaDQRe2M3VHul_nY',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total'],
+  const req1 = {
     placeId: "ChIJH0OLXIhfaDQRe2M3VHul_nY",
     fields: [
       "name",
@@ -21,7 +19,7 @@ function initMap() {
       "user_ratings_total",
     ],
   };
-  service.getDetails(request, function (place, status) {
+  service.getDetails(req1, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       //   map.setCenter(place.geometry.location)
       const marker = new google.maps.Marker({
@@ -52,7 +50,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -97,7 +94,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -142,7 +138,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -187,7 +182,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -232,7 +226,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -277,7 +270,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -366,7 +358,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -411,7 +402,6 @@ function initMap() {
             place.formatted_address +
             "</p>" +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
@@ -455,7 +445,6 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
             "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );

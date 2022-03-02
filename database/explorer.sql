@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-02-23 09:32:11
+-- 產生時間： 2022-03-02 04:08:40
 -- 伺服器版本： 10.4.22-MariaDB
 -- PHP 版本： 8.1.1
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `privateitems` (
   `number` int(20) NOT NULL,
   `tripId` int(20) NOT NULL,
-  `privateItemName` varchar(20) NOT NULL,
+  `privateItem` varchar(20) NOT NULL,
   `itemCount` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -58,7 +58,7 @@ CREATE TABLE `shareditems` (
   `number` int(20) NOT NULL,
   `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
-  `sharedItemName` varchar(20) NOT NULL,
+  `sharedItem` varchar(20) NOT NULL,
   `itemCount` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -69,11 +69,12 @@ CREATE TABLE `shareditems` (
 --
 
 CREATE TABLE `spotcomments` (
+  `number` int(20) NOT NULL,
   `spotId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
   `spotMessageDate` datetime NOT NULL,
   `spotMessageText` varchar(255) DEFAULT NULL,
-  `spotMessageImg` longblob DEFAULT NULL
+  `spotMsgNum` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -97,11 +98,12 @@ CREATE TABLE `spots` (
 --
 
 CREATE TABLE `tripchatboard` (
+  `number` int(20) NOT NULL,
   `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
   `chatTime` datetime NOT NULL,
   `chatMessage` varchar(80) CHARACTER SET utf8 NOT NULL,
-  `chatPhoto` longblob NOT NULL
+  `chatImgNum` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -124,12 +126,20 @@ CREATE TABLE `tripmembers` (
 
 CREATE TABLE `trips` (
   `tripId` int(20) NOT NULL,
+  `createrId` int(20) NOT NULL,
   `tripName` varchar(20) NOT NULL,
   `spotId` int(20) NOT NULL,
   `tripStartDate` date NOT NULL,
   `tripEndDate` date NOT NULL,
   `tripDesc` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- 傾印資料表的資料 `trips`
+--
+
+INSERT INTO `trips` (`tripId`, `createrId`, `tripName`, `spotId`, `tripStartDate`, `tripEndDate`, `tripDesc`) VALUES
+(1, 0, '不能刪', 0, '0000-00-00', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
@@ -140,12 +150,11 @@ CREATE TABLE `trips` (
 CREATE TABLE `users` (
   `userId` int(20) NOT NULL,
   `userName` varchar(20) NOT NULL,
-  `userAccount` varchar(12) NOT NULL,
-  `userPassword` varchar(15) NOT NULL,
-  `userPhoto` longblob NOT NULL,
-  `userPhone` varchar(10) NOT NULL,
   `userEmail` varchar(20) NOT NULL,
-  `userExprnience` varchar(80) NOT NULL
+  `userPassword` varchar(15) NOT NULL,
+  `userPhone` varchar(10) NOT NULL,
+  `userExp` varchar(200) NOT NULL,
+  `userImgNum` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -160,7 +169,7 @@ CREATE TABLE `userstats` (
   `teamwork` int(20) DEFAULT NULL,
   `strength` int(20) DEFAULT NULL,
   `heal` int(20) DEFAULT NULL,
-  `surriral` int(20) DEFAULT NULL,
+  `survival` int(20) DEFAULT NULL,
   `direction` int(20) DEFAULT NULL,
   `commentCount` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -191,7 +200,7 @@ ALTER TABLE `shareditems`
 -- 資料表索引 `spotcomments`
 --
 ALTER TABLE `spotcomments`
-  ADD PRIMARY KEY (`spotId`,`userId`,`spotMessageDate`);
+  ADD PRIMARY KEY (`number`);
 
 --
 -- 資料表索引 `spots`
@@ -203,13 +212,13 @@ ALTER TABLE `spots`
 -- 資料表索引 `tripchatboard`
 --
 ALTER TABLE `tripchatboard`
-  ADD PRIMARY KEY (`tripId`,`userId`,`chatTime`);
+  ADD PRIMARY KEY (`number`);
 
 --
 -- 資料表索引 `tripmembers`
 --
 ALTER TABLE `tripmembers`
-  ADD PRIMARY KEY (`tripId`,`userId`);
+  ADD PRIMARY KEY (`tripId`);
 
 --
 -- 資料表索引 `trips`
@@ -252,6 +261,12 @@ ALTER TABLE `shareditems`
   MODIFY `number` int(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `spotcomments`
+--
+ALTER TABLE `spotcomments`
+  MODIFY `number` int(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `spots`
 --
 ALTER TABLE `spots`
@@ -261,18 +276,12 @@ ALTER TABLE `spots`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `trips`
 --
 ALTER TABLE `trips`
-  MODIFY `tripId` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `tripId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表自動遞增(AUTO_INCREMENT) `userstats`
---
-ALTER TABLE `userstats`
   MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
