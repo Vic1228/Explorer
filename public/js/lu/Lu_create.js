@@ -112,7 +112,7 @@ const itineraryRow = `<tr>
                 </td>
                 <td class="form-td"><input name="schedule" type="time" id=""
                     class="text-center border-0 h-100 time-input form-input w-100"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'" style="font-size:1.4rem; opacity: 0.5;">
+                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'" style="font-size:1.4rem;">
                 </td>
                 <td class="form-td"><input name="schedule" class="h-100 w-50 border-0 act-input text-center form-input"
                     type="text" oninput="this.className = 'h-100 w-50 border-0 act-input text-center form-input'"
