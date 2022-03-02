@@ -19,7 +19,7 @@
 
 /* ------------------------header------------------------- */
 .header {
-  padding: 10px 40px 0px 40px;
+  padding: 10px 40px 10px 40px;
   position: sticky;
 
   width: 100%;
@@ -102,7 +102,7 @@ header a:hover {
 
   min-width: 100px;
   min-width: max-content;
-  height: 50px;
+  height: 30px;
 
   /* text-shadow: 1px 1px rgba(71, 71, 71, 0.397); */
 }

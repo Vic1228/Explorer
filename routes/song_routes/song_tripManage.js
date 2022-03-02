@@ -102,10 +102,10 @@ song_tripManage_router.get('/',function (req, res) {
 
     
 
-    conn.queryAsync(`SELECT tripId, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY positionState DESC`)
-        .then(apple => {
+    conn.queryAsync(`SELECT tripId, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY tripId , positionState DESC`)
+        .then(result => {
             // function
-            apple.forEach( item => {
+            result.forEach( item => {
                 if ( item.positionState == 2 ){
                     data.createTripIdList.push(item.tripId);
                 }
@@ -115,7 +115,7 @@ song_tripManage_router.get('/',function (req, res) {
             })
             console.log(data.createTripIdList);
             console.log(data.joinTripIdList);
-            return conn.queryAsync(`SELECT tripId, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY positionState`);
+            return conn.queryAsync(`SELECT tripName, positionState FROM tripmembers WHERE userId = ${userId} ORDER BY positionState`);
         })
         .then(bee => {
             // console.log(apple);
