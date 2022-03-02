@@ -34,7 +34,7 @@ lu_createTrip_router.get("/", function (req, res) {
       console.log(results);
       userProfile = results[0];
       // use ejs
-      // res.render('lu_createTrip', userProfile);
+      res.render('lu_createTrip', userProfile);
     }
     // TODO: 
     //  let test2 = `SELECT * FROM userstats`;
@@ -50,7 +50,6 @@ lu_createTrip_router.get("/", function (req, res) {
 });
 
 // 傳送表單的資料進資料庫
-
 
 lu_createTrip_router.post("/response", function (req, res) {
   let trip = req.body.trip;
