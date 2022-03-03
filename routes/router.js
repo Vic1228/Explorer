@@ -4,7 +4,7 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root", //if mac ,須設定為root
+  password: "", //if mac ,須設定為root
   database: "explorer",
 });
 
@@ -18,7 +18,7 @@ router.get("/login", function (req, res) {
 });
 router.get("/signup", function (req, res) {
   res.render("hong_signup.ejs");
-  });
+});
 // 洪碩呈
 // router.post("/register", (req, res) => {
 //   // 將資料INSERT INTO上去
@@ -37,8 +37,6 @@ router.get("/tripInfo", function (req, res) {
 // 傅意涵
 
 //仲硯
-
-
 
 // 葉宜松
 module.exports = router;
