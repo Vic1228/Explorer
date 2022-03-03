@@ -1,5 +1,4 @@
 // 記得打開mysql apache
-// mac使用者請看27行 設定mysql密碼
 var express = require("express");
 var router = express.Router();
 var app = express();
