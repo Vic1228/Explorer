@@ -28,12 +28,6 @@ function initMap() {
       });
       marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
-          "<div class='inner'><h3>" +
-          '<a href="/spotId?id=1">' + '雪山</a>' +
-          "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
         infowindow.setContent(
           "<div class='infowindow-container'>" +
             "<img src='" +
@@ -49,8 +43,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -93,8 +86,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem2()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -137,8 +129,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem3()'> <a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -181,8 +172,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem4()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -225,8 +215,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem5()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -269,8 +258,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem6()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -313,8 +301,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "<p><button class='button'>參加行程</button>" +
-            "<button class='button'>建立行程</button></p>" +
+            "<button class='button' onclick='createItem7()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -357,8 +344,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem8()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -401,8 +387,7 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem9()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
@@ -445,10 +430,55 @@ function initMap() {
             "</p><p style='margin-left:15px'>地址:" +
             place.formatted_address +
             "</p>" +
-            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "<button class='button' onclick='createItem10()'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
             "</div></div>"
         );
       });
     }
   });
+  
 }
+const mapData = { lat:24.384813692154584, lng:121.22991284225783}; //雪山
+const mapData2 = { lat:23.96146621541816, lng:121.50363301264872}; //翡翠谷
+const mapData3 = { lat:24.359824705766293, lng:120.73585039828758 }; //火炎山
+const mapData4 = { lat:24.581683139744996, lng:121.8723133531436}; //玻璃海攤
+const mapData5 = { lat:25.23060285645177, lng:121.65120879436216}; //燭台沙灘
+const mapData6 = { lat:23.184475657000405, lng:120.52350869813347}; //蝙蝠洞瀑布
+const mapData7 = { lat:22.94977621264933, lng:121.28739508187}; //金樽陸連島
+const mapData8 = { lat:23.555485102373016, lng:120.95261622109369}; //雲龍瀑布
+const mapData9 = { lat:22.61466910437965, lng:120.70173283445003}; //北大武山步道
+const mapData10 = { lat:24.034485309808005, lng:121.20286760192326}; //精英瀑布
+
+//點擊按鈕儲存資訊
+function createItem() {
+    localStorage.setItem("lat",JSON.stringify(mapData))
+  };
+  function createItem2() {
+    localStorage.setItem("lat",JSON.stringify(mapData2))
+  };
+  function createItem3() {
+    localStorage.setItem("lat",JSON.stringify(mapData3))
+  };
+  function createItem4() {
+    localStorage.setItem("lat",JSON.stringify(mapData4))
+  };
+  function createItem5() {
+    localStorage.setItem("lat",JSON.stringify(mapData5))
+  };
+  function createItem6() {
+    localStorage.setItem("lat",JSON.stringify(mapData6))
+  };
+  function createItem7() {
+    localStorage.setItem("lat",JSON.stringify(mapData7))
+  };
+  function createItem8() {
+    localStorage.setItem("lat",JSON.stringify(mapData8))
+  };
+  function createItem9() {
+    localStorage.setItem("lat",JSON.stringify(mapData9))
+  };
+  function createItem10() {
+    localStorage.setItem("lat",JSON.stringify(mapData10))
+  };
+
+
