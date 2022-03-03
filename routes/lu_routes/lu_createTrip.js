@@ -80,7 +80,6 @@ lu_createTrip_router.post("/response", function (req, res) {
               let privateSQL = `INSERT INTO privateItems (tripId, privateItem, ItemCount) 
               VALUES ("${tripId}", "${private[j + 0]}", "${private[j + 1]}")`;
               connection.query(privateSQL, (err, result, fields) => {
-                console.log(private);
                 
                 if (j == private.length) {
                       // shared
@@ -102,65 +101,5 @@ lu_createTrip_router.post("/response", function (req, res) {
   // 渲染
   res.render("lu_createFormComplete.ejs");
 });
-
-module.exports = lu_createTrip_router;
-
-
-
-
-// ===============================================
-
-
-// lu_createTrip_router.post("/response", function (req, res) {
-  // input同name的 分別存入變數
-  // let trip = req.body.trip;
-  // let schedule = req.body.schedule;
-  // let private = req.body.private;
-  // let shared = req.body.shared;
-
-
-  // var tripId;
-  // post trip
-  // let tripSQL = `INSERT INTO trips (tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  // VALUES ("${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
-  // connection.query(tripSQL, (err, result, fields) => {
-  //   if (err) throw err;
-    
-    
-    // -----------------------------
-    // -------垃圾sql while---------
-    // -----------------------------
-    // 查詢舊的tripId存入變數
-    // connection.query(
-    //   "SELECT * FROM trips",
-    //   function (error, results) {
-    //     if (error) throw error;
-        // 得到最後一筆的tripId
-        // tripId = results[results.length - 1].tripId;
-        // console.log(tripId);
-        // console.log(schedule);
-        // post schedule
-//         let test =
-//           `CREATE PROCEDURE dowhile()
-//           BEGIN 
-//             DECLARE i INT DEFAULT 0;
-
-//             WHILE i < "${schedule.length}" DO 
-        
-//             INSERT INTO schedule (tripId, day, startTime, activity) 
-//             VALUES ("${tripId}", "${schedule[0]}", "${schedule[1]}", "${schedule[2]}")
-        
-//             SET i = i + 3;
-
-//             END WHILE;
-//           END;`
-//         connection.query(test, (err, result, fields) => {
-//           console.log(schedule);
-//           if (err) throw err;
-//         })
-//       })
-//   })
-//   res.render("lu_createFormComplete.ejs");
-// })
 
 module.exports = lu_createTrip_router;
