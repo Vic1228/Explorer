@@ -6,6 +6,10 @@
      /* border: 3px solid tomato;   */
 }
 
+ul{
+    padding-left: 0px !important;
+
+}
 
 #blur_all{
     display:none;
@@ -76,10 +80,6 @@ img[class*="Icon"]{
 #tripSelContainer{
     padding: 5vh 13vh;
     text-align: center !important;
-}
-
-#tripSelContainer ul{
-    margin-left: -45px;
 }
 
 #tripSelContainer li{
@@ -203,8 +203,37 @@ th,td{
     padding:3px 0px
 }
 
+.provideList li{
+    display: flexbox;
+    justify-content: space-between;
+}
+
+.provideList span{
+    display:inline-block;
+    width:max-content
+}
+
 .plusContainer{
     margin: auto;
+}
+
+.superLi{
+    position:relative;
+}
+
+.superLeft{
+    position:absolute;
+    left:3.5vw;
+}
+
+.superSpan{
+    position:absolute;
+    left:7vw;
+}
+
+.superRight{
+    position:relative;
+    left: 40px;
 }
 
 #managePrivateItemTable{
