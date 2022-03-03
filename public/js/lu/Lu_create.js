@@ -188,14 +188,21 @@ function deleteSharedItemRow(p) {
 /*---------------------------------------------------------------*/
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 23.58044082121914, lng: 120.86312406425326 },
-    zoom: 6.6
-  });
 
+  const location = (JSON.parse(localStorage.getItem('lat'))); // 從localStorage取得經緯度的值
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: location, // The map, centered at location
+    zoom: 10
+  });
+  // The marker, positioned at location
+  const marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
 
   const infowindow = new google.maps.InfoWindow();
   const service = new google.maps.places.PlacesService(map);
+
   // Location 1
   const request = {
     placeId: 'ChIJ6Sql71hxaDQRH_2A8h5A1es',
@@ -203,17 +210,17 @@ function initMap() {
   };
   service.getDetails(request, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      //   map.setCenter(place.geometry.location)
-      const marker = new google.maps.Marker({
-        position: place.geometry.location,
-        map: map
-      });
+    //   map.setCenter(place.geometry.location)
+    const marker = new google.maps.Marker({
+      position: place.geometry.location,
+      map: map
+    });
       marker.addListener('click', function () {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '天狗溪噴泉</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "雪山</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -232,8 +239,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '翡翠谷</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "翡翠谷</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -252,8 +259,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '火炎山</a>' +
-          "</p><p style='margin-left:15px font-size: 8px;'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "火炎山</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -273,8 +280,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '玻璃海灘</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "玻璃海灘</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -293,8 +300,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '燭台沙灘</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "燭台沙灘</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -313,8 +320,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '蝙蝠洞瀑布</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "蝙蝠洞瀑布</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -333,8 +340,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '金樽陸連島</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "金樽陸連島</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -353,8 +360,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '雲龍瀑布</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "雲龍瀑布</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -373,8 +380,8 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '北大武山步道</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "北大武山步道</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
@@ -393,9 +400,10 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          '<a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' + '精英瀑布</a>' +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+          "<span style='margin-left:7rem'>" + "精英瀑布</span>" +
+          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
   });
 }
+

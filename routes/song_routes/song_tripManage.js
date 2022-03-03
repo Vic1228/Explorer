@@ -38,22 +38,21 @@ song_tripManage_router.get('/', function (req, res) {
         privateItems: [
         ],
         schedule: [
-            {
-                day: '',
-                activity: [
-                    { startTime: '', activityName: '' }
-                ]
-            }
         ],
         tripNotes: ''
     };
 
-    var sql1 = `SELECT TM.positionState, T.tripId, T.tripName 
-                FROM tripmembers AS TM 
-                INNER JOIN trips AS T ON  TM.tripId=T.tripId 
-                WHERE TM.userId = ${userId} 
-                ORDER BY positionState DESC`;
-    conn.queryAsync(sql1)
+
+    conn.queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
+        .then(result0 => {
+            data.userName = result0[0].userName;
+            var sql1 = `SELECT TM.positionState, T.tripId, T.tripName 
+                        FROM tripmembers AS TM 
+                        INNER JOIN trips AS T ON  TM.tripId=T.tripId 
+                        WHERE TM.userId = ${userId} 
+                        ORDER BY positionState DESC`;
+            return conn.queryAsync(sql1);
+        })
         .then(result1 => {
             // function
             result1.forEach(item => {
@@ -64,9 +63,6 @@ song_tripManage_router.get('/', function (req, res) {
                     data.joinTripList.push({ tripName: item.tripName, tripId: item.tripId });
                 }
             })
-
-            console.log(data.createTripList);
-            console.log(data.joinTripList)
 
             var sql2 = '';
             if (data.createTripList.length > 0) {
@@ -120,43 +116,70 @@ song_tripManage_router.get('/', function (req, res) {
 
         })
         .then(result3 => {
-            console.log(result3);
             if (result3.length > 0) {
-                data.sharedItems.push(
-                    {
-                        sharedItem: result3[0].sharedItem,
-                        itemCount: [{ userId: result3[0].userId, itemCount: result3[0].itemCount }]
-                    }
-                )
-                for (let i = 1; i < result3.length; i++) {
-                    if (result3[i].sharedItem != result3[i - 1].sharedItem) {
+
+                for (let i = 0; i < result3.length; i++) {
+                    if (i == 0 || result3[i].sharedItem != result3[i - 1].sharedItem) {
                         data.sharedItems.push({
-                                sharedItem: result3[i].sharedItem,
-                                itemCount: [{ userId: result3[i].userId, itemCount: result3[i].itemCount }]
-                            })
+                            sharedItem: result3[i].sharedItem,
+                            itemCount: [{ userId: result3[i].userId, itemCount: result3[i].itemCount }]
+                        })
                     }
                     else {
-                        data.sharedItems[data.sharedItems.length-1].itemCount.push(
-                            {userId: result3[i].userId, itemCount: result3[i].itemCount}
+                        data.sharedItems[data.sharedItems.length - 1].itemCount.push(
+                            { userId: result3[i].userId, itemCount: result3[i].itemCount }
                         )
                     }
                 }
             } else {
                 return;
             }
-            console.log(data);
 
             var sql4 = `SELECT * FROM privateitems WHERE tripId = ${result3[0].tripId}`;
             return conn.queryAsync(sql4);
         })
-        .then( result4 => {
-            console.log(result4);
+        .then(result4 => {
+            result4.forEach(item => {
+                data.privateItems.push({ privateItem: item.privateItem, itemCount: item.itemCount })
+            });
 
-            return res.render('song_tripManage.ejs');
+            var sql5 = `SELECT * FROM schedule WHERE tripId = ${result4[0].tripId} ORDER BY day ASC ,startTime ASC  `;
+            return conn.queryAsync(sql5);
+        })
+        .then(result5 => {
+            if (result5.length > 0) {
+                for (let i = 0; i < result5.length; i++) {
+                    if (i == 0 || result5[i].day != result5[i - 1].day) {
+                        data.schedule.push({
+                            day: result5[i].day,
+                            activity: [{ startTime: result5[i].startTime, activityName: result5[i].activity }]
+                        })
+                    }
+                    else {
+                        data.schedule[data.schedule.length - 1].activity.push(
+                            { startTime: result5[i].startTime, activityName: result5[i].activity }
+                        )
+                    }
+                }
+            }
+            else {
+                return;
+            }
+
+            console.log(data);
+            var sql6 = `SELECT tripId, tripDesc FROM trips WHERE tripId = ${result5[0].tripId}`
+            return conn.queryAsync(sql6);
+        })
+        .then(result6 => {
+            data.tripNotes = result6[0].tripDesc;
+            console.log(data)
+            return res.render('song_tripManage.ejs', data);
         })
         .catch(err => console.log(err));
 
 })
+
+
 
 song_tripManage_router.post('/', function (req, res) {
     console.log(req.body.tripName);
