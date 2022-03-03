@@ -127,8 +127,8 @@ const itineraryRow = `<tr>
               </tr>`;
 
 const privateItem = `<tr>
-                <td class="form-td"><input name="private" type="text" class=" border-0 text-center h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center h-100 form-input'" style="font-size: 1.4rem;"></td>
+                <td class="form-td"><input name="private" type="text" class="border-0 text-center h-100 form-input"
+                    placeholder="物品名稱" oninput="this.className = 'border-0 text-center h-100 form-input'" style="font-size: 1.4rem;"></td>
                 <td class="form-td">
                   <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
                     oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"

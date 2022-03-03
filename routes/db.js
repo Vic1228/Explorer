@@ -4,8 +4,8 @@ var connection = mysql.createConnection({
   user: "root",
   password: "root",
   database: "explorer",
+  multipleStatements: true,
 });
-
 connection.connect(function (error) {
   if (!!error) {
     console.log("連結失敗！");
