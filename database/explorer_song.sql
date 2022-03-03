@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-03-03 04:40:50
+-- 產生時間： 2022-03-03 04:44:32
 -- 伺服器版本： 10.4.22-MariaDB
 -- PHP 版本： 7.4.27
 
@@ -140,6 +140,13 @@ CREATE TABLE `tripchatboard` (
   `chatMessage` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
   `chatImgNum` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 傾印資料表的資料 `tripchatboard`
+--
+
+INSERT INTO `tripchatboard` (`number`, `tripId`, `userId`, `chatTime`, `chatMessage`, `chatImgNum`) VALUES
+(1, 1, 1, '2022-03-03 04:43:54', '1', 1);
 
 -- --------------------------------------------------------
 
