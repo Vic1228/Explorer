@@ -186,13 +186,16 @@
       </div>
       <hr />
 
+      <!-- 留言板內容渲染 -->
+      <% data.forEach(element => { %>
       <div class="row">
         <div class="col-auto">
           <img src="./img/Vic/TUN.png" class="img-fluid box" alt="..." />
         </div>
         <div class="col" style="margin-left: -0.5rem">
-          <p class="h5">唐老鴨</p>
-          <p>我覺得挺好</p>
+          <p class="h5"><%= element.userName %></p>
+          <p><%= element.chatMessage %></p>
+          <img src="./upload/photo<%= element.number %>.jpg" alt="" />
           <p
             style="
               font-size: 10px;
@@ -200,39 +203,23 @@
               margin-top: -0.5rem;
             "
           >
-            B1‧2022/01/24
+            <%= moment(element.chatTime).format("yy/MM/DD HH:mm") %>
           </p>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-auto">
-          <img src="./img/Vic/Mi.jpg" class="img-fluid box" alt="..." />
-        </div>
-        <div class="col" style="margin-left: -0.5rem">
-          <p class="h5">米老鼠</p>
-          <p>我覺得挺好</p>
-          <p
-            style="
-              font-size: 10px;
-              color: rgb(161, 161, 161);
-              margin-top: -0.5rem;
-            "
-          >
-            B2‧2022/01/24
-          </p>
-        </div>
-      </div>
+      <% }); %>
+      <!-- 留言板內容渲染 -->
 
       <form action="/upload" method="post" enctype="multipart/form-data">
         <div class="input-group">
           <input
+            name="content"
             type="text"
             class="form-control"
             placeholder="請輸入留言的內容.."
             aria-label="Recipient's username with two button addons"
           />
-          <input type="file" />
+          <input type="file" name="photo" />
           <input
             type="submit"
             id="send"
