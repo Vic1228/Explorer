@@ -74,19 +74,19 @@ lu_createTrip_router.post("/response", function (req, res) {
   VALUES ("${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
   connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
-  });
 
-  // connection.query(
-  //   "SELECT * FROM trips",
-  //   function (error, results) {
-  //     if (error) throw error;
-  //     else {
-  //       // 得到最後一筆的tripId
-  //       tripId = results[results.length - 1].tripId;
-  //       console.log(tripId);
-  //       };
-  
-  // schedule
+
+    // connection.query(
+    //   "SELECT * FROM trips",
+    //   function (error, results) {
+    //     if (error) throw error;
+    //     else {
+    //       // 得到最後一筆的tripId
+    //       tripId = results[results.length - 1].tripId;
+    //       console.log(tripId);
+    //       };
+
+// schedule
   for (var i = 0; i < schedule.length; i += 3) {
       let scheduleSQL = `INSERT INTO schedule (tripId, day, startTime, activity) 
         VALUES ("", "${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
@@ -112,6 +112,14 @@ lu_createTrip_router.post("/response", function (req, res) {
                   if (err) throw err;
         });
       };
+
+
+
+
+  });
+
+  
+  
       // 渲染
     res.render("lu_createFormComplete.ejs");
   });
