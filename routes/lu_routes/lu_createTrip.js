@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 var connection = require("../db.js");
 
 // ==================================
-// ============= profile ===============
+// ============= profile ============
 // ==================================
 // 查詢users表的資料
 
@@ -64,8 +64,6 @@ lu_createTrip_router.post("/response", function (req, res) {
       function (error, results) {
         // 得到最後一筆的tripId
         tripId = results[results.length - 1].tripId;
-
-        // -------------------------------------
 
         // schedule
         for (var i = 0; i < schedule.length; i += 3) {
