@@ -49,7 +49,7 @@ app.use("/spotId", spotInfoRouter);
 app.use('/tripManage', tripManage);
 app.use('/createTrip', createTrip)
 app.use('/', createTrip)
-app.use('/', yenpage)
+
 app.use("/", router);
 // app.use("/signup",signupRouter )
 
@@ -126,7 +126,7 @@ app.use(express.static("style"));
 
 
 // 洪碩呈 登入註冊
-var compareEmail = 0; // 比對email狀態 1 = true
+// var compareEmail = 0; // 比對email狀態 1 = true
 
 
 // =========== body-parser ===========
@@ -140,7 +140,7 @@ app.use(bodyParser.json());
 app.use(session({
   secret: 'secret', // 對session id 相關的cookie 進行簽名
   resave: true,
-  saveUninitialized: false, // 是否儲存未初始化的會話
+  saveUninitialized: true, // 是否儲存未初始化的會話
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
   },
@@ -182,15 +182,15 @@ connection.connect(function (error) {
 app.post("/login", function (req, res) {
   const email = req.body.useremail;
   const password = req.body.userpassword;
-  req.session.userEmail = req.body.useremail;
   const member = `select * from users where userEmail='${email}'and userPassword='${password}'`;
   // 比對
   connection.query(member, function (err, result, fields) {
     if (result[0] == null) {
       res.redirect('/login');
     } else {
-      console.log("success!");
-      console.log(req.session.userEmail)
+      let id = result[0].userId
+      req.session.userId = id;
+      console.log("login success!");
       res.redirect("/");
     }
   })
@@ -224,14 +224,13 @@ app.post("/register", function (req, res) {
   // 比對
   const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
   const takeid = `select userId from users where userEmail='${email}'`;
-
-  connection.query(custormers, (err, result, field) => {
-    connection.query(takeid, (err, result2, field) => {
+  connection.query(custormers, (err1, result, field) => {
+    console.log(err1)
+    connection.query(takeid, (err2, result2, field) => {
       console.log(result2)
       const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
-      connection.query(insertid, (err, result3, field) => {
-        console.log(err)
-        console.log(result3)
+      connection.query(insertid, (err3, result3, field) => {
+        console.log(err3)
         if (result == undefined) {
           console.log("錯誤，已註冊過");
           res.render('signuperr')
@@ -255,8 +254,8 @@ app.post("/register", function (req, res) {
 
 //退出
 app.get('/logout', function (req, res) {
-  req.session.userEmail = null; // 刪除session
-  console.log(req.session.userEmail);
+  req.session.userId= null; // 刪除session
+  console.log(req.session.userId);
   res.redirect('/');
 });
 

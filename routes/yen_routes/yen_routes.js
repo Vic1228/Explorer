@@ -5,7 +5,6 @@ const session = require('express-session');
 const multer = require('multer');
 const fs = require('fs')
 const path = require('path')
-
 const { CLIENT_CONNECT_WITH_DB } = require("mysql/lib/protocol/constants/client");
 const e = require("express");
 const { redirect } = require("express/lib/response");
@@ -18,14 +17,14 @@ var connection = mysql.createConnection({
     database: "explorer",
     port: "3306",
 });
-// connection.connect(function (error) {
-//     if (!!error) {
-//         console.log(error);
-//         console.log("仲硯連結資料庫失敗！");
-//     } else {
-//         console.log("仲硯已成功連結資料庫！");
-//     }
-// });
+connection.connect(function (error) {
+    if (!!error) {
+        console.log(error);
+        console.log("仲硯連結資料庫失敗！");
+    } else {
+        console.log("仲硯已成功連結資料庫！");
+    }
+});
 
 
 
@@ -33,7 +32,7 @@ var connection = mysql.createConnection({
 router.get("/trophy", function (req, res) {
     let sql1 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by strength desc limit 10'
     let sql2 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by heal desc limit 10'
-    let sql3 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by surriral desc limit 10'
+    let sql3 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by survival desc limit 10'
     let sql4 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by direction desc limit 10'
     let sql5 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by leadership desc limit 10'
     let sql6 = 'SELECT * FROM userstats LEFT join users on users.userId = userstats.userId order by teamwork desc limit 10'
@@ -89,24 +88,28 @@ router.get("/trophy", function (req, res) {
 // 個人資料路由
 
 router.get("/profile", (req, res) => {
-    if (req.session.userEmail==undefined) {
+    console.log(req.session)
+    if (req.session.userId==undefined) {
         res.redirect('/login')
     } else {
-        let apple = req.session.userEmail
-        let sqlone = `SELECT * FROM users where userEmail='${apple}'`;
+        let apple = req.session.userId
+        let sqlone = `SELECT * FROM users where userId='${apple}'`;
         connection.query(sqlone, (err, result, fields) => {
             if (err) throw err;
-            let sqltwo = `SELECT * FROM userstats where userId='${result[0].userId}'`
+            console.log(err)
+            console.log(result)
+            let sqltwo = `SELECT * FROM userstats where userId='${apple}'`
             connection.query(sqltwo, (err, result2) => {
                 if (err) throw err;
                 let a = result[0];
                 let b = result2[0];
-                console.log(a)
-                console.log(b)
-
-              
+                // console.log(a)
+                // console.log(b)
                 var obj = Object.assign(a, b);
-                // console.log(obj)
+                if(obj.commentCount==null){
+                    obj.commentCount=0
+                }
+                console.log(obj)
                 res.render("yen_profile.ejs", obj);
 
 
@@ -149,8 +152,8 @@ const storage = multer.diskStorage({
         cb(null, 'public/img/yen/photo')
     },
     filename: function (req, file, cb) {
-        let apple = req.session.userEmail
-        let sqlres = `SELECT userId FROM users where userEmail= '${apple}'`;
+        let apple = req.session.userId
+        let sqlres = `SELECT userId FROM users where userId= '${apple}'`;
         connection.query(sqlres, (err, result, fields) => {
             if (err) throw err;
             let a = result[0].userId;
@@ -174,8 +177,9 @@ router.post('/rephoto', upload.single('upload'), function (req, res) {
 
 // --修改個人資料
 router.post("/rename", (req, res) => {
+    let apple = req.session.userId
     let name = req.body.name;
-    let sql = `UPDATE users SET userName ='${name}' WHERE userId = 2`;
+    let sql = `UPDATE users SET userName ='${name}' WHERE userId = '${apple}'`;
     connection.query(sql, (err, result, fields) => {
         if (err) throw err;
         console.log(result);
@@ -183,8 +187,9 @@ router.post("/rename", (req, res) => {
     res.redirect("/profile");
 });
 router.post("/rephone", (req, res) => {
+    let apple = req.session.userId
     let tel = req.body.tel;
-    let sql = `UPDATE users SET userPhone ='${tel}' WHERE userId = 2`;
+    let sql = `UPDATE users SET userPhone ='${tel}' WHERE userId = '${apple}'`;
     connection.query(sql, (err, result, fields) => {
         if (err) throw err;
         console.log(result);
@@ -192,8 +197,9 @@ router.post("/rephone", (req, res) => {
     res.redirect("/profile");
 });
 router.post("/remail", (req, res) => {
+    let apple = req.session.userId
     let email = req.body.mail;
-    let sql = `UPDATE users SET userEmail ='${email}' WHERE userId = 2`;
+    let sql = `UPDATE users SET userEmail ='${email}' WHERE userId = '${apple}'`;
     connection.query(sql, (err, result, fields) => {
         if (err) throw err;
         console.log(result);
@@ -201,8 +207,9 @@ router.post("/remail", (req, res) => {
     res.redirect("/profile");
 });
 router.post("/retext", (req, res) => {
+    let apple = req.session.userId
     let text = req.body.text;
-    let sql = `UPDATE users SET userExp ='${text}' WHERE userId = 2`;
+    let sql = `UPDATE users SET userExp ='${text}' WHERE userId = '${apple}'`;
     connection.query(sql, (err, result, fields) => {
         if (err) throw err;
         console.log(result);
