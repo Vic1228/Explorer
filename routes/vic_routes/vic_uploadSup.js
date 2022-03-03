@@ -10,7 +10,6 @@ const fs = require("fs");
 const app = express();
 
 var connection = require("../db.js");
-
 const { reject } = require("bluebird");
 const promise = require("bluebird/js/release/promise");
 const { resolve } = require("path");
@@ -26,7 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.locals.moment = require("moment");
 
 var photoNumber;
-// 照片上傳設定
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./upload/");
@@ -35,6 +33,8 @@ var storage = multer.diskStorage({
     cb(null, "photo" + photoNumber + ".jpg");
   },
 });
+
+// 照片上傳設定
 const upload = multer({
   storage: storage,
   dest: "upload/",
@@ -51,46 +51,19 @@ const upload = multer({
 });
 // 照片上傳設定
 
-function getNumber() {
+function getNumber(num) {
   return new Promise((resolve, reject) => {
     connection.query(
       "SELECT number FROM tripchatboard ORDER BY tripchatboard.number DESC LIMIT 1",
       (err, result) => {
         photoNumber = result[0].number;
-        console.log(result[0].number);
+        photoNumber += 2;
       }
     );
-
-    resolve({ photoNumber });
+    resolve({ num: photoNumber });
   });
 }
 
-function upFile() {
-  return new Promise((resolve, reject) => {
-    router.post("/", upload.array("photo", 5), async (req, res) => {
-      photoNumber++;
-      var chatTime = new Date();
-      var sql =
-        "insert into tripchatboard set tripId=?,userId=?,chatTime=?,chatMessage=?,chatImgNum=?";
-      var addVaule = ["", "1", chatTime, req.body.content, photoNumber];
-
-      connection.query(sql, addVaule, function (err, result) {
-        if (err) {
-          console.log(err);
-          console.log("新增資料失敗");
-        }
-
-        res.redirect("/spotid");
-        console.log(photoNumber);
-      });
-    });
-  });
-}
-
-asyec_staus = async function () {
-  await getNumber();
-  await upFile();
-};
-asyec_staus();
+getNumber();
 
 module.exports = router;

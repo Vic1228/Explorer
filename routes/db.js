@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "explorer2",
+  database: "explorer",
 });
 
 connection.connect(function (error) {
@@ -14,24 +14,5 @@ connection.connect(function (error) {
     console.log("已成功連結資料庫！");
   }
 });
-
-const query = (sql, values) => {
-  return new Promise((reslove, reject) => {
-    pool.getConnection((err, connection) => {
-      if (err) {
-        reject(err);
-      } else {
-        connection.query(sql, values, (error, rows) => {
-          if (error) {
-            reject(error);
-          } else {
-            reslove(rows);
-          }
-          connection.release();
-        });
-      }
-    });
-  });
-};
 
 module.exports = connection;
