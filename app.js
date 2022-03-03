@@ -3,7 +3,7 @@
 var express = require("express");
 var router = express.Router();
 var app = express();
-var session = require("express-session")
+var session = require("express-session");
 app.listen(3000, (error) => {
   if (error) throw error;
   else {
@@ -21,22 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // ============= mysql ===============
-var mysql = require("mysql");
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root", //if mac ,須設定為root
-  database: "explorer",
-  port: "3306",
-});
-connection.connect(function (error) {
-  if (!!error) {
-    console.log(error);
-    console.log("連結資料庫失敗！");
-  } else {
-    console.log("已成功連結資料庫！");
-  }
-});
+var connection = require("./routes/db.js");
 
 // ============= router ===============
 const { promiseImpl } = require("ejs");
@@ -48,9 +33,6 @@ var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
 var uploadRouter = require("./routes/vic_routes/vic_upload");
 app.use("/", homepageRouter);
 app.use("/spotId", spotInfoRouter);
-
-
-app.use("/", router);
 app.use("/upload", uploadRouter);
 
 // 學奇
@@ -83,14 +65,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 使用 session 中介軟體
-app.use(session({
-  secret: 'secret', // 對session id 相關的cookie 進行簽名
-  resave: true,
-  saveUninitialized: true, // 是否儲存未初始化的會話
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
-  },
-}));
+app.use(
+  session({
+    secret: "secret", // 對session id 相關的cookie 進行簽名
+    resave: true,
+    saveUninitialized: true, // 是否儲存未初始化的會話
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
+    },
+  })
+);
 
 //連結資料庫
 
@@ -116,7 +100,6 @@ app.use(session({
 //   })
 // });
 
-
 // 使用者登入(新)
 app.post("/login", function (req, res) {
   const email = req.body.useremail;
@@ -125,14 +108,14 @@ app.post("/login", function (req, res) {
   // 比對
   connection.query(member, function (err, result, fields) {
     if (result[0] == null) {
-      res.redirect('/login');
+      res.redirect("/login");
     } else {
-      let id = result[0].userId
+      let id = result[0].userId;
       req.session.userId = id;
       console.log("login success!");
       res.redirect("/");
     }
-  })
+  });
 });
 
 // 使用者註冊
@@ -164,18 +147,18 @@ app.post("/register", function (req, res) {
   const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
   const takeid = `select userId from users where userEmail='${email}'`;
   connection.query(custormers, (err1, result, field) => {
-    console.log(err1)
+    console.log(err1);
     connection.query(takeid, (err2, result2, field) => {
-      console.log(err2)
+      console.log(err2);
       const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
       connection.query(insertid, (err3, result3, field) => {
-        console.log(err3)
+        console.log(err3);
         if (result == undefined) {
           console.log("錯誤，已註冊過");
-          res.render('signuperr')
+          res.render("signuperr");
         } else {
           console.log("1 record inserted");
-          res.redirect('/')
+          res.redirect("/");
         }
       });
     });
@@ -183,10 +166,10 @@ app.post("/register", function (req, res) {
 });
 
 //退出
-app.get('/logout', function (req, res) {
-  req.session.userId= null; // 刪除session
+app.get("/logout", function (req, res) {
+  req.session.userId = null; // 刪除session
   console.log(req.session.userId);
-  res.redirect('/');
+  res.redirect("/");
 });
 
-app.use('/', yenpage)
+app.use("/", yenpage);

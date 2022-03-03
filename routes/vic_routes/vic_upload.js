@@ -79,7 +79,6 @@ function upFile() {
           console.log(err);
           console.log("新增資料失敗");
         }
-
         res.redirect("/spotid");
         console.log(photoNumber);
       });
