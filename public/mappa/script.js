@@ -125,7 +125,7 @@ function initMap() {
         infowindow.setContent(
           "<div class='infowindow-container'>" +
             "<img src='" +
-            place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +
+            place.photos[1].getUrl({ maxWidth: 200, maxHeight: 150 }) +
             "'></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=3">' +
@@ -345,7 +345,7 @@ function initMap() {
         infowindow.setContent(
           "<div class='infowindow-container'>" +
             "<img src='" +
-            place.photos[3].getUrl({ maxWidth: 200, maxHeight: 150 }) +
+            place.photos[7].getUrl({ maxWidth: 200, maxHeight: 150 }) +
             " class='image''></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=8">' +
