@@ -24,6 +24,7 @@ song_tripManage_router.get('/', function (req, res) {
         createTripList: [],
         joinTripList: [],
         //以下為trip詳細資料
+        selectedTrip:{},
         tripchatboard: [
             {
                 userId: '',
@@ -33,6 +34,7 @@ song_tripManage_router.get('/', function (req, res) {
         ],
         tripMember: [
         ],
+        memberCount: null,
         sharedItems: [
         ],
         privateItems: [
@@ -66,10 +68,11 @@ song_tripManage_router.get('/', function (req, res) {
 
             var sql2 = '';
             if (data.createTripList.length > 0) {
-                sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount
+                sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount, T.tripName
                         FROM tripmembers AS TM 
                         INNER JOIN users AS U ON TM.userId=U.userId 
                         INNER JOIN userstats AS US ON TM.userId=US.userId
+                        INNER JOIN trips AS T ON TM.tripId=T.tripId
                         WHERE TM.tripId=${data.createTripList[0].tripId}
                         ORDER BY TM.positionState DESC`;
             }
@@ -88,7 +91,9 @@ song_tripManage_router.get('/', function (req, res) {
             return conn.queryAsync(sql2);
         })
         .then(result2 => {
+            console.log(result2);
             // console.log(apple);
+            data.selectedTrip = {tripName: result2[0].tripName , tripId: result2[0].tripId};
             result2.forEach(item => {
                 data.tripMember.push({
                     name: item.userName,
@@ -166,12 +171,17 @@ song_tripManage_router.get('/', function (req, res) {
                 return;
             }
 
-            console.log(data);
             var sql6 = `SELECT tripId, tripDesc FROM trips WHERE tripId = ${result5[0].tripId}`
             return conn.queryAsync(sql6);
         })
         .then(result6 => {
             data.tripNotes = result6[0].tripDesc;
+            console.log(data);
+            var sql7 = `SELECT tripId, COUNT(userId) AS memberCount FROM tripMembers WHERE tripId = ${result6[0].tripId} AND positionState > 0`;
+            return conn.queryAsync(sql7);
+        })
+        .then(result7 => {
+            data.memberCount = result7[0].memberCount;
             console.log(data)
             return res.render('song_tripManage.ejs', data);
         })

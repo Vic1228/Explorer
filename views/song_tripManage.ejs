@@ -41,8 +41,8 @@
     <!-- NAV BAR -->
     <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
 
-    <div id= "section0">
-         <img src="../public/img/song_img/viewtest.png" alt=""> 
+    <div id="section0">
+        <img src="../public/img/song_img/viewtest.png" alt="">
     </div>
 
     <div id="section1" class="container-fluid mx-auto">
@@ -55,10 +55,12 @@
                         <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
                     </h4>
                     <hr class="divider">
-                    <ul id="createdTripList" class="collapse show">
-                        <li><a href="">Trip AAA</a> </li>
-                        <li><a href="">Trip BBB</a> </li>
-                        <li><a href="">Trip CCC</a> </li>
+                    <ul id="createTripList" class="collapse show">
+                        <% for(let i of createTripList){ %>
+                            <li><a href="">
+                                    <%= i.tripName %>
+                                </a> </li>
+                            <% } %>
                     </ul>
                 </div>
                 <div id="joinedTripContainer">
@@ -67,9 +69,11 @@
                     </h4>
                     <hr class="divider">
                     <ul id="joinedTripList" class="collapse show">
-                        <li><a href="">Trip DDD</a> </li>
-                        <li><a href="">Trip EEE</a> </li>
-                        <li><a href="">Trip FFF</a> </li>
+                        <% for(let i of joinTripList){ %>
+                            <li><a href="">
+                                    <%= i.tripName %>
+                                </a></li>
+                            <% } %>
                     </ul>
                 </div>
             </div>
@@ -77,9 +81,10 @@
 
             <!------- Middle: management Start ------->
             <div id="managementContainer" class="col-6">
-                <h1>Trip AAA
-                    <img class="edit" data-toggle="modal" data-target="#tripNameEdit"
-                        src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">
+                <h1>
+                    <%= selectedTrip.tripName %>
+                        <img class="edit" data-toggle="modal" data-target="#tripNameEdit"
+                            src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">
                 </h1>
                 <div>
                     <ul class="nav nav-tabs" role="tablist">
@@ -123,10 +128,6 @@
                             </div>
                         </div>
                         <div id="tripMember" class="container tab-pane fade">
-                            <div id="showStat"
-                                style="display:none; width:160px; height:160px; position:fixed; background-color: rgb(255, 255, 255);">
-                                <canvas id="myChart"></canvas>
-                            </div>
                             <h4 class="tableTitle" data-toggle="collapse" data-target="#joinedMemberContainer">
                                 已參加團員
                                 <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
@@ -138,20 +139,40 @@
                                         <th>提供之公共裝備</th>
                                         <th>綜合評分</th>
                                         <th>我要評分&#8194</th>
-                                    </tr>
-                                    <tr>
-                                        <td>小明</td>
-                                        <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視</a></td>
-                                        <td><a href="#" class="">7.5 </a></td>
-                                        <td>---</td>
-                                    </tr>
-                                    <tr>
-                                        <td>小強</td>
-                                        <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視</a></td>
-                                        <td><a href="#" id="statHover" onmouseover="hoverdiv(event,'showStat')"
-                                                onmouseout="hoverdiv(event,'showStat')">9.7</a></td>
-                                        <td><a href="#" data-toggle="modal" data-target="#statComment">我要評分</a></td>
-                                    </tr>
+                                    </tr>          
+                                    <% for (let x of tripMember){ %>
+                                        <% if ( x. positionState> 0) {%>
+                                            <tr>
+                                                <td>
+                                                    <%= x.name %>
+
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
+                                                        <ul class="d-none">
+                                                            <% for(let i of sharedItems){ %>
+                                                                <% for(let j of i.itemCount){ %>
+                                                                    <% if(j.userId==x.userId ){ %>
+                                                                        <li>
+                                                                            <%= i.sharedItem%> &#8194&#8194&#8194 <%= j.itemCount %>
+                                                                        </li>
+                                                                    <% } %>
+                                                                <% } %>
+                                                            <% } %>
+                                                        </ul>
+                                                    </a>
+                                                </td>
+                                                <% var statAvg = Math.floor( (x.stat.leadership + x.stat.teamwork + x.stat.strength + x.stat.heal + x.stat.survival + x.stat.direction)/6*10)/10; %>
+                                                <td><a href="#"><%= statAvg %></a></td>
+                                                <% if(x.name == userName){ %>
+                                                    <td> --- </td>
+                                                <% } else {  %>
+                                                    <td><a href="#" data-toggle="modal" data-target="#statComment">我要評分</a></td>
+                                                <% } %>
+                                            </tr>
+                                        <% } %>
+                                    <% } %>
+
                                 </table>
                             </div>
                             <h4 class="tableTitle" data-toggle="collapse" data-target="#applyMemberContainer">申請中 <img
@@ -165,26 +186,50 @@
                                         <th>綜合評分</th>
                                         <th>同意/拒絕</th>
                                     </tr>
-                                    <tr>
-                                        <td>小張</td>
-                                        <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視</a></td>
-                                        <td><a href="#" class="statPopover">6.3</a></td>
-                                        <td>
-                                            <div class="checkCancelContainer">
-                                                <img class="checkIcon" type="image"
-                                                    src="../public/img/song_img/check.png" data-toggle="modal"
-                                                    data-target="#memberApplyConfirm">
-                                                <img class="cancelIcon" type="image"
-                                                    src="../public/img/song_img/cancel.png" data-toggle="modal"
-                                                    data-target="#memberApplyReject">
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <% for (let x of tripMember){ %>
+                                        <% if ( x. positionState == 0) {%>
+                                            <tr>
+                                                <td>
+                                                    <%= x.name %>
+
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
+                                                        <ul class="d-none">
+                                                            <% for(let i of sharedItems){ %>
+                                                                <% for(let j of i.itemCount){ %>
+                                                                    <% if(j.userId == x.userId && j.itemCount>0 ){ %>
+                                                                        <li>
+                                                                            <%= i.sharedItem%> &#8194&#8194&#8194 <%=
+                                                                                    j.itemCount%>
+                                                                        </li>
+                                                                    <% } %>
+                                                                <% } %>
+                                                            <% } %>
+                                                        </ul>
+                                                    </a>
+                                                </td>
+                                                <% var statAvg = Math.floor( (x.stat.leadership + x.stat.teamwork + x.stat.strength + x.stat.heal + x.stat.survival + x.stat.direction)/6*10)/10; %>
+                                                <td><a href="#"><%= statAvg %></a></td>
+                                                <td>
+                                                    <div class="checkCancelContainer">
+                                                        <img class="checkIcon" type="image"
+                                                            src="../public/img/song_img/check.png" data-toggle="modal"
+                                                            data-target="#memberApplyConfirm">
+                                                        <img class="cancelIcon" type="image"
+                                                            src="../public/img/song_img/cancel.png" data-toggle="modal"
+                                                            data-target="#memberApplyReject">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% } %>
+                                    <% } %>
                                 </table>
                             </div>
                         </div>
                         <div id="itemList" class="container tab-pane fade">
-                            <h4 class="tableTitle">公共裝備（團員人數： 3人）
+
+                            <h4 class="tableTitle">公共裝備（團員人數： <%= memberCount %> 人）
                                 <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
                                     data-target="#publicItemListEdit" title="限發起人編輯">
                             </h4>
@@ -192,40 +237,41 @@
                                 <tr class="tableRow">
                                     <th>裝備名稱</th>
                                     <th>已提供總數</th>
-                                    <th>提供人／數量</th>
+                                    <th>提供人 ／ 數量</th>
                                     <th>我要提供</th>
                                 </tr>
-                                <tr class="publicItemDetail" valign="top">
-                                    <td>三人帳</td>
-                                    <td>2</td>
-                                    <td>
-                                        <ul>
-                                            <li>小明&#8194 1個</li>
-                                            <li>小強&#8194 1個</li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="plusContainer">
-                                            <img class="plusIcon" src="../public/img/song_img/plus.png" alt=""
-                                                data-toggle="modal" data-target="#publicItemProvide">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="publicItemDetail" valign="top">
-                                    <td>三人帳</td>
-                                    <td>2</td>
-                                    <td>
-                                        <ul>
-                                            <li>小明&#8194 1個</li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="plusContainer">
-                                            <img class="plusIcon" src="../public/img/song_img/plus.png" alt=""
-                                                data-toggle="modal" data-target="#publicItemProvide">
-                                        </div>
-                                    </td>
-                                </tr>
+                                <% for(let i of sharedItems){ %>
+                                    <tr class="publicItemDetail" valign="top">
+                                        <td><%= i.sharedItem %></td>
+                                        <% let count=0 %>
+                                        <% for(let j of i.itemCount){ %>
+                                            <% count += j.itemCount %>
+                                        <% } %>
+                                        <td><%= count %></td>
+                                        <td>
+                                            <ul>
+                                                <% for(let j of i.itemCount){ %>
+                                                    <% for(let x of tripMember){ %>
+                                                        <% if(j.userId == x.userId && x.positionState > 0){ %>
+                                                            <li class="superLi">
+                                                                <span class="superLeft"><%= x.name %></span>
+                                                                <span class="superSpan">／</span>
+                                                                <span class="superRight"><%= j.itemCount %>個</span>
+                                                            </li>
+                                                        <% } %>
+                                                    <% } %>
+                                                <% } %>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <div class="plusContainer">
+                                                <img class="plusIcon" src="../public/img/song_img/plus.png" alt=""
+                                                    data-toggle="modal" data-target="#publicItemProvide">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                                
                             </table>
 
                             <br>
@@ -238,10 +284,12 @@
                                     <th>裝備名稱</th>
                                     <th>個數／人</th>
                                 </tr>
-                                <tr class="privateItemDetail" valign="top">
-                                    <td>電蚊拍</td>
-                                    <td>1</td>
-                                </tr>
+                                <% for(let i of privateItems){ %>
+                                    <tr class="privateItemDetail" valign="top">
+                                        <td><%= i.privateItem %></td>
+                                        <td><%= i.itemCount %></td>
+                                    </tr>
+                                <% } %>
                             </table>
                         </div>
                     </div>
@@ -319,6 +367,14 @@
 
         </div>
     </div>
+
+
+    <!--------- userStat --------->
+    <!-- <div id="showStat"
+        style="display:none; width:160px; height:160px; position:fixed; background-color: rgb(255, 255, 255);">
+        <canvas id="myChart">9.5</canvas>
+    </div> -->
+    <!-- <a href="#" id="statHover" onmouseover="hoverdiv(event,'showStat')" onmouseout="hoverdiv(event,'showStat')">9.7</a> -->
 
     <!---------------------------------------------------------------->
     <!--------------------------- modal ------------------------------>
@@ -656,6 +712,8 @@
     </div>
 
 
+
+
     <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
     <!-- FOOTER -->
     <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
@@ -696,10 +754,6 @@
             //     })
             // })
         })
-
-
-
-
     </script>
 
 </body>
