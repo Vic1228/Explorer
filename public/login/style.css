@@ -22,6 +22,7 @@ body{
   align-items: center;
   justify-content: center;
   background: #1a36217c;
+  background-image: url(../../image/attractionDetails/unsplash4.jpg);
 }
 ::selection{
   color: #fff;

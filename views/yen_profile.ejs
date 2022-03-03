@@ -16,7 +16,7 @@
   <script src="https://www.w3schools.com/lib/w3.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-  <title>Document</title>
+  <title>個人主頁</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -37,7 +37,7 @@
     <!-- 大頭貼 -->
     <div class="col-3">
       <div class="profile profile-name rounded-circle">
-        <img id="imagegrid" src='/public/img/yen/photo/<%= userEmail %>.png' class="img-thumbnail" alt="請補上照片">
+        <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt="請補上照片">
         <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
           <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
         </form>
@@ -171,7 +171,7 @@
       datasets: [
         {
           label: '<%= userName %>',
-          data: ['<%= leadership %>', '<%= teamwork %>', '<%= strength%>', '<%= heal %>', '<%= surriral%>', '<%= direction %>'],
+          data: ['<%= leadership %>', '<%= teamwork %>', '<%= strength%>', '<%= heal %>', '<%= survival%>', '<%= direction %>'],
           fill: true,
           backgroundColor: "rgb(0, 108, 155, 0.2)",
           borderColor: "rgb(0, 108, 155, 0.1)",

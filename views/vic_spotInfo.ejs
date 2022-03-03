@@ -1,223 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./nav/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.slim.js"
+      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .box {
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./style/style.css" />
-  <link rel="stylesheet" href="./nav/nav.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
-  <script src="https://www.w3schools.com/lib/w3.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-  <style>
-    .box {
-      box-sizing: border-box;
-    }
+      .TopAndBottonSize {
+        margin-top: 1.7rem;
+        margin-bottom: 1.7rem;
+      }
 
-    .TopAndBottonSize {
-      margin-top: 1.7rem;
-      margin-bottom: 1.7rem;
-    }
+      .BtnWedth {
+        width: 5rem;
+      }
+    </style>
+    <title>Document</title>
+  </head>
 
-    .BtnWedth {
-      width: 5rem;
-    }
-  </style>
-  <title>Document</title>
-</head>
-
-<body>
-  <!-- NAV BAR -->
-  <div w3-include-HTML="./nav/nav.html"></div>
-  <!-- NAV BAR -->
-  <div class="container navDistance">
-    <div class="row">
-      <div class="col-5">
-        <img src="./img/Vic/photo.jpg" class="img-fluid box" alt="..." />
-        <!--600/310-->
-
-        <body>
-          <!-- NAV BAR -->
-          <div w3-include-HTML="./nav/nav.html"></div>
-          <!-- NAV BAR -->
-          <div class="container navDistance">
-            <div class="row">
-              <div class="col-5">
-                <img src="./img/Vic/photo.jpg" class="img-fluid box" alt="..." />
-                <!--600/310-->
-              </div>
-              <div class="col-7">
-                <p class="h2" style="font-weight: bold">雪山</p>
-                <p class="h4 TopAndBottonSize" style="font-weight: bold">資訊</p>
-                <p class="h6">座標： 24° 23′ 0.24″ N, 121° 13′ 54.48″ E</p>
-                <p class="h6">位置： 中華民國台中市和平區與苗栗縣泰安鄉</p>
-                <p class="h6">
-                  最簡路線：
-                  雪東線（雪山登山口→七卡山莊→雪山東峰→三六九山莊→雪山主峰）
-                </p>
-                <button type="button" class="btn btn-primary TopAndBottonSize">
-                  參加行程
-                </button>
-                <button type="button" class="btn btn-primary TopAndBottonSize" style="margin-left: 1rem"
-                  onclick="crate()">
-                  建立行程
-                </button>
-              </div>
-            </div>
-            <div class="col-7">
-              <p class="h2" style="font-weight: bold">雪山</p>
-              <p class="h4 TopAndBottonSize" style="font-weight: bold">資訊</p>
-              <p class="h6">座標： 24° 23′ 0.24″ N, 121° 13′ 54.48″ E</p>
-              <p class="h6">位置： 中華民國台中市和平區與苗栗縣泰安鄉</p>
-              <p class="h6">
-                最簡路線：
-                雪東線（雪山登山口→七卡山莊→雪山東峰→三六九山莊→雪山主峰）
-              </p>
-              <button type="button" class="btn btn-primary TopAndBottonSize">
-                參加行程
-              </button>
-              <button type="button" class="btn btn-primary TopAndBottonSize" style="margin-left: 1rem"
-                onclick="creat()">
-                建立行程
-              </button>
-            </div>
-          </div>
-          <div class="d-flex align-items-start" style="margin-top: 30px">
-            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <button class="nav-link active BtnWedth" id="v-pills-home-tab" data-bs-toggle="pill"
-                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                aria-selected="true">
-                簡介
-              </button>
-              <button class="nav-link BtnWedth" id="v-pills-profile-tab" data-bs-toggle="pill"
-                data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile"
-                aria-selected="false">
-                歷史
-              </button>
-              <button class="nav-link BtnWedth" id="v-pills-messages-tab" data-bs-toggle="pill"
-                data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages"
-                aria-selected="false">
-                地理
-              </button>
-              <button class="nav-link BtnWedth" id="v-pills-settings-tab" data-bs-toggle="pill"
-                data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings"
-                aria-selected="false">
-                景觀
-              </button>
-            </div>
-            <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                aria-labelledby="v-pills-home-tab">
-                雪山，最高峰雪山主峰位處台灣台中市和平區平等里與苗栗縣泰安鄉梅園村之間，屬於雪山山脈，為全台第二高峰，標高
-                3,886 公尺，僅次於玉山山脈的玉山（3,952
-                公尺）。雪山在日治時代被稱做次高山，是第二座超越日本富士山高度的台灣高山。在台灣百岳之中，雪山與玉山、秀姑巒山、南湖大山、北大武山合稱「五嶽」，為台灣最具代表性的五座高山。
-              </div>
-
-              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                雪山地區是世居在此的泰雅族人的獵區。在志佳陽社（今
-                環山部落）的稱呼中，雪山泰雅語名為「B'bu'
-                Hagay」，意為「石頭山」，描述雪山頂到處堆積的砂岩塊[1]；另有泰雅語稱為「Mahamayan」，譯作馬哈馬顏山；在泰雅語中的第三個稱法為「Sekoan」，意為「碎石與裂縫」。《台灣府志》描寫其積雪之景，稱為雪山、雪翁山，日人幣原坦認為「雪翁山」或「雪高翁山」為「Sekoan」的音譯。《淡水廳志》《苗栗廳志》《噶瑪蘭廳志》稱此山為玉山，《苗栗廳志》中「玉山霽雪」為苗栗八景之一，《噶瑪蘭廳志》中「玉山積雪」也為蘭陽勝景之一[a][3]。
-                1867年，英國軍艦Sylvia號行經台灣海域，據說船長以目視發現高聳的雪山，便將山以船命名為「Sylvia」，早期西方相關文獻便以Mt.Sylvia稱呼雪山[4]；1872年，馬偕博士曾入雪山山區活動。接著台灣進入日治時期，大正4年（1915年）7月10日，隸屬「蕃務本署」的測量員財津久平等人經埤亞南社（今南山村）越過埤亞南鞍部（今思源埡口），從雪山東峰稜線順利登上雪山主峰，並量出高度為12,972日尺，比日本本土最高峰富士山還高；1923年，裕仁親王（後為昭和天皇）訪台，以「台灣第二高峰、僅次於新高山的山」命名為次高山[5]；與新高山（玉山）、能高山並稱「三高」[6]。山頂設有次高神社，包括水泥製神龕與鳥居，現已不存。
-                戰後，1953年台灣省政府公告恢復「雪山」的歷史山名[7]；先總統蔣中正巡視中橫公路時曾將雪山取名興隆山，但未被長期廣泛採用。
-              </div>
-
-              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                雪山主峰與副峰群分布在雪山山脈的中段，約在台中市與苗栗縣的市縣界上，地處雪霸國家公園境內。以雪山主峰為中心，周圍一帶地質特色、岩性皆相似的山塊，稱為雪山地壘。雪山地壘的基岩為始新世晚期或漸新世早期之四稜砂岩，是一種石英變質砂岩，硬度非常高，耐風化侵蝕，因此造就了雪山地壘的高聳地勢。
-                以雪山主峰為頂點，共有六條稜脈匯聚，分別是：<br />
-
-                西稜：為雪山山脈主稜西段，自雪山主峰向西延伸，經過翠池三叉山後北轉，在博可爾山（又名雪山西峰）再折向西南方。沿線包括火石山、頭鷹山、大雪山、中雪山四座百岳山峰，也稱為大雪山稜脈。
-                <br />
-                南稜：自翠池三叉山向南轉折，沿線有雪山西南峰、大劍山、油婆蘭山、佳陽山、劍山等高山，又稱雪劍稜脈、劍山稜脈或大小劍稜脈。
-                <br />
-                北稜：雪山山脈主稜自雪山主峰向北，經北稜角、凱蘭特崑山、雪山北峰、穆特勒布山、素密達山、布秀蘭山、巴紗拉雲山到大霸尖山、小霸尖山的稜脈，即是聖稜線，亦稱雪霸線。雪山山脈主稜往北在布秀蘭山轉分支往東為主稜。大霸尖山往北往鎮西堡岳界稱為大霸北稜。
-                <br />
-                北東稜：雪山山脈從布秀蘭山自北稜分出往東為主稜，沿線有品田山、池有山、桃山與喀拉業山，即武陵四秀。
-                <br />
-                東南稜：從雪山主峰南面，接上雪山南峰、志佳陽大山。 <br />
-                東支稜：由主峰往東延伸至七家灣溪河谷，沿線經過甘木林山、雪山東峰；也稱雪東線。
-              </div>
-
-              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                雪山主峰標高3,886公尺，峰頂地形平緩，設有一等三角點與石碑。雪山的地質構造以變質砂岩為主，在主峰周邊各處均可見變質砂岩的交疊構造出露，以及散落的風化砂岩碎塊。主峰東面為雪山一號圈谷，北面經埡口接上北稜角，西面稜脈接上翠池三叉山，南面則為斷崖崩壁。
-              </div>
-            </div>
-          </div>
-          <hr />
-
-          <div class="row">
-            <div class="col-auto">
-              <img src="./img/Vic/TUN.png" class="img-fluid box" alt="..." />
-            </div>
-            <div class="col" style="margin-left: -0.5rem">
-              <p class="h5">唐老鴨</p>
-              <p>我覺得挺好</p>
-              <p style="
-              font-size: 10px;
-              color: rgb(161, 161, 161);
-              margin-top: -0.5rem;
-            ">
-                B1‧2022/01/24
-              </p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-auto">
-              <img src="./img/Vic/MI.jpg" class="img-fluid box" alt="..." />
-            </div>
-            <div class="col" style="margin-left: -0.5rem">
-              <p class="h5">米老鼠</p>
-              <p>我覺得挺好</p>
-              <p style="
-              font-size: 10px;
-              color: rgb(161, 161, 161);
-              margin-top: -0.5rem;
-            ">
-                B2‧2022/01/24
-              </p>
-            </div>
-          </div>
-
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="請輸入留言的內容.."
-              aria-label="Recipient's username with two button addons" />
-            <button class="btn btn-outline-primary" type="button">上傳圖片</button>
-            <button class="btn btn-outline-primary" type="button">送出</button>
-          </div>
+  <body>
+    <!-- NAV BAR -->
+    <div w3-include-HTML="./nav/nav.html"></div>
+    <!-- NAV BAR -->
+    <div class="container navDistance">
+      <div class="row">
+        <div class="col-5">
+          <img
+            style="height: 300px; width: 1500px"
+            src="./img/Vic/雪山.jpg"
+            class="img-fluid box"
+            alt="..."
+          />
+          <!--600/310-->
+        </div>
+        <div class="col-7">
+          <p class="h2" style="font-weight: bold">雪山</p>
+          <p class="h4 TopAndBottonSize" style="font-weight: bold">資訊</p>
+          <p class="h6">座標： 24° 23′ 0.24″ N, 121° 13′ 54.48″ E</p>
+          <p class="h6">位置： 中華民國台中市和平區與苗栗縣泰安鄉</p>
+          <p class="h6">
+            最簡路線：
+            雪東線（雪山登山口→七卡山莊→雪山東峰→三六九山莊→雪山主峰）
+          </p>
+          <button type="button" class="btn btn-primary TopAndBottonSize">
+            參加行程
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary TopAndBottonSize"
+            style="margin-left: 1rem"
+          >
+            建立行程
+          </button>
+        </div>
       </div>
-      <!-- FOOTER -->
-      <div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
-      <!-- FOOTER -->
-      <script>
-        w3.includeHTML();
-      </script>
-      <script src="./nav/nav.js"></script>
-      <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
-      <script>
-        function creat() {
-          location.href = "/createTrip"
-        }
-      </script>
-</body>
 
-</html>
-<!-- FOOTER -->
-<div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
-<!-- FOOTER -->
-<script>
-  w3.includeHTML();
-</script>
-<script src="./nav/nav.js"></script>
-<script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
-<script>
-  function crate() {
-    location.href = "/createTrip";
-  }
-</script>
-</body>
+      <div class="d-flex align-items-start" style="margin-top: 30px">
+        <div
+          class="nav flex-column nav-pills me-3"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical"
+        >
+          <button
+            class="nav-link active BtnWedth"
+            id="v-pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-home"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-home"
+            aria-selected="true"
+          >
+            簡介
+          </button>
+          <button
+            class="nav-link BtnWedth"
+            id="v-pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-profile"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-profile"
+            aria-selected="false"
+          >
+            歷史
+          </button>
+          <button
+            class="nav-link BtnWedth"
+            id="v-pills-messages-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-messages"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-messages"
+            aria-selected="false"
+          >
+            地理
+          </button>
+          <button
+            class="nav-link BtnWedth"
+            id="v-pills-settings-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#v-pills-settings"
+            type="button"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="false"
+          >
+            景觀
+          </button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="v-pills-home"
+            role="tabpanel"
+            aria-labelledby="v-pills-home-tab"
+          >
+            雪山，最高峰雪山主峰位處台灣台中市和平區平等里與苗栗縣泰安鄉梅園村之間，屬於雪山山脈，為全台第二高峰，標高
+            3,886 公尺，僅次於玉山山脈的玉山（3,952
+            公尺）。雪山在日治時代被稱做次高山，是第二座超越日本富士山高度的台灣高山。在台灣百岳之中，雪山與玉山、秀姑巒山、南湖大山、北大武山合稱「五嶽」，為台灣最具代表性的五座高山。
+          </div>
 
+          <div
+            class="tab-pane fade"
+            id="v-pills-profile"
+            role="tabpanel"
+            aria-labelledby="v-pills-profile-tab"
+          >
+            雪山地區是世居在此的泰雅族人的獵區。在志佳陽社（今
+            環山部落）的稱呼中，雪山泰雅語名為「B'bu'
+            Hagay」，意為「石頭山」，描述雪山頂到處堆積的砂岩塊[1]；另有泰雅語稱為「Mahamayan」，譯作馬哈馬顏山；在泰雅語中的第三個稱法為「Sekoan」，意為「碎石與裂縫」。《台灣府志》描寫其積雪之景，稱為雪山、雪翁山，日人幣原坦認為「雪翁山」或「雪高翁山」為「Sekoan」的音譯。《淡水廳志》《苗栗廳志》《噶瑪蘭廳志》稱此山為玉山，《苗栗廳志》中「玉山霽雪」為苗栗八景之一，《噶瑪蘭廳志》中「玉山積雪」也為蘭陽勝景之一[a][3]。
+            1867年，英國軍艦Sylvia號行經台灣海域，據說船長以目視發現高聳的雪山，便將山以船命名為「Sylvia」，早期西方相關文獻便以Mt.Sylvia稱呼雪山[4]；1872年，馬偕博士曾入雪山山區活動。接著台灣進入日治時期，大正4年（1915年）7月10日，隸屬「蕃務本署」的測量員財津久平等人經埤亞南社（今南山村）越過埤亞南鞍部（今思源埡口），從雪山東峰稜線順利登上雪山主峰，並量出高度為12,972日尺，比日本本土最高峰富士山還高；1923年，裕仁親王（後為昭和天皇）訪台，以「台灣第二高峰、僅次於新高山的山」命名為次高山[5]；與新高山（玉山）、能高山並稱「三高」[6]。山頂設有次高神社，包括水泥製神龕與鳥居，現已不存。
+            戰後，1953年台灣省政府公告恢復「雪山」的歷史山名[7]；先總統蔣中正巡視中橫公路時曾將雪山取名興隆山，但未被長期廣泛採用。
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="v-pills-messages"
+            role="tabpanel"
+            aria-labelledby="v-pills-messages-tab"
+          >
+            雪山主峰與副峰群分布在雪山山脈的中段，約在台中市與苗栗縣的市縣界上，地處雪霸國家公園境內。以雪山主峰為中心，周圍一帶地質特色、岩性皆相似的山塊，稱為雪山地壘。雪山地壘的基岩為始新世晚期或漸新世早期之四稜砂岩，是一種石英變質砂岩，硬度非常高，耐風化侵蝕，因此造就了雪山地壘的高聳地勢。
+            以雪山主峰為頂點，共有六條稜脈匯聚，分別是：<br />
+
+            西稜：為雪山山脈主稜西段，自雪山主峰向西延伸，經過翠池三叉山後北轉，在博可爾山（又名雪山西峰）再折向西南方。沿線包括火石山、頭鷹山、大雪山、中雪山四座百岳山峰，也稱為大雪山稜脈。
+            <br />
+            南稜：自翠池三叉山向南轉折，沿線有雪山西南峰、大劍山、油婆蘭山、佳陽山、劍山等高山，又稱雪劍稜脈、劍山稜脈或大小劍稜脈。
+            <br />
+            北稜：雪山山脈主稜自雪山主峰向北，經北稜角、凱蘭特崑山、雪山北峰、穆特勒布山、素密達山、布秀蘭山、巴紗拉雲山到大霸尖山、小霸尖山的稜脈，即是聖稜線，亦稱雪霸線。雪山山脈主稜往北在布秀蘭山轉分支往東為主稜。大霸尖山往北往鎮西堡岳界稱為大霸北稜。
+            <br />
+            北東稜：雪山山脈從布秀蘭山自北稜分出往東為主稜，沿線有品田山、池有山、桃山與喀拉業山，即武陵四秀。
+            <br />
+            東南稜：從雪山主峰南面，接上雪山南峰、志佳陽大山。 <br />
+            東支稜：由主峰往東延伸至七家灣溪河谷，沿線經過甘木林山、雪山東峰；也稱雪東線。
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="v-pills-settings"
+            role="tabpanel"
+            aria-labelledby="v-pills-settings-tab"
+          >
+            雪山主峰標高3,886公尺，峰頂地形平緩，設有一等三角點與石碑。雪山的地質構造以變質砂岩為主，在主峰周邊各處均可見變質砂岩的交疊構造出露，以及散落的風化砂岩碎塊。主峰東面為雪山一號圈谷，北面經埡口接上北稜角，西面稜脈接上翠池三叉山，南面則為斷崖崩壁。
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      <!-- 留言板內容渲染 -->
+      <% data.forEach(element => { %>
+      <div class="row">
+        <div class="col-auto">
+          <img src="./img/Vic/TUN.png" class="img-fluid box" alt="..." />
+        </div>
+        <div class="col" style="margin-left: -0.5rem">
+          <p class="h5"><%= element.userName %></p>
+          <p><%= element.chatMessage %></p>
+          <img src="./upload/photo<%= element.number %>.jpg" alt="" />
+          <p
+            style="
+              font-size: 10px;
+              color: rgb(161, 161, 161);
+              margin-top: -0.5rem;
+            "
+          >
+            <%= moment(element.chatTime).format("yy/MM/DD HH:mm") %>
+          </p>
+        </div>
+      </div>
+      <% }); %>
+      <!-- 留言板內容渲染 -->
+
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="input-group">
+          <input
+            name="content"
+            type="text"
+            class="form-control"
+            placeholder="請輸入留言的內容.."
+            aria-label="Recipient's username with two button addons"
+          />
+          <input type="file" name="photo" />
+          <input
+            type="submit"
+            id="send"
+            value="送出"
+            class="btn btn-outline-primary"
+          />
+        </div>
+      </form>
+    </div>
+    <!-- FOOTER -->
+    <div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
+    <!-- FOOTER -->
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="./nav/nav.js"></script>
+    <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+  </body>
 </html>

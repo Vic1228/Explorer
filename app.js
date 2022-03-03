@@ -1,8 +1,9 @@
 // 記得打開mysql apache
+// mac使用者請看27行 設定mysql密碼
 var express = require("express");
 var router = express.Router();
 var app = express();
-var session = require('express-session');
+var session = require("express-session");
 app.listen(3000, (error) => {
   if (error) throw error;
   else {
@@ -11,50 +12,42 @@ app.listen(3000, (error) => {
 });
 
 // ============== ejs ================
-
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
 // =========== body-parser ===========
-
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // ============= mysql ===============
-
-var mysql = require("mysql");
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root", //if mac ,須設定為root
-  database: "explorer",
-  port: "3306",
-});
-
+var connection = require("./routes/db.js");
 
 // ============= router ===============
-
+const { promiseImpl } = require("ejs");
 var router = require("./routes/router.js");
+app.use("/", router);
+// 政霖
 var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
-var tripManage = require('./routes/song_routes/song_tripManage');
-var createTrip = require('./routes/lu_routes/lu_createTrip')
-var yenpage = require('./routes/yen_routes/yen_routes')
-// var signupRouter = require('./routes/hong_routes/hong_login')
-const { promiseImpl } = require("ejs");
+var uploadRouter = require("./routes/vic_routes/vic_upload");
 app.use("/", homepageRouter);
-app.use("/spotInfo", spotInfoRouter);
 app.use("/spotId", spotInfoRouter);
-app.use('/tripManage', tripManage);
-app.use('/createTrip', createTrip)
-app.use('/', createTrip)
-app.use('/', yenpage)
-app.use("/", router);
-// app.use("/signup",signupRouter )
+app.use("/upload", uploadRouter);
+
+// 學奇
+var createTrip = require("./routes/lu_routes/lu_createTrip");
+app.use("/createTrip", createTrip);
+app.use("/", createTrip);
+
+// 仲晏
+var yenpage = require("./routes/yen_routes/yen_routes");
+
+// 宜松
+var tripManage = require("./routes/song_routes/song_tripManage");
+app.use("/tripManage", tripManage);
 
 // ============= static file ===============
-
 app.use(express.static(__dirname));
 app.use(express.static("image"));
 app.use(express.static("css"));
@@ -64,73 +57,6 @@ app.use(express.static("footer"));
 app.use(express.static("public"));
 app.use(express.static("style"));
 
-// ============= session ===============
-// session的引用請放這裡
-
-// ============= 呂學奇 ===============
-// app.post("/response", function (req, res) {
-//     let trip = req.body.trip;
-//     let schedule = req.body.schedule;
-//     let private = req.body.private;
-//     let shared = req.body.shared;
-
-//  trip
-
-// 查詢舊的tripId存入變數
-// var tripId;
-// var day;
-// connection.query(
-//   "SELECT * FROM trips WHERE tripId",
-//   function (error, results) {
-//     if (error) throw error;
-//     else {
-//       tripId = results[results.length - 1].tripId;
-//     }
-//     let tripSQL = `INSERT INTO trips (tripId, tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-//     VALUES ("", "${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
-//     connection.query(tripSQL, (err, result, fields) => {
-//       if (err) throw err;
-//     });
-
-// schedule
-// tripId++;
-// for (var i = 0; i < schedule.length; i += 3) {
-//   let scheduleSQL = `INSERT INTO schedule (tripId, day, startTime, activity) 
-//   VALUES ("${tripId}", "${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
-//   connection.query(scheduleSQL, (err, result, fields) => {
-//     if (err) throw err;
-//   });
-// }
-
-// private
-// for (var i = 0; i < private.length; i += 2) {
-//   let privateSQL = `INSERT INTO privateItems (tripId, privateItemName, ItemCount) 
-//   VALUES ("${tripId}", "${private[i + 0]}", "${private[i + 1]}")`;
-//   connection.query(privateSQL, (err, result, fields) => {
-//     if (err) throw err;
-//   });
-// }
-
-// shared
-//       for (var i = 0; i < shared.length; i += 2) {
-//         let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItemName, itemCount) 
-//         VALUES ("${tripId}", "", "${shared[i + 0]}", "${shared[i + 1]}")`;
-//         connection.query(sharedSQL, (err, result, fields) => {
-//           if (err) throw err;
-//         });
-//       }
-//     });
-//   // 渲染
-//   res.render("lu_createFormComplete.ejs");
-// });
-
-
-// 洪碩呈 登入註冊
-var compareEmail = 0; // 比對email狀態 1 = true
-
-// 下面三行設定渲染的引擎模板
-app.set('view engine', 'ejs');
-app.set('views', __dirname + "/views"); //設定模板的目錄
 // =========== body-parser ===========
 
 var bodyParser = require("body-parser");
@@ -139,24 +65,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 使用 session 中介軟體
-app.use(session({
-  secret: 'secret', // 對session id 相關的cookie 進行簽名
-  resave: true,
-  saveUninitialized: false, // 是否儲存未初始化的會話
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
-  },
-}));
+app.use(
+  session({
+    secret: "secret", // 對session id 相關的cookie 進行簽名
+    resave: true,
+    saveUninitialized: true, // 是否儲存未初始化的會話
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
+    },
+  })
+);
 
 //連結資料庫
-connection.connect(function (error) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('database is working');
 
-  }
-});
 // 使用者登入(舊)
 // app.post('/login', function (req, res) {
 //   compareEmail = 0;
@@ -179,23 +100,22 @@ connection.connect(function (error) {
 //   })
 // });
 
-
 // 使用者登入(新)
 app.post("/login", function (req, res) {
   const email = req.body.useremail;
   const password = req.body.userpassword;
-  req.session.userEmail = req.body.useremail;
   const member = `select * from users where userEmail='${email}'and userPassword='${password}'`;
   // 比對
-  connection.query(member, function (err, result, LL) {
+  connection.query(member, function (err, result, fields) {
     if (result[0] == null) {
-      res.redirect('/login');
+      res.redirect("/login");
     } else {
-      console.log("success!");
-      console.log(req.session.userEmail)
+      let id = result[0].userId;
+      req.session.userId = id;
+      console.log("login success!");
       res.redirect("/");
     }
-  })
+  });
 });
 
 // 使用者註冊
@@ -225,31 +145,31 @@ app.post("/register", function (req, res) {
   const password = req.body.userpassword;
   // 比對
   const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
-  connection.query(custormers,(err,result,field) =>{
-    console.log(result)
-    if (result==undefined) {
-      console.log("錯誤，已註冊過");
-      res.render('signuperr')
-    } else {
-      console.log("1 record inserted");
-      res.redirect('/')
-    }
+  const takeid = `select userId from users where userEmail='${email}'`;
+  connection.query(custormers, (err1, result, field) => {
+    console.log(err1);
+    connection.query(takeid, (err2, result2, field) => {
+      console.log(err2);
+      const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
+      connection.query(insertid, (err3, result3, field) => {
+        console.log(err3);
+        if (result == undefined) {
+          console.log("錯誤，已註冊過");
+          res.render("signuperr");
+        } else {
+          console.log("1 record inserted");
+          res.redirect("/");
+        }
+      });
+    });
   });
 });
-// 使用者忘記密碼
-// app.post('/forgetpassword', function (req, res) {
-//   databaseUserInformation.forEach(item => {
-//     if (req.body.useremail == item.useremail) {
-//       let forgetuserpassword = rows.userpassword;
-//       res.render('/login', userpassword = forgetuserpassword);
-//     }
-//   });
-// })
 
 //退出
-app.get('/logout', function (req, res) {
-  req.session.userEmail = null; // 刪除session
-  console.log(req.session.userEmail);
-  res.redirect('/');
+app.get("/logout", function (req, res) {
+  req.session.userId = null; // 刪除session
+  console.log(req.session.userId);
+  res.redirect("/");
 });
 
+app.use("/", yenpage);

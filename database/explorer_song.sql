@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- 主機： localhost:8889
--- 產生時間： 2022 年 03 月 02 日 06:57
--- 伺服器版本： 5.7.34
--- PHP 版本： 7.4.21
+-- 主機： 127.0.0.1
+-- 產生時間： 2022-03-03 04:44:32
+-- 伺服器版本： 10.4.22-MariaDB
+-- PHP 版本： 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `privateitems` (
   `tripId` int(20) NOT NULL,
-  `privateItem` varchar(20) NOT NULL,
+  `privateItem` varchar(20) CHARACTER SET utf8 NOT NULL,
   `itemCount` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -66,7 +66,7 @@ CREATE TABLE `schedule` (
 CREATE TABLE `shareditems` (
   `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
-  `sharedItem` varchar(20) NOT NULL,
+  `sharedItem` varchar(20) CHARACTER SET utf8 NOT NULL,
   `itemCount` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -105,7 +105,7 @@ CREATE TABLE `spots` (
   `spotId` int(20) NOT NULL,
   `spotName` varchar(20) NOT NULL,
   `spotDetail` varchar(255) DEFAULT NULL,
-  `spotImg` longblob,
+  `spotImg` longblob DEFAULT NULL,
   `spotArea` varchar(20) DEFAULT NULL,
   `placeID` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -133,12 +133,20 @@ INSERT INTO `spots` (`spotId`, `spotName`, `spotDetail`, `spotImg`, `spotArea`, 
 --
 
 CREATE TABLE `tripchatboard` (
+  `number` int(11) NOT NULL,
   `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
   `chatTime` datetime NOT NULL,
   `chatMessage` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
   `chatImgNum` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 傾印資料表的資料 `tripchatboard`
+--
+
+INSERT INTO `tripchatboard` (`number`, `tripId`, `userId`, `chatTime`, `chatMessage`, `chatImgNum`) VALUES
+(1, 1, 1, '2022-03-03 04:43:54', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -208,8 +216,8 @@ CREATE TABLE `users` (
   `userName` varchar(20) NOT NULL,
   `userEmail` varchar(20) NOT NULL,
   `userPassword` varchar(15) NOT NULL,
-  `userPhone` varchar(10) NOT NULL,
-  `userExp` varchar(80) NOT NULL
+  `userPhone` varchar(10) DEFAULT NULL,
+  `userExp` varchar(80) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -293,8 +301,7 @@ ALTER TABLE `spots`
 -- 資料表索引 `tripchatboard`
 --
 ALTER TABLE `tripchatboard`
-  ADD PRIMARY KEY (`tripId`,`userId`,`chatTime`),
-  ADD KEY `userId` (`userId`);
+  ADD PRIMARY KEY (`number`);
 
 --
 -- 資料表索引 `tripmembers`
@@ -375,13 +382,6 @@ ALTER TABLE `schedule`
 ALTER TABLE `shareditems`
   ADD CONSTRAINT `shareditems_ibfk_1` FOREIGN KEY (`tripId`) REFERENCES `trips` (`tripId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `shareditems_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- 資料表的限制式 `tripchatboard`
---
-ALTER TABLE `tripchatboard`
-  ADD CONSTRAINT `tripchatboard_ibfk_1` FOREIGN KEY (`tripId`) REFERENCES `trips` (`tripId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tripchatboard_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `tripmembers`

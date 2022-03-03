@@ -1,11 +1,36 @@
 var express = require("express");
-var vic_spotinfo_router = express.Router();
+var router = express.Router();
 
-vic_spotinfo_router.get("/", (req, res) => {
-  res.render("vic_spotInfo.ejs");
-});
-vic_spotinfo_router.get("/", function (req, res) {
-  res.render("vic_spotInfo.ejs");
+const ejs = require("ejs");
+
+const bodyParser = require("body-parser");
+const multer = require("multer");
+const axios = require("axios");
+const fs = require("fs");
+const app = express();
+var connection = require("../db.js");
+
+var moment = require("moment");
+app.locals.moment = require("moment");
+
+app.set("view engine", "ejs");
+app.engine("html", require("ejs").renderFile);
+app.set("views", __dirname + "/views");
+app.use(express.static(__dirname + "/upload"));
+
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+router.get("/", function (req, res) {
+  connection.query(
+    "SELECT * FROM tripchatboard JOIN users ON tripchatboard.userId = users.userId",
+    function (error, results) {
+      if (error) throw error;
+      else {
+        res.render("vic_spotinfo.ejs", { data: results, moment });
+      }
+    }
+  );
 });
 
-module.exports = vic_spotinfo_router;
+module.exports = router;
