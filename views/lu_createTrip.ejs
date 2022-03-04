@@ -154,14 +154,14 @@
           <table id="ItineraryTable" class="table table-bordered text-center" style="border-color: #006c9b;">
             <thead>
               <tr>
-                <th class="h-100">
-                  <h4 class="m-auto">行程</h4>
+                <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">行程</h4>
                 </th>
-                <th class="h-100">
-                  <h4 class="m-auto">時間</h4>
+                <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">時間</h4>
                 </th>
-                <th class="h-100">
-                  <h4 class="m-auto">活動</h4>
+                <th class="h-100" style="background-color: #006c9b;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">活動</h4>
                 </th>
               </tr>
             </thead>
@@ -171,7 +171,7 @@
                 <td class="form-td">
                   <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
                     oninput="this.className = 'border-0 text-center h-100 form-input w-100'" style="font-size: 1.4rem;">
-                    <option value="" selected disabled>第?天</option>
+                    <option value="" selected disabled>第__天</option>
                     <option value="1">第1天</option>
                     <option value="2">第2天</option>
                     <option value="3">第3天</option>
@@ -206,21 +206,20 @@
     <div class="tab">
       <div class="container d-flex">
         <div class="col-6">
-          <h3 class="text-center">私人裝備</h3>
           <table id="privateItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
             <thead>
-              <th class="h-100">
-                <h4 class="m-auto">物品名稱</h4>
+              <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                <h4 class="m-auto text-white" style="font-size: 1.7rem;">私人裝備</h4>
               </th>
-              <th class="h-100">
-                <h4 class="m-auto">數量</h4>
+              <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                <h4 class="m-auto text-white" style="font-size: 1.7rem;">數量</h4>
               </th>
             </thead>
             <tbody>
               <tr>
                 <!-- TODO: 裝備名稱 -->
                 <td class="form-td"><input name="private" type="text" class="border-0 text-center h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'border-0 text-center h-100 form-input'"
+                    placeholder="裝備名稱" oninput="this.className = 'border-0 text-center h-100 form-input'"
                     style="font-size: 1.4rem;"></td>
                 <!-- TODO: 數量 -->
                 <td class="form-td">
@@ -239,21 +238,20 @@
           </table>
         </div>
         <div class="col-6">
-          <h3 class="text-center">公用裝備</h3>
           <table id="sharedItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
             <thead>
-              <th class="h-100">
-                <h4 class="m-auto">物品名稱</h4>
+              <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                <h4 class="m-auto text-white" style="font-size: 1.7rem;">公用裝備</h4>
               </th>
-              <th class="h-100">
-                <h4 class="m-auto">能提供數量</h4>
+              <th class="h-100" style="background-color: #006c9b;">
+                <h4 class="m-auto text-white" style="font-size: 1.7rem;">能提供數量</h4>
               </th>
             </thead>
             <tbody>
               <tr>
                 <!-- TODO: 裝備名稱 -->
                 <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"
+                    placeholder="裝備名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"
                     style="font-size: 1.4rem;"></td>
                 <!-- TODO: 數量 -->
                 <td class="form-td"><input name="shared" type="number"

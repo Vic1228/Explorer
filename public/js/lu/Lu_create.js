@@ -103,7 +103,7 @@ const itineraryRow = `<tr>
                 <td class="form-td">
                   <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
                     oninput="this.className = 'border-0 text-center h-100 form-input w-100'" style="font-size:1.4rem;">
-                    <option value="" selected disabled>第?天</option>
+                    <option value="" selected disabled>第__天</option>
                     <option value="1">第1天</option>
                     <option value="2">第2天</option>
                     <option value="3">第3天</option>
@@ -128,7 +128,7 @@ const itineraryRow = `<tr>
 
 const privateItem = `<tr>
                 <td class="form-td"><input name="private" type="text" class="border-0 text-center h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'border-0 text-center h-100 form-input'" style="font-size: 1.4rem;"></td>
+                    placeholder="裝備名稱" oninput="this.className = 'border-0 text-center h-100 form-input'" style="font-size: 1.4rem;"></td>
                 <td class="form-td">
                   <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
                     oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
@@ -143,7 +143,7 @@ const privateItem = `<tr>
               </tr>`;
 const sharedItem = `<tr>
                 <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'" style="font-size: 1.4rem;"></td>
+                    placeholder="裝備名稱" oninput="this.className = 'text-center border-0 h-100 form-input'" style="font-size: 1.4rem;"></td>
                 <td class="form-td"><input name="shared" type="number"
                     class="text-center border-0 h-100 form-input w-25"
                     oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
