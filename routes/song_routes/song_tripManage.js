@@ -152,6 +152,7 @@ song_tripManage_router.get('/', function (req, res) {
             return conn.queryAsync(sql5);
         })
         .then(result5 => {
+            console.log(result5)
             if (result5.length > 0) {
                 for (let i = 0; i < result5.length; i++) {
                     if (i == 0 || result5[i].day != result5[i - 1].day) {
@@ -176,13 +177,12 @@ song_tripManage_router.get('/', function (req, res) {
         })
         .then(result6 => {
             data.tripNotes = result6[0].tripDesc;
-            console.log(data);
             var sql7 = `SELECT tripId, COUNT(userId) AS memberCount FROM tripMembers WHERE tripId = ${result6[0].tripId} AND positionState > 0`;
             return conn.queryAsync(sql7);
         })
         .then(result7 => {
             data.memberCount = result7[0].memberCount;
-            console.log(data)
+            // console.log(data)
             return res.render('song_tripManage.ejs', data);
         })
         .catch(err => console.log(err));

@@ -306,51 +306,23 @@
                 </h4>
                 <hr class="divider">
                 <div class="scheduleDayContainer px-2">
-                    <div class="scheduleDay">
-                        <h4 data-toggle="collapse" data-target="#DAY1">
-                            DAY 1 <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
-                        </h4>
-                        <div id="DAY1" class="collapse show">
-                            <table>
-                                <tr>
-                                    <td>10:00</td>
-                                    <td>吃早餐</td>
-                                </tr>
-                                <tr>
-                                    <td>12:00</td>
-                                    <td>吃午餐</td>
-                                </tr>
-                                <tr>
-                                    <td>21:00</td>
-                                    <td>吃晚餐</td>
-                                </tr>
-                            </table>
+                    <% for(let i of schedule){ %>
+                        <div class="scheduleDay">
+                            <h4 data-toggle="collapse" data-target="#DAY<%=i.day%>">
+                                DAY <%=i.day%> <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                            </h4>
+                            <div id="DAY<%=i.day%>" class="collapse show">
+                                <table>
+                                    <% for(let j of i.activity){ %>
+                                        <tr>
+                                            <td><%=j.startTime%></td>
+                                            <td><%=j.activityName%></td>
+                                        </tr>
+                                    <% } %>
+                                </table>
+                            </div>
                         </div>
-                        <ul>
-
-                        </ul>
-                    </div>
-                    <div class="scheduleDay">
-                        <h4 data-toggle="collapse" data-target="#DAY2">
-                            DAY 2 <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
-                        </h4>
-                        <div id="DAY2" class="collapse show ">
-                            <table>
-                                <tr>
-                                    <td>10:00</td>
-                                    <td>吃早餐</td>
-                                </tr>
-                                <tr>
-                                    <td>12:00</td>
-                                    <td>吃午餐</td>
-                                </tr>
-                                <tr>
-                                    <td>21:00</td>
-                                    <td>吃晚餐</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
                 <br>
                 <div id="noteContainer">
@@ -359,7 +331,7 @@
                             data-toggle="modal" data-target="#tripNoteEdit">
                     </h4>
                     <div id="noteText">
-                        text......
+                       <%=tripNotes%>
                     </div>
                 </div>
             </div>
