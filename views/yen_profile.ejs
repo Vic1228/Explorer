@@ -26,9 +26,9 @@
   <!-- NAV BAR -->
   <div w3-include-HTML="../nav/nav.html"></div>
   <!-- NAV BAR -->
-  <div style="height: 10vh;" class="ttop">
+  <div style="height: 45vh;" class="ttop">
     <h1 id="pagename">
-      <%= userName %> 的主頁
+      <%= userName %>  的主頁
     </h1>
   </div>
   <div style="height: 5vh;"></div>
@@ -37,7 +37,7 @@
     <!-- 大頭貼 -->
     <div class="col-3">
       <div class="profile profile-name rounded-circle">
-        <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt="請補上照片">
+        <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt="請補上照片" onerror="myFunction()">
         <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
           <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
         </form>
@@ -166,6 +166,18 @@
   </script>
   <script src="./yen2.js"></script>
   <script>
+    function bbb (){
+      if(true){}
+      alert
+    }
+
+
+    function myFunction(){
+      alert('記得上傳照片唷！');
+      // document.getElementById('imagegrid').setAttribute('src')='/public/img/yen/photo/代替.jpg'
+      let df = document.getElementById('imagegrid').setAttribute('src','/public/img/yen/photo/代替.jpg')
+      console.log(df)
+    };
     const data = {
       labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
       datasets: [
