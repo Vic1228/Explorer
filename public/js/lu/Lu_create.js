@@ -2,6 +2,13 @@
 /*--------------------------- form-step -------------------------*/
 /*---------------------------------------------------------------*/
 
+// spotId預處理
+
+let spot = JSON.parse(localStorage.getItem('lat')).spotId;
+
+console.log("spot",spot);
+
+
 // 變數
 let currentTab = 0;
 showTab(currentTab);

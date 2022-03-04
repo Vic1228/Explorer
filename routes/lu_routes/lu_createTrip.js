@@ -50,6 +50,9 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
 // ============= form ===============
 // ==================================
 
+
+
+
 // 傳送表單的資料進資料庫
 
 lu_createTrip_router.post("/response", function (req, res) {
