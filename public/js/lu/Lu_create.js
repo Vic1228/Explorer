@@ -190,6 +190,7 @@ function deleteSharedItemRow(p) {
 function initMap() {
 
   const location = (JSON.parse(localStorage.getItem('lat'))); // 從localStorage取得經緯度的值
+  // console.log( (JSON.parse(localStorage.getItem('lat'))).spotId); // 從localStorage取得經緯度的值
   map = new google.maps.Map(document.getElementById("map"), {
     center: location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
     zoom: 10
