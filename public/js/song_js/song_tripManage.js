@@ -105,21 +105,18 @@ $(function () {
             trigger: 'hover',
             html: true,
             content: function () {
-                var userName = $(this.closest('tr')).children('td:first-child').text();
-                console.log(userName);
-                return `<h1>${userName}</h1>`;
+                // var userName = $(this.closest('tr')).children('td:first-child').text();         
+                var test = $(this).children('ul').html().trim();
+                console.log(test.length)
+                if (test.length > 0) {
+                    return test;
+                }
+                else{
+                    return '<span>---</span>';
+                }
+
             }
         });
-
-
-
-
-
-
-
-
-
-
     }
 })
 
@@ -177,9 +174,11 @@ const config = {
         }
     }
 }
+
 new Chart(document.getElementById('myChart'), config);
 
 function hoverdiv(e, showStat) {
+
     var left = e.clientX + 3 + "px";
     var top = e.clientY - 150 + "px";
 

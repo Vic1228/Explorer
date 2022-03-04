@@ -89,6 +89,7 @@ router.get("/trophy", function (req, res) {
 
 router.get("/profile", (req, res) => {
   console.log(req.session);
+  console.log(req.session.id);
   if (req.session.userId == undefined) {
     res.redirect("/login");
   } else {
@@ -96,7 +97,6 @@ router.get("/profile", (req, res) => {
     let sqlone = `SELECT * FROM users where userId='${apple}'`;
     connection.query(sqlone, (err, result, fields) => {
       if (err) throw err;
-      console.log(err);
       console.log(result);
       let sqltwo = `SELECT * FROM userstats where userId='${apple}'`;
       connection.query(sqltwo, (err, result2) => {
@@ -106,7 +106,7 @@ router.get("/profile", (req, res) => {
         // console.log(a)
         // console.log(b)
         var obj = Object.assign(a, b);
-        if (obj.commentCount == null) {
+        if (obj.commentCount == null||obj.commentCount<3) {
           obj.commentCount = 0;
         }
         console.log(obj);

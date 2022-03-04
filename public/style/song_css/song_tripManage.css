@@ -6,6 +6,14 @@
      /* border: 3px solid tomato;   */
 }
 
+a{
+    color:rgb(28, 113, 241) !important;
+    text-decoration: none !important;
+}
+
+ul{
+    padding-left: 0px !important;
+}
 
 #blur_all{
     display:none;
@@ -78,10 +86,6 @@ img[class*="Icon"]{
     text-align: center !important;
 }
 
-#tripSelContainer ul{
-    margin-left: -45px;
-}
-
 #tripSelContainer li{
     margin: 3vh auto;
 }
@@ -105,7 +109,7 @@ img[class*="Icon"]{
 /* ----- 冒險團留言板 ----- */
 #textBoard{
     border:1px solid rgb(200, 200, 200);
-    min-height:50vh
+    min-height:50vh;
 }
 
 #textSendContainer{
@@ -152,15 +156,28 @@ img[class*="Icon"]{
     width:100%;
     opacity:1;
     transition: all 0.3s ease;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 5px;
+    padding-left: 20px !important;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 25px;
+}
+#chatroomText::placeholder{
+    color: rgb(220,220,220)
 }
 
 #textSendContainer img{
-    width:28px;
-    height: 28px;
+    width:24px;
+    height: 24px;
     cursor: pointer;
     margin:auto;
+}
+
+#textSendContainer #fileCount{
+    padding-top: 4px;
+}
+
+#textSendContainer label{
+    padding-top: 5.5px;
 }
 
 
@@ -203,8 +220,43 @@ th,td{
     padding:3px 0px
 }
 
+.provideList li{
+    display: flexbox;
+    justify-content: space-between;
+}
+
+.provideList span{
+    display:inline-block;
+    width:max-content
+}
+
 .plusContainer{
     margin: auto;
+}
+
+.superLi{
+    position:relative;
+    margin-top: 3px;
+}
+
+
+.superLi:first-child{
+    margin-top: -3px;
+}
+
+.superLeft{
+    position:absolute;
+    left:3vw;
+}
+
+.superSpan{
+    position:absolute;
+    left:7vw;
+} 
+
+.superRight{
+    position:relative;
+    left: 42px;
 }
 
 #managePrivateItemTable{

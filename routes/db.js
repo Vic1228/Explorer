@@ -2,10 +2,10 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
   database: "explorer",
+  multipleStatements: true,
 });
-
 connection.connect(function (error) {
   if (!!error) {
     console.log("連結失敗！");
