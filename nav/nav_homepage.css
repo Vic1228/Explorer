@@ -26,11 +26,11 @@
   z-index: 999;
   background-color: rgba(247, 247, 247, 0.842);
 }
-/* 
-.header.active{
+
+/* .header.active{
     position: fixed;
     top: 0px;
-    background-color : rgba(150, 120, 20, 0.842);
+    background-color : rgba(247, 247, 247, 0.842);
 } */
 
 nav {

@@ -100,15 +100,13 @@
                     </ul>
                     <div id="tripManageTab" class="tab-content">
                         <div id="textBoardContainer" class="container tab-pane active">
-                            <div id="textBoard">
-                                聊天記錄
-                            </div>
+                            <div id="textBoard"></div>
                             <div>
                                 <form id="textSendContainer" action="">
                                     <label class="col-1" id="uploadImgContainer">
                                         <input id="uploadImg" class="inputFile uploadImg" type="file"
                                             accept=".png, .jpg, .jpeg" multiple>
-                                        <img class="uploadImgIcon d-block" src="../public/img/song_img/uploadImg.png"
+                                        <img class="uploadImg d-block" src="../public/img/song_img/uploadImg.png"
                                             alt="">
                                     </label>
                                     <div class="col-10 d-flex">
@@ -143,10 +141,7 @@
                                     <% for (let x of tripMember){ %>
                                         <% if ( x. positionState> 0) {%>
                                             <tr>
-                                                <td>
-                                                    <%= x.name %>
-
-                                                </td>
+                                                <td><%= x.name %></td>
                                                 <td>
                                                     <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
                                                         <ul class="d-none">
@@ -154,24 +149,30 @@
                                                                 <% for(let j of i.itemCount){ %>
                                                                     <% if(j.userId==x.userId ){ %>
                                                                         <li>
-                                                                            <%= i.sharedItem%> &#8194&#8194&#8194 <%= j.itemCount %>
+                                                                            <%= i.sharedItem%> &#8194&#8194&#8194 <%=
+                                                                                    j.itemCount %>
                                                                         </li>
-                                                                    <% } %>
-                                                                <% } %>
-                                                            <% } %>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                                                <% } %>
                                                         </ul>
                                                     </a>
                                                 </td>
-                                                <% var statAvg = Math.floor( (x.stat.leadership + x.stat.teamwork + x.stat.strength + x.stat.heal + x.stat.survival + x.stat.direction)/6*10)/10; %>
-                                                <td><a href="#"><%= statAvg %></a></td>
-                                                <% if(x.name == userName){ %>
-                                                    <td> --- </td>
-                                                <% } else {  %>
-                                                    <td><a href="#" data-toggle="modal" data-target="#statComment">我要評分</a></td>
-                                                <% } %>
+                                                <% var statAvg=Math.floor( (x.stat.leadership + x.stat.teamwork +
+                                                    x.stat.strength + x.stat.heal + x.stat.survival +
+                                                    x.stat.direction)/6*10)/10; %>
+                                                    <td><a href="#">
+                                                            <%= statAvg %>
+                                                        </a></td>
+                                                    <% if(x.name==userName){ %>
+                                                        <td> --- </td>
+                                                        <% } else { %>
+                                                            <td><a href="#" data-toggle="modal"
+                                                                    data-target="#statComment">我要評分</a></td>
+                                                            <% } %>
                                             </tr>
-                                        <% } %>
-                                    <% } %>
+                                            <% } %>
+                                                <% } %>
 
                                 </table>
                             </div>
@@ -187,7 +188,7 @@
                                         <th>同意/拒絕</th>
                                     </tr>
                                     <% for (let x of tripMember){ %>
-                                        <% if ( x. positionState == 0) {%>
+                                        <% if ( x. positionState==0) {%>
                                             <tr>
                                                 <td>
                                                     <%= x.name %>
@@ -198,40 +199,44 @@
                                                         <ul class="d-none">
                                                             <% for(let i of sharedItems){ %>
                                                                 <% for(let j of i.itemCount){ %>
-                                                                    <% if(j.userId == x.userId && j.itemCount>0 ){ %>
+                                                                    <% if(j.userId==x.userId && j.itemCount>0 ){ %>
                                                                         <li>
                                                                             <%= i.sharedItem%> &#8194&#8194&#8194 <%=
                                                                                     j.itemCount%>
                                                                         </li>
-                                                                    <% } %>
-                                                                <% } %>
-                                                            <% } %>
+                                                                        <% } %>
+                                                                            <% } %>
+                                                                                <% } %>
                                                         </ul>
                                                     </a>
                                                 </td>
-                                                <% var statAvg = Math.floor( (x.stat.leadership + x.stat.teamwork + x.stat.strength + x.stat.heal + x.stat.survival + x.stat.direction)/6*10)/10; %>
-                                                <td><a href="#"><%= statAvg %></a></td>
-                                                <td>
-                                                    <div class="checkCancelContainer">
-                                                        <img class="checkIcon" type="image"
-                                                            src="../public/img/song_img/check.png" data-toggle="modal"
-                                                            data-target="#memberApplyConfirm">
-                                                        <img class="cancelIcon" type="image"
-                                                            src="../public/img/song_img/cancel.png" data-toggle="modal"
-                                                            data-target="#memberApplyReject">
-                                                    </div>
-                                                </td>
+                                                <% var statAvg=Math.floor( (x.stat.leadership + x.stat.teamwork +
+                                                    x.stat.strength + x.stat.heal + x.stat.survival +
+                                                    x.stat.direction)/6*10)/10; %>
+                                                    <td><a href="#">
+                                                            <%= statAvg %>
+                                                        </a></td>
+                                                    <td>
+                                                        <div class="checkCancelContainer">
+                                                            <img class="checkIcon" type="image"
+                                                                src="../public/img/song_img/check.png"
+                                                                data-toggle="modal" data-target="#memberApplyConfirm">
+                                                            <img class="cancelIcon" type="image"
+                                                                src="../public/img/song_img/cancel.png"
+                                                                data-toggle="modal" data-target="#memberApplyReject">
+                                                        </div>
+                                                    </td>
                                             </tr>
-                                        <% } %>
-                                    <% } %>
+                                            <% } %>
+                                                <% } %>
                                 </table>
                             </div>
                         </div>
                         <div id="itemList" class="container tab-pane fade">
 
                             <h4 class="tableTitle">公共裝備（團員人數： <%= memberCount %> 人）
-                                <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
-                                    data-target="#publicItemListEdit" title="限發起人編輯">
+                                    <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
+                                        data-target="#publicItemListEdit" title="限發起人編輯">
                             </h4>
                             <table>
                                 <tr class="tableRow">
@@ -242,35 +247,46 @@
                                 </tr>
                                 <% for(let i of sharedItems){ %>
                                     <tr class="publicItemDetail" valign="top">
-                                        <td><%= i.sharedItem %></td>
+                                        <td>
+                                            <%= i.sharedItem %>
+                                        </td>
                                         <% let count=0 %>
-                                        <% for(let j of i.itemCount){ %>
-                                            <% count += j.itemCount %>
-                                        <% } %>
-                                        <td><%= count %></td>
-                                        <td>
-                                            <ul>
-                                                <% for(let j of i.itemCount){ %>
-                                                    <% for(let x of tripMember){ %>
-                                                        <% if(j.userId == x.userId && x.positionState > 0){ %>
-                                                            <li class="superLi">
-                                                                <span class="superLeft"><%= x.name %></span>
-                                                                <!-- <span class="superSpan">／</span>  -->
-                                                                <span class="superRight"><%= j.itemCount %> 個</span>
-                                                            </li>
-                                                        <% } %>
+                                            <% for(let j of i.itemCount){ %>
+                                                <% count +=j.itemCount %>
                                                     <% } %>
-                                                <% } %>
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <div class="plusContainer">
-                                                <img class="plusIcon" src="../public/img/song_img/plus.png" alt=""
-                                                    data-toggle="modal" data-target="#publicItemProvide">
-                                            </div>
-                                        </td>
+                                                        <td>
+                                                            <%= count %>
+                                                        </td>
+                                                        <td>
+                                                            <ul>
+                                                                <% for(let j of i.itemCount){ %>
+                                                                    <% for(let x of tripMember){ %>
+                                                                        <% if(j.userId==x.userId && x.positionState> 0){
+                                                                            %>
+                                                                            <li class="superLi">
+                                                                                <span class="superLeft">
+                                                                                    <%= x.name %>
+                                                                                </span>
+                                                                                <!-- <span class="superSpan">／</span>  -->
+                                                                                <span class="superRight">
+                                                                                    <%= j.itemCount %> 個
+                                                                                </span>
+                                                                            </li>
+                                                                            <% } %>
+                                                                                <% } %>
+                                                                                    <% } %>
+                                                            </ul>
+                                                        </td>
+                                                        <td>
+                                                            <div class="plusContainer">
+                                                                <img class="plusIcon"
+                                                                    src="../public/img/song_img/plus.png" alt=""
+                                                                    data-toggle="modal"
+                                                                    data-target="#publicItemProvide">
+                                                            </div>
+                                                        </td>
                                     </tr>
-                                <% } %>
+                                    <% } %>
 
                             </table>
 
@@ -286,17 +302,20 @@
                                 </tr>
                                 <% for(let i of privateItems){ %>
                                     <tr class="privateItemDetail" valign="top">
-                                        <td><%= i.privateItem %></td>
-                                        <td><%= i.itemCount %> 個</td>
+                                        <td>
+                                            <%= i.privateItem %>
+                                        </td>
+                                        <td>
+                                            <%= i.itemCount %> 個
+                                        </td>
                                     </tr>
-                                <% } %>
+                                    <% } %>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
             <!------- Middle: management End ------->
-
             <!------- Rigtht: schedule Start ------->
             <div id="scheduleContainer" class="col-3">
                 <h4>
@@ -309,29 +328,34 @@
                     <% for(let i of schedule){ %>
                         <div class="scheduleDay">
                             <h4 data-toggle="collapse" data-target="#DAY<%=i.day%>">
-                                DAY <%=i.day%> <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                                DAY <%=i.day%> <img class="downArrow" src="../public/img/song_img/down-arrow.png"
+                                        alt="">
                             </h4>
                             <div id="DAY<%=i.day%>" class="collapse show">
                                 <table>
                                     <% for(let j of i.activity){ %>
                                         <tr>
-                                            <td><%=j.startTime%></td>
-                                            <td><%=j.activityName%></td>
+                                            <td>
+                                                <%=j.startTime%>
+                                            </td>
+                                            <td>
+                                                <%=j.activityName%>
+                                            </td>
                                         </tr>
-                                    <% } %>
+                                        <% } %>
                                 </table>
                             </div>
                         </div>
-                    <% } %>
+                        <% } %>
                 </div>
                 <br>
                 <div id="noteContainer">
-                    <h4>注意事項
+                    <h4>行程簡介
                         <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
                             data-toggle="modal" data-target="#tripNoteEdit">
                     </h4>
                     <div id="noteText">
-                       <%=tripNotes%>
+                        <%=tripNotes%>
                     </div>
                 </div>
             </div>
@@ -354,16 +378,19 @@
     <div id="tripNameEdit" class="modal fade">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
-                <form action="/tripManage" method="get">
+                <form action="/tripManage" method="post">
+
                     <div class="modal-header px-2">
                         <h5 class="modal-title">冒險團新名稱</h5>
                     </div>
-                    <div class="modal-body mx-auto">      
-                        <input style="width:100%" type="text" name="newTripName" placeholder="<%= selectedTrip.tripName %>">
+                    <div class="modal-body mx-auto">
+                        <input style="width:100%" type="text" name="newTripName"
+                            placeholder="<%= selectedTrip.tripName %>">
+                        <input type="text" class="d-none" name="tripId" value="<%= selectedTrip.tripId %>">
                     </div>
                     <div class="modal-footer">
-                        <button type="reset" value="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
-                        <button type="submit" value="" class="btn btn-primary" data-dismiss="modal">完成</button>
+                        <button type="submit" class="btn btn-primary">完成</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </form>
             </div>
@@ -441,18 +468,19 @@
     <div id="tripNoteEdit" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">注意事項編輯</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-                        <textarea placeholder="text..." style="width:100%; height:40vh"></textarea>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                <form action="/tripManage" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title">行程簡介編輯</h5>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="newTripNotes" style="width:100%; height:40vh"> <%=tripNotes%> </textarea>
+                        <input type="text" class="d-none" name="tripId" value="<%= selectedTrip.tripId %>">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">完成</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -682,6 +710,7 @@
     <div id="chartContainer" class="d-none" style="width:150px; height: 150px">
         <canvas id="myChart"></canvas>
     </div>
+    
 
 
 

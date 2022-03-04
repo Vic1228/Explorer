@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： localhost:8889
--- 產生時間： 2022 年 03 月 04 日 06:54
+-- 產生時間： 2022 年 03 月 04 日 15:17
 -- 伺服器版本： 5.7.34
 -- PHP 版本： 7.4.21
 
@@ -100,12 +100,11 @@ INSERT INTO `shareditems` (`tripId`, `userId`, `sharedItem`, `itemCount`) VALUES
 --
 
 CREATE TABLE `spotcomments` (
-  `number` int(20) NOT NULL,
-  `spotId` int(20) NOT NULL,
+  `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
-  `spotMessageDate` datetime NOT NULL,
-  `spotMessageText` varchar(255) DEFAULT NULL,
-  `spotMsgNum` int(20) DEFAULT NULL
+  `tripChatTime` datetime NOT NULL,
+  `tripChatMessage` varchar(255) NOT NULL,
+  `tripImgNum` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -214,7 +213,7 @@ CREATE TABLE `trips` (
 
 INSERT INTO `trips` (`tripId`, `tripName`, `spotId`, `tripStartDate`, `tripEndDate`, `tripDesc`) VALUES
 (1, '不能刪', 1, '2022-02-08', '2022-02-11', '不能刪!'),
-(2, '雪山攻頂', 1, '2022-03-01', '2022-03-03', '雪山攻頂！'),
+(2, '功能犬寫完', 1, '2022-03-01', '2022-03-03', '雪山攻頂！'),
 (3, '雪山泡溫泉', 1, '2022-03-04', '2022-03-05', '雪山泡溫泉！'),
 (4, '雪山打雪仗', 1, '2022-03-06', '2022-03-07', '雪山打雪仗！');
 
@@ -301,7 +300,8 @@ ALTER TABLE `shareditems`
 -- 資料表索引 `spotcomments`
 --
 ALTER TABLE `spotcomments`
-  ADD PRIMARY KEY (`number`);
+  ADD PRIMARY KEY (`tripId`,`userId`,`tripChatTime`,`tripChatMessage`),
+  ADD KEY `userId` (`userId`);
 
 --
 -- 資料表索引 `spots`
@@ -350,12 +350,6 @@ ALTER TABLE `userstats`
 --
 
 --
--- 使用資料表自動遞增(AUTO_INCREMENT) `spotcomments`
---
-ALTER TABLE `spotcomments`
-  MODIFY `number` int(20) NOT NULL AUTO_INCREMENT;
-
---
 -- 使用資料表自動遞增(AUTO_INCREMENT) `spots`
 --
 ALTER TABLE `spots`
@@ -395,6 +389,13 @@ ALTER TABLE `schedule`
 ALTER TABLE `shareditems`
   ADD CONSTRAINT `shareditems_ibfk_1` FOREIGN KEY (`tripId`) REFERENCES `trips` (`tripId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `shareditems_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 資料表的限制式 `spotcomments`
+--
+ALTER TABLE `spotcomments`
+  ADD CONSTRAINT `spotcomments_ibfk_1` FOREIGN KEY (`tripId`) REFERENCES `trips` (`tripId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `spotcomments_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `tripmembers`
