@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var connection = require("../db.js");
+const { NULL } = require("mysql/lib/protocol/constants/types");
 
 // ==================================
 // ============= profile ============
@@ -18,7 +19,7 @@ var connection = require("../db.js");
 var userProfile;
 var userStats;
 lu_createTrip_router.get("/createTrip", function (req, res) {
-  console.log(req.session.userId);
+  var userId = req.session.userId;
   if (req.session.userId == undefined) {
     res.redirect("/login");
   } else {
@@ -35,6 +36,9 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
       if (err) throw err;
       userStats = results2[0];
       var obj = Object.assign(userStats, userProfile);
+      // if (obj.userStats == NULL || obj.userStats <= 2) {
+      //   obj.userStatst = 0;
+      // };
       // 渲染到ejs模板
       res.render("lu_createTrip", obj);
     });
