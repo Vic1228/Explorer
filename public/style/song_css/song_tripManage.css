@@ -219,6 +219,10 @@ th,td{
 
 .superLi{
     position:relative;
+
+}
+.superLi:first-child{
+    margin-top: -3px;
 }
 
 .superLeft{
