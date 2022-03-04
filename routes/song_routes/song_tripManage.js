@@ -158,12 +158,12 @@ song_tripManage_router.get('/', function (req, res) {
                     if (i == 0 || result5[i].day != result5[i - 1].day) {
                         data.schedule.push({
                             day: result5[i].day,
-                            activity: [{ startTime: result5[i].startTime, activityName: result5[i].activity }]
+                            activity: [{ startTime: result5[i].startTime.substring(0,result5[i].startTime.length-3), activityName: result5[i].activity }]
                         })
                     }
                     else {
                         data.schedule[data.schedule.length - 1].activity.push(
-                            { startTime: result5[i].startTime, activityName: result5[i].activity }
+                            { startTime: result5[i].startTime.substring(0,result5[i].startTime.length-3), activityName: result5[i].activity }
                         )
                     }
                 }
