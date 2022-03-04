@@ -90,13 +90,17 @@
         <div>
           <p class="twoText title">想接近大自然，</p>
           <p class="twoText title" style="margin-top: -50px">但沒人陪你去？</p>
-          <h4 class="ui horizontal divider" style="margin-top: -40px">
+          <h4
+            class="ui horizontal divider"
+            style="margin-top: -40px; font-size: 15px"
+          >
             與資深山友來一場秘境探險吧<i class="tree icon"></i>
           </h4>
         </div>
       </div>
       <!-- 景點詳情抬頭 -->
 
+      <!-- 卡片組 -->
       <!-- 首張點擊小卡 -->
       <div class="row" style="margin-top: 3vw; position: relative">
         <div class="col-3 divSize">
@@ -110,6 +114,10 @@
                       <br /><br />
                       <div class="ui inverted button" onclick="btn2()">
                         中部
+                      </div>
+                      <br /><br />
+                      <div class="ui inverted button" onclick="btn3()">
+                        南部
                       </div>
                     </div>
                   </div>
@@ -126,7 +134,7 @@
           <div class="row">
             <div class="col-4 cardText">
               <p style="font-size: 25px; text-align: center">台灣百岳</p>
-              <p>
+              <p style="line-height: 2vw; letter-spacing: 0.1vh">
                 　　台灣擁有豐富的山岳資源，而登山活動在近年來亦逐漸受到重視。
                 體委會為推動全民運動的習慣， 特別以台灣各縣市近郊山岳為目標，
                 評選出一百座較具特色或具代表性的「郊山」，
@@ -135,7 +143,7 @@
             </div>
             <div class="col-4 cardText">
               <p style="font-size: 25px; text-align: center">挑戰極限</p>
-              <p>
+              <p style="line-height: 2vw; letter-spacing: 0.1vh">
                 　　由於渴望探索新奇且具不確定性的事物，
                 喜愛尋求在一般環境下所無法獲得的活動刺激，
                 特別在參與新奇或具有挑戰性的活動當中，
@@ -146,7 +154,7 @@
             </div>
             <div class="col-4 cardText">
               <p style="font-size: 25px; text-align: center">休閒登山</p>
-              <p>
+              <p style="line-height: 2vw; letter-spacing: 0.1vh">
                 　　當人們長時間工作或居住在繁忙、吵雜、緊張、污染、壅塞的環境中，常使人感
                 到厭煩、焦慮與壓力，甚至崩潰（burnout），唯有透過休閒參與體驗的方式，對於紓
                 解生活壓力與消除焦慮才有所助益（Caltabiano，1994）。在有限的休閒資源與多樣的
@@ -166,9 +174,13 @@
                 <div class="ui dimmer">
                   <div class="content">
                     <div class="center">
-                      <p>發起人：</p>
-                      <p>目的地：</p>
+                      <% if( locals.data1[0] ) { %>
+                      <p>發起人： <%= data1[0].userName %></p>
+                      <p>目的地： <%= data1[0].spotName %></p>
                       <div class="ui inverted button">了解更多</div>
+                      <% }else{ %>
+                      <p>目前還沒有北部行程供選擇</p>
+                      <% } %>
                     </div>
                   </div>
                 </div>
@@ -186,9 +198,13 @@
                 <div class="ui dimmer">
                   <div class="content">
                     <div class="center">
-                      <p>發起人：</p>
-                      <p>目的地：</p>
+                      <% if( locals.data1[1] ) { %>
+                      <p>發起人： <%= data1[1].userName %></p>
+                      <p>目的地： <%= data1[1].spotName %></p>
                       <div class="ui inverted button">了解更多</div>
+                      <% }else{ %>
+                      <p>目前還沒有北部行程供選擇</p>
+                      <% } %>
                     </div>
                   </div>
                 </div>
@@ -205,9 +221,13 @@
                 <div class="ui dimmer">
                   <div class="content">
                     <div class="center">
-                      <p>發起人：</p>
-                      <p>目的地：</p>
+                      <% if( locals.data1[2] ) { %>
+                      <p>發起人： <%= data1[2].userName %></p>
+                      <p>目的地： <%= data1[2].spotName %></p>
                       <div class="ui inverted button">了解更多</div>
+                      <% }else{ %>
+                      <p>目前還沒有北部行程供選擇</p>
+                      <% } %>
                     </div>
                   </div>
                 </div>
@@ -273,8 +293,66 @@
             </div>
           </div>
         </div>
+        <!-- 中部 -->
+
+        <!-- 南部 -->
+        <!-- 圖片尺寸200*250等比例放大 -->
+        <div class="col-3 oldbtn7">
+          <div class="ui special cards">
+            <div class="card">
+              <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                  <div class="content">
+                    <div class="center">
+                      <p>123</p>
+                      <div class="ui inverted button">123</div>
+                    </div>
+                  </div>
+                </div>
+                <img src="https://picsum.photos/id/3/200/250" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 oldbtn8">
+          <div class="ui special cards">
+            <div class="card">
+              <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                  <div class="content">
+                    <div class="center">
+                      <p>123</p>
+                      <div class="ui inverted button">123</div>
+                    </div>
+                  </div>
+                </div>
+                <img src="https://picsum.photos/id/67/200/250" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 oldbtn9">
+          <div class="ui special cards">
+            <div class="card">
+              <div class="blurring dimmable image">
+                <div class="ui dimmer">
+                  <div class="content">
+                    <div class="center">
+                      <p>123</p>
+                      <div class="ui inverted button">123</div>
+                    </div>
+                  </div>
+                </div>
+                <img src="https://picsum.photos/id/905/200/250" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 南部 -->
       </div>
-      <!-- 中部 -->
+      <!-- 卡片組 -->
 
       <!-- 旋轉木馬抬頭 -->
       <div>
@@ -283,7 +361,8 @@
         </p>
       </div>
       <h4 class="ui horizontal divider" style="margin-top: -0.1px">
-        <i class="hand point down icon"></i> 在這邊找一個喜歡的景點去旅行吧！
+        <i class="hand point down icon" style="font-size: 15px"></i>
+        在這邊找一個喜歡的景點去旅行吧！
       </h4>
       <!-- 旋轉木馬抬頭 -->
 
@@ -387,7 +466,15 @@
       <p class="twoText title" id="about">關於我們</p>
 
       <div class="container">
-        <p style="margin: 50px 150px 0px 150px" class="smallTitle">
+        <p
+          style="
+            margin: 50px 150px 0px 150px;
+            line-height: 3vw;
+            letter-spacing: 0.2vh;
+            font-size: 20px;
+          "
+          class=""
+        >
           本網站提供崇尚戶外的台灣冒險家們，可以互相認識、一起出遊、一起玩耍的機會。
           網站提供冒險家們創建/參與行程，以及相互評分、分享冒險經歷，使自己擅長的技能或是個人特質能夠與夥伴們分享。
           不管是剛開始接觸戶外活動的新手們，或是在寬廣的野外已經佔有一席之地的野人、登山客、森林與海洋守護者們，這裡都是你/妳可以找到同伴的好地方。
@@ -427,11 +514,14 @@
         on: "hover",
       });
 
-      $(".oldbtn4,.oldbtn5,.oldbtn6").hide();
       $(".oldbtn1,.oldbtn2,.oldbtn3").hide();
+      $(".oldbtn4,.oldbtn5,.oldbtn6").hide();
+      $(".oldbtn7,.oldbtn8,.oldbtn9").hide();
 
       function btn() {
-        $(".oldbtn4,.oldbtn5,.oldbtn6").transition("hide");
+        $(".oldbtn4,.oldbtn5,.oldbtn6,.oldbtn7,.oldbtn8,.oldbtn9").transition(
+          "hide"
+        );
 
         $(".oldbtn1,.oldbtn2,.oldbtn3").transition({
           animation: "fly right",
@@ -440,8 +530,20 @@
         });
       }
       function btn2() {
-        $(".oldbtn1,.oldbtn2,.oldbtn3").transition("hide");
+        $(".oldbtn1,.oldbtn2,.oldbtn3,.oldbtn7,.oldbtn8,.oldbtn9").transition(
+          "hide"
+        );
         $(".oldbtn4,.oldbtn5,.oldbtn6").transition({
+          animation: "fly right",
+          duration: 800,
+          interval: 200,
+        });
+      }
+      function btn3() {
+        $(".oldbtn1,.oldbtn2,.oldbtn3,.oldbtn4,.oldbtn5,.oldbtn6").transition(
+          "hide"
+        );
+        $(".oldbtn7,.oldbtn8,.oldbtn9").transition({
           animation: "fly right",
           duration: 800,
           interval: 200,

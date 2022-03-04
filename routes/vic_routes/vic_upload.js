@@ -34,8 +34,7 @@ var storage = multer.diskStorage({
     cb(null, "./upload/");
   },
   filename: function (req, file, cb) {
-    photoNumber += 2;
-    console.log(photoNumber + "AAA");
+    photoNumber++;
     cb(null, "photo" + photoNumber + ".jpg");
   },
 });
@@ -56,37 +55,29 @@ const upload = multer({
 // 照片上傳設定
 
 router.post("/", upload.array("photo", 5), (req, res) => {
-  console.log(req.body.getUpLoadId);
-  console.log(req.session.userId);
+  photoNumber = req.body.getNumber;
+  photoNumber++;
+  console.log(photoNumber);
   if (req.session.userId == undefined) {
     res.redirect("/login");
   } else {
-    connection.query(
-      "SELECT number FROM tripchatboard ORDER BY tripchatboard.number DESC LIMIT 1",
-      (err, result) => {
-        photoNumber = result[0].number;
-        console.log(result[0].number);
-
-        var chatTime = new Date();
-        var sql =
-          "insert into tripchatboard set spotId=?,userId=?,chatTime=?,chatMessage=?,chatImgNum=?";
-        var addVaule = [
-          req.body.getUpLoadId,
-          req.session.userId,
-          chatTime,
-          req.body.content,
-          photoNumber,
-        ];
-        connection.query(sql, addVaule, function (err, result) {
-          if (err) {
-            console.log(err);
-            console.log("新增資料失敗");
-          }
-          res.redirect(`/spotid?id=${req.body.getUpLoadId}`);
-          console.log(photoNumber);
-        });
+    var chatTime = new Date();
+    var sql =
+      "insert into tripchatboard set spotId=?,userId=?,chatTime=?,chatMessage=?,chatImgNum=?";
+    var addVaule = [
+      req.body.getUpLoadId,
+      req.session.userId,
+      chatTime,
+      req.body.content,
+      photoNumber,
+    ];
+    connection.query(sql, addVaule, function (err, result) {
+      if (err) {
+        console.log(err);
+        console.log("新增資料失敗");
       }
-    );
+      res.redirect(`/spotid?id=${req.body.getUpLoadId}`);
+    });
   }
 });
 

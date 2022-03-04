@@ -48,7 +48,7 @@
           <p>手機:<%= data1[0].userPhone %></p>
           <p><%= data1[0].userEmail %></p>
 
-          <% if ( data6[0].positionState == 0) { %>
+          <% if ( locals.data6[0]) { %> <% }else{ %>
           <button
             type="button"
             class="btn btn-primary"
@@ -58,7 +58,7 @@
           >
             報名行程
           </button>
-          <% }else{} %>
+          <%} %>
 
           <!-- Modal -->
           <div

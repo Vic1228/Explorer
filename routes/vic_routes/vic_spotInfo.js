@@ -27,7 +27,7 @@ var storage = multer.diskStorage({
     cb(null, "./upload/");
   },
   filename: function (req, file, cb) {
-    photoNumber++;
+    photoNumber += 2;
     cb(null, "photo" + photoNumber + ".jpg");
   },
 });
@@ -47,7 +47,6 @@ const upload = multer({
 });
 
 router.get("/", function (req, res) {
-  console.log(req.query.id);
   connection.query(
     `SELECT * FROM tripchatboard JOIN users ON tripchatboard.userId = users.userId WHERE tripchatboard.spotId =${req.query.id}`,
     (error, results) => {
@@ -58,11 +57,20 @@ router.get("/", function (req, res) {
           (error, results2) => {
             if (error) throw error;
             else {
-              res.render(`vic_spotinfo.ejs`, {
-                data: results,
-                data2: results2,
-                moment,
-              });
+              connection.query(
+                `SELECT number FROM tripchatboard ORDER BY tripchatboard.number DESC LIMIT 1`,
+                (error, results3) => {
+                  if (error) throw error;
+                  else {
+                    res.render(`vic_spotinfo.ejs`, {
+                      data: results,
+                      data2: results2,
+                      data3: results3,
+                      moment,
+                    });
+                  }
+                }
+              );
             }
           }
         );

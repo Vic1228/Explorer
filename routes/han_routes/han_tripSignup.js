@@ -22,13 +22,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
-  console.log(req.session.userId);
   connection.query(
-    `UPDATE tripmembers SET positionState = 1 WHERE tripmembers.tripId = ${req.query.id} AND userId = ${req.session.userId}`,
+    `insert into tripmembers  SET tripId = ${req.query.id} , userId  = ${req.session.userId},positionState = 0`,
     (error, results) => {
       if (error) throw error;
       else {
-        res.render("/");
+        res.redirect("/");
       }
     }
   );

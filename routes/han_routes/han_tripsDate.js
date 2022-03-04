@@ -22,7 +22,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
-  console.log(req.query.id);
   connection.query(
     `SELECT * FROM ( trips INNER JOIN tripmembers ON trips.tripId = tripmembers.tripId INNER JOIN users ON tripmembers.userId = users.userId) INNER JOIN spots ON trips.spotId = spots.spotId WHERE tripmembers.positionState = 2 AND trips.tripStartDate >= "${req.query.id}"`,
     (error, results1) => {
