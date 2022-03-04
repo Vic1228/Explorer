@@ -1,7 +1,7 @@
 var express = require("express");
+var session = require("express-session");
 var lu_createTrip_router = express.Router();
 var app = express();
-var session = require("express-session");
 
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,18 +14,23 @@ var connection = require("../db.js");
 // ==================================
 // 查詢users表的資料
 
-// TODO:
+
 var userProfile;
 var userStats;
-lu_createTrip_router.get("/", function (req, res) {
-  //  user判斷
-  let test1 = `SELECT * FROM users WHERE userId = 7`;
-  connection.query(test1, (err, results, fields) => {
+lu_createTrip_router.get("/createTrip", function (req, res) {
+  console.log(req.session.userId);
+  if (req.session.userId == undefined) {
+    res.redirect("/login");
+  } else {
+    
+    //  user判斷
+    let test1 = `SELECT * FROM users WHERE userId = ${req.session.userId}`;
+    connection.query(test1, (err, results, fields) => {
     if (err) throw err;
     userProfile = results[0];
 
     // 查userstats資料
-    let test2 = `SELECT * FROM userstats WHERE userId = 7`;
+    let test2 = `SELECT * FROM userstats WHERE userId = ${req.session.userId}`;
     connection.query(test2, (err, results2, fields) => {
       if (err) throw err;
       userStats = results2[0];
@@ -34,6 +39,7 @@ lu_createTrip_router.get("/", function (req, res) {
       res.render("lu_createTrip", obj);
     });
   });
+  }
 });
 
 // ==================================
@@ -43,6 +49,10 @@ lu_createTrip_router.get("/", function (req, res) {
 // 傳送表單的資料進資料庫
 
 lu_createTrip_router.post("/response", function (req, res) {
+  console.log(req.session);
+  if (req.session.userId == undefined) {
+    res.redirect("/login");
+  } else {
   // input同name的 分別存入變數
   let trip = req.body.trip;
   let schedule = req.body.schedule;
@@ -95,9 +105,10 @@ lu_createTrip_router.post("/response", function (req, res) {
         }
       });
   });
-  // shared
   // 渲染
   res.render("lu_createFormComplete.ejs");
+  }
+  
 });
 
 module.exports = lu_createTrip_router;

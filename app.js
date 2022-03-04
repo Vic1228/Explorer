@@ -36,8 +36,6 @@ app.use("/upload", uploadRouter);
 
 // 學奇
 var createTrip = require("./routes/lu_routes/lu_createTrip");
-app.use("/createTrip", createTrip);
-app.use("/", createTrip);
 
 // 仲晏
 var yenpage = require("./routes/yen_routes/yen_routes");
@@ -73,17 +71,17 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
     },
   })
-);
-
+  );
+  
 //連結資料庫
 
 // 使用者登入(舊)
 // app.post('/login', function (req, res) {
-//   compareEmail = 0;
-//   connection.query(`SELECT * FROM users`, function (err, rows) {
-//     console.log(rows)
-//     rows.forEach(item => {
-//       if (req.body.useremail == item.userEmail && req.body.userpassword == item.userPassword) {
+  //   compareEmail = 0;
+  //   connection.query(`SELECT * FROM users`, function (err, rows) {
+    //     console.log(rows)
+    //     rows.forEach(item => {
+      //       if (req.body.useremail == item.userEmail && req.body.userpassword == item.userPassword) {
 //         console.log(item.userId)
 //         req.session.userEmail = req.body.useremail; // 登入成功，設定 session username = email
 //         console.log(req.session.userEmail);
@@ -91,12 +89,12 @@ app.use(
 //         return false
 //         console.log(didi)
 //       } else {
-//         console.log(item.userId)
-//         console.log('error');
-//         res.json({ ret_code: 1, ret_msg: '帳號或密碼錯誤' });// 若登入失敗，重定向到登入頁面
-//       }
-//     })
-//   })
+  //         console.log(item.userId)
+  //         console.log('error');
+  //         res.json({ ret_code: 1, ret_msg: '帳號或密碼錯誤' });// 若登入失敗，重定向到登入頁面
+  //       }
+  //     })
+  //   })
 // });
 
 // 使用者登入(新)
@@ -111,6 +109,8 @@ app.post("/login", function (req, res) {
     } else {
       let id = result[0].userId;
       req.session.userId = id;
+      // 
+      console.log(req.session.userId);
       console.log("login success!");
       res.redirect("/");
     }
@@ -121,36 +121,36 @@ app.post("/login", function (req, res) {
 // app.post('/register', function (req, res) {  // /register從註冊頁面 form的action
 //   compareEmail = 0; //狀態初始
 //   databaseUserInformation.forEach(item => {
-//     if (item.email == req.body.useremail) {
-//       //帳號已存在
+  //     if (item.email == req.body.useremail) {
+    //       //帳號已存在
 //       compareEmail = 1;
 //       return false;
 //     }
 //   })
 //   //將資料存入資料庫
 //   if (compareEmail == 0) {
-//     //可以註冊帳號
-//     connection.query(`INSERT INTO users (userName,userEmail, userPassword, userPhone, userExp) VALUES ('${req.body.username}', '${req.body.useremail}', '${req.body.userpassword}', '', '')`, (error, rows) => {
-//       if (error) {
-//         console.log(error);
-//       }
-//     })
-//   };
-//   res.redirect('/login'); //跳轉頁面
-// })
-app.post("/register", function (req, res) {
-  const name = req.body.username;
-  const email = req.body.useremail;
-  const password = req.body.userpassword;
-  // 比對
-  const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
-  const takeid = `select userId from users where userEmail='${email}'`;
-  connection.query(custormers, (err1, result, field) => {
-    console.log(err1);
-    connection.query(takeid, (err2, result2, field) => {
-      console.log(err2);
-      const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
-      connection.query(insertid, (err3, result3, field) => {
+  //     //可以註冊帳號
+  //     connection.query(`INSERT INTO users (userName,userEmail, userPassword, userPhone, userExp) VALUES ('${req.body.username}', '${req.body.useremail}', '${req.body.userpassword}', '', '')`, (error, rows) => {
+    //       if (error) {
+      //         console.log(error);
+      //       }
+      //     })
+      //   };
+      //   res.redirect('/login'); //跳轉頁面
+      // })
+      app.post("/register", function (req, res) {
+        const name = req.body.username;
+        const email = req.body.useremail;
+        const password = req.body.userpassword;
+        // 比對
+        const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
+        const takeid = `select userId from users where userEmail='${email}'`;
+        connection.query(custormers, (err1, result, field) => {
+          console.log(err1);
+          connection.query(takeid, (err2, result2, field) => {
+            console.log(err2);
+            const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
+            connection.query(insertid, (err3, result3, field) => {
         console.log(err3);
         if (result == undefined) {
           console.log("錯誤，已註冊過");
@@ -172,3 +172,4 @@ app.get("/logout", function (req, res) {
 });
 
 app.use("/", yenpage);
+app.use("/", createTrip);
