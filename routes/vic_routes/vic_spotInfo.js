@@ -21,13 +21,51 @@ app.use(express.static(__dirname + "/upload"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var photoNumber;
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./upload/");
+  },
+  filename: function (req, file, cb) {
+    photoNumber++;
+    cb(null, "photo" + photoNumber + ".jpg");
+  },
+});
+const upload = multer({
+  storage: storage,
+  dest: "upload/",
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
+  fileFilter(req, file, callback) {
+    if (!file.mimetype.match(/^image/)) {
+      callback((new Error().message = "檔案格式錯誤"));
+    } else {
+      callback(null, true);
+    }
+  },
+});
+
 router.get("/", function (req, res) {
+  console.log(req.query.id);
   connection.query(
-    "SELECT * FROM tripchatboard JOIN users ON tripchatboard.userId = users.userId",
-    function (error, results) {
+    `SELECT * FROM tripchatboard JOIN users ON tripchatboard.userId = users.userId WHERE tripchatboard.spotId =${req.query.id}`,
+    (error, results) => {
       if (error) throw error;
       else {
-        res.render("vic_spotinfo.ejs", { data: results, moment });
+        connection.query(
+          `SELECT * FROM spots WHERE spots.spotId = ${req.query.id}`,
+          (error, results2) => {
+            if (error) throw error;
+            else {
+              res.render(`vic_spotinfo.ejs`, {
+                data: results,
+                data2: results2,
+                moment,
+              });
+            }
+          }
+        );
       }
     }
   );

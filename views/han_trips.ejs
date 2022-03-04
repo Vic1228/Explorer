@@ -54,27 +54,6 @@
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
-              id="defaultDropdown"
-              data-bs-toggle="dropdown"
-              data-bs-auto-close="true"
-              aria-expanded="false"
-              style="border-radius: 20px"
-            >
-              <span>　　地　　　　區</span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="btn-group">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
               id="dropdownMenuClickableOutside"
               data-bs-toggle="dropdown"
               data-bs-auto-close="inside"
@@ -87,9 +66,21 @@
               class="dropdown-menu"
               aria-labelledby="dropdownMenuClickableOutside"
             >
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li>
+                <a class="dropdown-item" href="trips" style="font-weight: bold"
+                  >全部</a
+                >
+              </li>
+              <% data2.forEach(element => { %>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="tripsId?id=<%= element.spotId %>"
+                >
+                  <%= element.spotName %>
+                </a>
+              </li>
+              <% }) %>
             </ul>
           </div>
         </div>
@@ -111,9 +102,17 @@
               class="dropdown-menu"
               aria-labelledby="dropdownMenuClickableInside"
             >
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
-              <li><a class="dropdown-item" href="#">Menu item</a></li>
+              <li>
+                <a class="dropdown-item" href="trips" style="font-weight: bold"
+                  >全部</a
+                >
+
+                <% data3.forEach(element => { %>
+                <a class="dropdown-item" href="tripsDay?id=<%= element.Date %>">
+                  <%= element.Date %> 天
+                </a>
+                <% }) %>
+              </li>
             </ul>
           </div>
         </div>
@@ -126,6 +125,8 @@
               min="2022-01-01"
               max="2022-12-31"
               step="0"
+              onchange="ABC()"
+              id="dateDay"
             />
           </div>
         </div>
@@ -167,11 +168,13 @@
       </div>
     </div>
 
+    <% data1.forEach(element => { %>
+
     <div class="card mb-3 mx-auto" style="max-width: 1080px; margin-top: 90px">
       <div class="row g-0">
         <div class="col-md-3" style="text-align: center">
           <img
-            src="./nav/img/img/12.jpg"
+            src="./img/han/<%= element.spotId %>.jpg"
             class="img-fluid rounded-start egg"
             alt="..."
           />
@@ -180,9 +183,12 @@
           <div class="card-body">
             <div class="row">
               <div class="col-8">
-                <p class="card-text">活動名稱: 冒險營</p>
-                <p class="card-text">目的地:台灣</p>
-                <p class="card-text">日期:2022/2/9~2022/2/11(3天)</p>
+                <p class="card-text">活動名稱: <%= element.tripName %></p>
+                <p class="card-text">目的地: <%= element.spotName %></p>
+                <p class="card-text">
+                  日期:<%= moment(element.tripStartDate).format("yy/MM/DD")%>
+                  ~<%= moment(element.tripEndDate).format("yy/MM/DD")%>
+                </p>
                 <button
                   class="btn btn-outline-secondary"
                   id="button-addon2 "
@@ -193,17 +199,14 @@
                     margin-left: 700px;
                     visibility: hidden;
                   "
-                >
-                  ...
-                  <!-- <img src="" style="width: 24px" alt="" /> -->
-                </button>
+                ></button>
               </div>
               <div class="col-4">
-                <p class="card-text">發起人: 王 小 明</p>
+                <p class="card-text">發起人: <%= element.userName %></p>
                 <button
                   class="btn btn-outline-secondary"
                   style="width: 100px; margin-top: 8vh"
-                  onclick="mouse()"
+                  onclick="mouse('<%= element.tripId %>')"
                 >
                   行程詳情
                 </button>
@@ -213,6 +216,7 @@
         </div>
       </div>
     </div>
+    <% }); %>
 
     <div w3-include-HTML="./footer/footer.html" class="mt-5"></div>
     <script>
@@ -223,9 +227,17 @@
         console.log("123");
         location.href = "/createTrip";
       }
-      function mouse() {
-        location.href = "/tripInfo";
+      function mouse(id) {
+        location.href = `/tripInfo?id=${id}`;
       }
+
+      function ABC() {
+        var getDate = $("#dateDay").val();
+        location.href = `/tripsDate?id=${getDate}`;
+      }
+
+      // var dateControl = document.querySelector('input[type="date"]');
+      // console.log(dateControl);
     </script>
     <script src="./nav/nav.js"></script>
   </body>

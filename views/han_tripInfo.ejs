@@ -30,21 +30,25 @@
       <div class="row">
         <div class="col">
           <img
-            src="../image/attractionDetails/20.jpg"
+            src="./img/han/<%= data1[0].spotId %>.jpg"
             width="250px"
             height="200px"
           />
         </div>
         <div class="col">
-          <p>活動名稱:冒險營</p>
-          <p>目的地:台北陽明山</p>
-          <P>日期:2022/02/11~2022/02/13(3天)</P>
+          <p>活動名稱:<%= data1[0].tripName %></p>
+          <p>目的地:<%= data1[0].spotName %></p>
+          <P
+            >日期:<%= moment(data1[0].tripStartDate).format("yy/MM/DD")%> ~<%=
+            moment(data1[0].tripEndDate).format("yy/MM/DD")%></P
+          >
         </div>
         <div class="col">
-          <P>王小明</P>
-          <p>手機:09123456</p>
-          <p>emali:aa000@gmail.com</p>
+          <P><%= data1[0].userName %></P>
+          <p>手機:<%= data1[0].userPhone %></p>
+          <p><%= data1[0].userEmail %></p>
 
+          <% if ( data6[0].positionState == 0) { %>
           <button
             type="button"
             class="btn btn-primary"
@@ -54,6 +58,7 @@
           >
             報名行程
           </button>
+          <% }else{} %>
 
           <!-- Modal -->
           <div
@@ -123,7 +128,7 @@
                     type="button"
                     id="button"
                     class="btn btn-primary"
-                    onclick="aaaa()"
+                    onclick="aaaa('<%= data1[0].tripId %>')"
                   >
                     確認
                   </button>
@@ -142,68 +147,40 @@
           <h1>必帶私人裝備</h1>
           <hr />
         </div>
-
         <div class="row">
-          <div class="col-3" style="line-height: 30px; text-align: center">
-            <p style="padding-right: 60px">Day 1▼</p>
-            <p>　10:00</p>
-            <p>　10:15</p>
-            <p>　11:00</p>
-            <p>　11:00</p>
-            <p>　12:00</p>
-            <p style="margin-top: 40px; padding-right: 60px">Day 2▼</p>
-            <p>　10:00</p>
-            <p>　10:15</p>
-            <p>　12:00</p>
-            <p>　13:00</p>
-            <p>　21:00</p>
-            <p style="margin-top: 40px; padding-right: 60px">Day 3▼</p>
-            <p>　10:00</p>
-            <p>　10:15</p>
-            <p>　12:00</p>
-            <p>　13:00</p>
-            <p>　21:00</p>
-          </div>
-          <div class="col-3" style="line-height: 30px; text-align: center">
-            <p style="margin-top: 45px"></p>
-            <p>起　床</p>
-            <p>吃早餐</p>
-            <p>吃午餐</p>
-            <p>搭帳棚</p>
-            <p>睡　覺</p>
-            <p style="margin-top: 41px">&emsp;</p>
-            <p>起　床</p>
-            <p>吃早餐</p>
-            <p>吃午餐</p>
-            <p>搭帳棚</p>
-            <p>睡　覺</p>
-
-            <p style="margin-top: 38px">&emsp;</p>
-            <p>起　床</p>
-            <p>吃早餐</p>
-            <p>吃午餐</p>
-            <p>搭帳棚</p>
-            <p>睡　覺</p>
+          <div class="col-6" style="line-height: 30px; text-align: center">
+            <div class="row">
+              <div class="col-6">
+                <% data2.forEach(element2 =>{ %>
+                <p style="padding-right: 60px">Day <%= element2.day %> ▼</p>
+                <% data3.forEach(element3 =>{ %> <% if( element2.day ==
+                element3.day ) {%>
+                <p>　<%= element3.startTime %></p>
+                <% } else{ %> <% } %> <% }) %> <% }) %>
+              </div>
+              <div class="col-6">
+                <% data2.forEach(element2 =>{ %>
+                <p style="padding-right: 60px">　</p>
+                <% data3.forEach(element3 =>{ %> <% if( element2.day ==
+                element3.day ) {%>
+                <p>　<%= element3.activity %></p>
+                <% } else{ %> <% } %> <% }) %> <% }) %>
+              </div>
+            </div>
           </div>
 
           <div class="col-6">
-            <!-- <img src="20.jpg" width="400px"height="300px"> -->
-
             <div class="col" style="margin-top: 50px; text-align: center">
               <div class="row">
                 <div class="col">
-                  <p>登山帽</p>
-                  <p>帳　篷</p>
-                  <p>靴　子</p>
-                  <p>手電筒</p>
-                  <p>雨　衣</p>
+                  <% data4.forEach(element4=>{%>
+                  <p><%= element4.privateItem %></p>
+                  <%})%>
                 </div>
                 <div class="col">
-                  <p>1/頂</p>
-                  <p>1/個</p>
-                  <p>1/雙</p>
-                  <p>2/支</p>
-                  <p>1/件</p>
+                  <% data4.forEach(element4=>{%>
+                  <p><%= element4.itemCount %> / 個</p>
+                  <%})%>
                 </div>
               </div>
 
@@ -213,18 +190,14 @@
 
                 <div class="row">
                   <div class="col">
-                    <p>登山杖</p>
-                    <p>與　傘</p>
-                    <p>繩　索</p>
-                    <p>烤肉架</p>
-                    <p>露營燈</p>
+                    <% data5.forEach(element5=>{%>
+                    <p><%= element5.sharedItem %></p>
+                    <%})%>
                   </div>
                   <div class="col">
-                    <p>1/支</p>
-                    <p>1/把</p>
-                    <p>1/捆(30m)</p>
-                    <p>2/個</p>
-                    <p>1/盞</p>
+                    <% data5.forEach(element5=>{%>
+                    <p><%= element5.itemCount %></p>
+                    <%})%>
                   </div>
                 </div>
               </div>
@@ -265,8 +238,8 @@
     <script>
       w3.includeHTML();
 
-      function aaaa() {
-        location.href = "/tripManage";
+      function aaaa(id) {
+        location.href = `/tripSignup?id=${id}`;
       }
     </script>
     <script src="./nav/nav.js"></script>

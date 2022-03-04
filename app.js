@@ -32,8 +32,14 @@ var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
 var uploadRouter = require("./routes/vic_routes/vic_upload");
 app.use("/", homepageRouter);
-app.use("/spotId", spotInfoRouter);
-app.use("/upload", uploadRouter);
+
+// 意涵
+var tripsRouter = require("./routes/han_routes/han_trips.js");
+var tripsIdRouter = require("./routes/han_routes/han_tripsId.js");
+var tripsDayRouter = require("./routes/han_routes/han_tripsDay.js");
+var tripsDateRouter = require("./routes/han_routes/han_tripsDate.js");
+var tripsinfoRouter = require("./routes/han_routes/han_tripsinfo.js");
+var tripSignup = require("./routes/han_routes/han_tripSignup.js");
 
 // 學奇
 var createTrip = require("./routes/lu_routes/lu_createTrip");
@@ -112,6 +118,7 @@ app.post("/login", function (req, res) {
     } else {
       let id = result[0].userId;
       req.session.userId = id;
+      console.log(req.session.userId);
       console.log("login success!");
       res.redirect("/");
     }
@@ -171,5 +178,12 @@ app.get("/logout", function (req, res) {
   console.log(req.session.userId);
   res.redirect("/");
 });
-
+app.use("/spotId", spotInfoRouter);
+app.use("/upload", uploadRouter);
+app.use("/trips", tripsRouter);
+app.use("/tripsId", tripsIdRouter);
+app.use("/tripsDay", tripsDayRouter);
+app.use("/tripsDate", tripsDateRouter);
+app.use("/tripinfo", tripsinfoRouter);
+app.use("/tripSignup", tripSignup);
 app.use("/", yenpage);

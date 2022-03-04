@@ -27,13 +27,7 @@ router.get("/signup", function (req, res) {
 // });
 
 // 傅意涵開始
-router.get("/trips", function (req, res) {
-  res.render("han_trips.ejs");
-});
 
-router.get("/tripInfo", function (req, res) {
-  res.render("han_tripInfo.ejs");
-});
 // 傅意涵
 
 //仲硯

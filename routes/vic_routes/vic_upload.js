@@ -5,6 +5,7 @@ const ejs = require("ejs");
 const moment = require("moment");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+const session = require("express-session");
 const axios = require("axios");
 const fs = require("fs");
 const app = express();
@@ -26,12 +27,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.locals.moment = require("moment");
 
 var photoNumber;
+
 // 照片上傳設定
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./upload/");
   },
   filename: function (req, file, cb) {
+    photoNumber += 2;
+    console.log(photoNumber + "AAA");
     cb(null, "photo" + photoNumber + ".jpg");
   },
 });
@@ -51,45 +55,39 @@ const upload = multer({
 });
 // 照片上傳設定
 
-function getNumber() {
-  return new Promise((resolve, reject) => {
+router.post("/", upload.array("photo", 5), (req, res) => {
+  console.log(req.body.getUpLoadId);
+  console.log(req.session.userId);
+  if (req.session.userId == undefined) {
+    res.redirect("/login");
+  } else {
     connection.query(
       "SELECT number FROM tripchatboard ORDER BY tripchatboard.number DESC LIMIT 1",
       (err, result) => {
         photoNumber = result[0].number;
         console.log(result[0].number);
+
+        var chatTime = new Date();
+        var sql =
+          "insert into tripchatboard set spotId=?,userId=?,chatTime=?,chatMessage=?,chatImgNum=?";
+        var addVaule = [
+          req.body.getUpLoadId,
+          req.session.userId,
+          chatTime,
+          req.body.content,
+          photoNumber,
+        ];
+        connection.query(sql, addVaule, function (err, result) {
+          if (err) {
+            console.log(err);
+            console.log("新增資料失敗");
+          }
+          res.redirect(`/spotid?id=${req.body.getUpLoadId}`);
+          console.log(photoNumber);
+        });
       }
     );
-
-    resolve({ photoNumber });
-  });
-}
-
-function upFile() {
-  return new Promise((resolve, reject) => {
-    router.post("/", upload.array("photo", 5), async (req, res) => {
-      photoNumber++;
-      var chatTime = new Date();
-      var sql =
-        "insert into tripchatboard set tripId=?,userId=?,chatTime=?,chatMessage=?,chatImgNum=?";
-      var addVaule = ["", "1", chatTime, req.body.content, photoNumber];
-
-      connection.query(sql, addVaule, function (err, result) {
-        if (err) {
-          console.log(err);
-          console.log("新增資料失敗");
-        }
-        res.redirect("/spotid");
-        console.log(photoNumber);
-      });
-    });
-  });
-}
-
-asyec_staus = async function () {
-  await getNumber();
-  await upFile();
-};
-asyec_staus();
+  }
+});
 
 module.exports = router;

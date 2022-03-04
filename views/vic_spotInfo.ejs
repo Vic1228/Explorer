@@ -6,11 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style/style.css" />
     <link rel="stylesheet" href="./nav/nav.css" />
+    <link rel="stylesheet" href="./style/Vic/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
     />
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script
@@ -31,6 +36,9 @@
       .BtnWedth {
         width: 5rem;
       }
+      /* * {
+        outline: 1px solid blue;
+      } */
     </style>
     <title>Document</title>
   </head>
@@ -39,39 +47,59 @@
     <!-- NAV BAR -->
     <div w3-include-HTML="./nav/nav.html"></div>
     <!-- NAV BAR -->
-    <div class="container navDistance">
-      <div class="row">
-        <div class="col-5">
+    <!-- 旋轉木馬開始 -->
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 70vh">
           <img
-            style="height: 300px; width: 1500px"
-            src="./img/Vic/雪山.jpg"
-            class="img-fluid box"
+            src="./img/Vic/spotimg/<%= data2[0].spotId %>.jpg"
+            class="d-block w-100"
             alt="..."
           />
-          <!--600/310-->
-        </div>
-        <div class="col-7">
-          <p class="h2" style="font-weight: bold">雪山</p>
-          <p class="h4 TopAndBottonSize" style="font-weight: bold">資訊</p>
-          <p class="h6">座標： 24° 23′ 0.24″ N, 121° 13′ 54.48″ E</p>
-          <p class="h6">位置： 中華民國台中市和平區與苗栗縣泰安鄉</p>
-          <p class="h6">
-            最簡路線：
-            雪東線（雪山登山口→七卡山莊→雪山東峰→三六九山莊→雪山主峰）
-          </p>
-          <button type="button" class="btn btn-primary TopAndBottonSize">
-            參加行程
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary TopAndBottonSize"
-            style="margin-left: 1rem"
-          >
-            建立行程
-          </button>
+          <!-- 圖片尺寸為3038*1008 -->
+          <div class="carousel-caption d-none d-md-block">
+            <p class="middleTitle textShadow"><%= data2[0].spotName %></p>
+            <button
+              style="margin-bottom: 30px; margin-top: -100px"
+              class="ui secondary button"
+              onclick="searchTrip ('<%= data2[0].spotId %>') "
+            >
+              <font style="vertical-align: inherit"
+                ><font style="vertical-align: inherit"> 參加行程 </font></font
+              >
+            </button>
+            <button
+              style="margin-bottom: 30px; margin-top: -100px"
+              class="ui secondary button"
+            >
+              <font style="vertical-align: inherit"
+                ><font style="vertical-align: inherit"> 建立行程 </font></font
+              >
+            </button>
+          </div>
         </div>
       </div>
+    </div>
+    <!-- 旋轉木馬結束 -->
 
+    <div class="container navDistance">
+      <!-- 資訊抬頭 -->
+      <div>
+        <p
+          class="twoText title"
+          style="margin-top: 0.1vw; margin-bottom: 10px; text-align: center"
+        >
+          景點資訊
+        </p>
+      </div>
+      <h4 class="ui horizontal divider" style="margin-top: -0.1px">
+        <i class="hand point down icon"></i> 這邊有景點的詳細資訊呦！
+      </h4>
+      <!-- 資訊抬頭 -->
       <div class="d-flex align-items-start" style="margin-top: 30px">
         <div
           class="nav flex-column nav-pills me-3"
@@ -135,9 +163,7 @@
             role="tabpanel"
             aria-labelledby="v-pills-home-tab"
           >
-            雪山，最高峰雪山主峰位處台灣台中市和平區平等里與苗栗縣泰安鄉梅園村之間，屬於雪山山脈，為全台第二高峰，標高
-            3,886 公尺，僅次於玉山山脈的玉山（3,952
-            公尺）。雪山在日治時代被稱做次高山，是第二座超越日本富士山高度的台灣高山。在台灣百岳之中，雪山與玉山、秀姑巒山、南湖大山、北大武山合稱「五嶽」，為台灣最具代表性的五座高山。
+            <p><%= data2[0].Introduction %></p>
           </div>
 
           <div
@@ -146,11 +172,7 @@
             role="tabpanel"
             aria-labelledby="v-pills-profile-tab"
           >
-            雪山地區是世居在此的泰雅族人的獵區。在志佳陽社（今
-            環山部落）的稱呼中，雪山泰雅語名為「B'bu'
-            Hagay」，意為「石頭山」，描述雪山頂到處堆積的砂岩塊[1]；另有泰雅語稱為「Mahamayan」，譯作馬哈馬顏山；在泰雅語中的第三個稱法為「Sekoan」，意為「碎石與裂縫」。《台灣府志》描寫其積雪之景，稱為雪山、雪翁山，日人幣原坦認為「雪翁山」或「雪高翁山」為「Sekoan」的音譯。《淡水廳志》《苗栗廳志》《噶瑪蘭廳志》稱此山為玉山，《苗栗廳志》中「玉山霽雪」為苗栗八景之一，《噶瑪蘭廳志》中「玉山積雪」也為蘭陽勝景之一[a][3]。
-            1867年，英國軍艦Sylvia號行經台灣海域，據說船長以目視發現高聳的雪山，便將山以船命名為「Sylvia」，早期西方相關文獻便以Mt.Sylvia稱呼雪山[4]；1872年，馬偕博士曾入雪山山區活動。接著台灣進入日治時期，大正4年（1915年）7月10日，隸屬「蕃務本署」的測量員財津久平等人經埤亞南社（今南山村）越過埤亞南鞍部（今思源埡口），從雪山東峰稜線順利登上雪山主峰，並量出高度為12,972日尺，比日本本土最高峰富士山還高；1923年，裕仁親王（後為昭和天皇）訪台，以「台灣第二高峰、僅次於新高山的山」命名為次高山[5]；與新高山（玉山）、能高山並稱「三高」[6]。山頂設有次高神社，包括水泥製神龕與鳥居，現已不存。
-            戰後，1953年台灣省政府公告恢復「雪山」的歷史山名[7]；先總統蔣中正巡視中橫公路時曾將雪山取名興隆山，但未被長期廣泛採用。
+            <p><%= data2[0].history %></p>
           </div>
 
           <div
@@ -159,19 +181,7 @@
             role="tabpanel"
             aria-labelledby="v-pills-messages-tab"
           >
-            雪山主峰與副峰群分布在雪山山脈的中段，約在台中市與苗栗縣的市縣界上，地處雪霸國家公園境內。以雪山主峰為中心，周圍一帶地質特色、岩性皆相似的山塊，稱為雪山地壘。雪山地壘的基岩為始新世晚期或漸新世早期之四稜砂岩，是一種石英變質砂岩，硬度非常高，耐風化侵蝕，因此造就了雪山地壘的高聳地勢。
-            以雪山主峰為頂點，共有六條稜脈匯聚，分別是：<br />
-
-            西稜：為雪山山脈主稜西段，自雪山主峰向西延伸，經過翠池三叉山後北轉，在博可爾山（又名雪山西峰）再折向西南方。沿線包括火石山、頭鷹山、大雪山、中雪山四座百岳山峰，也稱為大雪山稜脈。
-            <br />
-            南稜：自翠池三叉山向南轉折，沿線有雪山西南峰、大劍山、油婆蘭山、佳陽山、劍山等高山，又稱雪劍稜脈、劍山稜脈或大小劍稜脈。
-            <br />
-            北稜：雪山山脈主稜自雪山主峰向北，經北稜角、凱蘭特崑山、雪山北峰、穆特勒布山、素密達山、布秀蘭山、巴紗拉雲山到大霸尖山、小霸尖山的稜脈，即是聖稜線，亦稱雪霸線。雪山山脈主稜往北在布秀蘭山轉分支往東為主稜。大霸尖山往北往鎮西堡岳界稱為大霸北稜。
-            <br />
-            北東稜：雪山山脈從布秀蘭山自北稜分出往東為主稜，沿線有品田山、池有山、桃山與喀拉業山，即武陵四秀。
-            <br />
-            東南稜：從雪山主峰南面，接上雪山南峰、志佳陽大山。 <br />
-            東支稜：由主峰往東延伸至七家灣溪河谷，沿線經過甘木林山、雪山東峰；也稱雪東線。
+            <p><%= data2[0].geography %></p>
           </div>
 
           <div
@@ -180,22 +190,43 @@
             role="tabpanel"
             aria-labelledby="v-pills-settings-tab"
           >
-            雪山主峰標高3,886公尺，峰頂地形平緩，設有一等三角點與石碑。雪山的地質構造以變質砂岩為主，在主峰周邊各處均可見變質砂岩的交疊構造出露，以及散落的風化砂岩碎塊。主峰東面為雪山一號圈谷，北面經埡口接上北稜角，西面稜脈接上翠池三叉山，南面則為斷崖崩壁。
+            <p><%= data2[0].landscape %></p>
           </div>
         </div>
       </div>
-      <hr />
 
       <!-- 留言板內容渲染 -->
+      <!-- 留言板抬頭 -->
+      <h4
+        class="ui horizontal divider"
+        style="font-size: 30px; margin-top: 5vw; margin-bottom: 3vw"
+      >
+        <i class=""></i> 景點討論區
+      </h4>
+      <!-- 留言板抬頭 -->
       <% data.forEach(element => { %>
       <div class="row">
         <div class="col-auto">
-          <img src="./img/Vic/TUN.png" class="img-fluid box" alt="..." />
+          <div style="height: 100px; margin-top: 5px; margin-bottom: 5px">
+            <img
+              style="height: 60px; outline: 1px solid; border-radius: 30px"
+              src="./img/yen/photo/<%=element.userId%>.png"
+              class="img-fluid box img-thumbnail"
+              onerror="ASA('<%= element.number %>')"
+              id="imgbox<%= element.number %>"
+            />
+          </div>
         </div>
         <div class="col" style="margin-left: -0.5rem">
           <p class="h5"><%= element.userName %></p>
           <p><%= element.chatMessage %></p>
-          <img src="./upload/photo<%= element.number %>.jpg" alt="" />
+          <div>
+            <img
+              style="max-width: 400px; max-height: 400px; margin-bottom: 20px"
+              src="./upload/photo<%= element.number %>.jpg"
+              alt=""
+            />
+          </div>
           <p
             style="
               font-size: 10px;
@@ -210,7 +241,12 @@
       <% }); %>
       <!-- 留言板內容渲染 -->
 
-      <form action="/upload" method="post" enctype="multipart/form-data">
+      <form
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+        style="margin-top: 2vw"
+      >
         <div class="input-group">
           <input
             name="content"
@@ -219,12 +255,21 @@
             placeholder="請輸入留言的內容.."
             aria-label="Recipient's username with two button addons"
           />
-          <input type="file" name="photo" />
+          <!-- 上傳照片 -->
+          <div class="file-upload">
+            <div class="file-select">
+              <div class="file-select-button" id="fileName">選擇圖片</div>
+              <div class="file-select-name" id="noFile">未選擇圖片...</div>
+              <input type="file" name="photo" id="chooseFile" />
+            </div>
+          </div>
+          <!-- 上傳照片 -->
+          <button class="ui secondary button">送出</button>
           <input
-            type="submit"
-            id="send"
-            value="送出"
-            class="btn btn-outline-primary"
+            type="text"
+            style="display: none"
+            name="getUpLoadId"
+            value="<%= data2[0].spotId %>"
           />
         </div>
       </form>
@@ -237,5 +282,26 @@
     </script>
     <script src="./nav/nav.js"></script>
     <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    <script>
+      function ASA(id) {
+        $("#imgbox" + id).attr("src", "./img/yen/photo/default.png");
+      }
+      function searchTrip(id) {
+        location.href = `tripsId?id=${id}`;
+      }
+
+      // 上傳照片
+      $("#chooseFile").bind("change", function () {
+        var filename = $("#chooseFile").val();
+        if (/^\s*$/.test(filename)) {
+          $(".file-upload").removeClass("active");
+          $("#noFile").text("No file chosen...");
+        } else {
+          $(".file-upload").addClass("active");
+          $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+        }
+      });
+      // 上傳照片
+    </script>
   </body>
 </html>

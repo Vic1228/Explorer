@@ -28,12 +28,26 @@ function initMap() {
       });
       marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<img src='" + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) + "'></img>" +
-          "<div class='inner'><h3>" +
-          '<a href="/spotId?id=1">' + '雪山</a>' +
-          "</h3><p>評分: " + place.rating + "</p><p>總評論: " + place.user_ratings_total +
-          "</p><p style='margin-left:15px'>地址:" + place.formatted_address + "</p>" + "</p>" + "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" + "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<img src='" +
+            place.photos[0].getUrl({ maxWidth: 200, maxHeight: 150 }) +
+            "'></img>" +
+            "<div class='inner'><h3>" +
+            '<a href="/spotId?id=1">' +
+            "雪山</a>" +
+            "</h3><p>評分: " +
+            place.rating +
+            "</p><p>總評論: " +
+            place.user_ratings_total +
+            "</p><p style='margin-left:15px'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</p>" +
+            "<p><button class='button'> <a class='join' href='/trips'>參加行程</a></button>" +
+            "<button class='button'><a class='join' href='/createTrip'>發起行程</a></button></p>" +
+            "</div></div>"
+        );
         infowindow.setContent(
           "<div class='infowindow-container'>" +
             "<img src='" +
@@ -58,7 +72,7 @@ function initMap() {
   });
 
   const req2 = {
-    placeId: "ChIJ_a1qN2SiaDQRZHNavQE-JnM",
+    placeId: "ChIJ0aYLQg4hbzQRfg2EIaUay4M",
     fields: [
       "name",
       "formatted_address",
@@ -85,7 +99,7 @@ function initMap() {
             "'></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=2">' +
-            "翡翠谷</a>" +
+            "玉山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -102,7 +116,7 @@ function initMap() {
   });
 
   const req3 = {
-    placeId: "ChIJCQG9vQwFaTQRLe7JGdAOZVk",
+    placeId: "ChIJwbqRiNgkbzQRlL8HhKymoT0",
     fields: [
       "name",
       "formatted_address",
@@ -129,7 +143,7 @@ function initMap() {
             "'></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=3">' +
-            "火炎山</a>" +
+            "馬博拉斯山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -146,7 +160,7 @@ function initMap() {
   });
 
   const req4 = {
-    placeId: "ChIJ30vCQtzpZzQRY_ZjcfWOjDk",
+    placeId: "ChIJDSGtGr8kbzQRAJad9ethhZw",
     fields: [
       "name",
       "formatted_address",
@@ -173,7 +187,7 @@ function initMap() {
             "'></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=4">' +
-            "玻璃海灘</a>" +
+            "秀姑巒山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -190,7 +204,7 @@ function initMap() {
   });
 
   const req5 = {
-    placeId: "ChIJ8S89IWhLXTQRIwebUtrDH1w",
+    placeId: "ChIJ_QArHsZiaDQRxEAnX0PnwQc",
     fields: [
       "name",
       "formatted_address",
@@ -217,7 +231,7 @@ function initMap() {
             " class='image''></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=5">' +
-            "燭台沙灘</a>" +
+            "南湖大山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -234,7 +248,7 @@ function initMap() {
   });
 
   const req6 = {
-    placeId: "ChIJUalgY62KbjQR6zGh_oOih1w",
+    placeId: "ChIJv2YdtvcJbzQR6NJ-AtqRcXE",
     fields: [
       "name",
       "formatted_address",
@@ -261,7 +275,7 @@ function initMap() {
             " class='image''></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=6">' +
-            "蝙蝠洞瀑布</a>" +
+            "關山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -278,7 +292,7 @@ function initMap() {
   });
 
   const req7 = {
-    placeId: "ChIJpb0epRKfbzQR2FJHsZNy3bw",
+    placeId: "ChIJjyoIB2mUaDQRFibYsKd5Les",
     fields: [
       "name",
       "formatted_address",
@@ -305,7 +319,7 @@ function initMap() {
             " class='image''></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=7">' +
-            "金樽陸連島</a>" +
+            "奇萊山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -322,7 +336,7 @@ function initMap() {
   });
 
   const req8 = {
-    placeId: "ChIJ745sjlAmbzQRgds_w0ah-lw",
+    placeId: "ChIJ782u6b6SaDQRtD-8c-mgPys",
     fields: [
       "name",
       "formatted_address",
@@ -349,7 +363,7 @@ function initMap() {
             " class='image''></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=8">' +
-            "雲龍瀑布</a>" +
+            "合歡山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -366,7 +380,7 @@ function initMap() {
   });
 
   const req9 = {
-    placeId: "ChIJU8R7M6w6bjQRMAjp0TYLshA",
+    placeId: "ChIJ3ZYGz95gaDQR08CvUzFwS1c",
     fields: [
       "name",
       "formatted_address",
@@ -393,7 +407,7 @@ function initMap() {
             " class='image''></img>" +
             "<div class='inner'><h4>" +
             '<a href="/spotId?id=9">' +
-            "北大武山步道</a>" +
+            "桃山</a>" +
             "</h4><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
@@ -410,7 +424,7 @@ function initMap() {
   });
 
   const req10 = {
-    placeId: "ChIJu2DussXBaDQRsbt2lWVVSv8",
+    placeId: "ChIJ-by_9ZxgaDQRl3Z4QSUjeQU",
     fields: [
       "name",
       "formatted_address",
@@ -437,7 +451,7 @@ function initMap() {
             " class='image''></img>" +
             "<div class='inner'><h3>" +
             '<a href="/spotId?id=10">' +
-            "精英瀑布</a>" +
+            "品田山</a>" +
             "</h3><p>評分: " +
             place.rating +
             "</p><p>總評論: " +
