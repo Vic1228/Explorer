@@ -219,25 +219,27 @@ th,td{
 
 .superLi{
     position:relative;
-
+    margin-top: 3px;
 }
+
+
 .superLi:first-child{
     margin-top: -3px;
 }
 
 .superLeft{
     position:absolute;
-    left:3.5vw;
+    left:3vw;
 }
 
 .superSpan{
     position:absolute;
     left:7vw;
-}
+} 
 
 .superRight{
     position:relative;
-    left: 40px;
+    left: 42px;
 }
 
 #managePrivateItemTable{

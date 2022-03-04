@@ -139,7 +139,7 @@
                                         <th>提供之公共裝備</th>
                                         <th>綜合評分</th>
                                         <th>我要評分&#8194</th>
-                                    </tr>          
+                                    </tr>
                                     <% for (let x of tripMember){ %>
                                         <% if ( x. positionState> 0) {%>
                                             <tr>
@@ -255,8 +255,8 @@
                                                         <% if(j.userId == x.userId && x.positionState > 0){ %>
                                                             <li class="superLi">
                                                                 <span class="superLeft"><%= x.name %></span>
-                                                                <span class="superSpan">／</span>
-                                                                <span class="superRight"><%= j.itemCount %>個</span>
+                                                                <!-- <span class="superSpan">／</span>  -->
+                                                                <span class="superRight"><%= j.itemCount %> 個</span>
                                                             </li>
                                                         <% } %>
                                                     <% } %>
@@ -271,7 +271,7 @@
                                         </td>
                                     </tr>
                                 <% } %>
-                                
+
                             </table>
 
                             <br>
@@ -282,12 +282,12 @@
                             <table id="managePrivateItemTable">
                                 <tr class="tableRow">
                                     <th>裝備名稱</th>
-                                    <th>個數／人</th>
+                                    <th>個數／１人</th>
                                 </tr>
                                 <% for(let i of privateItems){ %>
                                     <tr class="privateItemDetail" valign="top">
                                         <td><%= i.privateItem %></td>
-                                        <td><%= i.itemCount %></td>
+                                        <td><%= i.itemCount %> 個</td>
                                     </tr>
                                 <% } %>
                             </table>
@@ -354,18 +354,18 @@
     <div id="tripNameEdit" class="modal fade">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content">
-                <div class="modal-header px-2">
-                    <h5 class="modal-title">冒險團新名稱</h5>
-                </div>
-                <div class="modal-body mx-auto">
-                    <form action="">
-                        <input style="width:100%" type="text" placeholder="#####">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
-                    <button type="button" class="btn btn-primary">完成</button>
-                </div>
+                <form action="/tripManage" method="post">
+                    <div class="modal-header px-2">
+                        <h5 class="modal-title">冒險團新名稱</h5>
+                    </div>
+                    <div class="modal-body mx-auto">      
+                        <input style="width:100%" type="text" name="newTripName" placeholder="<%= selectedTrip.tripName %>">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" value="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        <button type="submit" value="" class="btn btn-primary" data-dismiss="modal">完成</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

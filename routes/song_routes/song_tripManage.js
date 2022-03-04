@@ -17,6 +17,13 @@ bluebird.promisifyAll(conn);
 
 
 // ---------------------- request ---------------------- 
+song_tripManage_router.post('/',function(req,res){
+    console.log('123');
+    console.log(req.body.newTripName);
+    res.send('1');
+})
+
+
 song_tripManage_router.get('/', function (req, res) {
     var userId = 1;
     var data = {
@@ -91,8 +98,6 @@ song_tripManage_router.get('/', function (req, res) {
             return conn.queryAsync(sql2);
         })
         .then(result2 => {
-            console.log(result2);
-            // console.log(apple);
             data.selectedTrip = {tripName: result2[0].tripName , tripId: result2[0].tripId};
             result2.forEach(item => {
                 data.tripMember.push({
@@ -152,7 +157,6 @@ song_tripManage_router.get('/', function (req, res) {
             return conn.queryAsync(sql5);
         })
         .then(result5 => {
-            console.log(result5)
             if (result5.length > 0) {
                 for (let i = 0; i < result5.length; i++) {
                     if (i == 0 || result5[i].day != result5[i - 1].day) {
@@ -189,13 +193,6 @@ song_tripManage_router.get('/', function (req, res) {
 
 })
 
-
-
-song_tripManage_router.post('/', function (req, res) {
-    console.log(req.body.tripName);
-    res.send('Hello world!');
-
-})
 
 module.exports = song_tripManage_router;
 
