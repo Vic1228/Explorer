@@ -25,7 +25,7 @@ lu_createTrip_router.get("/", function (req, res) {
     userProfile = results[0];
 
     // 查userstats資料
-    let test2 = `SELECT * FROM userstats WHERE userId = 7`;
+    let test2 = `SELECT * FROM userstats WHERE userId = 6`;
     connection.query(test2, (err, results2, fields) => {
       if (err) throw err;
       userStats = results2[0];

@@ -191,7 +191,7 @@ function initMap() {
 
   const location = (JSON.parse(localStorage.getItem('lat'))); // 從localStorage取得經緯度的值
   map = new google.maps.Map(document.getElementById("map"), {
-    center: location, // The map, centered at location
+    center: location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
     zoom: 10
   });
   // The marker, positioned at location
@@ -205,7 +205,7 @@ function initMap() {
 
   // Location 1
   const request = {
-    placeId: 'ChIJ6Sql71hxaDQRH_2A8h5A1es',
+    placeId: 'ChIJQwsNxDdgaDQRzDQVzlSrgIE',
     fields: ['name', 'formatted_address', 'place_id', 'geometry', 'rating', 'user_ratings_total']
   };
   service.getDetails(request, function (place, status) {
@@ -340,7 +340,7 @@ function initMap() {
         infowindow.open(map, marker);
         infowindow.setContent("<div class='infowindow-container'>" +
           "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "金樽陸連島</span>" +
+          "<span style='margin-left:5rem'>" + "金樽陸連島</span>" +
           "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
       });
     }
