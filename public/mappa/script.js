@@ -449,7 +449,6 @@ const mapData8 = { lat:23.555485102373016, lng:120.95261622109369, spotId:8}; //
 const mapData9 = { lat:22.61466910437965, lng:120.70173283445003, spotId:9}; //北大武山步道
 const mapData10 = { lat:24.034485309808005, lng:121.20286760192326, spotId:10}; //精英瀑布
 
-24.390898656065392, 121.29828430484407
 //點擊按鈕儲存資訊
 function createItem() {
     localStorage.setItem("lat",JSON.stringify(mapData))
