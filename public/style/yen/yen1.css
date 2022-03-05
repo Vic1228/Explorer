@@ -34,7 +34,7 @@
 
 .maincard2 table {
     font-size: 1.2em;
-    width: 50%;
+    width: 45%;
 }
 
 #tata {}
@@ -43,15 +43,15 @@
     margin-left: 2vw;
 }
 
-.maincard20 .frt {
+.maincard2 .frt {
     width: 80px;
 }
 
-.maincard20 .sec {
-    width: 160px;
+.maincard2 .sec {
+    width: 140px;
 }
 
-.maincard20 .thr {
+.maincard2 .thr {
     text-align: end;
 }
 
@@ -140,10 +140,4 @@ hr.container {
 .card12 td.thr {
     text-align: end;
     width: 70px;
-}
-
-.card12 p {
-    display: inline-block;
-    padding-left: 40xp;
-    font-size: 1.2em;
 }
