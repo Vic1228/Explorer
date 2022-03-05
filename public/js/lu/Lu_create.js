@@ -4,9 +4,10 @@
 
 // spotId預處理
 
-let spot = JSON.parse(localStorage.getItem('lat')).spotId;
+let spot = JSON.parse(localStorage.getItem("lat")).spotId;
 document.getElementById("spotid").value = spot;
 
+console.log("spot", spot);
 
 // 變數
 let currentTab = 0;
@@ -64,14 +65,12 @@ function validForm() {
   const tabArray = document.getElementsByClassName("tab");
   const inputArray = tabArray[currentTab].getElementsByClassName("form-input");
 
-
   // 檢查input是不是沒有東西
 
   for (let i = 0; i < inputArray.length; i++) {
     if (inputArray[i].value == "" || inputArray[i].value == undefined) {
       // 增加 invalid的樣式
       inputArray[i].className += " invalid";
-    
 
       valid = false;
     }
@@ -82,11 +81,11 @@ function validForm() {
 function submitBtnClick() {
   // validForm();
   // if (valid == true) {
-    // TODO:
-  
+  // TODO:
+
   // }
   document.createForm.submit();
-  
+
   // let spot = JSON.parse(localStorage.getItem("lat")).spotId;
   // $.post('/response', {
   //   trip: $().target.val(),
@@ -100,7 +99,7 @@ function submitBtnClick() {
 function fixStepIndicator(currentStep) {
   // 刪除所有active燈號
   var step = document.getElementsByClassName("step");
-  var stepText = document.getElementsByClassName("step-text")
+  var stepText = document.getElementsByClassName("step-text");
   for (let i = 0; i < step.length; i++) {
     step[i].className = step[i].className.replace(" active", "");
     stepText[i].className = stepText[i].className.replace(" active", "");
@@ -203,13 +202,12 @@ function deleteSharedItemRow(p) {
 /*---------------------------------------------------------------*/
 
 function initMap() {
+  const location = JSON.parse(localStorage.getItem("lat")); // 從localStorage取得經緯度的值
+  console.log(JSON.parse(localStorage.getItem("lat")).spotId); // 瀏覽器呈現出spotId
 
-  const location = (JSON.parse(localStorage.getItem('lat'))); // 從localStorage取得經緯度的值
-  console.log( (JSON.parse(localStorage.getItem('lat'))).spotId); // 瀏覽器呈現出spotId
-  
   map = new google.maps.Map(document.getElementById("map"), {
     center: location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
-    zoom: 10
+    zoom: 10,
   });
   // The marker, positioned at location
   const marker = new google.maps.Marker({
@@ -222,205 +220,350 @@ function initMap() {
 
   // Location 1
   const request = {
-    placeId: 'ChIJQwsNxDdgaDQRzDQVzlSrgIE',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'rating', 'user_ratings_total']
+    placeId: "ChIJQwsNxDdgaDQRzDQVzlSrgIE",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "rating",
+      "user_ratings_total",
+    ],
   };
   service.getDetails(request, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //   map.setCenter(place.geometry.location)
-    const marker = new google.maps.Marker({
-      position: place.geometry.location,
-      map: map
-    });
-      marker.addListener('click', function () {
+      //   map.setCenter(place.geometry.location)
+      const marker = new google.maps.Marker({
+        position: place.geometry.location,
+        map: map,
+      });
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "雪山</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "雪山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req2 = {
-    placeId: 'ChIJ_a1qN2SiaDQRZHNavQE-JnM',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJ0aYLQg4hbzQRfg2EIaUay4M",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req2, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "翡翠谷</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "玉山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req3 = {
-    placeId: 'ChIJCQG9vQwFaTQRLe7JGdAOZVk',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJwbqRiNgkbzQRlL8HhKymoT0",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req3, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "火炎山</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "馬博拉斯山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
-
   const req4 = {
-    placeId: 'ChIJ30vCQtzpZzQRY_ZjcfWOjDk',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJDSGtGr8kbzQRAJad9ethhZw",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req4, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "玻璃海灘</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "秀姑巒山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req5 = {
-    placeId: 'ChIJ8S89IWhLXTQRIwebUtrDH1w',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJ_QArHsZiaDQRxEAnX0PnwQc",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req5, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "燭台沙灘</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "南湖大山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req6 = {
-    placeId: 'ChIJUalgY62KbjQR6zGh_oOih1w',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJv2YdtvcJbzQR6NJ-AtqRcXE",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req6, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "蝙蝠洞瀑布</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "關山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req7 = {
-    placeId: 'ChIJpb0epRKfbzQR2FJHsZNy3bw',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJjyoIB2mUaDQRFibYsKd5Les",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req7, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:5rem'>" + "金樽陸連島</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:5rem'>" +
+            "奇萊山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req8 = {
-    placeId: 'ChIJ745sjlAmbzQRgds_w0ah-lw',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJ782u6b6SaDQRtD-8c-mgPys",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req8, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "雲龍瀑布</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "合歡山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req9 = {
-    placeId: 'ChIJU8R7M6w6bjQRMAjp0TYLshA',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJ3ZYGz95gaDQR08CvUzFwS1c",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req9, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "北大武山步道</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "桃山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 
   const req10 = {
-    placeId: 'ChIJu2DussXBaDQRsbt2lWVVSv8',
-    fields: ['name', 'formatted_address', 'place_id', 'geometry', 'photo', 'rating', 'user_ratings_total', 'address_component']
-  }
+    placeId: "ChIJ-by_9ZxgaDQRl3Z4QSUjeQU",
+    fields: [
+      "name",
+      "formatted_address",
+      "place_id",
+      "geometry",
+      "photo",
+      "rating",
+      "user_ratings_total",
+      "address_component",
+    ],
+  };
   service.getDetails(req10, function (place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const marker = new google.maps.Marker({
         position: place.geometry.location,
-        map: map
+        map: map,
       });
-      marker.addListener('click', function () {
+      marker.addListener("click", function () {
         infowindow.open(map, marker);
-        infowindow.setContent("<div class='infowindow-container'>" +
-          "<div class='inner'><h5>" +
-          "<span style='margin-left:7rem'>" + "精英瀑布</span>" +
-          "</p><p style='margin-left:0.5rem'>地址:" + place.formatted_address + "</p>" + "</div></div>")
+        infowindow.setContent(
+          "<div class='infowindow-container'>" +
+            "<div class='inner'><h5>" +
+            "<span style='margin-left:7rem'>" +
+            "品田山</span>" +
+            "</p><p style='margin-left:0.5rem'>地址:" +
+            place.formatted_address +
+            "</p>" +
+            "</div></div>"
+        );
       });
     }
   });
 }
-
