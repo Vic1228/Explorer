@@ -37,7 +37,7 @@
     <!-- 大頭貼 -->
     <div class="col-3">
       <div class="profile profile-name rounded-circle">
-        <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt="請補上照片" onerror="myFunction()">
+        <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt="" onerror="myFunction()">
         <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
           <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
         </form>
@@ -175,7 +175,7 @@
     function myFunction(){
       alert('記得上傳照片唷！');
       // document.getElementById('imagegrid').setAttribute('src')='/public/img/yen/photo/代替.jpg'
-      let df = document.getElementById('imagegrid').setAttribute('src','/public/img/yen/photo/代替.jpg')
+      let df = document.getElementById('imagegrid').setAttribute('src','/img/yen/photo/代替.jpg')
       console.log(df)
     };
     const data = {

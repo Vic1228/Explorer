@@ -10,12 +10,7 @@
     font-size: 2.5em;
 }
 
-.maincard {
-    margin: auto;
-    width: 74%;
-    /* background-color: darkorange; */
-    display: flex;
-}
+
 
 /* 獎盃圖 */
 .maincard1 {
@@ -32,50 +27,40 @@
 
 /* 大表格 */
 .maincard2 {
-    margin: 0px auto auto auto;
     font-size: 2.5vh;
 }
 
 .maincard20 {
     display: flex;
-    /* background-color: indianred; */
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
-.maincard20 table {
-    /* background-color: aqua; */
-    border-collapse: collapse;
-    margin-left: 10%;
+.maincard20 table{
     font-size: 1.2em;
+    width: 35%;
 }
 
-.maincard .table2 {
-    margin-left: 15%;
-    font-size: 1.2em;
+#tata{
+
+}
+#trtr{
+margin-left: 5vw;
 }
 
-.maincard20 td {
-    height: 40px;
-}
 
-.maincard20 td.frt {
-    width: 50px;
-}
 
-.maincard20 td.sec {
-    width: 120px;
-    max-width: 150px;
-}
 
-.maincard20 td.thr {
+.maincard20 .frt{
+    width: 80px;
+}
+.maincard20 .sec{
+    width: 160px;
+}
+.maincard20 .thr{
     text-align: end;
-    width: 90px;
+    /* width: 80px; */
 }
 
-.maincarda {
-    /* background-color: gold; */
-    text-align: center;
-}
 
 /* 彈跳視窗 */
 .light {
@@ -113,10 +98,6 @@
     font-size: 1.3em;
 }
 
-.light tr, .light td {
-    /* border-bottom: #999999 solid 2px; */
-
-}
 
 .light .frt {
     width: 60px;
@@ -156,6 +137,7 @@ hr.container {
 }
 
 .card11 {
+    margin: auto;
     text-align: center;
     /* background-color: yellow; */
 }
@@ -184,7 +166,7 @@ hr.container {
 }
 
 .card12 td {
-    height: 40px;
+
 }
 
 .card12 table {
@@ -192,14 +174,15 @@ hr.container {
     /* background-color: aqua; */
     border-collapse: collapse;
     margin-bottom: 20px;
+    line-height: normal;
 }
 
 .card12 td.frt {
-    width: 45px;
+    width: 70px;
 }
 
 .card12 td.sec {
-    width: 150px;
+    width: 130px;
     max-width: 150px;
 }
 

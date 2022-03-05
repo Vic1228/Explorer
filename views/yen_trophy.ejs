@@ -27,16 +27,22 @@
       正所謂各有千秋
     </h1>
   </div>
-  <div class="navDistance container col-12">
-    <div class="maincard">
-      <div class="maincard1 col-3">
+  <div class="navDistance">
+    <div class="container">
+      <div class="col-1"></div>
+      <div class="maincard1 col-2">
         <img src="/img/yen/trophy.png">
         <h2>人氣王</h2>
         <p>(評價次數最多)</p>
       </div>
-      <div class="maincard2 col-9">
+      <div class="maincard2 col-8">
         <div class="maincard20">
-          <table>
+          <table class='table table-hover' id="tata">
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json7.forEach((data,index)=>{%>
               <%if(index<=4){%>
                 <tr>
@@ -53,7 +59,12 @@
                 <%}%>
                   <% }) %>
           </table>
-          <table class="table2">
+          <table class="table table-hover" id="trtr">
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json7.forEach((data,index)=>{%>
               <%if(index>=5&&index<10){%>
                   <tr>
@@ -74,172 +85,170 @@
         <div class="maincarda">
           <p id="opener" style="display: inline;"><u>《查看更多...》</u></p>
         </div>
-
-
-        <!-- 彈跳視窗 -->
-        <!-- 冒險王 -->
-        <div id="light" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>冒險王</h1>
-          <hr>
-          <table>
-            <% json7.forEach((data,index)=>{%>
-              <%if(index>=10&&index<=19){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.commentCount%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
-        <!-- 野猴子 -->
-        <div id="monkey" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>野猴子</h1>
-          <hr>
-          <table>
-            <% json1.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.strength%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
-        <!-- 醫生 -->
-        <div id="doctor" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>怪醫黑傑克</h1>
-          <hr>
-          <table>
-            <% json2.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.heal%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
-        <!-- 求生 -->
-        <div id="survival" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>東方貝爺</h1>
-          <hr>
-          <table>
-            <% json3.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.survival%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
-        <!-- 方向感 -->
-        <div id="direct" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>公車不搭反方向</h1>
-          <hr>
-          <table>
-            <% json4.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.direction%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
-        <!-- CEO -->
-        <div id="ceo" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>CEO</h1>
-          <hr>
-          <table>
-            <% json5.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.leadership%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
-        <!-- 臭皮匠 -->
-        <div id="threeman" class="light">
-          <p class="closebt"><img src="/img/yen/close.png"></p>
-          <h1>三個臭皮匠</h1>
-          <hr>
-          <table>
-            <% json6.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                  <tr>
-                    <td class="frt">
-                      <%= index+1 +'.'%>
-                    </td>
-                    <td class="sec">
-                      <%= data.userName%>
-                    </td>
-                    <td class="thr">
-                      <%= data.teamwork%>
-                    </td>
-                  </tr>
-                  <%}%>
-                    <% }) %>
-          </table>
-        </div>
       </div>
-      <!--  -->
+      <div class="col-1"></div>
+    </div>
+    <!-- 彈跳視窗 -->
+    <!-- 冒險王 -->
+    <div id="light" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>冒險王</h1>
+      <hr>
+      <table>
+        <% json7.forEach((data,index)=>{%>
+          <%if(index>=10&&index<=19){%>
+              <tr>
+                <td class="frt">
+                  <%= index+1 +'.'%>
+                </td>
+                <td class="sec">
+                  <%= data.userName%>
+                </td>
+                <td class="thr">
+                  <%= data.commentCount%>
+                </td>
+              </tr>
+              <%}%>
+                <% }) %>
+      </table>
+    </div>
+    <!-- 野猴子 -->
+    <div id="monkey" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>野猴子</h1>
+      <hr>
+      <table>
+        <% json1.forEach((data,index)=>{%>
+          <%if(index<=9){%>
+            <tr>
+              <td class="frt">
+                <%= index+1 +'.'%>
+              </td>
+              <td class="sec">
+                <%= data.userName%>
+              </td>
+              <td class="thr">
+                <%= data.strength%>
+              </td>
+            </tr>
+            <%}%>
+              <% }) %>
+      </table>
+    </div>
+    <!-- 醫生 -->
+    <div id="doctor" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>怪醫黑傑克</h1>
+      <hr>
+      <table>
+        <% json2.forEach((data,index)=>{%>
+          <%if(index<=9){%>
+            <tr>
+              <td class="frt">
+                <%= index+1 +'.'%>
+              </td>
+              <td class="sec">
+                <%= data.userName%>
+              </td>
+              <td class="thr">
+                <%= data.heal%>
+              </td>
+            </tr>
+            <%}%>
+              <% }) %>
+      </table>
+    </div>
+    <!-- 求生 -->
+    <div id="survival" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>東方貝爺</h1>
+      <hr>
+      <table>
+        <% json3.forEach((data,index)=>{%>
+          <%if(index<=9){%>
+            <tr>
+              <td class="frt">
+                <%= index+1 +'.'%>
+              </td>
+              <td class="sec">
+                <%= data.userName%>
+              </td>
+              <td class="thr">
+                <%= data.survival%>
+              </td>
+            </tr>
+            <%}%>
+              <% }) %>
+      </table>
+    </div>
+    <!-- 方向感 -->
+    <div id="direct" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>公車不搭反方向</h1>
+      <hr>
+      <table>
+        <% json4.forEach((data,index)=>{%>
+          <%if(index<=9){%>
+            <tr>
+              <td class="frt">
+                <%= index+1 +'.'%>
+              </td>
+              <td class="sec">
+                <%= data.userName%>
+              </td>
+              <td class="thr">
+                <%= data.direction%>
+              </td>
+            </tr>
+            <%}%>
+              <% }) %>
+      </table>
+    </div>
+    <!-- CEO -->
+    <div id="ceo" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>CEO</h1>
+      <hr>
+      <table>
+        <% json5.forEach((data,index)=>{%>
+          <%if(index<=9){%>
+            <tr>
+              <td class="frt">
+                <%= index+1 +'.'%>
+              </td>
+              <td class="sec">
+                <%= data.userName%>
+              </td>
+              <td class="thr">
+                <%= data.leadership%>
+              </td>
+            </tr>
+            <%}%>
+              <% }) %>
+      </table>
+    </div>
+    <!-- 臭皮匠 -->
+    <div id="threeman" class="light">
+      <p class="closebt"><img src="/img/yen/close.png"></p>
+      <h1>三個臭皮匠</h1>
+      <hr>
+      <table>
+        <% json6.forEach((data,index)=>{%>
+          <%if(index<=9){%>
+            <tr>
+              <td class="frt">
+                <%= index+1 +'.'%>
+              </td>
+              <td class="sec">
+                <%= data.userName%>
+              </td>
+              <td class="thr">
+                <%= data.teamwork%>
+              </td>
+            </tr>
+            <%}%>
+              <% }) %>
+      </table>
     </div>
   </div>
   <!-- 分界線 -->
@@ -255,7 +264,12 @@
           <p>(體能最高分)</p>
         </div>
         <div class="card12">
-          <table>
+          <table class='table table-hover'>
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json1.forEach((data,index)=>{%>
               <%if(index<5){%>
                 <tr>
@@ -285,7 +299,12 @@
           <p>(醫術最高分)</p>
         </div>
         <div class="card12">
-          <table>
+          <table class='table table-hover'>
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json2.forEach((data,index)=>{%>
               <%if(index<5){%>
                 <tr>
@@ -315,7 +334,12 @@
           <p>(求生技術最高分)</p>
         </div>
         <div class="card12">
-          <table>
+          <table class='table table-hover'>
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json3.forEach((data,index)=>{%>
               <%if(index<5){%>
                 <tr>
@@ -345,7 +369,12 @@
           <p>(方向感最高分)</p>
         </div>
         <div class="card12">
-          <table>
+          <table class='table table-hover'>
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json4.forEach((data,index)=>{%>
               <%if(index<5){%>
                 <tr>
@@ -375,7 +404,12 @@
           <p>(領導力最高分)</p>
         </div>
         <div class="card12">
-          <table>
+          <table class='table table-hover'>
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json5.forEach((data,index)=>{%>
               <%if(index<5){%>
                 <tr>
@@ -405,7 +439,12 @@
           <p>(團隊意識最高分)</p>
         </div>
         <div class="card12">
-          <table>
+          <table class='table table-hover'>
+            <tr>
+              <td class="frt">名次</th>
+              <td class="sec">冒險家</th>
+              <td class="thr">分數</th>
+            </tr>
             <% json6.forEach((data,index)=>{%>
               <%if(index<5){%>
                 <tr>
