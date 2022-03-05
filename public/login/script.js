@@ -21,7 +21,7 @@ form.onsubmit = (e)=>{
       eField.classList.remove("valid");
       let errorTxt = eField.querySelector(".error-txt");
       //if email value is not empty then show please enter valid email else show Email can't be blank
-      (eInput.value != "") ? errorTxt.innerText = "Enter a valid email address" : errorTxt.innerText = "Email can't be blank";
+      (eInput.value != "") ? errorTxt.innerText = "輸入正確的email格式" : errorTxt.innerText = "Email 不能空白";
     }else{ //if pattern matched then remove error and add valid class
       eField.classList.remove("error");
       eField.classList.add("valid");

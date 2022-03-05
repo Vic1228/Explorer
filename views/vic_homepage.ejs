@@ -1,200 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/style.css" />
-    <link rel="stylesheet" href="./nav/nav_homepage.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
-    />
-    <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
-    <!-- <script src="./js/w3.js"></script> -->
 
-    <title>冒險者旅館 | 首頁</title>
-    <style>
-      .bg {
-        height: 90vh;
-        width: auto;
-        background-image: url(nav/img/img/img.png);
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
-      }
-      .bg2 {
-        height: 700px;
-        width: auto;
-        background-image: url(nav/img/img/img2.png);
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
-      }
-      .bgDiv {
-        width: 40vw;
-        padding-top: 35vh;
-        padding-left: 20vh;
-        text-align: center;
-      }
-      .bgText {
-        color: white;
-        text-shadow: 0.1em 0.1em 0.2em black;
-      }
-      .bgText2 {
-        padding-left: 120px;
-        color: white;
-        text-shadow: 0.1em 0.1em 0.2em black;
-      }
-      .twoText {
-        text-align: center;
-      }
-      .carousel .carousel-item img {
-        min-height: 300px;
-        max-height: 400px;
-        object-fit: cover;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="./nav/nav_homepage.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <!-- <script src="./js/w3.js"></script> -->
 
-      .textAttractions {
-        position: absolute;
-        left: 25%;
-      }
-      .cardText {
-        text-align: left;
-        word-wrap: break-word;
-        padding-right: 2vw;
-      }
-    </style>
-  </head>
+  <title>冒險者旅館 | 首頁</title>
+  <style>
+    .bg {
+      height: 90vh;
+      width: auto;
+      background-image: url(nav/img/img/img.png);
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+    }
 
-  <body>
-    <%- include('../nav/nav.html') %>
-    <div w3-include-HTML="./nav/nav.html"></div>
-    <!-- NAV BAR -->
-    <!-- 頁首 -->
-    <div class="bg">
-      <div class="bgDiv">
-        <p class="bgText title">全資策會最大<br />冒險家交流平台</p>
+    .bg2 {
+      height: 700px;
+      width: auto;
+      background-image: url(nav/img/img/img2.png);
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+    }
+
+    .bgDiv {
+      width: 40vw;
+      padding-top: 35vh;
+      padding-left: 20vh;
+      text-align: center;
+    }
+
+    .bgText {
+      color: white;
+      text-shadow: 0.1em 0.1em 0.2em black;
+    }
+
+    .bgText2 {
+      padding-left: 120px;
+      color: white;
+      text-shadow: 0.1em 0.1em 0.2em black;
+    }
+
+    .twoText {
+      text-align: center;
+    }
+
+    .carousel .carousel-item img {
+      min-height: 300px;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .textAttractions {
+      position: absolute;
+      left: 25%;
+    }
+
+    .cardText {
+      text-align: left;
+      word-wrap: break-word;
+      padding-right: 2vw;
+    }
+  </style>
+
+</head>
+
+<body>
+  <%- include('../nav/nav.html') %> 
+    <div w3-include-HTML="./nav/nav.html"> 
+
+      <% if(messages.length > 0){ %>
+
+        <div class="toast show" style="width:0rem ;">
+        
+        <div class="alert alert-success" style="width:8rem; position: absolute; left:93%;">
+          <%= messages %>  <button class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
       </div>
+
+        <% } %>
+
     </div>
-    <!-- 頁首 -->
-    <!-- 景點詳情抬頭 -->
-    <div class="container" style="margin-top: 40px">
-      <div class="row">
-        <div>
-          <p class="twoText title">想接近大自然，</p>
-          <p class="twoText title" style="margin-top: -50px">但沒人陪你去？</p>
-          <h4
-            class="ui horizontal divider"
-            style="margin-top: -40px; font-size: 15px"
-          >
-            與資深山友來一場秘境探險吧<i class="tree icon"></i>
-          </h4>
-        </div>
-      </div>
-      <!-- 景點詳情抬頭 -->
+    <!-- NAV BAR -->
 
-      <!-- 卡片組 -->
-      <!-- 首張點擊小卡 -->
-      <div class="row" style="margin-top: 3vw; position: relative">
-        <div class="col-3 divSize">
-          <div class="ui special cards">
-            <div class="card">
-              <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                  <div class="content">
-                    <div class="center">
-                      <div class="ui inverted button" onclick="btn()">北部</div>
-                      <br /><br />
-                      <div class="ui inverted button" onclick="btn2()">
-                        中部
+          <div class="bg">
+            <div class="bgDiv">
+              <p class="bgText title">全資策會最大<br />冒險家交流平台</p>
+            </div>
+          </div>
+
+          <!-- 頁首 -->
+          <div class="container" style="margin-top: 40px">
+            <div class="row">
+              <div>
+                <p class="twoText title">想接近大自然，</p>
+                <p class="twoText title" style="margin-top: -50px">但沒人陪你去？</p>
+                <h4 class="ui horizontal divider" style="margin-top: -40px;">
+                  與資深山友來一場秘境探險吧<i class="tree icon"></i>
+                </h4>
+
+                </p>
+              </div>
+            </div>
+            <!-- 景點詳情抬頭 -->
+
+            <div class="row" style="margin-top: 3vw; position: relative">
+              <div class="col-3 divSize">
+                <div class="ui special cards">
+                  <div class="card">
+                    <div class="blurring dimmable image">
+                      <div class="ui dimmer">
+                        <div class="content">
+                          <div class="center">
+                            <div class="ui inverted button" onclick="btn()">北部</div>
+                            <br /><br />
+                            <div class="ui inverted button" onclick="btn2()">
+                              中部
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <br /><br />
-                      <div class="ui inverted button" onclick="btn3()">
-                        南部
-                      </div>
+                      <img src="./img/Vic/spot01.gif" />
                     </div>
                   </div>
                 </div>
-                <img src="./img/Vic/spot01.gif" />
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- 首張點擊小卡 -->
+              <!-- 內文 -->
 
-        <!-- 內文 -->
-        <div class="col-9 textAttractions">
-          <div class="row">
-            <div class="col-4 cardText">
-              <p style="font-size: 25px; text-align: center">台灣百岳</p>
-              <p style="line-height: 2vw; letter-spacing: 0.1vh">
-                　　台灣擁有豐富的山岳資源，而登山活動在近年來亦逐漸受到重視。
-                體委會為推動全民運動的習慣， 特別以台灣各縣市近郊山岳為目標，
-                評選出一百座較具特色或具代表性的「郊山」，
-                命名為「臺灣小百岳」。
-              </p>
-            </div>
-            <div class="col-4 cardText">
-              <p style="font-size: 25px; text-align: center">挑戰極限</p>
-              <p style="line-height: 2vw; letter-spacing: 0.1vh">
-                　　由於渴望探索新奇且具不確定性的事物，
-                喜愛尋求在一般環境下所無法獲得的活動刺激，
-                特別在參與新奇或具有挑戰性的活動當中，
-                可以自由的選擇，並運用身體、知覺及智慧克服各種障礙。
-                因此，各種探索性休閒遊憩活動如登山(高山)、攀岩、溯溪等
-                越來越受到國人所喜好。
-              </p>
-            </div>
-            <div class="col-4 cardText">
-              <p style="font-size: 25px; text-align: center">休閒登山</p>
-              <p style="line-height: 2vw; letter-spacing: 0.1vh">
-                　　當人們長時間工作或居住在繁忙、吵雜、緊張、污染、壅塞的環境中，常使人感
-                到厭煩、焦慮與壓力，甚至崩潰（burnout），唯有透過休閒參與體驗的方式，對於紓
-                解生活壓力與消除焦慮才有所助益（Caltabiano，1994）。在有限的休閒資源與多樣的
-                個人休閒偏好下，登山活動已普遍成為國人的休閒活動。
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- 內文 -->
+              <div class="col-9 textAttractions">
+                <div class="row">
+                  <div class="col-4 cardText">
+                    <p style="font-size: 25px;text-align: center;">台灣百岳</p>
+                    <p>
+                      　　台灣擁有豐富的山岳資源，而登山活動在近年來亦逐漸受到重視。
+                      體委會為推動全民運動的習慣， 特別以台灣各縣市近郊山岳為目標，
+                      評選出一百座較具特色或具代表性的「郊山」，
+                      命名為「臺灣小百岳」。
+                    </p>
+                  </div>
+                  <div class="col-4 cardText">
+                    <p style="font-size: 25px;text-align: center;">挑戰極限</p>
+                    <p>
+                      　　由於渴望探索新奇且具不確定性的事物，
+                      喜愛尋求在一般環境下所無法獲得的活動刺激，
+                      特別在參與新奇或具有挑戰性的活動當中，
+                      可以自由的選擇，並運用身體、知覺及智慧克服各種障礙。
+                      因此，各種探索性休閒遊憩活動如登山(高山)、攀岩、溯溪等
+                      越來越受到國人所喜好。
+                    </p>
+                  </div>
+                  <div class="col-4 cardText">
+                    <p style="font-size: 25px;text-align: center;">休閒登山</p>
+                    <p>
+                      　　當人們長時間工作或居住在繁忙、吵雜、緊張、污染、壅塞的環境中，常使人感
+                      到厭煩、焦慮與壓力，甚至崩潰（burnout），唯有透過休閒參與體驗的方式，對於紓
+                      解生活壓力與消除焦慮才有所助益（Caltabiano，1994）。在有限的休閒資源與多樣的
+                      個人休閒偏好下，登山活動已普遍成為國人的休閒活動。
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-        <!-- 北部 -->
-        <!-- 圖片尺寸200*250等比例放大 -->
-        <div class="col-3 oldbtn1">
-          <div class="ui special cards">
-            <div class="card">
-              <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                  <div class="content">
-                    <div class="center">
-                      <% if( locals.data1[0] ) { %>
-                      <p>發起人： <%= data1[0].userName %></p>
-                      <p>目的地： <%= data1[0].spotName %></p>
-                      <div
-                        class="ui inverted button"
-                        onclick="goToTrip1('<%= data1[0].tripId %>')"
-                      >
-                        了解更多
+              <!-- 內文 -->
+              <!-- 北部 -->
+              <div class="col-3 oldbtn1">
+                <div class="ui special cards">
+                  <div class="card">
+                    <div class="blurring dimmable image">
+                      <div class="ui dimmer">
+                        <div class="content">
+                          <div class="center">
+                            <p>發起人：</p>
+                            <p>目的地：</p>
+                            <div class="ui inverted button">了解更多</div>
+                          </div>
+                        </div>
                       </div>
-                      <% }else{ %>
-                      <p>目前還沒有北部行程供選擇</p>
-                      <% } %>
+
+                      <img src="./img/Vic/spot0001.jpg" /> <!-- 尺寸200*250等比例放大 -->
+
                     </div>
                   </div>
                 </div>
-
-                <img src="./img/Vic/spot0001.jpg" />
               </div>
-            </div>
-          </div>
-        </div>
 
         <div class="col-3 oldbtn2">
           <div class="ui special cards">
@@ -218,11 +217,7 @@
                     </div>
                   </div>
                 </div>
-                <img src="./img/Vic/spot0002.jpg" />
               </div>
-            </div>
-          </div>
-        </div>
 
         <div class="col-3 oldbtn3">
           <div class="ui special cards">
@@ -246,7 +241,6 @@
                     </div>
                   </div>
                 </div>
-                <img src="./img/Vic/spot0003.jpg" />
               </div>
             </div>
           </div>
@@ -267,43 +261,42 @@
                     </div>
                   </div>
                 </div>
-                <img src="https://picsum.photos/id/90/200/250" />
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-3 oldbtn5">
-          <div class="ui special cards">
-            <div class="card">
-              <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                  <div class="content">
-                    <div class="center">
-                      <p>123</p>
-                      <div class="ui inverted button">123</div>
+              <div class="col-3 oldbtn5">
+                <div class="ui special cards">
+                  <div class="card">
+                    <div class="blurring dimmable image">
+                      <div class="ui dimmer">
+                        <div class="content">
+                          <div class="center">
+                            <p>123</p>
+                            <div class="ui inverted button">123</div>
+                          </div>
+                        </div>
+                      </div>
+                      <img src="https://picsum.photos/id/152/200/250" />
                     </div>
                   </div>
                 </div>
-                <img src="https://picsum.photos/id/152/200/250" />
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-3 oldbtn6">
-          <div class="ui special cards">
-            <div class="card">
-              <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                  <div class="content">
-                    <div class="center">
-                      <p>123</p>
-                      <div class="ui inverted button">123</div>
+              <div class="col-3 oldbtn6">
+                <div class="ui special cards">
+                  <div class="card">
+                    <div class="blurring dimmable image">
+                      <div class="ui dimmer">
+                        <div class="content">
+                          <div class="center">
+                            <p>123</p>
+                            <div class="ui inverted button">123</div>
+                          </div>
+                        </div>
+                      </div>
+                      <img src="https://picsum.photos/id/92/200/250" />
                     </div>
                   </div>
                 </div>
-                <img src="https://picsum.photos/id/92/200/250" />
               </div>
             </div>
           </div>
@@ -453,32 +446,25 @@
               </button>
             </div>
           </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
 
-    <!-- 旋轉木馬 -->
+          <!-- 關於我們 -->
+          <div w3-include-HTML="./footer/footer.html" class=""></div>
+          <!-- FOOTER -->
+          <script>
+            w3.includeHTML();
+          </script>
+          <script src="./nav/nav.js"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+            integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+          <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+          <script>
+            $(".special.cards .image").dimmer({
+              on: "hover",
+            });
 
-    <div class="bg2 mt-5">
-      <p class="twoText title" id="about">關於我們</p>
+            $(".oldbtn4,.oldbtn5,.oldbtn6").hide();
+            $(".oldbtn1,.oldbtn2,.oldbtn3").hide();
 
       <div class="container">
         <p
