@@ -1,12 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var mysql = require("mysql");
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root", //if mac ,須設定為root
-  database: "explorer",
-});
 
 // 洪碩呈開始
 router.get("/map", function (req, res) {
