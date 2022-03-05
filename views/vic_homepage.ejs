@@ -77,6 +77,19 @@
     <%- include('../nav/nav.html') %>
     <div w3-include-HTML="./nav/nav.html"></div>
     <!-- NAV BAR -->
+    <% if(messages.length > 0){ %>
+
+    <div class="toast show" style="width: 0rem">
+      <div
+        class="alert alert-success"
+        style="width: 8rem; position: absolute; left: 93%"
+      >
+        <%= messages %>
+        <button class="btn-close" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+
+    <% } %>
     <!-- 頁首 -->
     <div class="bg">
       <div class="bgDiv">
@@ -177,7 +190,12 @@
                       <% if( locals.data1[0] ) { %>
                       <p>發起人： <%= data1[0].userName %></p>
                       <p>目的地： <%= data1[0].spotName %></p>
-                      <div class="ui inverted button">了解更多</div>
+                      <div
+                        class="ui inverted button"
+                        onclick="goToTrip1('<%= data1[0].tripId %>')"
+                      >
+                        了解更多
+                      </div>
                       <% }else{ %>
                       <p>目前還沒有北部行程供選擇</p>
                       <% } %>
@@ -201,7 +219,12 @@
                       <% if( locals.data1[1] ) { %>
                       <p>發起人： <%= data1[1].userName %></p>
                       <p>目的地： <%= data1[1].spotName %></p>
-                      <div class="ui inverted button">了解更多</div>
+                      <div
+                        class="ui inverted button"
+                        onclick="goToTrip2('<%= data1[1].tripId %>')"
+                      >
+                        了解更多
+                      </div>
                       <% }else{ %>
                       <p>目前還沒有北部行程供選擇</p>
                       <% } %>
@@ -224,7 +247,12 @@
                       <% if( locals.data1[2] ) { %>
                       <p>發起人： <%= data1[2].userName %></p>
                       <p>目的地： <%= data1[2].spotName %></p>
-                      <div class="ui inverted button">了解更多</div>
+                      <div
+                        class="ui inverted button"
+                        onclick="goToTrip3('<%= data1[2].tripId %>')"
+                      >
+                        了解更多
+                      </div>
                       <% }else{ %>
                       <p>目前還沒有北部行程供選擇</p>
                       <% } %>
@@ -508,6 +536,12 @@
         location.href = "/spotId?id=3";
       }
       // 首頁旋轉木馬連結
+
+      // 卡片連結
+      function goToTrip1(id) {
+        location.href = `/tripInfo?id=${id}`;
+      }
+      // 卡片連結
 
       // 首頁卡片操作
       $(".special.cards .image").dimmer({

@@ -7,14 +7,13 @@
   <title>登入頁面</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="../public/login/style.css">
-  <script src="../public/login/script.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
     <header>會員登入</header>
-
+    
     <form id="userLogin" action="/login" method="POST">
 
       <div class="field email">
@@ -34,7 +33,7 @@
         </div>
         <div class="error error-txt">密碼不能是空的</div>
       </div>
-      <div class="forgetPwBtn"><a href="/" class="forget">HOME</a></div>
+      <a href="/">HOME</a>
       <input type="submit" class="loginBtn" name="login" value="登入">
     
       
@@ -43,26 +42,5 @@
     
   </div>
 
-  <script>
-
-    // $('.userLogin').submit(function () {
-    //   e.preventDefault();
-    //   var formData = new FormData();
-    //   formData.append("username", $('[name=""username"]').val());
-    //   event.stopPropagation();
-    //   event.preventDefault();
-    //   $.ajax({
-    //     url: $(this).arrt("action"),
-    //     data: formData,
-    //     type: 'POST',
-    //     success: function (data) {
-    //       alert(data);
-    //       // window.location('/');
-    //     }
-    //   });
-    //   // return false;
-    // })
-
-  </script>
-
+  <!-- <script src="../public/login/script.js"></script> -->
 </body>
