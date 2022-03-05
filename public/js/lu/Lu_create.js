@@ -5,8 +5,7 @@
 // spotId預處理
 
 let spot = JSON.parse(localStorage.getItem('lat')).spotId;
-
-console.log("spot",spot);
+document.getElementById("spotid").value = spot;
 
 
 // 變數
@@ -81,12 +80,21 @@ function validForm() {
 }
 
 function submitBtnClick() {
-  TODO:
   // validForm();
   // if (valid == true) {
-  //   document.createForm.submit();
+    // TODO:
+  
   // }
   document.createForm.submit();
+  
+  // let spot = JSON.parse(localStorage.getItem("lat")).spotId;
+  // $.post('/response', {
+  //   trip: $().target.val(),
+  //   spot: $().target.val(),
+  //   schedule: $().target.val(),
+  //   private: $().target.val(),
+  //   shared: $().target.val(),
+  // })
 }
 
 function fixStepIndicator(currentStep) {

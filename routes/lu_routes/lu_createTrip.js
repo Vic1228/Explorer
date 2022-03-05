@@ -65,13 +65,16 @@ lu_createTrip_router.post("/response", function (req, res) {
   let schedule = req.body.schedule;
   let private = req.body.private;
   let shared = req.body.shared;
+  // let spotId = JSON.parse(localStorage.getItem("lat")).spotId;
+  let spotId = req.body.spotid;
+  console.log(spotId);
 
   //  trip
   // 查詢舊的tripId存入變數
 
   var tripId;
   let tripSQL = `INSERT INTO trips (tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("${trip[0]}", "1", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  VALUES ("${trip[0]}", "${spotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
 
   connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
