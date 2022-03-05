@@ -48,7 +48,11 @@
           <p>手機:<%= data1[0].userPhone %></p>
           <p><%= data1[0].userEmail %></p>
 
-          <% if ( locals.data6[0]) { %> <% }else{ %>
+          <% if ( locals.data6[0]) { %> <% if( data6[0].positionState == 0){%>
+          <p style="color: blue; font-weight: bold">申請中</p>
+          <% }else if(data6[0].positionState == 2){ %>
+          <p style="color: rgb(255, 0, 0); font-weight: bold">發起人</p>
+          <% } %> <% }else{ %>
           <button
             type="button"
             class="btn btn-primary"

@@ -185,4 +185,4 @@ app.use("/tripinfo", tripsinfoRouter);
 app.use("/tripSignup", tripSignup);
 app.use("/", yenpage);
 app.use("/", createTrip);
-app.use("/tripManage", tripManage);
+app.use("/tripManage", tripManage); 
