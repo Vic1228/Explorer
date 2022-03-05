@@ -4,7 +4,7 @@
 
 // spotId預處理
 
-let spot = JSON.parse(localStorage.getItem('lat')).spotId;
+let spot = JSON.parse(localStorage.getItem("lat")).spotId;
 document.getElementById("spotid").value = spot;
 
 console.log("spot", spot);
@@ -81,11 +81,11 @@ function validForm() {
 function submitBtnClick() {
   // validForm();
   // if (valid == true) {
-    // TODO:
-  
+  // TODO:
+
   // }
   document.createForm.submit();
-  
+
   // let spot = JSON.parse(localStorage.getItem("lat")).spotId;
   // $.post('/response', {
   //   trip: $().target.val(),
