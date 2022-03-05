@@ -75,6 +75,7 @@
             <button
               style="margin-bottom: 30px; margin-top: -100px"
               class="ui secondary button"
+              onclick="goToCaeat('<%= data2[0].spotId %>&x=<%=data2[0].coordinateX%>&y=<%=data2[0].coordinateY%>')"
             >
               <font style="vertical-align: inherit"
                 ><font style="vertical-align: inherit"> 建立行程 </font></font
@@ -294,6 +295,9 @@
       }
       function searchTrip(id) {
         location.href = `tripsId?id=${id}`;
+      }
+      function goToCaeat(id) {
+        location.href = `createTrip?id=${id}`;
       }
 
       // 上傳照片
