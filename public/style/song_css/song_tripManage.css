@@ -206,13 +206,15 @@ table{
 
 th,td{
     text-align: center !important;
-    padding: 6px 0px;
+    min-width: 60px;
+    padding-top: 6px;
 }
 
 .tableRow{
     font-weight: 500;
     font-size: 18px;
 }
+
 
 #tripMember .tableTitle:not(:first-of-type){
     margin-top: 6vh;
