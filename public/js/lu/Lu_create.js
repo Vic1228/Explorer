@@ -4,12 +4,8 @@
 
 // spotId預處理
 
-<<<<<<< HEAD
-let spot = JSON.parse(localStorage.getItem("lat")).spotId;
-=======
 let spot = JSON.parse(localStorage.getItem('lat')).spotId;
 document.getElementById("spotid").value = spot;
->>>>>>> 870e52fe2471dcfc1499e2282ca2b2c6906ca7b9
 
 console.log("spot", spot);
 
@@ -88,9 +84,6 @@ function submitBtnClick() {
     // TODO:
   
   // }
-<<<<<<< HEAD
-  TODO: document.createForm.submit();
-=======
   document.createForm.submit();
   
   // let spot = JSON.parse(localStorage.getItem("lat")).spotId;
@@ -101,7 +94,6 @@ function submitBtnClick() {
   //   private: $().target.val(),
   //   shared: $().target.val(),
   // })
->>>>>>> 870e52fe2471dcfc1499e2282ca2b2c6906ca7b9
 }
 
 function fixStepIndicator(currentStep) {
