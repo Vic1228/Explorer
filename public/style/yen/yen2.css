@@ -1,4 +1,8 @@
-.ttop{
+*{
+  color:#006c9b ;
+}
+ 
+ .ttop{
   background-image: url(/public/img/yen/082608329.jpg);
  background-size: 100%;
  background-repeat: no-repeat;
@@ -68,10 +72,12 @@ input {
 
 textarea {
   resize: none;
-  padding: 2px;
+  padding: 10px;
   margin: auto;
+  line-height: 1.6rem;
   outline-color: black;
   outline-style: none;
+  font-size: 40px;
 }
 
 textarea:focus {
