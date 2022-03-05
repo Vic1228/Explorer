@@ -15,6 +15,7 @@
 /* 獎盃圖 */
 .maincard1 {
     text-align: center;
+    margin: auto;
 }
 
 .maincard1 img {
@@ -27,38 +28,31 @@
 
 /* 大表格 */
 .maincard2 {
+    margin-left: 2vh;
     font-size: 2.5vh;
 }
 
-.maincard20 {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.maincard20 table{
+.maincard2 table {
     font-size: 1.2em;
-    width: 35%;
+    width: 50%;
 }
 
-#tata{
+#tata {}
 
+#trtr {
+    margin-left: 2vw;
 }
-#trtr{
-margin-left: 5vw;
-}
 
-
-
-
-.maincard20 .frt{
+.maincard20 .frt {
     width: 80px;
 }
-.maincard20 .sec{
+
+.maincard20 .sec {
     width: 160px;
 }
-.maincard20 .thr{
+
+.maincard20 .thr {
     text-align: end;
-    /* width: 80px; */
 }
 
 
@@ -69,7 +63,6 @@ margin-left: 5vw;
     top: 18%;
     left: 30%;
     right: 30%;
-    /* border: 3px solid orange; */
     background-color: white;
     z-index: 1;
     border-radius: 20px;
@@ -83,7 +76,6 @@ margin-left: 5vw;
 
 .light h1 {
     text-align: center;
-    /* margin: 0; */
 }
 
 .light hr {
@@ -120,8 +112,6 @@ hr.container {
 
 /* ------------其他獎盃區--------------*/
 .mid {
-    /* display: flex; */
-    /* justify-content: space-between;s */
     margin: auto;
 }
 
@@ -129,7 +119,6 @@ hr.container {
     float: left;
     display: flex;
     width: 36%;
-    /* background-color: #3ce147; */
     margin-bottom: 7vh;
     justify-content: space-between;
     margin-left: 7%;
@@ -139,7 +128,6 @@ hr.container {
 .card11 {
     margin: auto;
     text-align: center;
-    /* background-color: yellow; */
 }
 
 .card11>h3 {
@@ -161,17 +149,13 @@ hr.container {
 
 /* 獎盃表格 */
 .card12 {
-    /* background-color: indianred; */
     position: relative;
 }
 
-.card12 td {
-
-}
+.card12 td {}
 
 .card12 table {
     font-size: 1.4em;
-    /* background-color: aqua; */
     border-collapse: collapse;
     margin-bottom: 20px;
     line-height: normal;
