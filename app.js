@@ -3,6 +3,20 @@ var express = require("express");
 var router = express.Router();
 var app = express();
 var session = require("express-session");
+var flash = require('connect-flash')
+app.use(
+  session({
+    secret: "secret", // 對session id 相關的cookie 進行簽名
+    resave: true,
+    saveUninitialized: true, // 是否儲存未初始化的會話
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
+    },
+  })
+);
+
+app.use(flash());
+
 app.listen(3000, (error) => {
   if (error) throw error;
   else {
@@ -67,16 +81,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // 使用 session 中介軟體
-app.use(
-  session({
-    secret: "secret", // 對session id 相關的cookie 進行簽名
-    resave: true,
-    saveUninitialized: true, // 是否儲存未初始化的會話
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 365, // 設定 session 的有效時間，單位毫秒
-    },
-  })
-);
 
 //連結資料庫
 
@@ -111,12 +115,12 @@ app.post("/login", function (req, res) {
   connection.query(member, function (err, result, fields) {
     if (result[0] == null) {
       res.redirect("/login");
+      console.log("登入失敗!");
     } else {
       let id = result[0].userId;
       req.session.userId = id;
-      //
-      console.log(req.session.userId);
-      console.log("login success!");
+      // console.log("登入成功!");
+      req.flash('success', '登入成功!!');
       res.redirect("/");
     }
   });
@@ -161,8 +165,8 @@ app.post("/register", function (req, res) {
           console.log("錯誤，已註冊過");
           res.render("signuperr");
         } else {
-          console.log("1 record inserted");
-          res.redirect("/");
+          console.log("1 RECORD INSERTED");
+          res.redirect("/login");
         }
       });
     });
