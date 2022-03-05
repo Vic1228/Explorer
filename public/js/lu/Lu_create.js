@@ -45,8 +45,9 @@ function showTab(nowPage) {
 // 換頁 0/1
 function nextPrev(turn) {
   const tabArray = document.getElementsByClassName("tab");
-  // TODO: 沒輸入資訊無法下一頁
-  // if (turn == 1 && !validForm()) return false;
+  // TODO: 快速測試
+  // 沒輸入資訊無法下一頁
+  if (turn == 1 && !validForm()) return false;
   // 當前步驟隱藏
   tabArray[currentTab].style.display = "none";
   // 目前頁面變數更新
@@ -60,7 +61,7 @@ var valid;
 
 // 是否有效
 function validForm() {
-  // TODO: 設定變數
+  // 設定變數
   valid = true;
   const tabArray = document.getElementsByClassName("tab");
   const inputArray = tabArray[currentTab].getElementsByClassName("form-input");
@@ -79,21 +80,11 @@ function validForm() {
 }
 
 function submitBtnClick() {
-  // validForm();
-  // if (valid == true) {
-  // TODO:
-
-  // }
+  // TODO: 快速測試
+  validForm();
+  if (valid == true) {
   document.createForm.submit();
-
-  // let spot = JSON.parse(localStorage.getItem("lat")).spotId;
-  // $.post('/response', {
-  //   trip: $().target.val(),
-  //   spot: $().target.val(),
-  //   schedule: $().target.val(),
-  //   private: $().target.val(),
-  //   shared: $().target.val(),
-  // })
+  }
 }
 
 function fixStepIndicator(currentStep) {
