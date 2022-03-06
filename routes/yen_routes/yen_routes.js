@@ -63,9 +63,10 @@ router.get("/trophy", function (req, res) {
                 if (err) throw err;
                 var string7 = JSON.stringify(result7);
                 var json7 = JSON.parse(string7);
-                console.log(json7[0]);
-                var total = Object.assign(json1[0], json2[1]);
-                console.log(total);
+                // console.log(json7[0]);
+                console.log(req.session.userId)
+                let c = { sessionUserId: `${req.session.userId}` }
+
 
                 res.render("yen_trophy.ejs", {
                   json1,
@@ -75,6 +76,7 @@ router.get("/trophy", function (req, res) {
                   json5,
                   json6,
                   json7,
+                  c
                 });
               });
             });
@@ -103,10 +105,12 @@ router.get("/profile", (req, res) => {
         if (err) throw err;
         let a = result[0];
         let b = result2[0];
+        let c = { sessionUserId: `${req.session.userId}` }
+        console.log(c)
         // console.log(a)
         // console.log(b)
-        var obj = Object.assign(a, b);
-        if (obj.commentCount == null||obj.commentCount<3) {
+        var obj = Object.assign(a, b, c);
+        if (obj.commentCount == null || obj.commentCount < 3) {
           obj.commentCount = 0;
         }
         console.log(obj);
