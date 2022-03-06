@@ -63,11 +63,6 @@ router.get("/trophy", function (req, res) {
                 if (err) throw err;
                 var string7 = JSON.stringify(result7);
                 var json7 = JSON.parse(string7);
-                // console.log(json7[0]);
-                console.log(req.session.userId)
-                let c = { sessionUserId: `${req.session.userId}` }
-
-
                 res.render("yen_trophy.ejs", {
                   json1,
                   json2,
@@ -76,7 +71,7 @@ router.get("/trophy", function (req, res) {
                   json5,
                   json6,
                   json7,
-                  c
+                  sessionUserId: req.session.userId
                 });
               });
             });
@@ -99,7 +94,6 @@ router.get("/profile", (req, res) => {
     let sqlone = `SELECT * FROM users where userId='${apple}'`;
     connection.query(sqlone, (err, result, fields) => {
       if (err) throw err;
-      console.log(result);
       let sqltwo = `SELECT * FROM userstats where userId='${apple}'`;
       connection.query(sqltwo, (err, result2) => {
         if (err) throw err;
