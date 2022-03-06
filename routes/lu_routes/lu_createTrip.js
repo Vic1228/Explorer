@@ -15,12 +15,12 @@ const { NULL } = require("mysql/lib/protocol/constants/types");
 // ==================================
 // 查詢users表的資料
 
-var userProfile, userStats, zlspotId, x, y;
+var userProfile, userStats, zlspotId, x, y, login;
 lu_createTrip_router.get("/createTrip", function (req, res) {
   // 政霖 id , x , y
   zlspotId = req.query.id;
-  x = req.query.x;
-  y = req.query.y;
+  location = { lat: req.query.x, lng: req.query.y };
+  login = { sessionUserId: req.session.userId }
 
   var userId = req.session.userId;
   if (req.session.userId == undefined) {
@@ -30,15 +30,16 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
     //  user判斷
     let test1 = `SELECT * FROM users WHERE userId = ${req.session.userId}`;
     connection.query(test1, (err, results, fields) => {
-    if (err) throw err;
-    userProfile = results[0];
+      if (err) throw err;
+      userProfile = results[0];
+      console.log("userProfile",userProfile, typeof(userProfile));
 
     // 查userstats資料
     let test2 = `SELECT * FROM userstats WHERE userId = ${req.session.userId}`;
     connection.query(test2, (err, results2, fields) => {
       if (err) throw err;
       userStats = results2[0];
-      var obj = Object.assign(userStats, userProfile);
+      var obj = Object.assign(userStats, userProfile, location, login);
       //  TODO: 判斷有沒有大於3
       res.render("lu_createTrip", obj);
     });

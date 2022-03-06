@@ -3,8 +3,7 @@ function initMap() {
     center: { lat: 23.58044082121914, lng: 120.86312406425326 },
     zoom: 7.8
   });
-
-
+  
   const infowindow = new google.maps.InfoWindow();
   const service = new google.maps.places.PlacesService(map);
   // Location 1

@@ -27,355 +27,751 @@
 
 <body>
   <!-- NAV BAR -->
-  <div w3-include-HTML="../nav/nav.html"></div>
-  <!-- FORM -->
-  <form action="/response" name="createForm" method="post">
-    <!-- 圖片 -->
-    <div class="create-trip-photo">
-    </div>
-    <div class="container" style="padding-block: 6vh;">
-
-      <!-- 步驟 -->
-      <div class="d-flex justify-content-between">
-        <span id="step" class="step"
-          style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
-        <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">發起人簡介</span>
-        <span id="step" class="step"
-          style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
-
-        <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">行程介紹</span>
-        <span id="step" class="step"
-          style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
-
-        <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">行程規劃</span>
-        <span id="step" class="step"
-          style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
-
-        <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">裝備清單</span>
+  <%- include('../nav/nav.html') %>
+    <!-- NAV BAR -->
+    <!-- FORM -->
+    <form action="/response" name="createForm" method="post">
+      <!-- 圖片 -->
+      <div class="create-trip-photo">
       </div>
+      <div class="container" style="padding-block: 6vh;">
 
-    </div>
-    <!-- TODO: 發起人簡介tab -->
-    <div class="tab">
-      <div class="container d-flex" style="padding-bottom: 6vh;">
-        <div class="col-2"></div>
-        <!-- 大頭貼 -->
-        <div class="col-3">
-          <div class="rounded-circle m-auto">
-            <img class="img-thumbnail rounded-circle" src="public\img\yen\photo\<%= userId %>.png" alt=""
-              style="width: 200px; height: 200px; position: relative; left: 4rem;">
+        <!-- 步驟 -->
+        <div class="d-flex justify-content-between">
+          <span id="step" class="step"
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">發起人簡介</span>
+          <span id="step" class="step"
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+
+          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">行程介紹</span>
+          <span id="step" class="step"
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+
+          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">行程規劃</span>
+          <span id="step" class="step"
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+
+          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">裝備清單</span>
+        </div>
+
+      </div>
+      <!-- TODO: 發起人簡介tab -->
+      <div class="tab">
+        <div class="container d-flex" style="padding-bottom: 6vh;">
+          <div class="col-2"></div>
+          <!-- 大頭貼 -->
+          <div class="col-3">
+            <div class="rounded-circle m-auto">
+              <img class="img-thumbnail rounded-circle" src="public\img\yen\photo\<%= userId %>.png" alt=""
+                style="width: 200px; height: 200px; position: relative; left: 4rem;">
+            </div>
           </div>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-3 m-auto text-center">
-          <p class="m-0" style="font-size: 2rem;">
-            <!-- 姓名 -->
-            <%= userName %>
-          </p>
-          <!-- 電話 -->
-          <p class="m-0" style="font-size: 1.2rem; padding-block: 1.2rem;">
-            <%= userPhone %>
-          </p>
-          <!-- 信箱 -->
-          <p class="m-0" style="font-size: 1.2rem;">
-            <%= userEmail %>
-          </p>
-        </div>
-        <div class="col-2"></div>
-      </div>
-
-      <hr class="m-auto w-75">
-      <!--  -->
-      <div class="container d-flex h-100" style="padding-top: 6vh;">
-        <div class="col-2"></div>
-        <div class="col-3">
-          <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
-          <!-- 能力值-->
-          <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
-          <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
-            <!-- 評價人次 -->
-            <span>
-              <%= commentCount %>
-            </span>
-          </p>
-        </div>
-        <div class="col-1"></div>
-        <div class="col-4">
-          <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷</h6>
-          <!-- 冒險經歷 -->
-          <div style="padding-top: 3rem; padding-inline: 2.5rem;">
-            <p style="font-size: 1.3rem; line-height: 3rem;">
-              <%= userExp %>
+          <div class="col-1"></div>
+          <div class="col-3 m-auto text-center">
+            <p class="m-0" style="font-size: 2rem;">
+              <!-- 姓名 -->
+              <%= userName %>
+            </p>
+            <!-- 電話 -->
+            <p class="m-0" style="font-size: 1.2rem; padding-block: 1.2rem;">
+              <%= userPhone %>
+            </p>
+            <!-- 信箱 -->
+            <p class="m-0" style="font-size: 1.2rem;">
+              <%= userEmail %>
             </p>
           </div>
+          <div class="col-2"></div>
+        </div>
+
+        <hr class="m-auto w-75">
+        <!--  -->
+        <div class="container d-flex h-100" style="padding-top: 6vh;">
+          <div class="col-2"></div>
+          <div class="col-3">
+            <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
+            <!-- 能力值-->
+            <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
+            <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
+              <!-- 評價人次 -->
+              <span>
+                <%= commentCount %>
+              </span>
+            </p>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-4">
+            <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷</h6>
+            <!-- 冒險經歷 -->
+            <div style="padding-top: 3rem; padding-inline: 2.5rem;">
+              <p style="font-size: 1.3rem; line-height: 3rem;">
+                <%= userExp %>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-2"></div>
-    </div>
-    </div>
-    <!-- TODO: 活動簡介tab -->
-    <div class="tab">
-      <div class="container d-flex">
-        <div class="col-1"></div>
-        <div class="col-4">
-          <h6 style="font-size: 1.7rem;">活動名稱</h6>
-          <!-- TODO: 活動名稱 -->
-          <input name="trip" class="act-textarea w-100 form-input p-2"
-            oninput="this.className = 'act-textarea w-100 form-input p-2'" type="text"
-            style="border: 2px solid #006c9b;">
-          <h6 style="font-size: 1.7rem; padding-top: 1rem;">活動描述</h6>
-          <!-- TODO: 活動描述 -->
-          <textarea name="trip" class="act-textarea w-100 form-input p-2"
-            oninput="this.className = 'act-textarea w-100 form-input p-2'" id=""
-            style="height: 7rem; border: 2px solid #006c9b;"></textarea>
-          <h6 style="font-size: 1.7rem; padding-top: 1rem;">日期</h6>
-          <!-- TODO: 開始日期 -->
-          <input name="trip" class="act-textarea form-input p-2"
-            oninput="this.className = 'act-textarea form-input p-2'" type="date" id="startDate"
-            style="width: 45%; margin-right: 1rem; border: 2px solid #006c9b;">
-          <!-- TODO: 結束日期 -->
-          <input name="trip" class="act-textarea form-input p-2"
-            oninput="this.className = 'act-textarea form-input p-2'" type="date" id="endDate"
-            style="width: 45%; border: 2px solid #006c9b;">
-        </div>
-        <div class="col-1"></div>
-        <div class="col-5">
-          <h6 style="font-size: 1.7rem;">目的地</h6>
-          <!-- TODO: 地圖 -->
-          <div id="map" style="width: 100%; height: 40vh;"></div>
-          <input id="spotid" name="spotid" type="text" style="display: none;" value="">
-        </div>
-        <div class="col-1"></div>
+      <div class="col-2"></div>
       </div>
-    </div>
-    <!-- TODO: 行程規劃tab -->
-    <div class="tab">
-      <div class="container d-flex">
-        <div class="col-1"></div>
-        <div class="col-10">
-          <!-- 表格 -->
-          <table id="ItineraryTable" class="table table-bordered text-center" style="border-color: #006c9b;">
-            <thead>
-              <tr>
+      </div>
+      <!-- TODO: 活動簡介tab -->
+      <div class="tab">
+        <div class="container d-flex">
+          <div class="col-1"></div>
+          <div class="col-4">
+            <h6 style="font-size: 1.7rem;">活動名稱</h6>
+            <!-- TODO: 活動名稱 -->
+            <input name="trip" class="act-textarea w-100 form-input p-2"
+              oninput="this.className = 'act-textarea w-100 form-input p-2'" type="text"
+              style="border: 2px solid #006c9b;">
+            <h6 style="font-size: 1.7rem; padding-top: 1rem;">活動描述</h6>
+            <!-- TODO: 活動描述 -->
+            <textarea name="trip" class="act-textarea w-100 form-input p-2"
+              oninput="this.className = 'act-textarea w-100 form-input p-2'" id=""
+              style="height: 7rem; border: 2px solid #006c9b;"></textarea>
+            <h6 style="font-size: 1.7rem; padding-top: 1rem;">日期</h6>
+            <!-- TODO: 開始日期 -->
+            <input name="trip" class="act-textarea form-input p-2"
+              oninput="this.className = 'act-textarea form-input p-2'" type="date" id="startDate"
+              style="width: 45%; margin-right: 1rem; border: 2px solid #006c9b;">
+            <!-- TODO: 結束日期 -->
+            <input name="trip" class="act-textarea form-input p-2"
+              oninput="this.className = 'act-textarea form-input p-2'" type="date" id="endDate"
+              style="width: 45%; border: 2px solid #006c9b;">
+          </div>
+          <div class="col-1"></div>
+          <div class="col-5">
+            <h6 style="font-size: 1.7rem;">目的地</h6>
+            <!-- TODO: 地圖 -->
+            <div id="map" style="width: 100%; height: 40vh;"></div>
+            <input id="spotid" name="spotid" type="text" style="display: none;" value="">
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
+      <!-- TODO: 行程規劃tab -->
+      <div class="tab">
+        <div class="container d-flex">
+          <div class="col-1"></div>
+          <div class="col-10">
+            <!-- 表格 -->
+            <table id="ItineraryTable" class="table table-bordered text-center" style="border-color: #006c9b;">
+              <thead>
+                <tr>
+                  <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                    <h4 class="m-auto text-white" style="font-size: 1.7rem;">行程</h4>
+                  </th>
+                  <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                    <h4 class="m-auto text-white" style="font-size: 1.7rem;">時間</h4>
+                  </th>
+                  <th class="h-100" style="background-color: #006c9b;">
+                    <h4 class="m-auto text-white" style="font-size: 1.7rem;">活動</h4>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <!-- TODO: 第幾天 -->
+                  <td class="form-td">
+                    <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
+                      oninput="this.className = 'border-0 text-center h-100 form-input w-100'"
+                      style="font-size: 1.4rem;">
+                      <option value="" selected disabled>第__天</option>
+                      <option value="1">第1天</option>
+                      <option value="2">第2天</option>
+                      <option value="3">第3天</option>
+                      <option value="4">第4天</option>
+                    </select>
+                  </td>
+                  <!-- TODO: 時間 -->
+                  <td class="form-td"><input name="schedule" type="time" id=""
+                      class="text-center border-0 h-100 time-input form-input w-100"
+                      oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'"
+                      style="font-size: 1.4rem;">
+                  </td>
+                  <!-- TODO: 活動名稱 -->
+                  <td class="form-td"><input name="schedule"
+                      class="h-100 w-50 border-0 act-input text-center form-input" type="text"
+                      oninput="this.className = 'h-100 w-50 border-0 act-input text-center form-input'"
+                      placeholder="活動名稱"
+                      style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 2.8rem;">
+                    <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                      style="position: relative; left: 4rem; background-color: #006c9b;">
+                      +</p>
+                    <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                      style="margin-inline: 0.5rem; visibility:hidden; background-color: #006c9b;">
+                      x</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div>
+      <!-- TODO: 裝備清單tab -->
+      <div class="tab">
+        <div class="container d-flex">
+          <div class="col-6">
+            <table id="privateItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
+              <thead>
                 <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">行程</h4>
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">私人裝備</h4>
                 </th>
                 <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">時間</h4>
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">數量</h4>
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <!-- TODO: 裝備名稱 -->
+                  <td class="form-td"><input name="private" type="text" class="border-0 text-center h-100 form-input"
+                      placeholder="裝備名稱" oninput="this.className = 'border-0 text-center h-100 form-input'"
+                      style="font-size: 1.4rem;"></td>
+                  <!-- TODO: 數量 -->
+                  <td class="form-td">
+                    <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
+                      oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
+                      style="position: relative; left: 2.7rem; font-size: 1.4rem;" placeholder="0">
+                    <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                      style="position: relative; left: 3.7rem; background-color: #006c9b;">
+                      +</p>
+                    <p onclick="deletePrivateItemRow(this)"
+                      class="d-inline-block rounded-circle add-delete-btn table-btn"
+                      style="margin-inline: 0.5rem; position: relative; left: 3.7rem; visibility:hidden; background-color: #006c9b;">
+                      x</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6">
+            <table id="sharedItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
+              <thead>
+                <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">公用裝備</h4>
                 </th>
                 <th class="h-100" style="background-color: #006c9b;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">活動</h4>
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">能提供數量</h4>
                 </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- TODO: 第幾天 -->
-                <td class="form-td">
-                  <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
-                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'" style="font-size: 1.4rem;">
-                    <option value="" selected disabled>第__天</option>
-                    <option value="1">第1天</option>
-                    <option value="2">第2天</option>
-                    <option value="3">第3天</option>
-                    <option value="4">第4天</option>
-                  </select>
-                </td>
-                <!-- TODO: 時間 -->
-                <td class="form-td"><input name="schedule" type="time" id=""
-                    class="text-center border-0 h-100 time-input form-input w-100"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'"
-                    style="font-size: 1.4rem;">
-                </td>
-                <!-- TODO: 活動名稱 -->
-                <td class="form-td"><input name="schedule" class="h-100 w-50 border-0 act-input text-center form-input"
-                    type="text" oninput="this.className = 'h-100 w-50 border-0 act-input text-center form-input'"
-                    placeholder="活動名稱" style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 2.8rem;">
-                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="position: relative; left: 4rem; background-color: #006c9b;">
-                    +</p>
-                  <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 0.5rem; visibility:hidden; background-color: #006c9b;">
-                    x</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-1"></div>
-      </div>
-    </div>
-    <!-- TODO: 裝備清單tab -->
-    <div class="tab">
-      <div class="container d-flex">
-        <div class="col-6">
-          <table id="privateItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
-            <thead>
-              <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                <h4 class="m-auto text-white" style="font-size: 1.7rem;">私人裝備</h4>
-              </th>
-              <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                <h4 class="m-auto text-white" style="font-size: 1.7rem;">數量</h4>
-              </th>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- TODO: 裝備名稱 -->
-                <td class="form-td"><input name="private" type="text" class="border-0 text-center h-100 form-input"
-                    placeholder="裝備名稱" oninput="this.className = 'border-0 text-center h-100 form-input'"
-                    style="font-size: 1.4rem;"></td>
-                <!-- TODO: 數量 -->
-                <td class="form-td">
-                  <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
-                    oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
-                    style="position: relative; left: 2.7rem; font-size: 1.4rem;" placeholder="0">
-                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="position: relative; left: 3.7rem; background-color: #006c9b;">
-                    +</p>
-                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 0.5rem; position: relative; left: 3.7rem; visibility:hidden; background-color: #006c9b;">
-                    x</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col-6">
-          <table id="sharedItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
-            <thead>
-              <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                <h4 class="m-auto text-white" style="font-size: 1.7rem;">公用裝備</h4>
-              </th>
-              <th class="h-100" style="background-color: #006c9b;">
-                <h4 class="m-auto text-white" style="font-size: 1.7rem;">能提供數量</h4>
-              </th>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- TODO: 裝備名稱 -->
-                <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="裝備名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"
-                    style="font-size: 1.4rem;"></td>
-                <!-- TODO: 數量 -->
-                <td class="form-td"><input name="shared" type="number"
-                    class="text-center border-0 h-100 form-input w-25"
-                    oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
-                    style="margin-right: 1rem; position: relative; left: 3.2rem; font-size: 1.4rem;" placeholder="0">
-                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="position: relative; left: 3.5rem; background-color: #006c9b;">
-                    +</p>
-                  <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 0.5rem; position: relative; left: 3.5rem; visibility:hidden; background-color: #006c9b;">
-                    x</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <tr>
+                  <!-- TODO: 裝備名稱 -->
+                  <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
+                      placeholder="裝備名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"
+                      style="font-size: 1.4rem;"></td>
+                  <!-- TODO: 數量 -->
+                  <td class="form-td"><input name="shared" type="number"
+                      class="text-center border-0 h-100 form-input w-25"
+                      oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
+                      style="margin-right: 1rem; position: relative; left: 3.2rem; font-size: 1.4rem;" placeholder="0">
+                    <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
+                      style="position: relative; left: 3.5rem; background-color: #006c9b;">
+                      +</p>
+                    <p onclick="deleteSharedItemRow(this)"
+                      class="d-inline-block rounded-circle add-delete-btn table-btn"
+                      style="margin-inline: 0.5rem; position: relative; left: 3.5rem; visibility:hidden; background-color: #006c9b;">
+                      x</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- TODO: 按鈕 -->
-    <div class="container text-center" style="padding-block: 5vh;">
-      <!-- 返回  -->
-      <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn"
-        style="margin-right: 1rem; background-color: #006c9b; color: whitesmoke;">返回
-      </button>
-      <!-- 下一步  -->
-      <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn"
-        style="margin-left: 1rem; background-color: #006c9b; color: whitesmoke;">下一步
-      </button>
-      <!-- TODO: 提交 -->
-      <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn"
-        style="margin-left: 1rem; display: none; background-color: #006c9b; color: whitesmoke;"></button>
-    </div>
-  </form>
-  <!-- FORM -->
-  <!-- FOOTER -->
-  <div w3-include-HTML="../footer/footer.html" class="footerDistance m-0"></div>
-  <!-- Library -->
-  <script src="../public/js/lu/Lu_create.js"></script>
-  <script>
-    w3.includeHTML();
-  </script>
-  <script src="../nav/nav.js"></script>
-  <script src="../style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places"
-    async defer></script>
-  <!-- chart.js -->
-  <script>
-    /*---------------------------------------------------------------*/
-    /*----------------------------- chart ---------------------------*/
-    /*---------------------------------------------------------------*/
+      <!-- TODO: 按鈕 -->
+      <div class="container text-center" style="padding-block: 5vh;">
+        <!-- 返回  -->
+        <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn"
+          style="margin-right: 1rem; background-color: #006c9b; color: whitesmoke;">返回
+        </button>
+        <!-- 下一步  -->
+        <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn"
+          style="margin-left: 1rem; background-color: #006c9b; color: whitesmoke;">下一步
+        </button>
+        <!-- TODO: 提交 -->
+        <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn"
+          style="margin-left: 1rem; display: none; background-color: #006c9b; color: whitesmoke;"></button>
+      </div>
+    </form>
+    <!-- FORM -->
+    <!-- FOOTER -->
+    <div w3-include-HTML="../footer/footer.html" class="footerDistance m-0"></div>
+    <!-- Library -->
+    <script src="../public/js/lu/Lu_create.js"></script>
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="../nav/nav.js"></script>
+    <script src="../style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4PHXQoO2OW5vP-LkI53o2YGu_tqiOB8I&callback=initMap&libraries=places"
+      async defer></script>
+    <!-- chart.js -->
+    <script>
+      /*---------------------------------------------------------------*/
+      /*----------------------------- session ---------------------------*/
+      /*---------------------------------------------------------------*/
+      var sessionUserId = Number('<%= sessionUserId %>')
+      console.log(sessionUserId);
+      if (sessionUserId == 0) {
+        $('#member').append(
+          '<li><a href="/login">登入／註冊</a></li>'
+        )
+      }
+      else {
+        $('#member').append(
+          '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+        )
+      }
+      /*---------------------------------------------------------------*/
+      /*----------------------------- chart ---------------------------*/
+      /*---------------------------------------------------------------*/
 
-    const data = {
-      labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
-      datasets: [
-        {
-          // TODO: 動態產生
-          data: ["<%= leadership %>", "<%= heal %>", "<%= direction %>", "<%= teamwork %>", "<%= strength %>", "<%= survival %>"],
-          fill: true,
-          backgroundColor: "rgb(0, 108, 155, 0.2)",
-          borderColor: "rgb(0, 108, 155, 0.1)",
-          pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
-          pointBorderColor: "rgb(0, 108, 155)",
-          pointHoverBackgroundColor: "rgb(0, 108, 155)",
-          pointHoverBorderColor: "rgb(0, 108, 155)",
-          pointRadius: 3,
-        },
-      ],
-    };
-    const config = {
-      type: "radar",
-      data: data,
-      options: {
-        plugins: {
-          legend: {
-            display: false,
+      const data = {
+        labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
+        datasets: [
+          {
+            // TODO: 動態產生
+            data: ["<%= leadership %>", "<%= heal %>", "<%= direction %>", "<%= teamwork %>", "<%= strength %>", "<%= survival %>"],
+            fill: true,
+            backgroundColor: "rgb(0, 108, 155, 0.2)",
+            borderColor: "rgb(0, 108, 155, 0.1)",
+            pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
+            pointBorderColor: "rgb(0, 108, 155)",
+            pointHoverBackgroundColor: "rgb(0, 108, 155)",
+            pointHoverBorderColor: "rgb(0, 108, 155)",
+            pointRadius: 3,
           },
-          tooltip: {
-            displayColors: false,
-            caretSize: 10,
-            backgroundColor: "rgb(0, 108, 155)",
-          },
-        },
-        elements: {
-          line: {
-            borderWidth: 1,
-          },
-        },
-        scale: {
-          beginAtZero: true,
-          min: 0,
-          max: 5,
-          ticks: {
-            stepSize: 1,
-            font: {
-              size: 0,
+        ],
+      };
+      const config = {
+        type: "radar",
+        data: data,
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              displayColors: false,
+              caretSize: 10,
+              backgroundColor: "rgb(0, 108, 155)",
             },
           },
-        },
-        scales: {
-          r: {
-            pointLabels: {
-              font: {
-                size: 20,
-              },
-              color: "rgb(0, 108, 155)"
+          elements: {
+            line: {
+              borderWidth: 1,
             },
-            grid: {
-              color: "rgb(0, 108, 155, 0.4)",
-            },
+          },
+          scale: {
+            beginAtZero: true,
+            min: 0,
+            max: 5,
             ticks: {
-              display: true,
+              stepSize: 1,
+              font: {
+                size: 0,
+              },
+            },
+          },
+          scales: {
+            r: {
+              pointLabels: {
+                font: {
+                  size: 20,
+                },
+                color: "rgb(0, 108, 155)"
+              },
+              grid: {
+                color: "rgb(0, 108, 155, 0.4)",
+              },
+              ticks: {
+                display: true,
+              },
             },
           },
         },
-      },
-    };
-    const myChart = new Chart(document.getElementById("myChart"), config);
-  </script>
+      };
+      const myChart = new Chart(document.getElementById("myChart"), config);
+
+      /*---------------------------------------------------------------*/
+      /*----------------------------- 地圖 ----------------------------*/
+      /*---------------------------------------------------------------*/
+
+      function initMap() {
+        const lat = parseFloat("<%= (lat) %>");
+        const lng = parseFloat("<%= (lng) %>");
+
+        const zllocation = { lat: lat, lng: lng };
+
+        const location = JSON.parse(localStorage.getItem("lat")); // 從localStorage取得經緯度的值
+
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: zllocation || location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
+          zoom: 10,
+        });
+        // The marker, positioned at location
+        const marker = new google.maps.Marker({
+          position: location,
+          map: map,
+        });
+
+        const infowindow = new google.maps.InfoWindow();
+        const service = new google.maps.places.PlacesService(map);
+
+        // Location 1
+        const request = {
+          placeId: "ChIJQwsNxDdgaDQRzDQVzlSrgIE",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "rating",
+            "user_ratings_total",
+          ],
+        };
+        service.getDetails(request, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            //   map.setCenter(place.geometry.location)
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "雪山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req2 = {
+          placeId: "ChIJ0aYLQg4hbzQRfg2EIaUay4M",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req2, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "玉山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req3 = {
+          placeId: "ChIJwbqRiNgkbzQRlL8HhKymoT0",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req3, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "馬博拉斯山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req4 = {
+          placeId: "ChIJDSGtGr8kbzQRAJad9ethhZw",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req4, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "秀姑巒山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req5 = {
+          placeId: "ChIJ_QArHsZiaDQRxEAnX0PnwQc",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req5, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "南湖大山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req6 = {
+          placeId: "ChIJv2YdtvcJbzQR6NJ-AtqRcXE",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req6, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "關山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req7 = {
+          placeId: "ChIJjyoIB2mUaDQRFibYsKd5Les",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req7, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:5rem'>" +
+                "奇萊山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req8 = {
+          placeId: "ChIJ782u6b6SaDQRtD-8c-mgPys",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req8, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "合歡山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req9 = {
+          placeId: "ChIJ3ZYGz95gaDQR08CvUzFwS1c",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req9, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "桃山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+
+        const req10 = {
+          placeId: "ChIJ-by_9ZxgaDQRl3Z4QSUjeQU",
+          fields: [
+            "name",
+            "formatted_address",
+            "place_id",
+            "geometry",
+            "photo",
+            "rating",
+            "user_ratings_total",
+            "address_component",
+          ],
+        };
+        service.getDetails(req10, function (place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            const marker = new google.maps.Marker({
+              position: place.geometry.location,
+              map: map,
+            });
+            marker.addListener("click", function () {
+              infowindow.open(map, marker);
+              infowindow.setContent(
+                "<div class='infowindow-container'>" +
+                "<div class='inner'><h5>" +
+                "<span style='margin-left:7rem'>" +
+                "品田山</span>" +
+                "</p><p style='margin-left:0.5rem'>地址:" +
+                place.formatted_address +
+                "</p>" +
+                "</div></div>"
+              );
+            });
+          }
+        });
+      }
+    </script>
 </body>
 
 </html>
