@@ -29,6 +29,7 @@
         background-position: top;
         background-repeat: no-repeat;
       }
+
       .bg2 {
         height: 700px;
         width: auto;
@@ -37,24 +38,29 @@
         background-position: top;
         background-repeat: no-repeat;
       }
+
       .bgDiv {
         width: 40vw;
         padding-top: 35vh;
         padding-left: 20vh;
         text-align: center;
       }
+
       .bgText {
         color: white;
         text-shadow: 0.1em 0.1em 0.2em black;
       }
+
       .bgText2 {
         padding-left: 120px;
         color: white;
         text-shadow: 0.1em 0.1em 0.2em black;
       }
+
       .twoText {
         text-align: center;
       }
+
       .carousel .carousel-item img {
         min-height: 300px;
         max-height: 400px;
@@ -65,6 +71,7 @@
         position: absolute;
         left: 25%;
       }
+
       .cardText {
         text-align: left;
         word-wrap: break-word;
@@ -75,9 +82,8 @@
 
   <body>
     <%- include('../nav/nav.html') %>
-    <div w3-include-HTML="./nav/nav.html"></div>
     <!-- NAV BAR -->
-    <% if(messages.length > 0){ %>
+    <% if(messages.length> 0){ %>
 
     <div class="toast show" style="width: 0rem">
       <div
@@ -511,7 +517,7 @@
     </div>
 
     <!-- 關於我們 -->
-    <div w3-include-HTML="./footer/footer.html" class=""></div>
+    <%- include('../footer/footer.html') %>
     <!-- FOOTER -->
     <script>
       w3.includeHTML();
@@ -584,6 +590,18 @@
         });
       }
       // 首頁卡片操作
+
+      // navbar彈出視窗
+      var sessionUserId = Number("<%= sessionUserId %>");
+      console.log(sessionUserId);
+      if (sessionUserId == 0) {
+        $("#member").append('<li><a href="/login">登入／註冊</a></li>');
+      } else {
+        $("#member").append(
+          '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+        );
+      }
+      // navbar彈出視窗
     </script>
   </body>
 </html>

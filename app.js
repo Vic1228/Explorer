@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 var app = express();
 var session = require("express-session");
-var flash = require('connect-flash')
+var flash = require("connect-flash");
 app.use(
   session({
     secret: "secret", // 對session id 相關的cookie 進行簽名
@@ -44,7 +44,6 @@ app.use("/", router);
 var homepageRouter = require("./routes/vic_routes/vic_homepage");
 var spotInfoRouter = require("./routes/vic_routes/vic_spotInfo");
 var uploadRouter = require("./routes/vic_routes/vic_upload");
-app.use("/", homepageRouter);
 
 // 意涵
 var tripsRouter = require("./routes/han_routes/han_trips.js");
@@ -120,7 +119,7 @@ app.post("/login", function (req, res) {
       let id = result[0].userId;
       req.session.userId = id;
       // console.log("登入成功!");
-      req.flash('success', '登入成功!!');
+      req.flash("success", "登入成功!!");
       res.redirect("/");
     }
   });
@@ -179,6 +178,7 @@ app.get("/logout", function (req, res) {
   console.log(req.session.userId);
   res.redirect("/");
 });
+app.use("/", homepageRouter);
 app.use("/spotId", spotInfoRouter);
 app.use("/upload", uploadRouter);
 app.use("/trips", tripsRouter);
@@ -189,4 +189,4 @@ app.use("/tripinfo", tripsinfoRouter);
 app.use("/tripSignup", tripSignup);
 app.use("/", yenpage);
 app.use("/", createTrip);
-app.use("/tripManage", tripManage); 
+app.use("/tripManage", tripManage);

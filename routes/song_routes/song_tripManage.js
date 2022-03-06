@@ -43,6 +43,7 @@ song_tripManage_router.get("/", function (req, res) {
   var userId = 6
 
   var data = {
+    sessionUserId: req.session.userId,
     userName: "",
     createTripList: [],
     joinTripList: [],

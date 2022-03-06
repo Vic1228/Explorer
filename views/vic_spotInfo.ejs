@@ -45,7 +45,7 @@
 
   <body>
     <!-- NAV BAR -->
-    <div w3-include-HTML="./nav/nav.html"></div>
+    <%- include('../nav/nav.html') %>
     <!-- NAV BAR -->
     <!-- 旋轉木馬開始 -->
     <div
@@ -312,6 +312,18 @@
         }
       });
       // 上傳照片
+
+      // navbar彈出視窗
+      var sessionUserId = Number("<%= sessionUserId %>");
+      console.log(sessionUserId);
+      if (sessionUserId == 0) {
+        $("#member").append('<li><a href="/login">登入／註冊</a></li>');
+      } else {
+        $("#member").append(
+          '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+        );
+      }
+      // navbar彈出視窗
     </script>
   </body>
 </html>
