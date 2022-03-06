@@ -75,7 +75,6 @@
 
   <body>
     <%- include('../nav/nav.html') %>
-    <div w3-include-HTML="./nav/nav.html"></div>
     <!-- NAV BAR -->
     <% if(messages.length > 0){ %>
 
@@ -511,7 +510,7 @@
     </div>
 
     <!-- 關於我們 -->
-    <div w3-include-HTML="./footer/footer.html" class=""></div>
+    <%- include('../footer/footer.html') %>
     <!-- FOOTER -->
     <script>
       w3.includeHTML();
