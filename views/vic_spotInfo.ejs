@@ -290,28 +290,20 @@
     <script src="./nav/nav.js"></script>
     <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
     <script>
+      // 點擊事件
+      // 若使用者無大頭貼則顯示預設圖片
       function ASA(id) {
         $("#imgbox" + id).attr("src", "./img/yen/photo/default.png");
       }
+      // 點擊參加行程引導至參加行程頁面並直接篩選
       function searchTrip(id) {
         location.href = `tripsId?id=${id}`;
       }
+      // 點擊發起行程引導至發起行程頁面並直接篩選
       function goToCaeat(id) {
         location.href = `createTrip?id=${id}`;
       }
-
-      // 上傳照片
-      $("#chooseFile").bind("change", function () {
-        var filename = $("#chooseFile").val();
-        if (/^\s*$/.test(filename)) {
-          $(".file-upload").removeClass("active");
-          $("#noFile").text("No file chosen...");
-        } else {
-          $(".file-upload").addClass("active");
-          $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
-        }
-      });
-      // 上傳照片
+      // 點擊事件
 
       // navbar彈出視窗
       var sessionUserId = Number("<%= sessionUserId %>");

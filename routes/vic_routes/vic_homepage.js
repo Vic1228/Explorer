@@ -27,7 +27,7 @@ router.get("/", function (req, res) {
     (error, results1) => {
       if (error) throw error;
       else {
-        res.render("vic_homepage.ejs", { 
+        res.render("vic_homepage.ejs", {
           data1: results1,
           messages: req.flash('success'),
           sessionUserId: req.session.userId,
