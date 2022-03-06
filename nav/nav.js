@@ -9,7 +9,7 @@
 
   //監聽滾動，header固定
   window.onscroll = function () {
-    if (window.scrollY > 600) {
+    if (window.scrollY > 0) {
       document.querySelector('header').classList.add('active');
     } else {
       document.querySelector('header').classList.remove('active');
