@@ -36,10 +36,11 @@ song_tripManage_router.post("/", function (req, res) {
 });
 
 song_tripManage_router.get("/", function (req, res) {
-  if (req.session.userId == undefined) {
-    res.redirect("/login");
-  }
-  var userId = req.session.userId;
+  // if (req.session.userId == undefined) {
+  //   res.redirect("/login");
+  // }
+  // var userId = req.session.userId;
+  var userId = 6
 
   var data = {
     userName: "",
