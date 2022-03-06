@@ -592,11 +592,15 @@
       var sessionUserId = Number("<%= sessionUserId %>");
       console.log(sessionUserId);
       if (sessionUserId == 0) {
+        $('#member_Hello').text('請登入')
         $("#member").append('<li><a href="/login">登入／註冊</a></li>');
+
       } else {
+        $('#member_Hello').text('Hi，<%= sessionUserName %>')
         $("#member").append(
           `<li><a href="/profile">Hi,<%= sessionUserId %></a></li> <li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>`
         );
+
       }
       // navbar彈出視窗
     </script>

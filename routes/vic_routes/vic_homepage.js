@@ -29,8 +29,9 @@ router.get("/", function (req, res) {
       else {
         res.render("vic_homepage.ejs", {
           data1: results1,
-          messages: req.flash("success"),
+          messages: req.flash('success'),
           sessionUserId: req.session.userId,
+          sessionUserName: req.session.userName
         });
       }
     }

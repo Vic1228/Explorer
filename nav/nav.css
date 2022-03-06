@@ -24,7 +24,6 @@
 
   width: 100%;
   top: 0px;
-  z-index: 999;
   background-color: #ffffff;
 }
 /* 
@@ -40,6 +39,10 @@ nav {
   align-items: center;
   min-height: 8vh;
   font-family: sans-serif;
+}
+
+nav ul{
+  padding-left: 0px !important;
 }
 
 /*----- burger ----- */
@@ -83,7 +86,7 @@ nav {
 }
 
 header{
-  font-size: 16px;
+  font-size: 18px !important;
   font-weight: 600;
 }
 
@@ -91,16 +94,17 @@ header a:hover {
   color: gray;
 }
 
+.nav_links{
+  height: 8vh
+}
 .nav_links a {
   color: black;
   display: block;
   text-decoration: none;
-  text-align: center;
 
-  padding: 15px 10px;
+  padding: 3vh 10px;
 
 
-  min-width: 100px;
   min-width: max-content;
   height: 30px;
 
@@ -110,6 +114,10 @@ header a:hover {
 /* ------------------------- member ---------------------- */
 #nav_member {
   position: relative;
+}
+
+.nav_links_container{
+  padding-right: 0px;
 }
 
 #nav_member img{
