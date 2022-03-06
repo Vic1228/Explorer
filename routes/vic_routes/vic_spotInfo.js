@@ -66,6 +66,7 @@ router.get("/", function (req, res) {
                       data: results,
                       data2: results2,
                       data3: results3,
+                      sessionUserId: req.session.userId,
                       moment,
                     });
                   }
