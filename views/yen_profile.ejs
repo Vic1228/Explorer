@@ -24,100 +24,103 @@
 
 <body>
   <!-- NAV BAR -->
-  <div w3-include-HTML="../nav/nav.html"></div>
-  <!-- NAV BAR -->
-  <div style="height: 45vh;" class="ttop">
-    <h1 id="pagename">
-      <%= userName %>  準備要出遊了嗎～
-    </h1>
-  </div>
-  <div style="height: 5vh;"></div>
-  <div class="d-flex container">
-    <div class="col-2"></div>
-    <!-- 大頭貼 -->
-    <div class="col-3">
-      <div class="profile profile-name rounded-circle">
-        <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt="" onerror="myFunction()">
-        <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
-          <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
-        </form>
-        <button id="photobtn">
-          <label for="upload">
-            <img src="/public/img/yen/photo.png" alt="" style="width: 35px; height: 35px;">
-          </label>
-        </button>
-        <button form="aa" type="submit" id="photobtn2" style="display: none;">
-          <img src="/img/yen/save.png" alt="" style="width: 35px; height: 35px;">
-        </button>
-      </div>
+  <%- include("../nav/nav.html") %>
+    <!-- NAV BAR -->
+    <div style="height: 45vh;" class="ttop">
+      <h1 id="pagename">
+        <%= userName %> 準備要出遊了嗎～
+      </h1>
     </div>
-    <div class="col-1"></div>
-    <div class="col-3 apple">
-      <!-- 姓名-->
-      <div style="text-align: center;">
-        <!-- 輸入框 -->
-        <form action="/rename" method="POST" id="nameform" style="display: inline-block;">
-          <input type="text" name="name" id="name" value='<%= userName %>' readonly class="text-center" size="5"
-          style="font-size: 2rem;">
-        </form>
-        <!-- save -->
-        <button id="namebtn2" style="display: none;" class="btn" form="nameform">
-          <img id="nameimg2" src="/img/yen/save.png" alt="">
-        </button>
-        <!-- edit -->
-        <button id="namebtn" class="text-center btn">
-          <img id="nameimg" src="/img/yen/edit.png" alt="">
-        </button>
+    <div style="height: 5vh;"></div>
+    <div class="d-flex container">
+      <div class="col-2"></div>
+      <!-- 大頭貼 -->
+      <div class="col-3">
+        <div class="profile profile-name rounded-circle">
+          <img id="imagegrid" src='/public/img/yen/photo/<%= userId %>.png' class="img-thumbnail" alt=""
+            onerror="myFunction()">
+          <form action="/rephoto" method="post" enctype="multipart/form-data" id="aa">
+            <input type="file" name="upload" id="upload" accept="image/*" style="display: none;" />
+          </form>
+          <button id="photobtn">
+            <label for="upload">
+              <img src="/public/img/yen/photo.png" alt="" style="width: 35px; height: 35px;">
+            </label>
+          </button>
+          <button form="aa" type="submit" id="photobtn2" style="display: none;">
+            <img src="/img/yen/save.png" alt="" style="width: 35px; height: 35px;">
+          </button>
+        </div>
       </div>
+      <div class="col-1"></div>
+      <div class="col-3 apple">
+        <!-- 姓名-->
+        <div style="text-align: center;">
+          <!-- 輸入框 -->
+          <form action="/rename" method="POST" id="nameform" style="display: inline-block;">
+            <input type="text" name="name" id="name" value='<%= userName %>' readonly class="text-center" size="5"
+              style="font-size: 2rem;">
+          </form>
+          <!-- save -->
+          <button id="namebtn2" style="display: none;" class="btn" form="nameform">
+            <img id="nameimg2" src="/img/yen/save.png" alt="">
+          </button>
+          <!-- edit -->
+          <button id="namebtn" class="text-center btn">
+            <img id="nameimg" src="/img/yen/edit.png" alt="">
+          </button>
+        </div>
 
 
-      <!-- 電話 -->
-      <div style="text-align: center;">
-        <!-- 輸入框 -->
-        <form action="/rephone" method="POST" style="display: inline-block;" class="inputborder" id="telform">
-          <span>Phone：</span>
-          <input type="tel" style="font-size: 1.2rem;" name="tel" id="tel" class="text-center" readonly value='<%= userPhone %>' size="17">
-        </form>
-        <!-- save -->
-        <button id="telbtn2" style="display: none;" class="btn" form="telform">
-          <img id="telimg2" src="/img/yen/save.png" alt="">
-        </button>
-        <!-- edit -->
-        <button id="telbtn" class="text-center btn">
-          <img id="telimg" src="/img/yen/edit.png" alt="">
-        </button>
+        <!-- 電話 -->
+        <div style="text-align: center;">
+          <!-- 輸入框 -->
+          <form action="/rephone" method="POST" style="display: inline-block;" class="inputborder" id="telform">
+            <span>Phone：</span>
+            <input type="tel" style="font-size: 1.2rem;" name="tel" id="tel" class="text-center" readonly
+              value='<%= userPhone %>' size="17">
+          </form>
+          <!-- save -->
+          <button id="telbtn2" style="display: none;" class="btn" form="telform">
+            <img id="telimg2" src="/img/yen/save.png" alt="">
+          </button>
+          <!-- edit -->
+          <button id="telbtn" class="text-center btn">
+            <img id="telimg" src="/img/yen/edit.png" alt="">
+          </button>
+        </div>
+
+
+        <!-- 信箱 -->
+        <div style="text-align: center;">
+          <!-- 輸入框 -->
+          <form action="/remail" method="POST" style="display: inline-block;" class="inputborder" id="mailform">
+            <span>E-mail：</span>
+            <input type="mail" style="font-size: 1.2rem;" name="mail" id="mail" class="text-center " readonly
+              value='<%= userEmail %>' size="17">
+          </form>
+          <!-- save -->
+          <button id="mailbtn2" style="display: none;" class="btn" form="mailform">
+            <img id="mailbtn2" src="/img/yen/save.png" alt="">
+          </button>
+          <!-- edit -->
+          <button id="mailbtn" class="text-center btn">
+            <img id="mailimg" src="/img/yen/edit.png" alt="">
+          </button>
+        </div>
       </div>
-
-
-      <!-- 信箱 -->
-      <div style="text-align: center;">
-        <!-- 輸入框 -->
-        <form action="/remail" method="POST" style="display: inline-block;" class="inputborder" id="mailform">
-          <span>E-mail：</span>
-          <input type="mail" style="font-size: 1.2rem;" name="mail" id="mail" class="text-center " readonly value='<%= userEmail %>' size="17">
-        </form>
-        <!-- save -->
-        <button id="mailbtn2" style="display: none;" class="btn" form="mailform">
-          <img id="mailbtn2" src="/img/yen/save.png" alt="">
-        </button>
-        <!-- edit -->
-        <button id="mailbtn" class="text-center btn">
-          <img id="mailimg" src="/img/yen/edit.png" alt="">
-        </button>
-      </div>
+      <div class="col-2"></div>
     </div>
-    <div class="col-2"></div>
-  </div>
-  <div style="height: 5vh;"></div>
+    <div style="height: 5vh;"></div>
 
-  <hr class="m-auto w-75">
+    <hr class="m-auto w-75">
 
-  <div style="height: 5vh;"></div>
-  <!-- 能力值 -->
-  <div class="container d-flex h-100" style="padding-top: 2vh;">
-    <div class="col-2"></div>
-    <div class="col-3">
-      <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
+    <div style="height: 5vh;"></div>
+    <!-- 能力值 -->
+    <div class="container d-flex h-100" style="padding-top: 2vh;">
+      <div class="col-2"></div>
+      <div class="col-3">
+        <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
         <!-- 能力表 -->
         <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
         <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
@@ -125,12 +128,12 @@
             <%= commentCount%>
           </span>
         </p>
-    </div>
+      </div>
 
-    <div class="col-1"></div>
+      <div class="col-1"></div>
 
-    <!-- 冒險經歷 -->
-    <div class="col-4">
+      <!-- 冒險經歷 -->
+      <div class="col-4">
         <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷
           <!-- edit -->
           <button id="textbtn" type="submit" class="btn">
@@ -140,113 +143,122 @@
           <button id="textbtn2" style="display: none;" class="btn" type="submit" form="textarea">
             <img id="textbtn2" src="/img/yen/save.png" alt="">
           </button>
-        </h5>
-      <!-- 輸入框 -->
-      <div style="margin-top: 2vh;">
-        <form action="/retext" method="POST" id="textarea">
-          <textarea name="text" id="text" cols="46" rows="12" readonly><%= userExp %></textarea>
-        </form>
+          </h5>
+          <!-- 輸入框 -->
+          <div style="margin-top: 2vh;">
+            <form action="/retext" method="POST" id="textarea">
+              <textarea name="text" id="text" cols="46" rows="12" readonly><%= userExp %></textarea>
+            </form>
+          </div>
+          <div>
+            <span>※此處將同步更新至個人資料</span>
+          </div>
       </div>
-      <div>
-        <span>※此處將同步更新至個人資料</span>
-      </div>
+      <!-- <div class="col-1"></div> -->
     </div>
-    <!-- <div class="col-1"></div> -->
-  </div>
-  </form>
+    </form>
 
 
 
-  <!-- FOOTER -->
-  <div w3-include-HTML="/footer.html" class="footerDistance" style="margin-top: 0;"></div>
-  <!-- position: fixed;bottom: 0; -->
-  <!-- FOOTER -->
-  <script>
-    w3.includeHTML();
-  </script>
-  <script src="./yen2.js"></script>
-  <script>
-    function bbb (){
-      if(true){}
-      alert
-    }
+    <!-- FOOTER -->
+    <div w3-include-HTML="/footer.html" class="footerDistance" style="margin-top: 0;"></div>
+    <!-- position: fixed;bottom: 0; -->
+    <!-- FOOTER -->
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="./yen2.js"></script>
+    <script>
+      var sessionUserId = Number('<%= sessionUserId %>')
+      console.log(sessionUserId);
+      if (sessionUserId == 0) {
+        $('#member').append(
+          '<li><a href="/login">登入／註冊</a></li>'
+        )
+      }
+      else {
+        $('#member').append(
+          '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+        )
+      }
 
 
-    function myFunction(){
-      alert('記得上傳照片唷！');
-      // document.getElementById('imagegrid').setAttribute('src')='/public/img/yen/photo/代替.jpg'
-      let df = document.getElementById('imagegrid').setAttribute('src','/img/yen/photo/代替.jpg')
-      console.log(df)
-    };
-    const data = {
-      labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
-      datasets: [
-        {
-          label: '<%= userName %>',
-          data: ['<%= leadership %>', '<%= teamwork %>', '<%= strength%>', '<%= heal %>', '<%= survival%>', '<%= direction %>'],
-          fill: true,
-          backgroundColor: "rgb(0, 108, 155, 0.2)",
-          borderColor: "rgb(0, 108, 155, 0.1)",
-          pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
-          pointBorderColor: "rgb(0, 108, 155)",
-          pointHoverBackgroundColor: "rgb(0, 108, 155)",
-          pointHoverBorderColor: "rgb(0, 108, 155)",
-          pointRadius: 3,
-        },
-      ],
-    };
-    const config = {
-      type: "radar",
-      data: data,
-      options: {
-        plugins: {
-          legend: {
-            display: false,
+
+      function myFunction() {
+        alert('記得上傳照片唷！');
+        // document.getElementById('imagegrid').setAttribute('src')='/public/img/yen/photo/代替.jpg'
+        let df = document.getElementById('imagegrid').setAttribute('src', '/img/yen/photo/代替.jpg')
+        console.log(df)
+      };
+      const data = {
+        labels: ["領導力", "醫術", "方向感", "團結", "體力", "求生力"],
+        datasets: [
+          {
+            label: '<%= userName %>',
+            data: ['<%= leadership %>', '<%= teamwork %>', '<%= strength%>', '<%= heal %>', '<%= survival%>', '<%= direction %>'],
+            fill: true,
+            backgroundColor: "rgb(0, 108, 155, 0.2)",
+            borderColor: "rgb(0, 108, 155, 0.1)",
+            pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
+            pointBorderColor: "rgb(0, 108, 155)",
+            pointHoverBackgroundColor: "rgb(0, 108, 155)",
+            pointHoverBorderColor: "rgb(0, 108, 155)",
+            pointRadius: 3,
           },
-          tooltip: {
-            displayColors: false,
-            caretSize: 10,
-            backgroundColor: "rgb(0, 108, 155)",
-          },
-        },
-        elements: {
-          line: {
-            borderWidth: 1
-          },
-        },
-        scale: {
-          beginAtZero: true,
-          min: 0,
-          max: 5,
-          ticks: {
-            stepSize: 1,
-            font: {
-              size: 0,
-            },
-          },
-        },
-        scales: {
-          r: {
-            pointLabels: {
-              font: {
-                size: 20,
-              },
-              color: "rgb(0, 108, 155)"
-            },
-            grid: {
-              // 框線顏色
-              color: "rgb(0, 108, 155,0.4)",
-            },
-            ticks: {
+        ],
+      };
+      const config = {
+        type: "radar",
+        data: data,
+        options: {
+          plugins: {
+            legend: {
               display: false,
             },
+            tooltip: {
+              displayColors: false,
+              caretSize: 10,
+              backgroundColor: "rgb(0, 108, 155)",
+            },
+          },
+          elements: {
+            line: {
+              borderWidth: 1
+            },
+          },
+          scale: {
+            beginAtZero: true,
+            min: 0,
+            max: 5,
+            ticks: {
+              stepSize: 1,
+              font: {
+                size: 0,
+              },
+            },
+          },
+          scales: {
+            r: {
+              pointLabels: {
+                font: {
+                  size: 20,
+                },
+                color: "rgb(0, 108, 155)"
+              },
+              grid: {
+                // 框線顏色
+                color: "rgb(0, 108, 155,0.4)",
+              },
+              ticks: {
+                display: false,
+              },
+            },
           },
         },
-      },
-    };
-    const myChart = new Chart(document.getElementById("myChart"), config);
-  </script>
-  <script src="./nav.js"></script>
+      };
+      const myChart = new Chart(document.getElementById("myChart"), config);
+    </script>
+    <script src="./nav.js"></script>
 
 
 </body>
