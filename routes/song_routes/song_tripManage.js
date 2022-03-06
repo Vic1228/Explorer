@@ -36,7 +36,11 @@ song_tripManage_router.post("/", function (req, res) {
 });
 
 song_tripManage_router.get("/", function (req, res) {
-  var userId = 1;
+  // if (req.session.userId == undefined) {
+  //   res.redirect("/login");
+  // }
+  // var userId = req.session.userId;
+  var userId = 6
 
   var data = {
     userName: "",
@@ -59,21 +63,17 @@ song_tripManage_router.get("/", function (req, res) {
     tripNotes: "",
   };
 
-  conn
-    .queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
-    .then((result0) => {
-      if (result0.length > 0) {
-        data.userName = result0[0].userName;
-        var sql1 = `SELECT TM.positionState, T.tripId, T.tripName 
+  conn.queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
+    .then((result0) => {  // 1. 指派 data.userName。     2. 查詢user create/join 的trip，若無，return空陣列。
+      data.userName = result0[0].userName;
+      var sql1 = `SELECT TM.positionState, T.tripId, T.tripName 
                         FROM tripmembers AS TM 
                         INNER JOIN trips AS T ON  TM.tripId=T.tripId 
-                        WHERE TM.userId = ${userId} 
+                        WHERE TM.userId = ${userId}
                         ORDER BY positionState DESC`;
-        return conn.queryAsync(sql1);
-      } else return;
+      return conn.queryAsync(sql1);
     })
-    .then((result1) => {
-      // function
+    .then((result1) => {  // 1. 指派 data.create/joinTripList，並指定selected trip。  2. 查詢 selTrip 之 tripMember。若無selTrip，return。
       if (result1.length > 0) {
         result1.forEach((item) => {
           if (item.positionState == 2) {
@@ -91,33 +91,36 @@ song_tripManage_router.get("/", function (req, res) {
 
         var sql2 = "";
         if (data.createTripList.length > 0) {
+          data.selectedTrip = {
+            tripId: data.createTripList[0].tripId,
+            tripName: data.createTripList[0].tripName
+          }
           sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount, T.tripName
                         FROM tripmembers AS TM 
                         INNER JOIN users AS U ON TM.userId=U.userId 
                         INNER JOIN userstats AS US ON TM.userId=US.userId
                         INNER JOIN trips AS T ON TM.tripId=T.tripId
-                        WHERE TM.tripId=${data.createTripList[0].tripId}
+                        WHERE TM.tripId=${data.selectedTrip.tripId}
                         ORDER BY TM.positionState DESC`;
-        } else if (data.joinTripList.length > 0) {
+        }
+        else if (data.joinTripList.length > 0) {
+          data.selectedTrip = {
+            tripId: data.joinTripList[0].tripId,
+            tripName: data.joinTripList[0].tripName
+          }
           sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount
                         FROM tripmembers AS TM 
                         INNER JOIN users AS U ON TM.userId=U.userId 
                         INNER JOIN userstats AS US ON TM.userId=US.userId
-                        WHERE TM.tripId=${data.joinTripList[0].tripId}
+                        WHERE TM.tripId=${data.selectedTrip.tripId}
                         ORDER BY TM.positionState DESC`;
-        } else {
-          return;
         }
-
         return conn.queryAsync(sql2);
-      } else return;
+      }
+      else return;
     })
-    .then((result2) => {
-      if (result2.length > 0) {
-        data.selectedTrip = {
-          tripName: result2[0].tripName,
-          tripId: result2[0].tripId,
-        };
+    .then((result2) => {  // 1. 指派 data.tripMember。   2. 查詢 selTrip 之公共裝備。若無selTrip，return。
+      if (result2 != undefined) {
         result2.forEach((item) => {
           data.tripMember.push({
             name: item.userName,
@@ -134,18 +137,14 @@ song_tripManage_router.get("/", function (req, res) {
             },
           });
         });
-
-        if (result2.length == 0) {
-          return;
-        }
-
-        var sql3 = `SELECT * FROM shareditems where tripId = ${result2[0].tripId} AND itemCount IS NOT NULL ORDER BY sharedItem`;
+        var sql3 = `SELECT * FROM shareditems where tripId = ${data.selectedTrip.tripId} AND itemCount IS NOT NULL ORDER BY sharedItem`;
         // var sql3 = `SELECT DISTINCT sharedItem FROM shareditems where tripId = ${result2[0].tripId} AND itemCount IS NOT NULL ORDER BY sharedItem`;
         return conn.queryAsync(sql3);
-      } else return;
+      }
+      else return;
     })
-    .then((result3) => {
-      if (result3.length > 0) {
+    .then((result3) => {  // 1. 指派 data.公共裝備。      2. 查詢 selTrip 之私人裝備。若無selTrip，return。
+      if (result3 != undefined) {
         for (let i = 0; i < result3.length; i++) {
           if (i == 0 || result3[i].sharedItem != result3[i - 1].sharedItem) {
             data.sharedItems.push({
@@ -161,15 +160,13 @@ song_tripManage_router.get("/", function (req, res) {
             });
           }
         }
-      } else {
-        return;
+        var sql4 = `SELECT * FROM privateitems WHERE tripId = ${data.selectedTrip.tripId}`;
+        return conn.queryAsync(sql4);
       }
-
-      var sql4 = `SELECT * FROM privateitems WHERE tripId = ${result3[0].tripId}`;
-      return conn.queryAsync(sql4);
+      else return;
     })
-    .then((result4) => {
-      if (result4.length > 0) {
+    .then((result4) => {  // 1. 指派 data.私人裝備。      2. 查詢 selTrip 之行程詳情。若無selTrip，return。
+      if (result4 != undefined) {
         result4.forEach((item) => {
           data.privateItems.push({
             privateItem: item.privateItem,
@@ -177,12 +174,13 @@ song_tripManage_router.get("/", function (req, res) {
           });
         });
 
-        var sql5 = `SELECT * FROM schedule WHERE tripId = ${result4[0].tripId} ORDER BY day ASC ,startTime ASC  `;
+        var sql5 = `SELECT * FROM schedule WHERE tripId = ${data.selectedTrip.tripId} ORDER BY day ASC ,startTime ASC  `;
         return conn.queryAsync(sql5);
-      } else return;
+      }
+      else return;
     })
-    .then((result5) => {
-      if (result5.length > 0) {
+    .then((result5) => {  // 1. 指派 data.行程詳情。      2. 查詢 selTrip 之注意事項。若無selTrip，return。
+      if (result5 != undefined) {
         for (let i = 0; i < result5.length; i++) {
           if (i == 0 || result5[i].day != result5[i - 1].day) {
             data.schedule.push({
@@ -207,24 +205,24 @@ song_tripManage_router.get("/", function (req, res) {
             });
           }
         }
-        var sql6 = `SELECT tripId, tripDesc FROM trips WHERE tripId = ${result5[0].tripId}`;
+        var sql6 = `SELECT tripId, tripDesc FROM trips WHERE tripId = ${data.selectedTrip.tripId}`;
         return conn.queryAsync(sql6);
-      } else return;
+      } 
+      else return;
     })
-    .then((result6) => {
-      if (result6.length > 0) {
+    .then((result6) => {  // 1. 指派 data.注意事項。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
+      if (result6 != undefined) {
         data.tripNotes = result6[0].tripDesc;
-        var sql7 = `SELECT tripId, COUNT(userId) AS memberCount FROM tripMembers WHERE tripId = ${result6[0].tripId} AND positionState > 0`;
+        var sql7 = `SELECT tripId, COUNT(userId) AS memberCount FROM tripMembers WHERE tripId = ${data.selectedTrip.tripId} AND positionState > 0`;
         return conn.queryAsync(sql7);
-      } else return;
+      } 
+      else return;
     })
-    .then((result7) => {
-      console.log(data);
-      if (result7.length > 0) {
+    .then((result7) => {  // 1. 指派 data.團員人數。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
+      if (result7 != undefined) {
         data.memberCount = result7[0].memberCount;
-        // console.log(data)
-        return res.render("song_tripManage.ejs", data);
-      } else return res.render("song_tripManage.ejs", data);
+      } 
+      return res.render("song_tripManage.ejs", data);
     })
     .catch((err) => console.log(err));
 });

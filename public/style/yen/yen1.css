@@ -34,7 +34,7 @@
 
 .maincard2 table {
     font-size: 1.2em;
-    width: 50%;
+    width: 45%;
 }
 
 #tata {}
@@ -43,66 +43,33 @@
     margin-left: 2vw;
 }
 
-.maincard20 .frt {
+.maincard2 .frt {
     width: 80px;
 }
 
-.maincard20 .sec {
-    width: 160px;
+.maincard2 .sec {
+    width: 140px;
 }
 
-.maincard20 .thr {
+.maincard2 .thr {
     text-align: end;
 }
 
-
 /* 彈跳視窗 */
-.light {
-    display: none;
-    position: fixed;
-    top: 18%;
-    left: 30%;
-    right: 30%;
-    background-color: white;
-    z-index: 1;
-    border-radius: 20px;
-    padding-bottom: 10px;
-    box-shadow: 2px 3px 7px #464646;
-}
-
-.closebt {
-    display: inline;
-}
-
-.light h1 {
-    text-align: center;
-}
-
-.light hr {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.light table {
-    border-collapse: collapse;
+.modal-body table {
     margin: auto;
     font-size: 1.3em;
+    width: 65%;
 }
 
+.modal-body .frt {}
 
-.light .frt {
-    width: 60px;
+.modal-body .sec {}
+
+.modal-body .thr {
+    text-align: end;
 }
 
-.light .sec {
-    width: 200px;
-}
-
-.light p {
-    margin-top: 30px;
-    text-align: center;
-}
 
 /* hr */
 hr.container {
@@ -173,10 +140,4 @@ hr.container {
 .card12 td.thr {
     text-align: end;
     width: 70px;
-}
-
-.card12 p {
-    display: inline-block;
-    padding-left: 40xp;
-    font-size: 1.2em;
 }

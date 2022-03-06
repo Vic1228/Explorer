@@ -15,10 +15,13 @@ const { NULL } = require("mysql/lib/protocol/constants/types");
 // ==================================
 // 查詢users表的資料
 
-
-var userProfile;
-var userStats;
+var userProfile, userStats, zlspotId, x, y;
 lu_createTrip_router.get("/createTrip", function (req, res) {
+  // 政霖 id , x , y
+  zlspotId = req.query.id;
+  x = req.query.x;
+  y = req.query.y;
+
   var userId = req.session.userId;
   if (req.session.userId == undefined) {
     res.redirect("/login");
@@ -36,10 +39,7 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
       if (err) throw err;
       userStats = results2[0];
       var obj = Object.assign(userStats, userProfile);
-      // if (obj.userStats == NULL || obj.userStats <= 2) {
-      //   obj.userStatst = 0;
-      // };
-      // 渲染到ejs模板
+      //  TODO: 判斷有沒有大於3
       res.render("lu_createTrip", obj);
     });
   });
@@ -51,34 +51,30 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
 // ==================================
 
 
-
-
 // 傳送表單的資料進資料庫
 
 lu_createTrip_router.post("/response", function (req, res) {
-  console.log(req.session);
   if (req.session.userId == undefined) {
     res.redirect("/login");
   } else {
   // input同name的 分別存入變數
+  let userId = req.session.userId;
   let trip = req.body.trip;
   let schedule = req.body.schedule;
   let private = req.body.private;
-  let shared = req.body.shared;
-  // let spotId = JSON.parse(localStorage.getItem("lat")).spotId;
+    let shared = req.body.shared;
+    // 碩呈的local storage
   let spotId = req.body.spotid;
-  console.log(spotId);
 
   //  trip
-  // 查詢舊的tripId存入變數
-
   var tripId;
   let tripSQL = `INSERT INTO trips (tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("${trip[0]}", "${spotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
-
+  VALUES ("${trip[0]}", "${zlspotId||spotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  
   connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
-
+    
+    // 查詢trip的tripId存入變數
     connection.query(
       "SELECT * FROM trips",
       function (error, results) {
@@ -103,13 +99,20 @@ lu_createTrip_router.post("/response", function (req, res) {
                       // shared
                       for (var k = 0; k < shared.length; k += 2) {
                       let sharedSQL = `INSERT INTO sharedItems (tripId, userId, sharedItem, itemCount) 
-                                  VALUES ("${tripId}", "1", "${shared[k + 0]}", "${shared[k + 1]}")`;
+                                  VALUES ("${tripId}", "${userId}", "${shared[k + 0]}", "${shared[k + 1]}")`;
                         connection.query(sharedSQL, (err, result, fields) => {
+
+                          if (k == shared.length) {
+                            // tripmember
+                            let memberSQL = `INSERT INTO tripmembers (tripId, userId, positionState) 
+                                  VALUES ("${tripId}", "${userId}", 2)`;
+                            connection.query(memberSQL, (err, result, fields) => { })
+                          }
                         });
                       }    
-                    }
-                  });
                 } 
+              });
+            } 
             }
           });
         }

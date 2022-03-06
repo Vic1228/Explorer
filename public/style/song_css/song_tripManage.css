@@ -6,7 +6,7 @@
      /* border: 3px solid tomato;   */
 }
 
-a{
+#section1 a{
     color:rgb(28, 113, 241) !important;
     text-decoration: none !important;
 }
@@ -107,7 +107,8 @@ img[class*="Icon"]{
     border: 1px solid rgb(230, 230, 230);
     border-top: 0;
     padding:20px 10px;
-    box-shadow: 10px 10px;
+    box-shadow:  13px 13px 26px #e6e6e6,
+    -13px -13px 26px #ffffff;
 
 }
 
@@ -116,9 +117,10 @@ img[class*="Icon"]{
     /* border:1px solid rgb(230, 230, 230); */
     border-radius: 10px 10px 0 0 ;
     border: 1px solid rgb(230,230,230);
-    /* background-color: linear-gradient(rgb(255, 255, 255), rgb(230,230,230)); */
-    height:80vh;
-    min-height:50vh;
+    background: #ffffff;
+    box-shadow: inset 10px 10px 20px #e6e6e6,
+    inset -10px -10px 20px #ffffff;
+    height:60vh;
 
 }
 
@@ -206,13 +208,15 @@ table{
 
 th,td{
     text-align: center !important;
-    padding: 6px 0px;
+    min-width: 60px;
+    padding-top: 6px;
 }
 
 .tableRow{
     font-weight: 500;
     font-size: 18px;
 }
+
 
 #tripMember .tableTitle:not(:first-of-type){
     margin-top: 6vh;
