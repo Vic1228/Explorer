@@ -30,7 +30,8 @@ router.get("/", function (req, res) {
         res.render("vic_homepage.ejs", { 
           data1: results1,
           messages: req.flash('success'),
-          sessionUserId: req.session.userId
+          sessionUserId: req.session.userId,
+          sessionUserName: req.session.userName
         });
       }
     }

@@ -118,6 +118,7 @@ app.post("/login", function (req, res) {
     } else {
       let id = result[0].userId;
       req.session.userId = id;
+      req.session.userName = result[0].userName;
       // console.log("登入成功!");
       req.flash("success", "登入成功!!");
       res.redirect("/");
