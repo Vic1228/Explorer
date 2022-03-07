@@ -422,40 +422,6 @@
         const infowindow = new google.maps.InfoWindow();
         const service = new google.maps.places.PlacesService(map);
 
-        // Location 1
-        // const request = {
-        //   placeId: "ChIJQwsNxDdgaDQRzDQVzlSrgIE",
-        //   fields: [
-        //     "name",
-        //     "formatted_address",
-        //     "place_id",
-        //     "geometry",
-        //     "rating",
-        //     "user_ratings_total",
-        //   ],
-        // };
-        // service.getDetails(request, function (place, status) {
-        //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-        //     //   map.setCenter(place.geometry.location)
-        //     const marker = new google.maps.Marker({
-        //       position: place.geometry.location,
-        //       map: map,
-        //     });
-        //     marker.addListener("click", function () {
-        //       infowindow.open(map, marker);
-        //       infowindow.setContent(
-        //         "<div class='infowindow-container'>" +
-        //         "<div class='inner'><h5>" +
-        //         "<span style='margin-left:7rem'>" +
-        //         "雪山</span>" +
-        //         "</p><p style='margin-left:0.5rem'>地址:" +
-        //         place.formatted_address +
-        //         "</p>" +
-        //         "</div></div>"
-        //       );
-        //     });
-        //   }
-        // });
         const req1 = {
           placeId: "ChIJH0OLXIhfaDQRe2M3VHul_nY",
           fields: [

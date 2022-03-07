@@ -64,8 +64,6 @@ lu_createTrip_router.post("/response", function (req, res) {
   let schedule = req.body.schedule;
   let private = req.body.private;
   let shared = req.body.shared;
-  // 碩呈的local storage
-  let spotId = req.body.spotid;
 
   //  trip
   var tripId;
