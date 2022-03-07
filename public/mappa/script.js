@@ -496,7 +496,7 @@ function createItem5() {
 
 function createItem6() {
 //   localStorage.setItem("lat", JSON.stringify(mapData6));
-location.href = '/createTrip?id=6&x=24.086616211283214&y=121.16468774454114';
+location.href = '/createTrip?id=6&x=23.053576532492254&y=121.16468774454114';
 }
 
 function createItem7() {
