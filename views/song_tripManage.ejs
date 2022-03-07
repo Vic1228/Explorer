@@ -740,11 +740,8 @@
 
 
 
-            $('.okbtn').click(function () {
+            $('.okbtn').click(function () {     
                 var changes = $(this).closest(".modal").find('input').val();
-
-                console.log(changes)
-
                 $.ajax({
                     type: 'put',
                     url: '/tripManage',
@@ -755,8 +752,15 @@
                         changes: `${changes}`,
                     },
                     success: function (apple) {
-                        //console.log(apple);
-                        console.log('PUT request completed!!!');
+                        var origin = $('#selTripName').text().trim();
+                        $('#tripSelContainer').find('a').each(function(){
+                            let tripSelListName = $(this).text().trim();
+                            if( tripSelListName == origin){
+                                $(this).text(changes)
+                                console.log(this);
+                                return;
+                            }
+                        })
                         $('#selTripName').html(`${changes}<img class="edit" data-toggle="modal" data-target="#tripNameEdit"
                                 src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">`);
 
