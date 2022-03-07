@@ -209,7 +209,7 @@ table{
 th,td{
     text-align: center !important;
     min-width: 60px;
-    padding-top: 6px;
+    padding-top: 2.5vh;
 }
 
 .tableRow{
@@ -233,7 +233,7 @@ th,td{
 /* ------裝備清單----- */
 #itemList td {
     padding:6px 0px
-}
+} 
 
 #itemList li {
     padding:3px 0px
