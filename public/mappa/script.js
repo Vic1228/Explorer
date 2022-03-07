@@ -474,7 +474,8 @@ const mapData10 = {
 
 //點擊按鈕儲存資訊
 function createItem() {
-  localStorage.setItem("lat", JSON.stringify(mapData));
+  // localStorage.setItem("lat", JSON.stringify(mapData1));
+  location.href = '/createTrip?id=1&x=24.390898656065392&y=121.29828430484407';
 }
 function createItem2() {
   localStorage.setItem("lat", JSON.stringify(mapData2));

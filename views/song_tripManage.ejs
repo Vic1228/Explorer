@@ -38,439 +38,437 @@
 <body>
     <!-- NAV BAR -->
     <%- include('../nav/nav.html') %>
-    <!-- NAV BAR -->
-    <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
+        <!-- NAV BAR -->
+        <!-- ↓ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↓ -->
 
-    <div id="section0">
-        <img src="../public/img/song_img/viewtest.png" alt="">
-    </div>
+        <div id="section0">
+            <img src="../public/img/song_img/viewtest.png" alt="">
+        </div>
 
-    <div id="section1" class="container-fluid mx-auto">
-        <div class="row">
-            <!------- Left: trip select Start ------->
-            <div id="tripSelContainer" class="col-3">
-                <div id="createdTripContainer">
-                    <h4 data-toggle="collapse" data-target="#createdTripList">
-                        發起的行程
-                        <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
-                    </h4>
-                    <hr class="divider">
-                    <ul id="createTripList" class="collapse show">
-                        <% for(let i of createTripList){ %>
-                            <li><a href="">
-                                    <%= i.tripName %>
-                                </a> </li>
-                            <% } %>
-                    </ul>
+        <div id="section1" class="container-fluid mx-auto">
+            <div class="row">
+                <!------- Left: trip select Start ------->
+                <div id="tripSelContainer" class="col-3">
+                    <div id="createdTripContainer">
+                        <h4 data-toggle="collapse" data-target="#createdTripList">
+                            發起的行程
+                            <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                        </h4>
+                        <hr class="divider">
+                        <ul id="createTripList" class="collapse show">
+                            <% for(let i of createTripList){ %>
+                                <li><a href="">
+                                        <%= i.tripName %>
+                                    </a> </li>
+                                <% } %>
+                        </ul>
+                    </div>
+                    <div id="joinedTripContainer">
+                        <h4 data-toggle="collapse" data-target="#joinedTripList">參加的行程
+                            <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                        </h4>
+                        <hr class="divider">
+                        <ul id="joinedTripList" class="collapse show">
+                            <% for(let i of joinTripList){ %>
+                                <li><a href="">
+                                        <%= i.tripName %>
+                                    </a></li>
+                                <% } %>
+                        </ul>
+                    </div>
                 </div>
-                <div id="joinedTripContainer">
-                    <h4 data-toggle="collapse" data-target="#joinedTripList">參加的行程
-                        <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
-                    </h4>
-                    <hr class="divider">
-                    <ul id="joinedTripList" class="collapse show">
-                        <% for(let i of joinTripList){ %>
-                            <li><a href="">
-                                    <%= i.tripName %>
-                                </a></li>
-                            <% } %>
-                    </ul>
-                </div>
-            </div>
-            <!------- Left: trip select End ------->
+                <!------- Left: trip select End ------->
 
-            <!------- Middle: management Start ------->
-            <div id="managementContainer" class="col-6">
-                <h1 id="selTripName">
-                    <%= selectedTrip.tripName %>
-                        <img class="edit" data-toggle="modal" data-target="#tripNameEdit"
-                            src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">
-                </h1>
-                <div>
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#textBoardContainer">冒險團留言板</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tripMember">團員／待審核</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#itemList">裝備清單</a>
-                        </li>
-                    </ul>
-                    <div id="tripManageTab" class="tab-content">
-                        <div id="textBoardContainer" class="container tab-pane active">
-                            <div id="textBoard"></div>
-                            <div>
-                                <form id="textSendContainer" action="">
-                                    <label class="col-1" id="uploadImgContainer">
-                                        <input id="uploadImg" class="inputFile uploadImg" type="file"
-                                            accept=".png, .jpg, .jpeg" multiple>
-                                        <img class="uploadImg d-block" src="../public/img/song_img/uploadImg.png"
-                                            alt="">
-                                    </label>
-                                    <div class="col-10 d-flex">
-                                        <div id="fileCount">
-                                            <img id="fileCountCancel" class="cancelIcon"
-                                                src="../public/img/song_img/cancel.png" alt="">
-                                            <span></span>
+                <!------- Middle: management Start ------->
+                <div id="managementContainer" class="col-6">
+                    <h1 id="selTripName">
+                        <%= selectedTrip.tripName %>
+                            <img class="edit" data-toggle="modal" data-target="#tripNameEdit"
+                                src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">
+                    </h1>
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#textBoardContainer">冒險團留言板</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tripMember">團員／待審核</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#itemList">裝備清單</a>
+                            </li>
+                        </ul>
+                        <div id="tripManageTab" class="tab-content">
+                            <div id="textBoardContainer" class="container tab-pane active">
+                                <div id="textBoard"></div>
+                                <div>
+                                    <form id="textSendContainer" action="">
+                                        <label class="col-1" id="uploadImgContainer">
+                                            <input id="uploadImg" class="inputFile uploadImg" type="file"
+                                                accept=".png, .jpg, .jpeg" multiple>
+                                            <img class="uploadImg d-block" src="../public/img/song_img/uploadImg.png"
+                                                alt="">
+                                        </label>
+                                        <div class="col-10 d-flex">
+                                            <div id="fileCount">
+                                                <img id="fileCountCancel" class="cancelIcon"
+                                                    src="../public/img/song_img/cancel.png" alt="">
+                                                <span></span>
+                                            </div>
+                                            <input id="chatroomText" class="px-2" type="text" placeholder="留言...">
                                         </div>
-                                        <input id="chatroomText" class="px-2" type="text" placeholder="留言...">
-                                    </div>
-                                    <label class="col-1">
-                                        <input class="d-none" type="button" value="submit">
-                                        <img class="d-block" class="sendMessageIcon"
-                                            src="../public/img/song_img/send-message.png" alt="">
-                                    </label>
-                                </form>
+                                        <label class="col-1">
+                                            <input class="d-none" type="button" value="submit">
+                                            <img class="d-block" class="sendMessageIcon"
+                                                src="../public/img/song_img/send-message.png" alt="">
+                                        </label>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div id="tripMember" class="container tab-pane fade">
-                            <h4 class="tableTitle" data-toggle="collapse" data-target="#joinedMemberContainer">
-                                已參加團員
-                                <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
-                            </h4>
-                            <div id="joinedMemberContainer" class="collapse show">
-                                <table id="joinedMember">
-                                    <tr class="tableRow">
-                                        <th>名字</th>
-                                        <th>提供之公共裝備</th>
-                                        <th>綜合評分</th>
-                                        <th>我要評分&#8194</th>
-                                    </tr>
-                                    <% for (let x of tripMember){ %>
-                                        <% if ( x. positionState> 0) {%>
-                                            <tr>
-                                                <td>
-                                                    <%= x.name %>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
-                                                        <ul class="d-none">
-                                                            <% for(let i of sharedItems){ %>
-                                                                <% for(let j of i.itemCount){ %>
-                                                                    <% if(j.userId==x.userId ){ %>
-                                                                        <li>
-                                                                            <%= i.sharedItem%> &#8194&#8194&#8194 <%=
-                                                                                    j.itemCount %>
-                                                                        </li>
-                                                                        <% } %>
-                                                                            <% } %>
-                                                                                <% } %>
-                                                        </ul>
-                                                    </a>
-                                                </td>
-                                                <% var statAvg=Math.floor( (x.stat.leadership + x.stat.teamwork +
-                                                    x.stat.strength + x.stat.heal + x.stat.survival +
-                                                    x.stat.direction)/6*10)/10; %>
-                                                    <td><a href="#">
-                                                            <%= statAvg %>
-                                                        </a></td>
-                                                    <% if(x.name==userName){ %>
-                                                        <td> --- </td>
-                                                        <% } else { %>
-                                                            <td><a href="#" data-toggle="modal"
-                                                                    data-target="#statComment">我要評分</a></td>
-                                                            <% } %>
-                                            </tr>
-                                            <% } %>
-                                                <% } %>
-
-                                </table>
-                            </div>
-                            <h4 class="tableTitle" data-toggle="collapse" data-target="#applyMemberContainer">申請中 <img
-                                    class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
-                            </h4>
-                            <div id="applyMemberContainer" class="collapse show">
-                                <table>
-                                    <tr class="tableRow">
-                                        <th>名字</th>
-                                        <th>提供之公共裝備</th>
-                                        <th>綜合評分</th>
-                                        <th>同意/拒絕</th>
-                                    </tr>
-                                    <% for (let x of tripMember){ %>
-                                        <% if ( x. positionState==0) {%>
-                                            <tr>
-                                                <td>
-                                                    <%= x.name %>
-
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
-                                                        <ul class="d-none">
-                                                            <% for(let i of sharedItems){ %>
-                                                                <% for(let j of i.itemCount){ %>
-                                                                    <% if(j.userId==x.userId && j.itemCount>0 ){ %>
-                                                                        <li>
-                                                                            <%= i.sharedItem%> &#8194&#8194&#8194 <%=
-                                                                                    j.itemCount%>
-                                                                        </li>
-                                                                        <% } %>
-                                                                            <% } %>
-                                                                                <% } %>
-                                                        </ul>
-                                                    </a>
-                                                </td>
-                                                <% var statAvg=Math.floor( (x.stat.leadership + x.stat.teamwork +
-                                                    x.stat.strength + x.stat.heal + x.stat.survival +
-                                                    x.stat.direction)/6*10)/10; %>
-                                                    <td><a href="#">
-                                                            <%= statAvg %>
-                                                        </a></td>
+                            <div id="tripMember" class="container tab-pane fade">
+                                <h4 class="tableTitle" data-toggle="collapse" data-target="#joinedMemberContainer">
+                                    已參加團員
+                                    <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                                </h4>
+                                <div id="joinedMemberContainer" class="collapse show">
+                                    <table id="joinedMember">
+                                        <tr class="tableRow">
+                                            <th>名字</th>
+                                            <th>提供之公共裝備</th>
+                                            <th>綜合評分</th>
+                                            <th>我要評分&#8194</th>
+                                        </tr>
+                                        <% for (let x of tripMember){ %>
+                                            <% if ( x. positionState> 0) {%>
+                                                <tr>
                                                     <td>
-                                                        <div class="checkCancelContainer">
-                                                            <img class="checkIcon" type="image"
-                                                                src="../public/img/song_img/check.png"
-                                                                data-toggle="modal" data-target="#memberApplyConfirm">
-                                                            <img class="cancelIcon" type="image"
-                                                                src="../public/img/song_img/cancel.png"
-                                                                data-toggle="modal" data-target="#memberApplyReject">
-                                                        </div>
+                                                        <%= x.name %>
                                                     </td>
-                                            </tr>
-                                            <% } %>
-                                                <% } %>
-                                </table>
-                            </div>
-                        </div>
-                        <div id="itemList" class="container tab-pane fade">
-
-                            <h4 class="tableTitle">公共裝備（團員人數： <%= memberCount %> 人）
-                                    <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
-                                        data-target="#publicItemListEdit" title="限發起人編輯">
-                            </h4>
-                            <table>
-                                <tr class="tableRow">
-                                    <th>裝備名稱</th>
-                                    <th>已提供總數</th>
-                                    <th>提供人 ／ 數量</th>
-                                    <th>我要提供</th>
-                                </tr>
-                                <% for(let i of sharedItems){ %>
-                                    <tr class="publicItemDetail" valign="top">
-                                        <td>
-                                            <%= i.sharedItem %>
-                                        </td>
-                                        <% let count=0 %>
-                                            <% for(let j of i.itemCount){ %>
-                                                <% count +=j.itemCount %>
-                                                    <% } %>
-                                                        <td>
-                                                            <%= count %>
-                                                        </td>
-                                                        <td>
-                                                            <ul>
-                                                                <% for(let j of i.itemCount){ %>
-                                                                    <% for(let x of tripMember){ %>
-                                                                        <% if(j.userId==x.userId && x.positionState> 0){
-                                                                            %>
-                                                                            <li class="superLi">
-                                                                                <span class="superLeft">
-                                                                                    <%= x.name %>
-                                                                                </span>
-                                                                                <!-- <span class="superSpan">／</span>  -->
-                                                                                <span class="superRight">
-                                                                                    <%= j.itemCount %> 個
-                                                                                </span>
+                                                    <td>
+                                                        <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
+                                                            <ul class="d-none">
+                                                                <% for(let i of sharedItems){ %>
+                                                                    <% for(let j of i.itemCount){ %>
+                                                                        <% if(j.userId==x.userId ){ %>
+                                                                            <li>
+                                                                                <%= i.sharedItem%> &#8194&#8194&#8194
+                                                                                    <%= j.itemCount %>
                                                                             </li>
                                                                             <% } %>
                                                                                 <% } %>
                                                                                     <% } %>
                                                             </ul>
-                                                        </td>
+                                                        </a>
+                                                    </td>
+                                                    <% var statAvg=Math.floor( (x.stat.leadership + x.stat.teamwork +
+                                                        x.stat.strength + x.stat.heal + x.stat.survival +
+                                                        x.stat.direction)/6*10)/10; %>
+                                                        <td><a href="#">
+                                                                <%= statAvg %>
+                                                            </a></td>
+                                                        <% if(x.name==userName){ %>
+                                                            <td> --- </td>
+                                                            <% } else { %>
+                                                                <td><a href="#" data-toggle="modal"
+                                                                        data-target="#statComment">我要評分</a></td>
+                                                                <% } %>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+
+                                    </table>
+                                </div>
+                                <h4 class="tableTitle" data-toggle="collapse" data-target="#applyMemberContainer">申請中
+                                    <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                                </h4>
+                                <div id="applyMemberContainer" class="collapse show">
+                                    <table>
+                                        <tr class="tableRow">
+                                            <th>名字</th>
+                                            <th>提供之公共裝備</th>
+                                            <th>綜合評分</th>
+                                            <th>同意/拒絕</th>
+                                        </tr>
+                                        <% for (let x of tripMember){ %>
+                                            <% if ( x. positionState==0) {%>
+                                                <tr>
+                                                    <td>
+                                                        <%= x.name %>
+
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視
+                                                            <ul class="d-none">
+                                                                <% for(let i of sharedItems){ %>
+                                                                    <% for(let j of i.itemCount){ %>
+                                                                        <% if(j.userId==x.userId && j.itemCount>0 ){ %>
+                                                                            <li>
+                                                                                <%= i.sharedItem%> &#8194&#8194&#8194
+                                                                                    <%= j.itemCount%>
+                                                                            </li>
+                                                                            <% } %>
+                                                                                <% } %>
+                                                                                    <% } %>
+                                                            </ul>
+                                                        </a>
+                                                    </td>
+                                                    <% var statAvg=Math.floor( (x.stat.leadership + x.stat.teamwork +
+                                                        x.stat.strength + x.stat.heal + x.stat.survival +
+                                                        x.stat.direction)/6*10)/10; %>
+                                                        <td><a href="#">
+                                                                <%= statAvg %>
+                                                            </a></td>
                                                         <td>
-                                                            <div class="plusContainer">
-                                                                <img class="plusIcon"
-                                                                    src="../public/img/song_img/plus.png" alt=""
+                                                            <div class="checkCancelContainer">
+                                                                <img class="checkIcon" type="image"
+                                                                    src="../public/img/song_img/check.png"
                                                                     data-toggle="modal"
-                                                                    data-target="#publicItemProvide">
+                                                                    data-target="#memberApplyConfirm">
+                                                                <img class="cancelIcon" type="image"
+                                                                    src="../public/img/song_img/cancel.png"
+                                                                    data-toggle="modal"
+                                                                    data-target="#memberApplyReject">
                                                             </div>
                                                         </td>
-                                    </tr>
-                                    <% } %>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="itemList" class="container tab-pane fade">
 
-                            </table>
-
-                            <br>
-                            <h4 class="tableTitle">私人裝備
-                                <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
-                                    data-toggle="modal" data-target="#privateItemListEdit">
-                            </h4>
-                            <table id="managePrivateItemTable">
-                                <tr class="tableRow">
-                                    <th>裝備名稱</th>
-                                    <th>個數／１人</th>
-                                </tr>
-                                <% for(let i of privateItems){ %>
-                                    <tr class="privateItemDetail" valign="top">
-                                        <td>
-                                            <%= i.privateItem %>
-                                        </td>
-                                        <td>
-                                            <%= i.itemCount %> 個
-                                        </td>
-                                    </tr>
-                                    <% } %>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!------- Middle: management End ------->
-            <!------- Rigtht: schedule Start ------->
-            <div id="scheduleContainer" class="col-3">
-                <h4>
-                    <span id="scheduleTitle">探險計畫</span>
-                    <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
-                        data-toggle="modal" data-target="#tripScheduleEdit">
-                </h4>
-                <hr class="divider">
-                <div class="scheduleDayContainer px-2">
-                    <% for(let i of schedule){ %>
-                        <div class="scheduleDay">
-                            <h4 data-toggle="collapse" data-target="#DAY<%=i.day%>">
-                                DAY <%=i.day%> <img class="downArrow" src="../public/img/song_img/down-arrow.png"
-                                        alt="">
-                            </h4>
-                            <div id="DAY<%=i.day%>" class="collapse show">
+                                <h4 class="tableTitle">公共裝備（團員人數： <%= memberCount %> 人）
+                                        <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
+                                            data-target="#publicItemListEdit" title="限發起人編輯">
+                                </h4>
                                 <table>
-                                    <% for(let j of i.activity){ %>
-                                        <tr>
+                                    <tr class="tableRow">
+                                        <th>裝備名稱</th>
+                                        <th>已提供總數</th>
+                                        <th>提供人 ／ 數量</th>
+                                        <th>我要提供</th>
+                                    </tr>
+                                    <% for(let i of sharedItems){ %>
+                                        <tr class="publicItemDetail" valign="top">
                                             <td>
-                                                <%=j.startTime%>
+                                                <%= i.sharedItem %>
+                                            </td>
+                                            <% let count=0 %>
+                                                <% for(let j of i.itemCount){ %>
+                                                    <% count +=j.itemCount %>
+                                                        <% } %>
+                                                            <td>
+                                                                <%= count %>
+                                                            </td>
+                                                            <td>
+                                                                <ul>
+                                                                    <% for(let j of i.itemCount){ %>
+                                                                        <% for(let x of tripMember){ %>
+                                                                            <% if(j.userId==x.userId && x.positionState>
+                                                                                0){
+                                                                                %>
+                                                                                <li class="superLi">
+                                                                                    <span class="superLeft">
+                                                                                        <%= x.name %>
+                                                                                    </span>
+                                                                                    <!-- <span class="superSpan">／</span>  -->
+                                                                                    <span class="superRight">
+                                                                                        <%= j.itemCount %> 個
+                                                                                    </span>
+                                                                                </li>
+                                                                                <% } %>
+                                                                                    <% } %>
+                                                                                        <% } %>
+                                                                </ul>
+                                                            </td>
+                                                            <td>
+                                                                <div class="plusContainer">
+                                                                    <img class="plusIcon"
+                                                                        src="../public/img/song_img/plus.png" alt=""
+                                                                        data-toggle="modal"
+                                                                        data-target="#publicItemProvide">
+                                                                </div>
+                                                            </td>
+                                        </tr>
+                                        <% } %>
+
+                                </table>
+
+                                <br>
+                                <h4 class="tableTitle">私人裝備
+                                    <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
+                                        data-toggle="modal" data-target="#privateItemListEdit">
+                                </h4>
+                                <table id="managePrivateItemTable">
+                                    <tr class="tableRow">
+                                        <th>裝備名稱</th>
+                                        <th>個數／１人</th>
+                                    </tr>
+                                    <% for(let i of privateItems){ %>
+                                        <tr class="privateItemDetail" valign="top">
+                                            <td>
+                                                <%= i.privateItem %>
                                             </td>
                                             <td>
-                                                <%=j.activityName%>
+                                                <%= i.itemCount %> 個
                                             </td>
                                         </tr>
                                         <% } %>
                                 </table>
                             </div>
                         </div>
-                        <% } %>
-                </div>
-                <br>
-                <div id="noteContainer">
-                    <h4>行程簡介
-                        <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
-                            data-toggle="modal" data-target="#tripNoteEdit">
-                    </h4>
-                    <div id="noteText">
-                        <%=tripNotes%>
                     </div>
                 </div>
+                <!------- Middle: management End ------->
+                <!------- Rigtht: schedule Start ------->
+                <div id="scheduleContainer" class="col-3">
+                    <h4>
+                        <span id="scheduleTitle">探險計畫</span>
+                        <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
+                            data-toggle="modal" data-target="#tripScheduleEdit">
+                    </h4>
+                    <hr class="divider">
+                    <div class="scheduleDayContainer px-2">
+                        <% for(let i of schedule){ %>
+                            <div class="scheduleDay">
+                                <h4 data-toggle="collapse" data-target="#DAY<%=i.day%>">
+                                    DAY <%=i.day%> <img class="downArrow" src="../public/img/song_img/down-arrow.png"
+                                            alt="">
+                                </h4>
+                                <div id="DAY<%=i.day%>" class="collapse show">
+                                    <table>
+                                        <% for(let j of i.activity){ %>
+                                            <tr>
+                                                <td>
+                                                    <%=j.startTime%>
+                                                </td>
+                                                <td>
+                                                    <%=j.activityName%>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </table>
+                                </div>
+                            </div>
+                            <% } %>
+                    </div>
+                    <br>
+                    <div id="noteContainer">
+                        <h4>行程簡介
+                            <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
+                                data-toggle="modal" data-target="#tripNoteEdit">
+                        </h4>
+                        <div id="noteText">
+                            <%=tripNotes%>
+                        </div>
+                    </div>
+                </div>
+                <!------- Rigtht: schedule End ------->
+
             </div>
-            <!------- Rigtht: schedule End ------->
-
         </div>
-    </div>
 
 
-    <!--------- userStat --------->
-    <!-- <div id="showStat"
+        <!--------- userStat --------->
+        <!-- <div id="showStat"
         style="display:none; width:160px; height:160px; position:fixed; background-color: rgb(255, 255, 255);">
         <canvas id="myChart">9.5</canvas>
     </div> -->
-    <!-- <a href="#" id="statHover" onmouseover="hoverdiv(event,'showStat')" onmouseout="hoverdiv(event,'showStat')">9.7</a> -->
+        <!-- <a href="#" id="statHover" onmouseover="hoverdiv(event,'showStat')" onmouseout="hoverdiv(event,'showStat')">9.7</a> -->
 
-    <!---------------------------------------------------------------->
-    <!--------------------------- modal ------------------------------>
-    <!---------------------------------------------------------------->
-    <div id="tripNameEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <form action="/tripManage" method="post">
-
+        <!---------------------------------------------------------------->
+        <!--------------------------- modal ------------------------------>
+        <!---------------------------------------------------------------->
+        <div id="tripNameEdit" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
                     <div class="modal-header px-2">
                         <h5 class="modal-title">冒險團新名稱</h5>
                     </div>
                     <div class="modal-body mx-auto">
                         <input style="width:100%" type="text" name="newTripName"
                             placeholder="<%= selectedTrip.tripName %>">
-                        <input type="text" class="d-none" name="tripId" value="<%= selectedTrip.tripId %>">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">完成</button>
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="tripScheduleEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered modal-lg ">
-            <div class="modal-content">
-                <form action="post">
-                    <div class="modal-header">
-                        <h5 class="modal-title">探險計畫編輯</h5>
-                    </div>
-                    <div class="modal-body px-5">
-                        <table id="ItineraryTable" class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <th class="h-100">
-                                        <h6>行程</h6>
-                                    </th>
-                                    <th class="h-100">
-                                        <h6>時間</h6>
-                                    </th>
-                                    <th class="h-100">
-                                        <h6>活動</h6>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <!-- TODO: 第幾天 -->
-                                    <td class="form-td">
-                                        <select name="schedule" id=""
-                                            class="border-0 text-center h-100 form-input w-100"
-                                            oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
-                                            <option value="" selected disabled>第?天</option>
-                                            <option value="1">第1天</option>
-                                            <option value="2">第2天</option>
-                                            <option value="3">第3天</option>
-                                            <option value="4">第4天</option>
-                                        </select>
-                                    </td>
-                                    <!-- TODO: 時間 -->
-                                    <td class="form-td"><input name="schedule" type="time" id=""
-                                            class="text-center border-0 h-100 time-input form-input w-100"
-                                            oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
-                                    </td>
-                                    <!-- TODO: 活動名稱 -->
-                                    <td class="form-td"><input name="schedule"
-                                            class="h-100 w-75 border-0 act-input text-center form-input" type="text"
-                                            class="border-0"
-                                            oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
-                                            placeholder="活動名稱" style="margin-right: 1rem;">
-                                        <p onclick="addItineraryRow(this)"
-                                            class="d-inline-block rounded-circle add-delete-btn table-btn">
-                                            +</p>
-                                        <p onclick="deleteItineraryRow(this)"
-                                            class="d-inline-block rounded-circle add-delete-btn table-btn"
-                                            style="margin-inline: 1rem; visibility:hidden">
-                                            x</p>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
+        <div id="tripScheduleEdit" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-lg ">
+                <div class="modal-content">
+                    <form action="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title">探險計畫編輯</h5>
+                        </div>
+                        <div class="modal-body px-5">
+                            <table id="ItineraryTable" class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="h-100">
+                                            <h6>行程</h6>
+                                        </th>
+                                        <th class="h-100">
+                                            <h6>時間</h6>
+                                        </th>
+                                        <th class="h-100">
+                                            <h6>活動</h6>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- TODO: 第幾天 -->
+                                        <td class="form-td">
+                                            <select name="schedule" id=""
+                                                class="border-0 text-center h-100 form-input w-100"
+                                                oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
+                                                <option value="" selected disabled>第?天</option>
+                                                <option value="1">第1天</option>
+                                                <option value="2">第2天</option>
+                                                <option value="3">第3天</option>
+                                                <option value="4">第4天</option>
+                                            </select>
+                                        </td>
+                                        <!-- TODO: 時間 -->
+                                        <td class="form-td"><input name="schedule" type="time" id=""
+                                                class="text-center border-0 h-100 time-input form-input w-100"
+                                                oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
+                                        </td>
+                                        <!-- TODO: 活動名稱 -->
+                                        <td class="form-td"><input name="schedule"
+                                                class="h-100 w-75 border-0 act-input text-center form-input" type="text"
+                                                class="border-0"
+                                                oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
+                                                placeholder="活動名稱" style="margin-right: 1rem;">
+                                            <p onclick="addItineraryRow(this)"
+                                                class="d-inline-block rounded-circle add-delete-btn table-btn">
+                                                +</p>
+                                            <p onclick="deleteItineraryRow(this)"
+                                                class="d-inline-block rounded-circle add-delete-btn table-btn"
+                                                style="margin-inline: 1rem; visibility:hidden">
+                                                x</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="tripNoteEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <form action="/tripManage" method="post">
+        <div id="tripNoteEdit" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">行程簡介編輯</h5>
                     </div>
@@ -479,150 +477,199 @@
                         <input type="text" class="d-none" name="tripId" value="<%= selectedTrip.tripId %>">
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">完成</button>
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        <button type="button" class="btn btn-primary">完成</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div id="statComment" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">小強</h5>
-                </div>
-                <div class="modal-body">
-                    <form  action="">
-                        <table>
-                            <tr>
-                                <th></th>
-                                <th>5</th>
-                                <th>4</th>
-                                <th>3</th>
-                                <th>2</th>
-                                <th>1</th>
-                            </tr>
-                            <tr>
-                                <td>體能</td>
-                                <td><input type="radio" name="strength" value="5"></td>
-                                <td><input type="radio" name="strength" value="4"></td>
-                                <td><input type="radio" name="strength" value="3"></td>
-                                <td><input type="radio" name="strength" value="2"></td>
-                                <td><input type="radio" name="strength" value="1"></td>
-                            </tr>
-                            <tr>
-                                <td>醫術</td>
-                                <td><input type="radio" name="heal" value="5"></td>
-                                <td><input type="radio" name="heal" value="4"></td>
-                                <td><input type="radio" name="heal" value="3"></td>
-                                <td><input type="radio" name="heal" value="2"></td>
-                                <td><input type="radio" name="heal" value="1"></td>
-                            </tr>
-                            <tr>
-                                <td>方向感</td>
-                                <td><input type="radio" name="direction" value="5"></td>
-                                <td><input type="radio" name="direction" value="4"></td>
-                                <td><input type="radio" name="direction" value="3"></td>
-                                <td><input type="radio" name="direction" value="2"></td>
-                                <td><input type="radio" name="direction" value="1"></td>
-                            </tr>
-                            <tr>
-                                <td>求生技能</td>
-                                <td><input type="radio" name="survival" value="5"></td>
-                                <td><input type="radio" name="survival" value="4"></td>
-                                <td><input type="radio" name="survival" value="3"></td>
-                                <td><input type="radio" name="survival" value="2"></td>
-                                <td><input type="radio" name="survival" value="1"></td>
-                            </tr>
-                            <tr>
-                                <td>團隊意識</td>
-                                <td><input type="radio" name="teamwork" value="5"></td>
-                                <td><input type="radio" name="teamwork" value="4"></td>
-                                <td><input type="radio" name="teamwork" value="3"></td>
-                                <td><input type="radio" name="teamwork" value="2"></td>
-                                <td><input type="radio" name="teamwork" value="1"></td>
-                            </tr>
-                            <tr>
-                                <td>領導力</td>
-                                <td><input type="radio" name="leadership" value="5"></td>
-                                <td><input type="radio" name="leadership" value="4"></td>
-                                <td><input type="radio" name="leadership" value="3"></td>
-                                <td><input type="radio" name="leadership" value="2"></td>
-                                <td><input type="radio" name="leadership" value="1"></td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">完成</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="memberApplyReject" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">是否確認拒絕？</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">確認</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="memberApplyConfirm" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">是否確認同意？</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">確認</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="publicItemListEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered modal-md">
-            <div class="modal-content">
-                <form action="">
+        <div id="statComment" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">公共裝備清單編輯</h5>
+                        <h5 class="modal-title">小強</h5>
                     </div>
                     <div class="modal-body">
-                        <table id="sharedItemTable" class="table table-bordered text-center">
+                        <form action="">
+                            <table>
+                                <tr>
+                                    <th></th>
+                                    <th>5</th>
+                                    <th>4</th>
+                                    <th>3</th>
+                                    <th>2</th>
+                                    <th>1</th>
+                                </tr>
+                                <tr>
+                                    <td>體能</td>
+                                    <td><input type="radio" name="strength" value="5"></td>
+                                    <td><input type="radio" name="strength" value="4"></td>
+                                    <td><input type="radio" name="strength" value="3"></td>
+                                    <td><input type="radio" name="strength" value="2"></td>
+                                    <td><input type="radio" name="strength" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>醫術</td>
+                                    <td><input type="radio" name="heal" value="5"></td>
+                                    <td><input type="radio" name="heal" value="4"></td>
+                                    <td><input type="radio" name="heal" value="3"></td>
+                                    <td><input type="radio" name="heal" value="2"></td>
+                                    <td><input type="radio" name="heal" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>方向感</td>
+                                    <td><input type="radio" name="direction" value="5"></td>
+                                    <td><input type="radio" name="direction" value="4"></td>
+                                    <td><input type="radio" name="direction" value="3"></td>
+                                    <td><input type="radio" name="direction" value="2"></td>
+                                    <td><input type="radio" name="direction" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>求生技能</td>
+                                    <td><input type="radio" name="survival" value="5"></td>
+                                    <td><input type="radio" name="survival" value="4"></td>
+                                    <td><input type="radio" name="survival" value="3"></td>
+                                    <td><input type="radio" name="survival" value="2"></td>
+                                    <td><input type="radio" name="survival" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>團隊意識</td>
+                                    <td><input type="radio" name="teamwork" value="5"></td>
+                                    <td><input type="radio" name="teamwork" value="4"></td>
+                                    <td><input type="radio" name="teamwork" value="3"></td>
+                                    <td><input type="radio" name="teamwork" value="2"></td>
+                                    <td><input type="radio" name="teamwork" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td>領導力</td>
+                                    <td><input type="radio" name="leadership" value="5"></td>
+                                    <td><input type="radio" name="leadership" value="4"></td>
+                                    <td><input type="radio" name="leadership" value="3"></td>
+                                    <td><input type="radio" name="leadership" value="2"></td>
+                                    <td><input type="radio" name="leadership" value="1"></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">完成</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="memberApplyReject" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">是否確認拒絕？</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="memberApplyConfirm" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">是否確認同意？</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="publicItemListEdit" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <form action="">
+                        <div class="modal-header">
+                            <h5 class="modal-title">公共裝備清單編輯</h5>
+                        </div>
+                        <div class="modal-body">
+                            <table id="sharedItemTable" class="table table-bordered text-center">
+                                <thead>
+                                    <th class="h-100">
+                                        <h6>物品名稱</h6>
+                                    </th>
+                                    <th class="h-100">
+                                        <h6>能提供數量</h6>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- TODO: 裝備名稱 -->
+                                        <td class="form-td"><input name="shared" type="text"
+                                                class="text-center border-0 h-100 form-input" placeholder="物品名稱"
+                                                oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                                        <!-- TODO: 數量 -->
+                                        <td class="form-td"><input name="shared" type="number" id=""
+                                                class="text-center border-0 h-100 form-input w-50"
+                                                oninput="this.className = 'text-center border-0 h-100 form-input w-50'"
+                                                style="margin-right: 1rem;">
+                                            <p onclick="addSharedItemRow(this)"
+                                                class="d-inline-block rounded-circle add-delete-btn table-btn">
+                                                +</p>
+                                            <p onclick="deleteSharedItemRow(this)"
+                                                class="d-inline-block rounded-circle add-delete-btn table-btn"
+                                                style="margin-inline: 1rem; visibility:hidden">
+                                                x</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">確認</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="privateItemListEdit" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">私人裝備清單編輯</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h6 style="margin-bottom: 3vh">私人裝備</h6>
+                        <table id="privateItemTable" class="table table-bordered text-center">
                             <thead>
                                 <th class="h-100">
                                     <h6>物品名稱</h6>
                                 </th>
                                 <th class="h-100">
-                                    <h6>能提供數量</h6>
+                                    <h6>數量</h6>
                                 </th>
                             </thead>
                             <tbody>
                                 <tr>
                                     <!-- TODO: 裝備名稱 -->
-                                    <td class="form-td"><input name="shared" type="text"
+                                    <td class="form-td"><input name="private" type="text"
                                             class="text-center border-0 h-100 form-input" placeholder="物品名稱"
                                             oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
                                     <!-- TODO: 數量 -->
-                                    <td class="form-td"><input name="shared" type="number" id=""
-                                            class="text-center border-0 h-100 form-input w-50"
-                                            oninput="this.className = 'text-center border-0 h-100 form-input w-50'"
+                                    <td class="form-td">
+                                        <input name="private" type="number"
+                                            class="text-center border-0  w-25 h-100 form-input"
+                                            oninput="this.className = 'text-center border-0 w-25 h-100 form-input'"
                                             style="margin-right: 1rem;">
-                                        <p onclick="addSharedItemRow(this)"
+                                        <p onclick="addPrivateItemRow(this)"
                                             class="d-inline-block rounded-circle add-delete-btn table-btn">
                                             +</p>
-                                        <p onclick="deleteSharedItemRow(this)"
+                                        <p onclick="deletePrivateItemRow(this)"
                                             class="d-inline-block rounded-circle add-delete-btn table-btn"
                                             style="margin-inline: 1rem; visibility:hidden">
                                             x</p>
@@ -635,112 +682,101 @@
                         <button type="button" class="btn btn-primary">確認</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div id="privateItemListEdit" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">私人裝備清單編輯</h5>
-                </div>
-                <div class="modal-body">
-                    <h6 style="margin-bottom: 3vh">私人裝備</h6>
-                    <table id="privateItemTable" class="table table-bordered text-center">
-                        <thead>
-                            <th class="h-100">
-                                <h6>物品名稱</h6>
-                            </th>
-                            <th class="h-100">
-                                <h6>數量</h6>
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <!-- TODO: 裝備名稱 -->
-                                <td class="form-td"><input name="private" type="text"
-                                        class="text-center border-0 h-100 form-input" placeholder="物品名稱"
-                                        oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                                <!-- TODO: 數量 -->
-                                <td class="form-td">
-                                    <input name="private" type="number"
-                                        class="text-center border-0  w-25 h-100 form-input"
-                                        oninput="this.className = 'text-center border-0 w-25 h-100 form-input'"
-                                        style="margin-right: 1rem;">
-                                    <p onclick="addPrivateItemRow(this)"
-                                        class="d-inline-block rounded-circle add-delete-btn table-btn">
-                                        +</p>
-                                    <p onclick="deletePrivateItemRow(this)"
-                                        class="d-inline-block rounded-circle add-delete-btn table-btn"
-                                        style="margin-inline: 1rem; visibility:hidden">
-                                        x</p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">確認</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="publicItemProvide" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">提供三人帳</h5>
-                </div>
-                <div class="modal-body d-flex" style="justify-content: space-around;">
-                    <ul>
-                        <li><input type="text"><span style="display: inline-block">個</span></li>
-                    </ul>
+        <div id="publicItemProvide" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">提供三人帳</h5>
+                    </div>
+                    <div class="modal-body d-flex" style="justify-content: space-around;">
+                        <ul>
+                            <li><input type="text"><span style="display: inline-block">個</span></li>
+                        </ul>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">確認</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="chartContainer" class="d-none" style="width:150px; height: 150px">
-        <canvas id="myChart"></canvas>
-    </div>
-
+        <div id="chartContainer" class="d-none" style="width:150px; height: 150px">
+            <canvas id="myChart"></canvas>
+        </div>
 
 
 
 
-    <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
-    <!-- FOOTER -->
-    <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
-    <!-- FOOTER -->
-    <script>
-        w3.includeHTML();
-    </script>
-    <script src="../nav/nav.js"></script>
-    <script src="../public/js/song_js/song_tripManage.js"></script>
 
-    <script>
-        var sessionUserId = Number('<%= sessionUserId %>')
-        console.log(sessionUserId);
-        if (sessionUserId == 0) {
-              $('#member').append(
-                '<li><a href="/login">登入／註冊</a></li>' 
-              )
+        <!-- ↑ 把網頁的內容放在NAV BAR 與 FOOTER 的中間 ↑ -->
+        <!-- FOOTER -->
+        <div w3-include-HTML="../footer/footer.html" class="footerDistance"></div>
+        <!-- FOOTER -->
+        <script>
+            w3.includeHTML();
+        </script>
+        <script src="../nav/nav.js"></script>
+        <script src="../public/js/song_js/song_tripManage.js"></script>
+
+        <script>
+            var sessionUserId = Number('<%= sessionUserId %>')
+            if (sessionUserId == 0) {
+                $('#member').append(
+                    '<li><a href="/login">登入／註冊</a></li>'
+                )
             }
-        else {
-              $('#member').append(
-                '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
-              )
+            else {
+                $('#member').append(
+                    '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+                )
             }
-    </script>
+
+
+
+
+            $('.okbtn').click(function () {
+                var changes = $(this).closest(".modal").find('input').val();
+
+                console.log(changes)
+
+                $.ajax({
+                    type: 'put',
+                    url: '/tripManage',
+                    data: {
+                        userId: '<%= sessionUserId%>',
+                        tripId: '<%= selectedTrip.tripId %>',
+                        action: 'tripNameEdit',
+                        changes: `${changes}`,
+                    },
+                    success: function (apple) {
+                        //console.log(apple);
+                        console.log('PUT request completed!!!');
+                        $('#selTripName').html(`${changes}<img class="edit" data-toggle="modal" data-target="#tripNameEdit"
+                                src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">`);
+
+                    }
+                })
+            })
+
+            $('.modal').on('hidden.bs.modal', function (e) {
+                $(this)
+                    .find("input,textarea,select")
+                    .val('')
+                    .end()
+                    .find("input[type=checkbox], input[type=radio]")
+                    .prop("checked", "")
+                    .end();
+            })
+
+
+
+        </script>
 
 
 </body>

@@ -16,24 +16,16 @@ bluebird.promisifyAll(conn);
 
 // ---------------------- request ----------------------
 
-song_tripManage_router.post("/", function (req, res) {
+song_tripManage_router.put("/", function (req, res) {
   console.log(req.body);
-  if (req.body.newTripName != undefined) {
-    conn.query(
-      `UPDATE trips SET tripName = '${req.body.newTripName}' WHERE tripId = ${req.body.tripId}`,
-      function (err, rows) {
-        res.redirect("/tripManage");
-      }
-    );
-  } else if (req.body.newTripNotes != undefined) {
-    conn.query(
-      `UPDATE trips SET tripDesc = '${req.body.newTripNotes}' WHERE tripId = ${req.body.tripId}`,
-      function (err, rows) {
-        res.redirect("/tripManage");
-      }
-    );
-  }
-});
+  conn.query(`UPDATE trips SET tripName = '${req.body.changes}' where tripId = ${req.body.tripId}`, function (err, rows) {
+    res.send({ state: 'success' })
+  })
+
+})
+
+
+
 
 song_tripManage_router.get("/", function (req, res) {
   // if (req.session.userId == undefined) {
@@ -208,7 +200,7 @@ song_tripManage_router.get("/", function (req, res) {
         }
         var sql6 = `SELECT tripId, tripDesc FROM trips WHERE tripId = ${data.selectedTrip.tripId}`;
         return conn.queryAsync(sql6);
-      } 
+      }
       else return;
     })
     .then((result6) => {  // 1. 指派 data.注意事項。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
@@ -216,16 +208,19 @@ song_tripManage_router.get("/", function (req, res) {
         data.tripNotes = result6[0].tripDesc;
         var sql7 = `SELECT tripId, COUNT(userId) AS memberCount FROM tripMembers WHERE tripId = ${data.selectedTrip.tripId} AND positionState > 0`;
         return conn.queryAsync(sql7);
-      } 
+      }
       else return;
     })
     .then((result7) => {  // 1. 指派 data.團員人數。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
       if (result7 != undefined) {
         data.memberCount = result7[0].memberCount;
-      } 
+      }
       return res.render("song_tripManage.ejs", data);
     })
     .catch((err) => console.log(err));
 });
+
+
+
 
 module.exports = song_tripManage_router;
