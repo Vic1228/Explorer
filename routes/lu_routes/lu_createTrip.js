@@ -15,10 +15,10 @@ const { NULL } = require("mysql/lib/protocol/constants/types");
 // ==================================
 // 查詢users表的資料
 
-var userProfile, userStats, zlspotId, x, y, login;
+var userProfile, userStats, spotId, x, y, login;
 lu_createTrip_router.get("/createTrip", function (req, res) {
   // 政霖 id , x , y
-  zlspotId = req.query.id;
+  spotId = req.query.id;
   location = { lat: req.query.x, lng: req.query.y };
   login = { sessionUserId: req.session.userId }
 
@@ -63,14 +63,14 @@ lu_createTrip_router.post("/response", function (req, res) {
   let trip = req.body.trip;
   let schedule = req.body.schedule;
   let private = req.body.private;
-    let shared = req.body.shared;
-    // 碩呈的local storage
+  let shared = req.body.shared;
+  // 碩呈的local storage
   let spotId = req.body.spotid;
 
   //  trip
   var tripId;
   let tripSQL = `INSERT INTO trips (tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("${trip[0]}", "${zlspotId||spotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  VALUES ("${trip[0]}", "${spotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
   
   connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;

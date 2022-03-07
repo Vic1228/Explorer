@@ -405,12 +405,12 @@
         const lat = parseFloat("<%= (lat) %>");
         const lng = parseFloat("<%= (lng) %>");
 
-        const zllocation = { lat: lat, lng: lng };
+        const location = { lat: lat, lng: lng };
 
-        const location = JSON.parse(localStorage.getItem("lat")); // 從localStorage取得經緯度的值
+        // const location = JSON.parse(localStorage.getItem("lat")); // 從localStorage取得經緯度的值
 
         map = new google.maps.Map(document.getElementById("map"), {
-          center: zllocation || location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
+          center: location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
           zoom: 10,
         });
         // The marker, positioned at location
