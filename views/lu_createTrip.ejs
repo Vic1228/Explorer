@@ -405,17 +405,16 @@
         const lat = parseFloat("<%= (lat) %>");
         const lng = parseFloat("<%= (lng) %>");
 
-        const location = { lat: lat, lng: lng };
-
-        // const location = JSON.parse(localStorage.getItem("lat")); // 從localStorage取得經緯度的值
+        const mapLocation = { lat: 23.58044082121914 || lat, lng: 120.86312406425326 || lng };
+        const markLocation = { lat: lat, lng: lng };
 
         map = new google.maps.Map(document.getElementById("map"), {
-          center: location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
+          center: mapLocation, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
           zoom: 10,
         });
         // The marker, positioned at location
         const marker = new google.maps.Marker({
-          position: location,
+          position: markLocation,
           map: map,
         });
 
@@ -442,6 +441,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 1;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -476,6 +476,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 2;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -511,6 +512,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 3;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -546,6 +548,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 4;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -581,6 +584,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 5;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -616,6 +620,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 6;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -651,6 +656,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 7;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -686,6 +692,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 8;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -721,6 +728,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 9;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -756,6 +764,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 10;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +

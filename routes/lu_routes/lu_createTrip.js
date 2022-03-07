@@ -63,12 +63,13 @@ lu_createTrip_router.post("/response", function (req, res) {
   let trip = req.body.trip;
   let schedule = req.body.schedule;
   let private = req.body.private;
-  let shared = req.body.shared;
+    let shared = req.body.shared;
+    let selectSpotId = req.body.spotid;
 
   //  trip
   var tripId;
   let tripSQL = `INSERT INTO trips (tripName, spotId, tripStartDate, tripEndDate, tripDesc) 
-  VALUES ("${trip[0]}", "${spotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
+  VALUES ("${trip[0]}", "${spotId||selectSpotId}", "${trip[2]}", "${trip[3]}", "${trip[1]}")`;
   
   connection.query(tripSQL, (err, result, fields) => {
     if (err) throw err;
