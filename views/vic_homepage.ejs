@@ -528,8 +528,6 @@
     <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script>
-      
-
       // 首頁旋轉木馬連結
       function goTo1() {
         location.href = "/spotId?id=1";
@@ -591,9 +589,9 @@
       // 首頁卡片操作
 
       // navbar彈出視窗
-      var sessionUserId = Number("<%= sessionUserId %>");
+      var sessionUserId = "<%= sessionUserId %>";
       console.log(sessionUserId);
-      if (sessionUserId == 0) {
+      if (sessionUserId == false) {
         $("#member_Hello").text("請登入");
         $("#member").append('<li><a href="/login">登入／註冊</a></li>');
       } else {
