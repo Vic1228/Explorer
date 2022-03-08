@@ -11,6 +11,8 @@ const app = express();
 var connection = require("../db.js");
 
 var moment = require("moment");
+const session = require("express-session");
+const { Session } = require("express-session");
 app.locals.moment = require("moment");
 
 app.set("view engine", "ejs");
@@ -27,7 +29,6 @@ var storage = multer.diskStorage({
     cb(null, "./upload/");
   },
   filename: function (req, file, cb) {
-    photoNumber += 2;
     cb(null, "photo" + photoNumber + ".jpg");
   },
 });
@@ -45,8 +46,9 @@ const upload = multer({
     }
   },
 });
-
-router.get("/", function (req, res) {
+var spotId;
+router.get("/spotId", function (req, res) {
+  spotId = req.query.id;
   connection.query(
     `SELECT * FROM tripchatboard JOIN users ON tripchatboard.userId = users.userId WHERE tripchatboard.spotId =${req.query.id}`,
     (error, results) => {
@@ -62,6 +64,8 @@ router.get("/", function (req, res) {
                 (error, results3) => {
                   if (error) throw error;
                   else {
+                    photoNumber = results3[0].number;
+                    photoNumber++;
                     res.render(`vic_spotinfo.ejs`, {
                       data: results,
                       data2: results2,
@@ -78,6 +82,43 @@ router.get("/", function (req, res) {
       }
     }
   );
+});
+
+router.post("/uploadPhoto", upload.array("file", 5), (req, res) => {
+  connection.query(
+    "SELECT * FROM tripchatboard ORDER BY tripchatboard.number DESC",
+    (error, results) => {
+      if (error) throw error;
+      else {
+        photoNumber++;
+        console.log(photoNumber);
+        res.end();
+      }
+    }
+  );
+});
+
+router.post("/uploadText", (req, res) => {
+  var userId = req.session.userId;
+  var userName = req.session.userName;
+  var chatTime = new Date();
+  var sql =
+    "insert into tripchatboard set spotId=?,userId=?,chatTime=?,chatMessage=?,chatImgNum=?";
+  var addVaule = [spotId, userId, chatTime, req.body.inputText, photoNumber];
+
+  connection.query(sql, addVaule, (error, results) => {
+    if (error) throw error;
+    else {
+      res.send({
+        data1: userName,
+        data2: req.body.inputText,
+        data3: photoNumber,
+        data4: chatTime,
+        data5: userId,
+        moment,
+      });
+    }
+  });
 });
 
 module.exports = router;

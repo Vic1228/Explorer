@@ -180,8 +180,7 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 app.use("/", homepageRouter);
-app.use("/spotId", spotInfoRouter);
-app.use("/upload", uploadRouter);
+app.use("/", spotInfoRouter);
 app.use("/trips", tripsRouter);
 app.use("/tripsId", tripsIdRouter);
 app.use("/tripsDay", tripsDayRouter);

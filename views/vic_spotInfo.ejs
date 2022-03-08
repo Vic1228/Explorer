@@ -18,11 +18,7 @@
       href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
     />
     <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.slim.js"
-      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-      crossorigin="anonymous"
-    ></script>
+
     <style>
       .box {
         box-sizing: border-box;
@@ -240,55 +236,67 @@
         </div>
       </div>
       <% }); %>
+      <div id="show"></div>
       <!-- 留言板內容渲染 -->
-
-      <form
-        action="/upload"
-        method="post"
-        enctype="multipart/form-data"
-        style="margin-top: 2vw"
-      >
-        <div class="input-group">
-          <input
-            name="content"
-            type="text"
-            class="form-control"
-            placeholder="請輸入留言的內容.."
-            aria-label="Recipient's username with two button addons"
-          />
-          <!-- 上傳照片 -->
-          <div class="file-upload">
-            <div class="file-select">
-              <div class="file-select-button" id="fileName">選擇圖片</div>
-              <div class="file-select-name" id="noFile">未選擇圖片...</div>
-              <input type="file" name="photo" id="chooseFile" />
-            </div>
+      <div class="input-group">
+        <input
+          name="inputText"
+          id="inputText"
+          type="text"
+          class="form-control"
+          placeholder="請輸入留言的內容.."
+          aria-label="Recipient's username with two button addons"
+        />
+        <!-- 上傳照片 -->
+        <div class="file-upload">
+          <div class="file-select">
+            <div class="file-select-button" id="fileName">選擇圖片</div>
+            <div class="file-select-name" id="noFile">未選擇圖片...</div>
+            <input
+              type="file"
+              name="photo"
+              id="chooseFile"
+              onchange="fileUpload(this)"
+            />
           </div>
-          <!-- 上傳照片 -->
-          <button class="ui secondary button">送出</button>
-          <input
-            type="text"
-            style="display: none"
-            name="getUpLoadId"
-            value="<%= data2[0].spotId %>"
-          />
-          <input
-            type="text"
-            style="display: none"
-            name="getNumber"
-            value="<%= data3[0].number %>"
-          />
         </div>
-      </form>
+        <!-- 上傳照片 -->
+        <button onclick="upload()" id="abcc" class="ui secondary button">
+          送出
+        </button>
+        <input
+          type="text"
+          style="display: none"
+          name="getUpLoadId"
+          value="<%= data2[0].spotId %>"
+        />
+        <input
+          type="text"
+          style="display: none"
+          name="getNumber"
+          value="<%= data3[0].number %>"
+        />
+      </div>
+      <!-- </form> -->
     </div>
+
     <!-- FOOTER -->
     <div w3-include-HTML="./footer/footer.html" class="footerDistance"></div>
     <!-- FOOTER -->
     <script>
       w3.includeHTML();
     </script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
     <script src="./nav/nav.js"></script>
     <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    <script>
+      src = "./js/Vic/moment.js";
+    </script>
+
     <script>
       // 上傳圖片按鈕JS
       $("#chooseFile").bind("change", function () {
@@ -328,6 +336,96 @@
         );
       }
       // navbar彈出視窗
+
+      // 日期格式設定
+      $.date = function (dateObject) {
+        var d = new Date(dateObject);
+        var day = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var hh = d.getHours();
+        var mm = d.getMinutes();
+        if (day < 10) {
+          day = "0" + day;
+        }
+        if (month < 10) {
+          month = "0" + month;
+        }
+        var date = year + "/" + month + "/" + day + " " + hh + ":" + mm;
+
+        return date;
+      };
+      // 日期格式設定
+
+      // 聊天室渲染及送資料至後端;
+      var fileImg;
+      //讀取圖片
+      function fileUpload(_this) {
+        var fileReader = new FileReader(); //創建文件讀取對象
+        fileImg = _this.files[0]; //獲取file組件中的文件
+      }
+      function upload() {
+        console.log("123456");
+        var formData = new FormData();
+        formData.append("file", chooseFile.files[0]);
+        var inputText = $("input[name=inputText]").val();
+
+        $.ajax({
+          url: "/uploadPhoto",
+          data: formData,
+          type: "post",
+          async: true,
+          processData: false,
+          contentType: false,
+          contextType: "application/json",
+          cache: false,
+          success: function () {
+            $.ajax({
+              url: "/uploadText",
+              data: { inputText: inputText },
+              type: "post",
+              success: function (msg) {
+                $("#show").append(`
+      <div class="row">
+        <div class="col-auto">
+          <div style="height: 100px; margin-top: 5px; margin-bottom: 5px">
+            <img
+              style="height: 60px; outline: 1px solid; border-radius: 30px"
+              src="./img/yen/photo/${msg.data5}.png"
+              class="img-fluid box img-thumbnail"
+              onerror="ASA(${msg.data3})"
+              id="imgbox1"/>
+          </div>
+        </div>
+        <div class="col" style="margin-left: -0.5rem">
+          <p class="h5"> ${msg.data1} </p>
+          <p> ${msg.data2} </p>
+          <div>
+            <img
+              style="max-width: 400px; max-height: 400px; margin-bottom: 20px"
+              src="./upload/photo${(msg.data3 -= 1)}.jpg"
+              alt=""/>
+          </div>
+          <p
+            style="
+              font-size: 10px;
+              color: rgb(161, 161, 161);
+              margin-top: -0.5rem;
+            ">
+            ${$.date(msg.data4)}
+          </p>
+        </div>
+      </div>`);
+
+                $("#inputText").val("");
+                $("#chooseFile").val("");
+                $("html, body").scrollTop(50000);
+              },
+            });
+          },
+        });
+      }
+      // 聊天室渲染及送資料至後端;
     </script>
   </body>
 </html>
