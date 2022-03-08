@@ -402,39 +402,41 @@
       /*---------------------------------------------------------------*/
 
       function initMap() {
+        // 網址上的query string
         const lat = parseFloat("<%= (lat) %>");
         const lng = parseFloat("<%= (lng) %>");
 
-        const location = { lat: lat, lng: lng };
-
-        // const location = JSON.parse(localStorage.getItem("lat")); // 從localStorage取得經緯度的值
+        // 定位
+        const mapLocation = { lat: 23.58044082121914 || lat, lng: 120.86312406425326 || lng };
+        // 座標
+        const markLocation = { lat: lat, lng: lng };
 
         map = new google.maps.Map(document.getElementById("map"), {
-          center: location, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
-          zoom: 10,
+          center: mapLocation, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
+          zoom: 6.5,
         });
         // The marker, positioned at location
         const marker = new google.maps.Marker({
-          position: location,
+          position: markLocation,
           map: map,
         });
 
         const infowindow = new google.maps.InfoWindow();
         const service = new google.maps.places.PlacesService(map);
 
-        // Location 1
-        const request = {
-          placeId: "ChIJQwsNxDdgaDQRzDQVzlSrgIE",
+        const req1 = {
+          placeId: "ChIJH0OLXIhfaDQRe2M3VHul_nY",
           fields: [
             "name",
             "formatted_address",
             "place_id",
             "geometry",
+            "photo",
             "rating",
             "user_ratings_total",
           ],
         };
-        service.getDetails(request, function (place, status) {
+        service.getDetails(req1, function (place, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             //   map.setCenter(place.geometry.location)
             const marker = new google.maps.Marker({
@@ -442,6 +444,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 1;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -476,6 +479,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 2;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -511,6 +515,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 3;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -546,6 +551,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 4;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -581,6 +587,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 5;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -616,6 +623,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 6;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -651,6 +659,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 7;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -686,6 +695,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 8;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -721,6 +731,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 9;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
@@ -756,6 +767,7 @@
               map: map,
             });
             marker.addListener("click", function () {
+              document.getElementById("spotid").value = 10;
               infowindow.open(map, marker);
               infowindow.setContent(
                 "<div class='infowindow-container'>" +
