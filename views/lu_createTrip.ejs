@@ -402,15 +402,18 @@
       /*---------------------------------------------------------------*/
 
       function initMap() {
+        // 網址上的query string
         const lat = parseFloat("<%= (lat) %>");
         const lng = parseFloat("<%= (lng) %>");
 
+        // 定位
         const mapLocation = { lat: 23.58044082121914 || lat, lng: 120.86312406425326 || lng };
+        // 座標
         const markLocation = { lat: lat, lng: lng };
 
         map = new google.maps.Map(document.getElementById("map"), {
           center: mapLocation, //{ lat: 23.58044082121914, lng: 120.86312406425326 }, // The map, centered at location
-          zoom: 10,
+          zoom: 6.5,
         });
         // The marker, positioned at location
         const marker = new google.maps.Marker({
