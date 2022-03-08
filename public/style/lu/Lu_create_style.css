@@ -1,7 +1,7 @@
 /* ------------------------共用------------------------- */
 *{
     box-sizing: border-box;
-    color: #006c9b;
+    color: #3A6D9A;
 }
 
 input:focus{
@@ -24,7 +24,7 @@ outline: 0;
 }
 /* -----------------封面圖----------------- */
 .create-trip-photo{
-  background-image: url(../..//img/lu/253-1440x500.jpg); 
+  background-image: url(../..//img/lu/background.png); 
   width: auto; 
   height: 45vh; 
   background-size: cover;

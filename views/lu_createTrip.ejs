@@ -39,20 +39,24 @@
         <!-- 步驟 -->
         <div class="d-flex justify-content-between">
           <span id="step" class="step"
-            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
-          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">發起人簡介</span>
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem; background-color: #3A6D9A;"></span>
+          <span class="step-text"
+            style="font-size: 2rem; position: relative; right: 3.5rem; color: #3A6D9A; font-weight: bolder;">發起人簡介</span>
           <span id="step" class="step"
-            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem; background-color: #3A6D9A;"></span>
 
-          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">行程介紹</span>
+          <span class="step-text"
+            style="font-size: 2rem; position: relative; right: 3.5rem; color: #3A6D9A; font-weight: bolder;">行程介紹</span>
           <span id="step" class="step"
-            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem; background-color: #3A6D9A;"></span>
 
-          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">行程規劃</span>
+          <span class="step-text"
+            style="font-size: 2rem; position: relative; right: 3.5rem; color: #3A6D9A; font-weight: bolder;">行程規劃</span>
           <span id="step" class="step"
-            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem;"></span>
+            style="width: 1.5rem; height: 1.5rem; margin: auto 0; position: relative; left: 1rem; background-color: #3A6D9A;"></span>
 
-          <span class="step-text" style="font-size: 2rem; position: relative; right: 3.5rem;">裝備清單</span>
+          <span class="step-text"
+            style="font-size: 2rem; position: relative; right: 3.5rem; color: #3a6d9a; font-weight: bolder;">裝備清單</span>
         </div>
 
       </div>
@@ -69,16 +73,16 @@
           </div>
           <div class="col-1"></div>
           <div class="col-3 m-auto text-center">
-            <p class="m-0" style="font-size: 2rem;">
+            <p class="m-0" style="font-size: 2rem; font-weight: bolder;">
               <!-- 姓名 -->
               <%= userName %>
             </p>
             <!-- 電話 -->
-            <p class="m-0" style="font-size: 1.2rem; padding-block: 1.2rem;">
+            <p class="m-0" style="font-size: 1.2rem; padding-block: 1.2rem; font-weight: bolder;">
               <%= userPhone %>
             </p>
             <!-- 信箱 -->
-            <p class="m-0" style="font-size: 1.2rem;">
+            <p class="m-0" style="font-size: 1.2rem; font-weight: bolder;">
               <%= userEmail %>
             </p>
           </div>
@@ -90,10 +94,10 @@
         <div class="container d-flex h-100" style="padding-top: 6vh;">
           <div class="col-2"></div>
           <div class="col-3">
-            <h6 class="text-center m-0" style="font-size: 1.7rem;">能力值</h6>
+            <h6 class="text-center m-0" style="font-size: 1.7rem; font-weight: bolder;">能力值</h6>
             <!-- 能力值-->
             <canvas id="myChart" style="padding: 1rem 1rem 0 1rem;"></canvas>
-            <p class="text-center m-0" style="font-size: 1.3rem;">評價人次：
+            <p class="text-center m-0" style="font-size: 1.3rem; font-weight: bolder;">評價人次：
               <!-- 評價人次 -->
               <span>
                 <%= commentCount %>
@@ -102,10 +106,10 @@
           </div>
           <div class="col-1"></div>
           <div class="col-4">
-            <h6 class="text-center m-0" style="font-size: 1.7rem;">冒險經歷</h6>
+            <h6 class="text-center m-0" style="font-size: 1.7rem; font-weight: bolder;">冒險經歷</h6>
             <!-- 冒險經歷 -->
             <div style="padding-top: 3rem; padding-inline: 2.5rem;">
-              <p style="font-size: 1.3rem; line-height: 3rem;">
+              <p style="font-size: 1.3rem; line-height: 3rem; font-weight: bold;">
                 <%= userExp %>
               </p>
             </div>
@@ -120,31 +124,31 @@
         <div class="container d-flex">
           <div class="col-1"></div>
           <div class="col-4">
-            <h6 style="font-size: 1.7rem;">活動名稱</h6>
+            <h6 style="font-size: 1.7rem; font-weight: bolder;">活動名稱</h6>
             <!-- TODO: 活動名稱 -->
             <input name="trip" class="act-textarea w-100 form-input p-2"
               oninput="this.className = 'act-textarea w-100 form-input p-2'" type="text"
-              style="border: 2px solid #006c9b;">
-            <h6 style="font-size: 1.7rem; padding-top: 1rem;">活動描述</h6>
+              style="border: 2px solid #3a6d9a;">
+            <h6 style="font-size: 1.7rem; padding-top: 1rem; font-weight: bolder;">活動描述</h6>
             <!-- TODO: 活動描述 -->
             <textarea name="trip" class="act-textarea w-100 form-input p-2"
               oninput="this.className = 'act-textarea w-100 form-input p-2'" id=""
-              style="height: 7rem; border: 2px solid #006c9b;"></textarea>
-            <h6 style="font-size: 1.7rem; padding-top: 1rem;">日期</h6>
+              style="height: 7rem; border: 2px solid #3a6d9a;"></textarea>
+            <h6 style="font-size: 1.7rem; padding-top: 1rem; font-weight: bolder;">日期</h6>
             <!-- TODO: 開始日期 -->
             <input name="trip" class="act-textarea form-input p-2"
               oninput="this.className = 'act-textarea form-input p-2'" type="date" id="startDate"
-              style="width: 45%; margin-right: 1rem; border: 2px solid #006c9b;">
+              style="width: 45%; margin-right: 1rem; border: 2px solid #3a6d9a;">
             <!-- TODO: 結束日期 -->
             <input name="trip" class="act-textarea form-input p-2"
               oninput="this.className = 'act-textarea form-input p-2'" type="date" id="endDate"
-              style="width: 45%; border: 2px solid #006c9b;">
+              style="width: 45%; border: 2px solid #3a6d9a;">
           </div>
           <div class="col-1"></div>
           <div class="col-5">
-            <h6 style="font-size: 1.7rem;">目的地</h6>
+            <h6 style="font-size: 1.7rem; font-weight: bolder;">目的地</h6>
             <!-- TODO: 地圖 -->
-            <div id="map" style="width: 100%; height: 40vh;"></div>
+            <div id="map" style="width: 100%; height: 40vh; border: 2px solid #3a6d9a;"></div>
             <input id="spotid" name="spotid" type="text" style="display: none;" value="">
           </div>
           <div class="col-1"></div>
@@ -156,17 +160,18 @@
           <div class="col-1"></div>
           <div class="col-10">
             <!-- 表格 -->
-            <table id="ItineraryTable" class="table table-bordered text-center" style="border-color: #006c9b;">
+            <table id="ItineraryTable" class="table table-bordered text-center"
+              style="border-color: rgb(58, 109, 154);">
               <thead>
                 <tr>
-                  <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                    <h4 class="m-auto text-white" style="font-size: 1.7rem;">行程</h4>
+                  <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                    <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">行程</h4>
                   </th>
-                  <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                    <h4 class="m-auto text-white" style="font-size: 1.7rem;">時間</h4>
+                  <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                    <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">時間</h4>
                   </th>
-                  <th class="h-100" style="background-color: #006c9b;">
-                    <h4 class="m-auto text-white" style="font-size: 1.7rem;">活動</h4>
+                  <th class="h-100" style="background-color: rgb(58, 109, 154);">
+                    <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">活動</h4>
                   </th>
                 </tr>
               </thead>
@@ -197,10 +202,10 @@
                       placeholder="活動名稱"
                       style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 2.8rem;">
                     <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="position: relative; left: 4rem; background-color: #006c9b;">
+                      style="position: relative; left: 4rem; background-color: rgb(58, 109, 154);">
                       +</p>
                     <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="margin-inline: 0.5rem; visibility:hidden; background-color: #006c9b;">
+                      style="margin-inline: 0.5rem; visibility:hidden; background-color: rgb(58, 109, 154);">
                       x</p>
                   </td>
                 </tr>
@@ -214,13 +219,14 @@
       <div class="tab">
         <div class="container d-flex">
           <div class="col-6">
-            <table id="privateItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
+            <table id="privateItemTable" class="table table-bordered text-center"
+              style="border-color: rgb(58, 109, 154);">
               <thead>
-                <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">私人裝備</h4>
+                <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">私人裝備</h4>
                 </th>
-                <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">數量</h4>
+                <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">數量</h4>
                 </th>
               </thead>
               <tbody>
@@ -235,11 +241,11 @@
                       oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
                       style="position: relative; left: 2.7rem; font-size: 1.4rem;" placeholder="0">
                     <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="position: relative; left: 3.7rem; background-color: #006c9b;">
+                      style="position: relative; left: 3.7rem; background-color: rgb(58, 109, 154);">
                       +</p>
                     <p onclick="deletePrivateItemRow(this)"
                       class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="margin-inline: 0.5rem; position: relative; left: 3.7rem; visibility:hidden; background-color: #006c9b;">
+                      style="margin-inline: 0.5rem; position: relative; left: 3.7rem; visibility:hidden; background-color: rgb(58, 109, 154);">
                       x</p>
                   </td>
                 </tr>
@@ -247,13 +253,14 @@
             </table>
           </div>
           <div class="col-6">
-            <table id="sharedItemTable" class="table table-bordered text-center" style="border-color: #006c9b;">
+            <table id="sharedItemTable" class="table table-bordered text-center"
+              style="border-color: rgb(58, 109, 154);">
               <thead>
-                <th class="h-100" style="background-color: #006c9b; border-right: 1px solid white;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">公用裝備</h4>
+                <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">公用裝備</h4>
                 </th>
-                <th class="h-100" style="background-color: #006c9b;">
-                  <h4 class="m-auto text-white" style="font-size: 1.7rem;">能提供數量</h4>
+                <th class="h-100" style="background-color: rgb(58, 109, 154);">
+                  <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">能提供數量</h4>
                 </th>
               </thead>
               <tbody>
@@ -268,11 +275,11 @@
                       oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
                       style="margin-right: 1rem; position: relative; left: 3.2rem; font-size: 1.4rem;" placeholder="0">
                     <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="position: relative; left: 3.5rem; background-color: #006c9b;">
+                      style="position: relative; left: 3.5rem; background-color: rgb(58, 109, 154);">
                       +</p>
                     <p onclick="deleteSharedItemRow(this)"
                       class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="margin-inline: 0.5rem; position: relative; left: 3.5rem; visibility:hidden; background-color: #006c9b;">
+                      style="margin-inline: 0.5rem; position: relative; left: 3.5rem; visibility:hidden; background-color: rgb(58, 109, 154);">
                       x</p>
                   </td>
                 </tr>
@@ -282,18 +289,19 @@
         </div>
       </div>
       <!-- TODO: 按鈕 -->
+      <!-- R: 206 G: 165 B: 175 -->
       <div class="container text-center" style="padding-block: 5vh;">
         <!-- 返回  -->
         <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn"
-          style="margin-right: 1rem; background-color: #006c9b; color: whitesmoke;">返回
+          style="margin-right: 1rem; background-color: rgb(206, 165, 175); color: whitesmoke; font-weight: bolder; font-size: 1.5rem;">返回
         </button>
         <!-- 下一步  -->
         <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn"
-          style="margin-left: 1rem; background-color: #006c9b; color: whitesmoke;">下一步
+          style="margin-left: 1rem; background-color: rgb(206, 165, 175); color: whitesmoke; font-weight: bolder; font-size: 1.5rem;">下一步
         </button>
         <!-- TODO: 提交 -->
         <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn"
-          style="margin-left: 1rem; display: none; background-color: #006c9b; color: whitesmoke;"></button>
+          style="margin-left: 1rem; display: none; font-weight: bolder; font-size: 1.5rem; background-color: rgb(206, 165, 175); color: whitesmoke;"></button>
       </div>
     </form>
     <!-- FORM -->
@@ -337,12 +345,13 @@
             // TODO: 動態產生
             data: ["<%= leadership %>", "<%= heal %>", "<%= direction %>", "<%= teamwork %>", "<%= strength %>", "<%= survival %>"],
             fill: true,
-            backgroundColor: "rgb(0, 108, 155, 0.2)",
-            borderColor: "rgb(0, 108, 155, 0.1)",
-            pointBackgroundColor: "rgb(0, 108, 155, 0.5)",
-            pointBorderColor: "rgb(0, 108, 155)",
-            pointHoverBackgroundColor: "rgb(0, 108, 155)",
-            pointHoverBorderColor: "rgb(0, 108, 155)",
+            // rgb(124, 164, 203)
+            backgroundColor: "rgb(58, 109, 154, 0.2)",
+            borderColor: "rgb(58, 109, 154, 0.1)",
+            pointBackgroundColor: "rgb(58, 109, 154, 0.1)",
+            pointBorderColor: "rgb(58, 109, 154)",
+            pointHoverBackgroundColor: "rgb(58, 109, 154)",
+            pointHoverBorderColor: "rgb(58, 109, 154)",
             pointRadius: 3,
           },
         ],
@@ -358,7 +367,7 @@
             tooltip: {
               displayColors: false,
               caretSize: 10,
-              backgroundColor: "rgb(0, 108, 155)",
+              backgroundColor: "rgb(58, 109, 154)",
             },
           },
           elements: {
@@ -383,10 +392,10 @@
                 font: {
                   size: 20,
                 },
-                color: "rgb(0, 108, 155)"
+                color: "rgb(58, 109, 154)",
               },
               grid: {
-                color: "rgb(0, 108, 155, 0.4)",
+                color: "rgb(58, 109, 154, 0.3)",
               },
               ticks: {
                 display: true,
