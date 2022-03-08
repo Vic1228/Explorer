@@ -8,9 +8,10 @@ router.get("/map", function (req, res) {
 
 router.get("/login", function (req, res) {
   res.render("hong_login.ejs", { messages:req.flash("fail")});
-  
 });
-
+router.get("/login", function (req, res) {
+  res.render("hong_login.ejs", { message:req.flash("regisuccess")});
+});
 router.get("/signup", function (req, res) {
   res.render("hong_signup.ejs");
 });

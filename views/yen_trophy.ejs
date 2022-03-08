@@ -81,7 +81,7 @@
         </table>
       </div>
       <div style="text-align: end;">
-        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
           《查看更多...》
         </button>
       </div>
@@ -326,7 +326,7 @@
         <!-- Modal body -->
         <div class="modal-body">
           <table class='table table-hover'>
-            <tr class="table-success">
+            <tr class="">
               <td class="frt">名次</th>
               <td class="sec">冒險家</th>
               <td class="thr">分數</th>
@@ -350,7 +350,7 @@
         </div>
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+          <button type="button" class="btn" data-bs-dismiss="modal">關閉</button>
         </div>
       </div>
     </div>
@@ -371,10 +371,10 @@
         </div>
         <div class="card12">
           <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
+            <tr class="" style="background-color: #0c3c74;">
+              <td class="frt" style="color: white;">名次</th>
+              <td class="sec" style="color: white;">冒險家</th>
+              <td class="thr" style="color: white;">分數</th>
             </tr>
             <% json1.forEach((data,index)=>{%>
               <%if(index<5){%>
@@ -393,7 +393,7 @@
                   <% }) %>
           </table>
           <div style="text-align: end;">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal1">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal1"  style="background-color: #7ca4cb; color: white;">
               《查看更多...》
             </button>
           </div>
@@ -408,10 +408,10 @@
         </div>
         <div class="card12">
           <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
+            <tr class="" style="background-color: #7ca4cb;">
+              <td class="frt" style=" color: white;">名次</th>
+              <td class="sec" style=" color: white;">冒險家</th>
+              <td class="thr" style=" color: white;">分數</th>
             </tr>
             <% json2.forEach((data,index)=>{%>
               <%if(index<5){%>
@@ -430,7 +430,7 @@
                   <% }) %>
           </table>
           <div style="text-align: end;">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal2">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal2"  style="background-color: #0c3c74; color: white;">
               《查看更多...》
             </button>
           </div>
@@ -467,7 +467,7 @@
                   <% }) %>
           </table>
           <div style="text-align: end;">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal3">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal3">
               《查看更多...》
             </button>
           </div>
@@ -504,7 +504,7 @@
                   <% }) %>
           </table>
           <div style="text-align: end;">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal4">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal4">
               《查看更多...》
             </button>
           </div>
@@ -541,7 +541,7 @@
                   <% }) %>
           </table>
           <div style="text-align: end;">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal5">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal5">
               《查看更多...》
             </button>
           </div>
@@ -578,7 +578,7 @@
                   <% }) %>
           </table>
           <div style="text-align: end;">
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal6">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal6">
               《查看更多...》
             </button>
           </div>
