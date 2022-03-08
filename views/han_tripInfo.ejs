@@ -24,6 +24,16 @@
       /* * {
         outline: 1px blue solid;
       } */
+
+      .cat {
+        height: 500px;
+        width: auto;
+        background-image: url(nav/img/img/cat.jpeg);
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+      }
     </style>
   </head>
 
@@ -31,27 +41,112 @@
     <!-- NAV BAR -->
     <div w3-include-HTML="./nav/nav.html"></div>
     <!-- NAV BAR -->
+
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      style="height: 55vh"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner" style="height: 50vh">
+        <div class="carousel-item active">
+          <img
+            src="./img/han/han2/<%= data1[0].spotId %>-1.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="./img/han/han2/<%= data1[0].spotId %>-2.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            
+            
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="./img/han/han2/<%= data1[0].spotId %>-3.jpg"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+          
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
     <div class="container navDistance">
-      <div class="row">
-        <div class="col" style="text-align: center">
+      <div
+        class="row"
+        style="padding-left: 15vh; font-size: 15pt; margin-top: 5px"
+      >
+        <!-- <div class="col" style="text-align: center">
           <img
             src="./img/han/<%= data1[0].spotId %>.jpg"
             width="250px"
             height="200px"
           />
-        </div>
+        </div> -->
         <div class="col">
-          <p>活動名稱:<%= data1[0].tripName %></p>
-          <p>目的地:<%= data1[0].spotName %></p>
+          <p>活動名稱：<%= data1[0].tripName %></p>
+          <p>活動地點：<%= data1[0].spotName %></p>
           <P
-            >日期:<%= moment(data1[0].tripStartDate).format("yy/MM/DD")%> ~<%=
-            moment(data1[0].tripEndDate).format("yy/MM/DD")%></P
-          >
+            >日　　期：<%= moment(data1[0].tripStartDate).format("yy/MM/DD")%>
+            ~<%= moment(data1[0].tripEndDate).format("yy/MM/DD")%></P>
         </div>
-        <div class="col">
-          <P><%= data1[0].userName %></P>
-          <p>手機:<%= data1[0].userPhone %></p>
-          <p><%= data1[0].userEmail %></p>
+        <div class="col" style="padding-left: 20vh">
+          <P>姓名：<%= data1[0].userName %></P>
+          <p>手機：<%= data1[0].userPhone %></p>
+          <p>Email：<%= data1[0].userEmail %></p>
 
           <% if ( locals.data6[0]) { %> <% if( data6[0].positionState == 0){%>
           <p style="color: blue; font-weight: bold">申請中</p>
@@ -63,7 +158,11 @@
             class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
-            style="border-radius: 20px"
+            style="
+              border-radius: 20px;
+              background-color: #0c3c74;
+              margin-left: 30vh;
+            "
           >
             報名行程
           </button>
@@ -138,6 +237,7 @@
                     id="button"
                     class="btn btn-primary"
                     onclick="aaaa('<%= data1[0].tripId %>')"
+                    style="background-color: #7ca4cb"
                   >
                     確認
                   </button>
@@ -147,6 +247,8 @@
           </div>
         </div>
       </div>
+
+      
       <div class="row" style="margin-top: 150px">
         <div class="col" style="text-align: center">
           <h1>行程表</h1>
@@ -193,10 +295,10 @@
                 </div>
               </div>
 
+            
               <div class="col" style="margin-top: 200px; text-align: center">
                 <h1>已有公共裝備</h1>
                 <hr />
-
                 <div class="row">
                   <div class="col">
                     <% data5.forEach(element5=>{%>
@@ -210,7 +312,7 @@
                   </div>
                 </div>
               </div>
-
+              
               <div class="col" style="margin-top: 200px; text-align: center">
                 <h1>注意事項</h1>
                 <hr />
@@ -243,6 +345,15 @@
       </div>
     </div>
 
+
+
+    <div class="cat">
+
+    </div>
+    
+
+
+
     <div w3-include-HTML="./footer/footer.html" class="mt-5"></div>
     <script>
       w3.includeHTML();
@@ -255,5 +366,6 @@
 
     <script src="./22.js"></script>
     <script src="./333.js"></script>
+    <!-- <script src="public\js\han\click.js"></script> -->
   </body>
 </html>
