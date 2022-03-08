@@ -17,10 +17,25 @@ bluebird.promisifyAll(conn);
 // ---------------------- request ----------------------
 
 song_tripManage_router.put("/", function (req, res) {
-  console.log(req.body);
-  conn.query(`UPDATE trips SET tripName = '${req.body.changes}' where tripId = ${req.body.tripId}`, function (err, rows) {
-    res.send({ state: 'success' })
-  })
+  console.log(req.body.action)
+  console.log(typeof(req.body.action))
+  switch (req.body.action) {
+    case 'tripNameEdit':
+      conn.query(`UPDATE trips SET tripName = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
+        if(err) throw err;
+        res.send({state: 'success'})
+      })
+      break;
+    case 'tripNodeEdit':
+      console.log('apple')
+      conn.query(`UPDATE trips SET tripDESC = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
+        if(err) throw err;
+        res.send({state: 'success'})
+      })
+
+      break;
+  }
+
 
 })
 
