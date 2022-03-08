@@ -114,7 +114,7 @@ $(function () {
                     return test;
                 }
                 else {
-                    return '<span>---</span>';
+                    return `<span>---</span>`;
                 }
 
             }
