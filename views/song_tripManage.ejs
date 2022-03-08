@@ -387,8 +387,7 @@
                         <h5 class="modal-title">冒險團新名稱</h5>
                     </div>
                     <div class="modal-body mx-auto">
-                        <input style="width:100%" type="text" name="newTripName"
-                            placeholder="<%= selectedTrip.tripName %>">
+                        <input style="width:100%" type="text" placeholder="<%= selectedTrip.tripName %>">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
@@ -458,8 +457,8 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                         </div>
                     </form>
                 </div>
@@ -473,11 +472,11 @@
                         <h5 class="modal-title">行程簡介編輯</h5>
                     </div>
                     <div class="modal-body">
-                        <textarea name="newTripNotes" style="width:100%; height:40vh"> <%=tripNotes%> </textarea>
-                        <input type="text" class="d-none" name="tripId" value="<%= selectedTrip.tripId %>">
+                        <textarea type="text" id="newTripNotes"
+                            style="width:100%; height:40vh"><%=tripNotes%></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">完成</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
@@ -491,69 +490,69 @@
                         <h5 class="modal-title">小強</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="">
+                        <div class="px-5 mb-4">
                             <table>
                                 <tr>
                                     <th></th>
-                                    <th>5</th>
-                                    <th>4</th>
-                                    <th>3</th>
-                                    <th>2</th>
                                     <th>1</th>
+                                    <th>2</th>
+                                    <th>3</th>
+                                    <th>4</th>
+                                    <th>5</th>
                                 </tr>
                                 <tr>
                                     <td>體能</td>
-                                    <td><input type="radio" name="strength" value="5"></td>
-                                    <td><input type="radio" name="strength" value="4"></td>
-                                    <td><input type="radio" name="strength" value="3"></td>
-                                    <td><input type="radio" name="strength" value="2"></td>
                                     <td><input type="radio" name="strength" value="1"></td>
+                                    <td><input type="radio" name="strength" value="2"></td>
+                                    <td><input type="radio" name="strength" value="3"></td>
+                                    <td><input type="radio" name="strength" value="4"></td>
+                                    <td><input type="radio" name="strength" value="5"></td>
                                 </tr>
                                 <tr>
                                     <td>醫術</td>
-                                    <td><input type="radio" name="heal" value="5"></td>
-                                    <td><input type="radio" name="heal" value="4"></td>
-                                    <td><input type="radio" name="heal" value="3"></td>
-                                    <td><input type="radio" name="heal" value="2"></td>
                                     <td><input type="radio" name="heal" value="1"></td>
+                                    <td><input type="radio" name="heal" value="2"></td>
+                                    <td><input type="radio" name="heal" value="3"></td>
+                                    <td><input type="radio" name="heal" value="4"></td>
+                                    <td><input type="radio" name="heal" value="5"></td>
                                 </tr>
                                 <tr>
                                     <td>方向感</td>
-                                    <td><input type="radio" name="direction" value="5"></td>
-                                    <td><input type="radio" name="direction" value="4"></td>
-                                    <td><input type="radio" name="direction" value="3"></td>
-                                    <td><input type="radio" name="direction" value="2"></td>
                                     <td><input type="radio" name="direction" value="1"></td>
+                                    <td><input type="radio" name="direction" value="2"></td>
+                                    <td><input type="radio" name="direction" value="3"></td>
+                                    <td><input type="radio" name="direction" value="4"></td>
+                                    <td><input type="radio" name="direction" value="5"></td>
                                 </tr>
                                 <tr>
                                     <td>求生技能</td>
-                                    <td><input type="radio" name="survival" value="5"></td>
-                                    <td><input type="radio" name="survival" value="4"></td>
-                                    <td><input type="radio" name="survival" value="3"></td>
-                                    <td><input type="radio" name="survival" value="2"></td>
                                     <td><input type="radio" name="survival" value="1"></td>
+                                    <td><input type="radio" name="survival" value="2"></td>
+                                    <td><input type="radio" name="survival" value="3"></td>
+                                    <td><input type="radio" name="survival" value="4"></td>
+                                    <td><input type="radio" name="survival" value="5"></td>
                                 </tr>
                                 <tr>
                                     <td>團隊意識</td>
-                                    <td><input type="radio" name="teamwork" value="5"></td>
-                                    <td><input type="radio" name="teamwork" value="4"></td>
-                                    <td><input type="radio" name="teamwork" value="3"></td>
-                                    <td><input type="radio" name="teamwork" value="2"></td>
                                     <td><input type="radio" name="teamwork" value="1"></td>
+                                    <td><input type="radio" name="teamwork" value="2"></td>
+                                    <td><input type="radio" name="teamwork" value="3"></td>
+                                    <td><input type="radio" name="teamwork" value="4"></td>
+                                    <td><input type="radio" name="teamwork" value="5"></td>
                                 </tr>
                                 <tr>
                                     <td>領導力</td>
-                                    <td><input type="radio" name="leadership" value="5"></td>
-                                    <td><input type="radio" name="leadership" value="4"></td>
-                                    <td><input type="radio" name="leadership" value="3"></td>
-                                    <td><input type="radio" name="leadership" value="2"></td>
                                     <td><input type="radio" name="leadership" value="1"></td>
+                                    <td><input type="radio" name="leadership" value="2"></td>
+                                    <td><input type="radio" name="leadership" value="3"></td>
+                                    <td><input type="radio" name="leadership" value="4"></td>
+                                    <td><input type="radio" name="leadership" value="5"></td>
                                 </tr>
                             </table>
-                        </form>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">完成</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
@@ -567,7 +566,7 @@
                         <h5 class="modal-title">是否確認拒絕？</h5>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
@@ -581,7 +580,7 @@
                         <h5 class="modal-title">是否確認同意？</h5>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
@@ -629,7 +628,7 @@
                             </table>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">確認</button>
+                            <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                         </div>
                     </form>
@@ -679,7 +678,7 @@
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
@@ -699,14 +698,14 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">確認</button>
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="chartContainer" class="d-none" style="width:150px; height: 150px">
+        <div id="chartContainer" class="" style="width:150px; height: 150px">
             <canvas id="myChart"></canvas>
         </div>
 
@@ -725,6 +724,9 @@
         <script src="../public/js/song_js/song_tripManage.js"></script>
 
         <script>
+
+
+
             var sessionUserId = Number('<%= sessionUserId %>')
             if (sessionUserId == 0) {
                 $('#member').append(
@@ -740,37 +742,81 @@
 
 
 
-            $('.okbtn').click(function () {     
-                var changes = $(this).closest(".modal").find('input').val();
-                $.ajax({
-                    type: 'put',
-                    url: '/tripManage',
-                    data: {
-                        userId: '<%= sessionUserId%>',
-                        tripId: '<%= selectedTrip.tripId %>',
-                        action: 'tripNameEdit',
-                        changes: `${changes}`,
-                    },
-                    success: function (apple) {
-                        var origin = $('#selTripName').text().trim();
-                        $('#tripSelContainer').find('a').each(function(){
-                            let tripSelListName = $(this).text().trim();
-                            if( tripSelListName == origin){
-                                $(this).text(changes)
-                                console.log(this);
-                                return;
-                            }
-                        })
-                        $('#selTripName').html(`${changes}<img class="edit" data-toggle="modal" data-target="#tripNameEdit"
+            $('.okbtn').click(function () {
+                var theThis = this;
+                var modalId = $(this).closest(".modal").attr('id');
+                switch (modalId) {
+                    case 'tripNameEdit':
+                        var newTripName = $(this).closest(".modal").find('input').val();
+                        $.ajax({
+                            type: 'put',
+                            url: '/tripManage',
+                            data: {
+                                userId: '<%= sessionUserId%>',
+                                tripId: '<%= selectedTrip.tripId %>',
+                                action: 'tripNameEdit',
+                                changes: newTripName,
+                            },
+                            success: function () {
+                                var origin = $('#selTripName').text().trim();
+                                $('#tripSelContainer').find('a').each(function () {
+                                    let tripSelListName = $(this).text().trim();
+                                    if (tripSelListName == origin) {
+                                        $(this).text(newTripName)
+                                        return;
+                                    }
+                                })
+                                $('#selTripName').html(`${newTripName}<img class="edit" data-toggle="modal" data-target="#tripNameEdit"
                                 src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">`);
 
-                    }
-                })
+                            }
+                        })
+                        break;
+                    case 'tripNoteEdit':
+                        var newTripNotes = $(this).closest(".modal").find('textarea').val();
+                        $.ajax({
+                            type: 'put',
+                            url: '/tripManage',
+                            data: {
+                                userId: '<%= sessionUserId%>',
+                                tripId: '<%= selectedTrip.tripId %>',
+                                action: 'tripNoteEdit',
+                                changes: newTripNotes,
+                            },
+                            success: function () {
+                                console.log(newTripNotes)
+                                $('#noteText').text(newTripNotes);
+                                var newTextarea = $(theThis).closest(".modal").find('#newTripNotes');
+                                newTextarea.val(newTripNotes);
+                            }
+                        })
+                        break;
+                    case 'tripNoteEdit':
+                        var newTripNotes = $(this).closest(".modal").find('textarea').val();
+                        $.ajax({
+                            type: 'put',
+                            url: '/tripManage',
+                            data: {
+                                userId: '<%= sessionUserId%>',
+                                tripId: '<%= selectedTrip.tripId %>',
+                                action: 'tripNoteEdit',
+                                changes: newTripNotes,
+                            },
+                            success: function () {
+                                console.log(newTripNotes)
+                                $('#noteText').text(newTripNotes);
+                                var newTextarea = $(theThis).closest(".modal").find('#newTripNotes');
+                                newTextarea.val(newTripNotes);
+                            }
+                        })
+                        break;
+
+                }
             })
 
             $('.modal').on('hidden.bs.modal', function (e) {
                 $(this)
-                    .find("input,textarea,select")
+                    .find("input,select")
                     .val('')
                     .end()
                     .find("input[type=checkbox], input[type=radio]")

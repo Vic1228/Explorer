@@ -113,8 +113,8 @@ app.post("/login", function (req, res) {
   // 比對
   connection.query(member, function (err, result, fields) {
     if (result[0] == null) {
+      req.flash("fail", "登入失敗!!");
       res.redirect("/login");
-      console.log("登入失敗!");
     } else {
       let id = result[0].userId;
       req.session.userId = id;
@@ -166,6 +166,7 @@ app.post("/register", function (req, res) {
           res.render("signuperr");
         } else {
           console.log("1 RECORD INSERTED");
+          req.flash("regisuccess", "註冊成功!!");
           res.redirect("/login");
         }
       });

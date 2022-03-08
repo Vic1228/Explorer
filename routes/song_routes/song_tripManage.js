@@ -17,10 +17,24 @@ bluebird.promisifyAll(conn);
 // ---------------------- request ----------------------
 
 song_tripManage_router.put("/", function (req, res) {
-  console.log(req.body);
-  conn.query(`UPDATE trips SET tripName = '${req.body.changes}' where tripId = ${req.body.tripId}`, function (err, rows) {
-    res.send({ state: 'success' })
-  })
+  console.log(req.body.action)
+  console.log(typeof(req.body.action))
+  switch (req.body.action) {
+    case 'tripNameEdit':
+      conn.query(`UPDATE trips SET tripName = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
+        if(err) throw err;
+        res.send({state: 'success'})
+      })
+      break;
+    case 'tripNoteEdit':
+      console.log('apple')
+      conn.query(`UPDATE trips SET tripDesc = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
+        if(err) throw err;
+        res.send({state: 'success'})
+      })
+      break;
+  }
+
 
 })
 
@@ -215,7 +229,9 @@ song_tripManage_router.get("/", function (req, res) {
       if (result7 != undefined) {
         data.memberCount = result7[0].memberCount;
       }
-      return res.render("song_tripManage.ejs", data);
+      console.log(data)
+      data = JSON.stringify(data);
+      return res.render("song_tripManage.ejs", {data});
     })
     .catch((err) => console.log(err));
 });
