@@ -160,54 +160,88 @@ function hoverdiv(e, showStat) {
 }
 
 
+/*---------------------------------------------------------------*/
+/*-------------------------- input num --------------------------*/
+/*---------------------------------------------------------------*/
+(function() {
+    'use strict';
+    function ctrls() {
+      var _this = this;
+      this.counter = 0;
+      this.els = {
+        decrement: document.querySelector('.ctrl__button--decrement'),
+        counter: {
+          container: document.querySelector('.ctrl__counter'),
+          num: document.querySelector('.ctrl__counter-num'),
+          input: document.querySelector('.ctrl__counter-input')
+        },
+        increment: document.querySelector('.ctrl__button--increment')
+      };
+      this.decrement = function() {
+        var counter = _this.getCounter();
+        var nextCounter = (_this.counter > 0) ? --counter : counter;
+        _this.setCounter(nextCounter);
+      };
+      this.increment = function() {
+        var counter = _this.getCounter();
+        var nextCounter = (counter < 9999999999) ? ++counter : counter;
+        _this.setCounter(nextCounter);
+      };
+      this.getCounter = function() {
+        return _this.counter;
+      };
+      this.setCounter = function(nextCounter) {
+        _this.counter = nextCounter;
+      };
+      this.debounce = function(callback) {
+        setTimeout(callback, 100);
+      };
+      this.render = function(hideClassName, visibleClassName) {
+        _this.els.counter.num.classList.add(hideClassName);
+        setTimeout(function() {
+          _this.els.counter.num.innerText = _this.getCounter();
+          _this.els.counter.input.value = _this.getCounter();
+          _this.els.counter.num.classList.add(visibleClassName);
+        }, 100);
+        setTimeout(function() {
+          _this.els.counter.num.classList.remove(hideClassName);
+          _this.els.counter.num.classList.remove(visibleClassName);
+        }, 200);
+      };
+      this.ready = function() {
+        _this.els.decrement.addEventListener('click', function() {
+          _this.debounce(function() {
+            _this.decrement();
+            _this.render('is-decrement-hide', 'is-decrement-visible');
+          });
+        });
+        _this.els.increment.addEventListener('click', function() {
+          _this.debounce(function() {
+            _this.increment();
+            _this.render('is-increment-hide', 'is-increment-visible');
+          });
+        });
+        _this.els.counter.input.addEventListener('input', function(e) {
+          var parseValue = parseInt(e.target.value);
+          if (!isNaN(parseValue) && parseValue >= 0) {
+            _this.setCounter(parseValue);
+            _this.render();
+          }
+        });
+        _this.els.counter.input.addEventListener('focus', function(e) {
+          _this.els.counter.container.classList.add('is-input');
+        });
+        _this.els.counter.input.addEventListener('blur', function(e) {
+          _this.els.counter.container.classList.remove('is-input');
+          _this.render();
+        });
+      };
+    };
+    // init
+    var controls = new ctrls();
+    document.addEventListener('DOMContentLoaded', controls.ready);
+  })();
+
+
 // 裝備清單編輯
-{
-
-
-    const privateItem = `<tr>
-                <td class="form-td"><input name="private" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="form-td"><input name="private" type="number"
-                    class="text-center border-0 w-25 h-100 form-input"
-                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
-                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                </td>
-              </tr>`;
-    const sharedItem = `<tr>
-                <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="form-td"><input name="shared" type="number" id=""
-                    class="text-center border-0 h-100 form-input w-50"
-                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
-                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                  <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                </td>
-              </tr>`;
-
-    // 方法
-
-    // 增加列
-    function addPrivateItemRow(p) {
-        $(p).closest("tr").after(privateItem);
-    }
-    function addSharedItemRow(p) {
-        $(p).closest("tr").after(sharedItem);
-    }
-
-    // 刪除列
-    // <p onclick="deleteItineraryRow(this)" 第165行
-    function deletePrivateItemRow(p) {
-        $(p).closest("tr").remove();
-    }
-    function deleteSharedItemRow(p) {
-        $(p).closest("tr").remove();
-    }
-}
 

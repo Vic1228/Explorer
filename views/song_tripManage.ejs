@@ -461,9 +461,7 @@
                                     <th class="h-100">
                                         <h6>物品名稱</h6>
                                     </th>
-                                    <th class="h-100">
-                                        <h6>能提供數量</h6>
-                                    </th>
+                                    <th></th>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -472,10 +470,7 @@
                                                 class="text-center border-0 h-100 form-input" placeholder="物品名稱"
                                                 oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
                                         <!-- TODO: 數量 -->
-                                        <td class="form-td"><input name="shared" type="number" id=""
-                                                class="text-center border-0 h-100 form-input w-50"
-                                                oninput="this.className = 'text-center border-0 h-100 form-input w-50'"
-                                                style="margin-right: 1rem;">
+                                        <td class="form-td">
                                             <p onclick="addSharedItemRow(this)"
                                                 class="d-inline-block rounded-circle add-delete-btn table-btn">
                                                 +</p>
@@ -507,32 +502,27 @@
                         <h6 style="margin-bottom: 3vh">私人裝備</h6>
                         <table id="privateItemTable" class="table table-bordered text-center">
                             <thead>
-                                <th class="h-100">
+                                <th>
                                     <h6>物品名稱</h6>
                                 </th>
-                                <th class="h-100">
+                                <th>
                                     <h6>數量</h6>
                                 </th>
                             </thead>
                             <tbody>
                                 <tr>
                                     <!-- TODO: 裝備名稱 -->
-                                    <td class="form-td"><input name="private" type="text"
-                                            class="text-center border-0 h-100 form-input" placeholder="物品名稱"
-                                            oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
+                                    <td><input type="text"></td>
                                     <!-- TODO: 數量 -->
-                                    <td class="form-td">
-                                        <input name="private" type="number"
-                                            class="text-center border-0  w-25 h-100 form-input"
-                                            oninput="this.className = 'text-center border-0 w-25 h-100 form-input'"
-                                            style="margin-right: 1rem;">
-                                        <p onclick="addPrivateItemRow(this)"
-                                            class="d-inline-block rounded-circle add-delete-btn table-btn">
-                                            +</p>
-                                        <p onclick="deletePrivateItemRow(this)"
-                                            class="d-inline-block rounded-circle add-delete-btn table-btn"
-                                            style="margin-inline: 1rem; visibility:hidden">
-                                            x</p>
+                                    <td>
+                                        <div class='ctrl'>
+                                            <div class='ctrl__button ctrl__button--decrement'>&ndash;</div>
+                                            <div class='ctrl__counter'>
+                                                <input class='ctrl__counter-input' maxlength='10' type='text' value='0'>
+                                                <div class='ctrl__counter-num'>0</div>
+                                            </div>
+                                            <div class='ctrl__button ctrl__button--increment'>+</div>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -612,39 +602,41 @@
             // 行程日期、目的地
             $('#selTripInfo').text(`${rData.selectedTrip.tripStartDate} ~ ${rData.selectedTrip.tripEndDate}  ${rData.selectedTrip.spotName}`)
 
-            // 行程成員
-            $('#joinedMember tbody').empty();
-            $('#applyMember tbody').empty();
-            rData.tripMember.forEach((element) => {
-                var statAvg = Math.floor((element.stat.leadership + element.stat.teamwork +
-                    element.stat.strength + element.stat.heal + element.stat.survival +
-                    element.stat.direction) / 6 * 10) / 10;
+            refreshMemberItem();
+            function refreshMemberItem() {
+                // 行程成員
+                $('#joinedMember tbody').empty();
+                $('#applyMember tbody').empty();
+                rData.tripMember.forEach((element) => {
+                    var statAvg = Math.floor((element.stat.leadership + element.stat.teamwork +
+                        element.stat.strength + element.stat.heal + element.stat.survival +
+                        element.stat.direction) / 6 * 10) / 10;
 
-                if (element.positionState > 0) {
-                    $('#joinedMember tbody').append(
-                        `<tr>
+                    if (element.positionState > 0) {
+                        $('#joinedMember tbody').append(
+                            `<tr>
                             <td>${element.name}</td>
                             <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視<ul class="d-none"></ul></a></td>
                             <td><a href="#" class="statAvg">${statAvg}</a></td>
                         </tr>`
-                    )
-                    // 成員之公共裝備
-                    rData.sharedItems.forEach((i) => {
-                        i.itemCount.forEach((j) => {
-                            if (j.userId === element.userId) {
-                                $('#joinedMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
-                            }
+                        )
+                        // 成員之公共裝備
+                        rData.sharedItems.forEach((i) => {
+                            i.itemCount.forEach((j) => {
+                                if (j.userId === element.userId) {
+                                    $('#joinedMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
+                                }
+                            })
                         })
-                    })
-                    // 評分表
-                    if (element.name === rData.userName) {
-                        $('#joinedMember tr').last().append('<td> --- </td>');
+                        // 評分表
+                        if (element.name === rData.userName) {
+                            $('#joinedMember tr').last().append('<td> --- </td>');
+                        } else {
+                            $('#joinedMember tr').last().append('<td><a href="#" data-toggle="modal"data-target="#statComment">我要評分</a></td>')
+                        }
                     } else {
-                        $('#joinedMember tr').last().append('<td><a href="#" data-toggle="modal"data-target="#statComment">我要評分</a></td>')
-                    }
-                } else {
-                    $('#applyMember tbody').append(
-                        `<tr>
+                        $('#applyMember tbody').append(
+                            `<tr>
                             <td>${element.name}</td>
                             <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視<ul class="d-none"></ul></a></td>
                             <td><a href="#" class="statAvg">${statAvg}</a></td>
@@ -661,32 +653,32 @@
                                 </div>
                             </td>
                         </tr>`
-                    )
-                    // 成員之公共裝備
-                    rData.sharedItems.forEach((i) => {
-                        i.itemCount.forEach((j) => {
-                            if (j.userId === element.userId) {
-                                $('#applyMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
-                            }
+                        )
+                        // 所有人之公共裝備
+                        rData.sharedItems.forEach((i) => {
+                            i.itemCount.forEach((j) => {
+                                if (j.userId === element.userId) {
+                                    $('#applyMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
+                                }
+                            })
                         })
-                    })
-                }
-            })
-
-            // 公共裝備清單
-            $('#sharedItemMemberCount').empty();
-            $('#sharedItemMemberCount').append(
-                `公共裝備（團員人數： ${rData.memberCount} 人）
-                <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
-            )
-            $('#publicItemList tbody').empty();
-            rData.sharedItems.forEach((element) => {
-                var itemCount = 0;
-                element.itemCount.forEach((i) => {
-                    itemCount += i.itemCount
+                    }
                 })
-                $('#publicItemList tbody').append(
-                    `<tr valign="top">
+
+                // 公共裝備清單
+                $('#sharedItemMemberCount').empty();
+                $('#sharedItemMemberCount').append(
+                    `公共裝備（團員人數： ${rData.memberCount} 人）
+                <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
+                )
+                $('#publicItemList tbody').empty();
+                rData.sharedItems.forEach((element) => {
+                    var itemCount = 0;
+                    element.itemCount.forEach((i) => {
+                        itemCount += i.itemCount
+                    })
+                    $('#publicItemList tbody').append(
+                        `<tr valign="top">
                         <td>${element.sharedItem}</td>
                         <td>${itemCount}</td>
                         <td><ul></ul></td>
@@ -699,32 +691,33 @@
                             </div>
                         </td>
                     </tr>`
-                )
-                rData.tripMember.forEach((i) => {
-                    element.itemCount.forEach((j) => {
-                        if (j.userId === i.userId && i.positionState > 0) {
-                            $('#publicItemList ul').last().append(
-                                `<li class="superLi">
+                    )
+                    rData.tripMember.forEach((i) => {
+                        element.itemCount.forEach((j) => {
+                            if (j.userId === i.userId && i.positionState > 0) {
+                                $('#publicItemList ul').last().append(
+                                    `<li class="superLi">
                                     <span class="superLeft">${i.name}</span>
                                     <!-- <span class="superSpan">／</span>  -->
                                     <span class="superRight">${j.itemCount} 個</span>
                                 </li>`
-                            )
-                        }
+                                )
+                            }
+                        })
                     })
                 })
-            })
-
-            // 私人裝備清單
-            $('#privateItemList tbody').empty();
-            rData.privateItems.forEach((element) => {
-                $('#privateItemList tbody').append(
-                    `<tr class="privateItemDetail" valign="top">
+                // 私人裝備清單
+                $('#privateItemList tbody').empty();
+                rData.privateItems.forEach((element) => {
+                    $('#privateItemList tbody').append(
+                        `<tr class="privateItemDetail" valign="top">
                         <td>${element.privateItem}</td>
                         <td>${element.itemCount}個</td>
                     </tr>`
-                )
-            })
+                    )
+                })
+            }
+
 
             // 行程列表
             $('.scheduleDayContainer').empty();
@@ -750,20 +743,15 @@
             })
 
             // 注意事項
-            $('#noteText').text(`${rData.tripNotes}`)
+            refreshTripNote();
+            function refreshTripNote() {
+                $('#noteText').text(`${rData.tripNotes}`);
+                $('#newTripNotes').val(`${rData.tripNotes}`);
+            }
 
 
-            var sessionUserId = Number(`${rData.sessionUserId}`)
-            if (sessionUserId === 0) {
-                $('#member').append(
-                    '<li><a href="/login">登入／註冊</a></li>'
-                )
-            }
-            else {
-                $('#member').append(
-                    '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
-                )
-            }
+
+
 
 
 
@@ -798,45 +786,40 @@
                         break;
                     case 'tripNoteEdit':
                         var newTripNotes = $(this).closest(".modal").find('textarea').val();
-                        $.ajax({
-                            type: 'put',
+                        axios({
+                            method: 'put',
                             url: '/tripManage',
                             data: {
                                 userId: rData.sessionUserId,
                                 tripId: rData.selectedTrip.tripId,
                                 action: 'tripNoteEdit',
                                 changes: newTripNotes,
-                            },
-                            success: function () {
-                                console.log(newTripNotes)
-                                $('#noteText').text(newTripNotes);
-                                var newTextarea = $(theThis).closest(".modal").find('#newTripNotes');
-                                newTextarea.val(newTripNotes);
                             }
-                        })
-                        break;
-                    case 'tripNoteEdit':
-                        var newTripNotes = $(this).closest(".modal").find('textarea').val();
-                        $.ajax({
-                            type: 'put',
-                            url: '/tripManage',
-                            data: {
-                                userId: rData.sessionUserId,
-                                tripId: rData.selectedTrip.tripId,
-                                action: 'tripNoteEdit',
-                                changes: newTripNotes,
-                            },
-                            success: function () {
-                                console.log(newTripNotes)
-                                $('#noteText').text(newTripNotes);
-                                var newTextarea = $(theThis).closest(".modal").find('#newTripNotes');
-                                newTextarea.val(newTripNotes);
-                            }
+                        }).then(function (res) {
+                            rData.tripNotes = newTripNotes;
+                            refreshTripNote();
+                        }).catch(function (err) {
+                            console.log(err)
                         })
                         break;
 
                 }
             })
+
+
+
+
+            var sessionUserId = Number(`${rData.sessionUserId}`)
+            if (sessionUserId === 0) {
+                $('#member').append(
+                    '<li><a href="/login">登入／註冊</a></li>'
+                )
+            }
+            else {
+                $('#member').append(
+                    '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+                )
+            }
 
 
         </script>
