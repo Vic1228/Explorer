@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -73,9 +74,13 @@
 
                 <!------- Middle: management Start ------->
                 <div id="managementContainer" class="col-6">
-                    <h1 id="selTripName">
-                        ---
-                    </h1>
+                    <div class="" style="position:relative">
+                        <h1 id="selTripName">---</h1>
+                        <h6 id="selTripInfo" style="position: absolute; bottom: 0px; right: 0px; margin-bottom: 0px">
+                        </h6>
+                    </div>
+
+
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
@@ -166,9 +171,9 @@
                             </div>
                             <div id="itemList" class="container tab-pane fade">
 
-                                <h4 class="tableTitle">公共裝備（團員人數： <%= memberCount %> 人）
-                                        <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
-                                            data-target="#publicItemListEdit" title="限發起人編輯">
+                                <h4 id="sharedItemMemberCount" class="tableTitle">公共裝備（團員人數： --- 人）
+                                    <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
+                                        data-target="#publicItemListEdit" title="限發起人編輯">
                                 </h4>
                                 <table id="publicItemList">
                                     <thead>
@@ -222,20 +227,19 @@
                     </h4>
                     <hr class="divider">
                     <div class="scheduleDayContainer px-2">
-                            <div class="scheduleDay">
-                                <h4 data-toggle="collapse" data-target="#DAYCount">
-                                    DAY Count <img class="downArrow" src="../public/img/song_img/down-arrow.png"
-                                            alt="">
-                                </h4>
-                                <div id="DAYCount" class="collapse show">
-                                    <table>
-                                            <tr>
-                                                <td>Start time</td>
-                                                <td>Activity name</td>
-                                            </tr>
-                                    </table>
-                                </div>
+                        <div class="scheduleDay">
+                            <h4 data-toggle="collapse" data-target="#DAYCount">
+                                DAY Count <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
+                            </h4>
+                            <div id="DAYCount" class="collapse show">
+                                <table>
+                                    <tr>
+                                        <td>Start time</td>
+                                        <td>Activity name</td>
+                                    </tr>
+                                </table>
                             </div>
+                        </div>
 
                     </div>
                     <br>
@@ -271,7 +275,7 @@
                         <h5 class="modal-title">冒險團新名稱</h5>
                     </div>
                     <div class="modal-body mx-auto">
-                        <input id="tripNameEditInput" style="width:100%" type="text" placeholder="<%= selectedTrip.tripName %>">
+                        <input id="tripNameEditInput" style="width:100%" type="text" placeholder="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
@@ -289,53 +293,27 @@
                             <h5 class="modal-title">探險計畫編輯</h5>
                         </div>
                         <div class="modal-body px-5">
-                            <table id="ItineraryTable" class="table table-bordered text-center">
+                            <table>
                                 <thead>
                                     <tr>
-                                        <th class="h-100">
-                                            <h6>行程</h6>
-                                        </th>
-                                        <th class="h-100">
-                                            <h6>時間</h6>
-                                        </th>
-                                        <th class="h-100">
-                                            <h6>活動</h6>
-                                        </th>
+                                        <th>天數</th>
+                                        <th>時間</th>
+                                        <th>活動</th>
+                                        <th>新增/刪除</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <!-- TODO: 第幾天 -->
-                                        <td class="form-td">
-                                            <select name="schedule" id=""
-                                                class="border-0 text-center h-100 form-input w-100"
-                                                oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
-                                                <option value="" selected disabled>第?天</option>
-                                                <option value="1">第1天</option>
-                                                <option value="2">第2天</option>
-                                                <option value="3">第3天</option>
-                                                <option value="4">第4天</option>
-                                            </select>
-                                        </td>
-                                        <!-- TODO: 時間 -->
-                                        <td class="form-td"><input name="schedule" type="time" id=""
-                                                class="text-center border-0 h-100 time-input form-input w-100"
-                                                oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
-                                        </td>
-                                        <!-- TODO: 活動名稱 -->
-                                        <td class="form-td"><input name="schedule"
-                                                class="h-100 w-75 border-0 act-input text-center form-input" type="text"
-                                                class="border-0"
-                                                oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'"
-                                                placeholder="活動名稱" style="margin-right: 1rem;">
-                                            <p onclick="addItineraryRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn">
-                                                +</p>
-                                            <p onclick="deleteItineraryRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn"
-                                                style="margin-inline: 1rem; visibility:hidden">
-                                                x</p>
-                                        </td>
+                                        <td>DAY ---</td>
+                                        <td>---</td>
+                                        <td>---</td>
+                                        <td>---</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>---</td>
+                                        <td>---</td>
+                                        <td>---</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -612,23 +590,30 @@
             console.log(rData)
             console.log(typeof (rData));
 
-            // ----- 左邊行程選擇列表 -----
-            // 發起的行程
-            $('#createTripList').empty();
-            rData.createTripList.forEach((element) => {
-                $('#createTripList').append(`<li><a href="#">${element.tripName}</a></li>`)
-            })
-
-            // 參加的行程
-            $('#joinTripList').empty();
-            rData.joinTripList.forEach((element) => {
-                $('#joinTripList').append(`<li><a href="#">${element.tripName}</a></li>`)
-            })
-
-            // ------ 中間資訊欄位 -----
             // 行程名稱
-            $('#selTripName').html(`${rData.selectedTrip.tripName} <img class="edit" data-toggle="modal" data-target="#tripNameEdit"
-                                src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">`)
+            refreshSelTripName();
+            function refreshSelTripName() {
+                $('#selTripName').html(`${rData.selectedTrip.tripName} <img class="edit" data-toggle="modal" data-target="#tripNameEdit"
+                                src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">`);
+                $('#tripNameEditInput').attr('placeholder', rData.selectedTrip.tripName);
+
+                // 參加的行程
+                $('#joinTripList').empty();
+                rData.joinTripList.forEach((element) => {
+                    $('#joinTripList').append(`<li><a href="/tripManage?selectedTripId=${element.tripId}&selectedTripName=${element.tripName}">${element.tripName}</a></li>`)
+                })
+
+                // 發起的行程
+                $('#createTripList').empty();
+                rData.createTripList.forEach((element) => {
+                    $('#createTripList').append(`<li><a href="/tripManage?selectedTripId=${element.tripId}&selectedTripName=${element.tripName}">${element.tripName}</a></li>`)
+                })
+
+
+            }
+
+            // 行程日期、目的地
+            $('#selTripInfo').text(`${rData.selectedTrip.tripStartDate} ~ ${rData.selectedTrip.tripEndDate}  ${rData.selectedTrip.spotName}`)
 
             // 行程成員
             $('#joinedMember tbody').empty();
@@ -692,6 +677,11 @@
             })
 
             // 公共裝備清單
+            $('#sharedItemMemberCount').empty();
+            $('#sharedItemMemberCount').append(
+                `公共裝備（團員人數： ${rData.memberCount} 人）
+                <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
+            )
             $('#publicItemList tbody').empty();
             rData.sharedItems.forEach((element) => {
                 var itemCount = 0;
@@ -787,29 +777,25 @@
                 switch (modalId) {
                     case 'tripNameEdit':
                         var newTripName = $(this).closest(".modal").find('input').val();
-                        $.ajax({
-                            type: 'put',
+                        axios({
+                            method: 'put',
                             url: '/tripManage',
                             data: {
-                                userId: '<%= sessionUserId%>',
-                                tripId: '<%= selectedTrip.tripId %>',
+                                userId: rData.sessionUserId,
+                                tripId: rData.selectedTrip.tripId,
                                 action: 'tripNameEdit',
                                 changes: newTripName,
-                            },
-                            success: function () {
-                                var origin = $('#selTripName').text().trim();
-                                $('#tripSelContainer').find('a').each(function () {
-                                    let tripSelListName = $(this).text().trim();
-                                    if (tripSelListName == origin) {
-                                        $(this).text(newTripName)
-                                        return;
-                                    }
-                                })
-                                $('#selTripName').html(`${newTripName}<img class="edit" data-toggle="modal" data-target="#tripNameEdit"
-                                src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯">`);
-
                             }
                         })
+                            .then(function (res) {
+                                rData.selectedTrip.tripName = newTripName;
+                                rData.
+                                refreshSelTripName();
+                            })
+                            .catch(function (err) {
+                                console.log(err)
+                            })
+
                         break;
                     case 'tripNoteEdit':
                         var newTripNotes = $(this).closest(".modal").find('textarea').val();
@@ -852,17 +838,6 @@
 
                 }
             })
-
-            $('.modal').on('hidden.bs.modal', function (e) {
-                $(this)
-                    .find("input,select")
-                    .val('')
-                    .end()
-                    .find("input[type=checkbox], input[type=radio]")
-                    .prop("checked", "")
-                    .end();
-            })
-
 
 
         </script>

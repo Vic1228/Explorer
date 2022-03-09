@@ -17,26 +17,21 @@ bluebird.promisifyAll(conn);
 // ---------------------- request ----------------------
 
 song_tripManage_router.put("/", function (req, res) {
-  console.log(req.body.action)
-  console.log(typeof(req.body.action))
   switch (req.body.action) {
     case 'tripNameEdit':
       conn.query(`UPDATE trips SET tripName = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
-        if(err) throw err;
-        res.send({state: 'success'})
+        if (err) throw err;
+        res.send({ state: 'success' })
       })
       break;
     case 'tripNoteEdit':
       conn.query(`UPDATE trips SET tripDesc = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
-        if(err) throw err;
-        res.send({state: 'success'})
+        if (err) throw err;
+        res.send({ state: 'success' })
       })
       break;
   }
-
-
 })
-
 
 
 
@@ -46,7 +41,6 @@ song_tripManage_router.get("/", function (req, res) {
   // }
   // var userId = req.session.userId;
   var userId = 9
-
   var data = {
     sessionUserId: req.session.userId,
     userName: "",
@@ -67,7 +61,7 @@ song_tripManage_router.get("/", function (req, res) {
     privateItems: [],
     schedule: [],
     tripNotes: "",
-    apple:''
+    apple: ''
   };
 
   conn.queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
@@ -95,33 +89,29 @@ song_tripManage_router.get("/", function (req, res) {
             });
           }
         });
-
-        var sql2 = "";
-        if (data.createTripList.length > 0) {
+        if (req.query.selectedTripId != undefined) {
+          data.selectedTrip = {
+            tripId: Number(req.query.selectedTripId),
+            tripName: req.query.selectedTripName
+          }
+        } else if (data.createTripList.length > 0) {
           data.selectedTrip = {
             tripId: data.createTripList[0].tripId,
             tripName: data.createTripList[0].tripName
           }
-          sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount, T.tripName
-                        FROM tripmembers AS TM 
-                        INNER JOIN users AS U ON TM.userId=U.userId 
-                        INNER JOIN userstats AS US ON TM.userId=US.userId
-                        INNER JOIN trips AS T ON TM.tripId=T.tripId
-                        WHERE TM.tripId=${data.selectedTrip.tripId}
-                        ORDER BY TM.positionState DESC`;
-        }
-        else if (data.joinTripList.length > 0) {
+        } else if (data.joinTripList.length > 0) {
           data.selectedTrip = {
             tripId: data.joinTripList[0].tripId,
             tripName: data.joinTripList[0].tripName
           }
-          sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount
-                        FROM tripmembers AS TM 
-                        INNER JOIN users AS U ON TM.userId=U.userId 
-                        INNER JOIN userstats AS US ON TM.userId=US.userId
-                        WHERE TM.tripId=${data.selectedTrip.tripId}
-                        ORDER BY TM.positionState DESC`;
         }
+        var sql2 = `SELECT TM.tripId,TM.userId, TM.positionState, U.userName ,US.leadership, US.teamwork, US.strength, US.heal, US.survival, US.direction, US.commentCount, T.tripName
+        FROM tripmembers AS TM 
+        INNER JOIN users AS U ON TM.userId=U.userId 
+        INNER JOIN userstats AS US ON TM.userId=US.userId
+        INNER JOIN trips AS T ON TM.tripId=T.tripId
+        WHERE TM.tripId=${data.selectedTrip.tripId}
+        ORDER BY TM.positionState DESC`;
         return conn.queryAsync(sql2);
       }
       else return;
@@ -212,25 +202,35 @@ song_tripManage_router.get("/", function (req, res) {
             });
           }
         }
-        var sql6 = `SELECT tripId, tripDesc FROM trips WHERE tripId = ${data.selectedTrip.tripId}`;
+        var sql6 = `SELECT DATE_FORMAT(tripStartDate,  "%Y/%m/%d") AS tripStartDate , DATE_FORMAT(tripEndDate, "%Y/%m/%d") AS tripEndDate , tripId, tripDesc, spotId FROM trips WHERE tripId = ${data.selectedTrip.tripId}`;
         return conn.queryAsync(sql6);
       }
       else return;
     })
-    .then((result6) => {  // 1. 指派 data.注意事項。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
+    .then((result6) => {  // 1. 指派 data.注意事項 , spotId, tripStartDate, tripEndDate。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
       if (result6 != undefined) {
         data.tripNotes = result6[0].tripDesc;
+        data.selectedTrip.spotId = result6[0].spotId;
+        data.selectedTrip.tripStartDate = result6[0].tripStartDate;
+        data.selectedTrip.tripEndDate = result6[0].tripEndDate;
         var sql7 = `SELECT tripId, COUNT(userId) AS memberCount FROM tripMembers WHERE tripId = ${data.selectedTrip.tripId} AND positionState > 0`;
         return conn.queryAsync(sql7);
       }
       else return;
     })
-    .then((result7) => {  // 1. 指派 data.團員人數。      2. 查詢 selTrip 之團員人數。若無selTrip，return。
+    .then((result7) => {  // 1. 指派 data.團員人數。      2. 查詢 selTrip 之目的地。若無selTrip，return。
       if (result7 != undefined) {
         data.memberCount = result7[0].memberCount;
+        var sql8 = `SELECT spotName FROM spots WHERE spotId = ${data.selectedTrip.spotId}`
+        return conn.queryAsync(sql8);
+      }
+      else return;
+    })
+    .then((result8) => {
+      if (result8 != undefined) {
+        data.selectedTrip.spotName = result8[0].spotName;
       }
       console.log(data)
-
       data.apple = JSON.stringify(data);
 
       return res.render("song_tripManage.ejs", data);

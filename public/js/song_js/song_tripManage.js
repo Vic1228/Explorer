@@ -7,40 +7,6 @@ $(function () {
     document.getElementsByTagName('head')[0].appendChild(script);
 
     /*---------------------------------------------------------------*/
-    /*-------------------------- 左側navbar -------------------------*/
-    /*---------------------------------------------------------------*/
-    {
-        var navSlide = () => {
-            var burger = document.querySelector('.nav_burger');
-            var nav = document.querySelector('.nav_links_container');
-            var navlinks = document.querySelectorAll('.nav_links li');
-
-            burger.addEventListener('click', () => {
-                //Toggle Nav
-                nav.classList.toggle('nav_active');
-
-                //Animate Links
-                navlinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                        $('#blur_all').css({ 'backdrop-filter': 'none' });
-                        $('#blur_all').fadeOut(150);
-                    }
-                    else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 30 + 0.25}s`;
-                        $('#blur_all').css({ 'backdrop-filter': 'blur(20px)' });
-                        $('#blur_all').fadeIn(150);
-                    }
-                });
-
-                //Burger Animation
-                burger.classList.toggle('toggle');
-            });
-        }
-        navSlide();
-    }
-
-    /*---------------------------------------------------------------*/
     /*----------------------------- 聊天室 ---------------------------*/
     /*---------------------------------------------------------------*/
     {
@@ -196,32 +162,7 @@ function hoverdiv(e, showStat) {
 
 // 裝備清單編輯
 {
-    const itineraryRow = `<tr>
-                <td class="form-td">
-                  <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
-                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
-                    <option value="" selected disabled>第?天</option>
-                    <option value="1">第1天</option>
-                    <option value="2">第2天</option>
-                    <option value="3">第3天</option>
-                    <option value="4">第4天</option>
-                  </select>
-                </td>
-                <td class="form-td"><input name="schedule" type="time" id=""
-                    class="text-center border-0 h-100 time-input form-input w-100"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
-                </td>
-                <td class="form-td"><input name="schedule" class="h-100 w-75 border-0 act-input text-center form-input"
-                    type="text" class="border-0"
-                    oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'" placeholder="活動名稱"
-                    style="margin-right: 1rem;">
-                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                  <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                </td>
-              </tr>`;
+
 
     const privateItem = `<tr>
                 <td class="form-td"><input name="private" type="text" class="text-center border-0 h-100 form-input"
@@ -253,10 +194,6 @@ function hoverdiv(e, showStat) {
     // 方法
 
     // 增加列
-    function addItineraryRow(p) {
-        // $("#ItineraryTable>tbody").append(itineraryRow);
-        $(p).closest("tr").after(itineraryRow);
-    }
     function addPrivateItemRow(p) {
         $(p).closest("tr").after(privateItem);
     }
@@ -266,9 +203,6 @@ function hoverdiv(e, showStat) {
 
     // 刪除列
     // <p onclick="deleteItineraryRow(this)" 第165行
-    function deleteItineraryRow(p) {
-        $(p).closest("tr").remove();
-    }
     function deletePrivateItemRow(p) {
         $(p).closest("tr").remove();
     }
