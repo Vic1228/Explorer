@@ -27,7 +27,6 @@ song_tripManage_router.put("/", function (req, res) {
       })
       break;
     case 'tripNoteEdit':
-      console.log('apple')
       conn.query(`UPDATE trips SET tripDesc = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
         if(err) throw err;
         res.send({state: 'success'})
@@ -46,7 +45,7 @@ song_tripManage_router.get("/", function (req, res) {
   //   res.redirect("/login");
   // }
   // var userId = req.session.userId;
-  var userId = 6
+  var userId = 9
 
   var data = {
     sessionUserId: req.session.userId,
@@ -68,6 +67,7 @@ song_tripManage_router.get("/", function (req, res) {
     privateItems: [],
     schedule: [],
     tripNotes: "",
+    apple:''
   };
 
   conn.queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
@@ -230,8 +230,10 @@ song_tripManage_router.get("/", function (req, res) {
         data.memberCount = result7[0].memberCount;
       }
       console.log(data)
-      data = JSON.stringify(data);
-      return res.render("song_tripManage.ejs", {data});
+
+      data.apple = JSON.stringify(data);
+
+      return res.render("song_tripManage.ejs", data);
     })
     .catch((err) => console.log(err));
 });
