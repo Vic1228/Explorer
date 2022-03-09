@@ -334,8 +334,7 @@
                         <h5 class="modal-title">行程簡介編輯</h5>
                     </div>
                     <div class="modal-body">
-                        <textarea type="text" id="newTripNotes"
-                            style="width:100%; height:40vh"><%=tripNotes%></textarea>
+                        <textarea type="text" id="newTripNotes" style="width:100%; height:40vh"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
@@ -586,7 +585,7 @@
         <script src="../public/js/song_js/song_tripManage.js"></script>
 
         <script>
-            var rData = JSON.parse('<%- apple%>');
+            var rData = JSON.parse('<%- data %>');
             console.log(rData)
             console.log(typeof (rData));
 
@@ -608,8 +607,6 @@
                 rData.createTripList.forEach((element) => {
                     $('#createTripList').append(`<li><a href="/tripManage?selectedTripId=${element.tripId}&selectedTripName=${element.tripName}">${element.tripName}</a></li>`)
                 })
-
-
             }
 
             // 行程日期、目的地
@@ -756,8 +753,8 @@
             $('#noteText').text(`${rData.tripNotes}`)
 
 
-            var sessionUserId = Number('<%= sessionUserId %>')
-            if (sessionUserId == 0) {
+            var sessionUserId = Number(`${rData.sessionUserId}`)
+            if (sessionUserId === 0) {
                 $('#member').append(
                     '<li><a href="/login">登入／註冊</a></li>'
                 )
@@ -786,15 +783,17 @@
                                 action: 'tripNameEdit',
                                 changes: newTripName,
                             }
+                        }).then(function (res) {
+                            rData.createTripList.forEach((elm) => {
+                                if (elm.tripName === rData.selectedTrip.tripName) {
+                                    elm.tripName = newTripName;
+                                }
+                            })
+                            rData.selectedTrip.tripName = newTripName;
+                            refreshSelTripName();
+                        }).catch(function (err) {
+                            console.log(err)
                         })
-                            .then(function (res) {
-                                rData.selectedTrip.tripName = newTripName;
-                                rData.
-                                refreshSelTripName();
-                            })
-                            .catch(function (err) {
-                                console.log(err)
-                            })
 
                         break;
                     case 'tripNoteEdit':
@@ -803,8 +802,8 @@
                             type: 'put',
                             url: '/tripManage',
                             data: {
-                                userId: '<%= sessionUserId%>',
-                                tripId: '<%= selectedTrip.tripId %>',
+                                userId: rData.sessionUserId,
+                                tripId: rData.selectedTrip.tripId,
                                 action: 'tripNoteEdit',
                                 changes: newTripNotes,
                             },
@@ -822,8 +821,8 @@
                             type: 'put',
                             url: '/tripManage',
                             data: {
-                                userId: '<%= sessionUserId%>',
-                                tripId: '<%= selectedTrip.tripId %>',
+                                userId: rData.sessionUserId,
+                                tripId: rData.selectedTrip.tripId,
                                 action: 'tripNoteEdit',
                                 changes: newTripNotes,
                             },

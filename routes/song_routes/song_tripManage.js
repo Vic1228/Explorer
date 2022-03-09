@@ -231,9 +231,8 @@ song_tripManage_router.get("/", function (req, res) {
         data.selectedTrip.spotName = result8[0].spotName;
       }
       console.log(data)
-      data.apple = JSON.stringify(data);
 
-      return res.render("song_tripManage.ejs", data);
+      return res.render("song_tripManage.ejs", { data: JSON.stringify(data) });
     })
     .catch((err) => console.log(err));
 });
