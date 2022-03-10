@@ -92,13 +92,16 @@ lu_createTrip_router.post("/response", function (req, res) {
         VALUES ("${tripId}", "${userId}", 2)`;
         return connection.queryAsync(memberSQL);
       })
-      // TODO:
+      // 如果要寫迴圈 不要用return
+      // TODO: 問寫return的用途
       // 傳入 行程表
       .then(() => {
+        schedule.forEach((value,index) => {
+                    
+        });
         for (var i = 0; i < schedule.length; i += 3) {
           let scheduleSQL = `INSERT INTO schedule (tripId, day, startTime, activity)
           VALUES ("${tripId}", "${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
-          // console.log(tripId);
           connection.queryAsync(scheduleSQL);
         }
       })
