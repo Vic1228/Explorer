@@ -75,7 +75,7 @@ $(function () {
             content: function () {
                 // var userName = $(this.closest('tr')).children('td:first-child').text();         
                 var test = $(this).children('ul').html().trim();
-                console.log(test.length)
+                // console.log(test.length)
                 if (test.length > 0) {
                     return test;
                 }

@@ -338,6 +338,7 @@ div[id*="ItemListEdit"] th:first-child, div[id*="ItemListEdit"] td:first-child {
     background-color: #fff;
     border-radius: 5px;
     font-size: 18px;
+    margin:auto;
 }
 
 .ctrl__counter {

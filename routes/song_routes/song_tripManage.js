@@ -21,15 +21,26 @@ song_tripManage_router.put("/", function (req, res) {
     case 'tripNameEdit':
       conn.query(`UPDATE trips SET tripName = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
         if (err) throw err;
-        res.send({ state: 'success' })
+        res.send({ state: 'success' });
       })
       break;
     case 'tripNoteEdit':
       conn.query(`UPDATE trips SET tripDesc = '${req.body.changes}' WHERE tripId = ${req.body.tripId}`, function (err, rows) {
         if (err) throw err;
-        res.send({ state: 'success' })
+        res.send({ state: 'success' });
       })
       break;
+    case 'memberApplyConfirm':
+      conn.query(`UPDATE tripmembers SET positionState = 1 WHERE tripId = ${req.body.tripId} AND userId = ${req.body.currentMemberId}`, function (err, rows) {
+        if (err) throw err;
+        res.send({ state: 'success' });
+      })
+      break;
+    case 'memberApplyReject':
+      conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.currentMemberId}`, function(err,rows){
+        if (err) throw err;
+        res.send({ state: 'success' });
+      })
   }
 })
 
@@ -40,9 +51,10 @@ song_tripManage_router.get("/", function (req, res) {
   //   res.redirect("/login");
   // }
   // var userId = req.session.userId;
-  var userId = 9
+  var userId = 6;
+
   var data = {
-    sessionUserId: req.session.userId,
+    sessionUserId: userId,
     userName: "",
     createTripList: [],
     joinTripList: [],
@@ -141,6 +153,7 @@ song_tripManage_router.get("/", function (req, res) {
       else return;
     })
     .then((result3) => {  // 1. 指派 data.公共裝備。      2. 查詢 selTrip 之私人裝備。若無selTrip，return。
+      console.log(result3)
       if (result3 != undefined) {
         for (let i = 0; i < result3.length; i++) {
           if (i == 0 || result3[i].sharedItem != result3[i - 1].sharedItem) {
@@ -230,8 +243,7 @@ song_tripManage_router.get("/", function (req, res) {
       if (result8 != undefined) {
         data.selectedTrip.spotName = result8[0].spotName;
       }
-      console.log(data)
-
+      // console.log(data)     
       return res.render("song_tripManage.ejs", { data: JSON.stringify(data) });
     })
     .catch((err) => console.log(err));
