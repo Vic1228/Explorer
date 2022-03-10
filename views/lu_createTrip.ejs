@@ -200,13 +200,19 @@
                       class="h-100 w-50 border-0 act-input text-center form-input" type="text"
                       oninput="this.className = 'h-100 w-50 border-0 act-input text-center form-input'"
                       placeholder="活動名稱"
-                      style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 2.8rem;">
-                    <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="position: relative; left: 4rem; background-color: rgb(58, 109, 154);">
-                      +</p>
-                    <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="margin-inline: 0.5rem; visibility:hidden; background-color: rgb(58, 109, 154);">
+                      style="margin-right: 1rem; font-size: 1.4rem; position: relative; left: 1.6rem;">
+                    <p onclick="deleteItineraryRow(this)"
+                      class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
+                      style="margin-inline: 0.5rem; position: relative; left: 4rem; background-color: rgb(255, 80, 124);">
                       x</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td onclick="addItineraryRow(this)" colspan="3" class="h-100 btn-effect"
+                    style="background-color: rgb(58, 109, 154)">
+                    <h5 class="btn-effect"
+                      style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder;">
+                      +</h5>
                   </td>
                 </tr>
               </tbody>
@@ -217,15 +223,15 @@
       </div>
       <!-- TODO: 裝備清單tab -->
       <div class="tab">
-        <div class="container d-flex">
-          <div class="col-6">
+        <div class="d-flex" style="padding-inline: 15rem;">
+          <div class="col-5">
             <table id="privateItemTable" class="table table-bordered text-center"
               style="border-color: rgb(58, 109, 154);">
               <thead>
                 <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
                   <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">私人裝備</h4>
                 </th>
-                <th class="h-100" style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                <th class="h-100" style="background-color: rgb(58, 109, 154);">
                   <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">數量</h4>
                 </th>
               </thead>
@@ -239,20 +245,26 @@
                   <td class="form-td">
                     <input name="private" type="number" class="border-0 text-center w-25 h-100 form-input"
                       oninput="this.className = 'border-0 text-center w-25 h-100 form-input'"
-                      style="position: relative; left: 2.7rem; font-size: 1.4rem;" placeholder="0">
-                    <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="position: relative; left: 3.7rem; background-color: rgb(58, 109, 154);">
-                      +</p>
+                      style="position: relative; left: 1.4rem; font-size: 1.4rem;" placeholder="0">
                     <p onclick="deletePrivateItemRow(this)"
-                      class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="margin-inline: 0.5rem; position: relative; left: 3.7rem; visibility:hidden; background-color: rgb(58, 109, 154);">
+                      class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
+                      style="background-color: rgb(255, 80, 124); position: relative; left: 2.3rem;">
                       x</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td onclick="addPrivateItemRow(this)" colspan="2" class="h-100 btn-effect"
+                    style="background-color: rgb(58, 109, 154)">
+                    <h5
+                      style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">
+                      +</h5>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="col-6">
+          <div class="col-2"></div>
+          <div class="col-5">
             <table id="sharedItemTable" class="table table-bordered text-center"
               style="border-color: rgb(58, 109, 154);">
               <thead>
@@ -273,14 +285,19 @@
                   <td class="form-td"><input name="shared" type="number"
                       class="text-center border-0 h-100 form-input w-25"
                       oninput="this.className = 'text-center border-0 h-100 form-input w-25'"
-                      style="margin-right: 1rem; position: relative; left: 3.2rem; font-size: 1.4rem;" placeholder="0">
-                    <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="position: relative; left: 3.5rem; background-color: rgb(58, 109, 154);">
-                      +</p>
+                      style="position: relative; left: 1.4rem; font-size: 1.4rem;" placeholder="0">
                     <p onclick="deleteSharedItemRow(this)"
-                      class="d-inline-block rounded-circle add-delete-btn table-btn"
-                      style="margin-inline: 0.5rem; position: relative; left: 3.5rem; visibility:hidden; background-color: rgb(58, 109, 154);">
+                      class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
+                      style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">
                       x</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
+                    style="background-color: rgb(58, 109, 154)">
+                    <h5
+                      style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">
+                      +</h5>
                   </td>
                 </tr>
               </tbody>
@@ -292,15 +309,15 @@
       <!-- R: 206 G: 165 B: 175 -->
       <div class="container text-center" style="padding-block: 5vh;">
         <!-- 返回  -->
-        <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn"
+        <button id="prevBtn" onclick="nextPrev(-1)" type="button" class="btn btn-effect"
           style="margin-right: 1rem; background-color: rgb(206, 165, 175); color: whitesmoke; font-weight: bolder; font-size: 1.5rem;">返回
         </button>
         <!-- 下一步  -->
-        <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn"
+        <button id="nextBtn" onclick="nextPrev(1)" type="button" class="btn btn-effect"
           style="margin-left: 1rem; background-color: rgb(206, 165, 175); color: whitesmoke; font-weight: bolder; font-size: 1.5rem;">下一步
         </button>
         <!-- TODO: 提交 -->
-        <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn"
+        <button id="submitBtn" onclick="submitBtnClick()" type="button" class="btn btn-effect"
           style="margin-left: 1rem; display: none; font-weight: bolder; font-size: 1.5rem; background-color: rgb(206, 165, 175); color: whitesmoke;"></button>
       </div>
     </form>
