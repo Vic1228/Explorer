@@ -47,7 +47,7 @@ function nextPrev(turn) {
   const tabArray = document.getElementsByClassName("tab");
   // TODO: 快速測試
   // 沒輸入資訊無法下一頁
-  // if (turn == 1 && !validForm()) return false;
+  if (turn == 1 && !validForm()) return false;
   // 當前步驟隱藏
   tabArray[currentTab].style.display = "none";
   // 目前頁面變數更新
@@ -82,9 +82,9 @@ function validForm() {
 function submitBtnClick() {
   // TODO: 快速測試
   // validForm();
-  // if (valid == true) {
+  if (valid == true) {
   document.createForm.submit();
-  // }
+  }
 }
 
 function fixStepIndicator(currentStep) {

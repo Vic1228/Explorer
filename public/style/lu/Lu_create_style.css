@@ -101,5 +101,5 @@ th ,td{
 /* 表單 */
 .invalid{
   border: 0;
-  background-color: rgb(247, 227, 227);
+  background-color: rgb(206, 165, 175, 0.3);
 }
