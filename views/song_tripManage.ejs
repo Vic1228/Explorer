@@ -505,13 +505,16 @@
                                     <h6>物品名稱</h6>
                                 </th>
                                 <th>
-                                    <h6>數量</h6>
+                                    <h6>個數／１人</h6>
+                                </th>
+                                <th>
+                                    <h6>新增／刪除</h6>
                                 </th>
                             </thead>
                             <tbody>
                                 <tr>
                                     <!-- TODO: 裝備名稱 -->
-                                    <td><input type="text"></td>
+                                    <td><input placeholder="請輸入裝備名稱..." type="text"></td>
                                     <!-- TODO: 數量 -->
                                     <td>
                                         <div class='ctrl'>
@@ -523,9 +526,13 @@
                                             <div class='ctrl__button ctrl__button--increment'>+</div>
                                         </div>
                                     </td>
+                                    <td><img src="../public/img/song_img/cancel.png" class="cancelIcon mr-4" alt="">
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="plusbg py-2" style="background-color: rgb(230, 230, 230);"><img class="plus"
+                                src="../public/img/song_img/plus.png" alt=""></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
@@ -539,11 +546,11 @@
             <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">提供三人帳</h5>
+                        <h5 class="modal-title">---</h5>
                     </div>
                     <div class="modal-body d-flex" style="justify-content: space-around;">
                         <ul>
-                            <li><input type="text"><span style="display: inline-block">個</span></li>
+                            <li><input type="number"><span style="display: inline-block">&#8194&#8194個</span></li>
                         </ul>
 
                     </div>
@@ -602,6 +609,8 @@
             // 重整人員物品
             var currentMemberIndex = -1;
             var currentMemberId = -1;
+            var currentSharedItemIndex = -1;
+            var currentSharedItemName = '';
             refreshMemberItem();
             function refreshMemberItem() {
                 // 行程成員
@@ -623,7 +632,7 @@
                         // 成員之公共裝備
                         rData.sharedItems.forEach((i) => {
                             i.itemCount.forEach((j) => {
-                                if (j.userId === element.userId) {
+                                if (j.userId === element.userId && j.itemCount > 0) {
                                     $('#joinedMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
                                 }
                             })
@@ -657,7 +666,7 @@
                         // 所有人之公共裝備
                         rData.sharedItems.forEach((i) => {
                             i.itemCount.forEach((j) => {
-                                if (j.userId === element.userId) {
+                                if (j.userId === element.userId && j.itemCount > 0) {
                                     $('#applyMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
                                 }
                             })
@@ -680,7 +689,7 @@
                         itemCount += i.itemCount
                     })
                     $('#publicItemList tbody').append(
-                        `<tr valign="top">
+                        `<tr class="sharedItemDetail" valign="top">
                         <td>${element.sharedItem}</td>
                         <td>${itemCount}</td>
                         <td><ul></ul></td>
@@ -736,10 +745,15 @@
 
                     var ability = ['strength', 'heal', 'direction', 'survival', 'teamwork', 'leadership'];
                     ability.forEach((elm) => {
-                        $(`input[name=${elm}]`).prop('checked',false);
+                        $(`input[name=${elm}]`).prop('checked', false);
                     })
+                })
 
-
+                // 提供公共裝備
+                $('#publicItemList .plusIcon').click(function () {
+                    currentSharedItemIndex = $('.sharedItemDetail').index($(this).closest('tr').get(0))
+                    currentSharedItemName = $(this).closest('tr').children('td:first-child').text()
+                    $('#publicItemProvide h5').text(currentSharedItemName);
                 })
             }
 
@@ -865,36 +879,64 @@
                             break;
                         } else {
                             var stat = rData.tripMember[currentMemberIndex].stat;
-                            stat.strength = Math.floor((( stat.strength * stat.commentCount + parseFloat( $(`input[name="strength"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
-                            stat.heal = Math.floor((( stat.heal * stat.commentCount + parseFloat( $(`input[name="heal"]:checked`).val()))/ (stat.commentCount + 1) * 10) /10);
-                            stat.direction = Math.floor((( stat.direction * stat.commentCount + parseFloat( $(`input[name="direction"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
-                            stat.survival = Math.floor((( stat.survival * stat.commentCount + parseFloat( $(`input[name="survival"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
-                            stat.teamwork = Math.floor((( stat.teamwork * stat.commentCount + parseFloat( $(`input[name="teamwork"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
-                            stat.leadership = Math.floor((( stat.leadership * stat.commentCount + parseFloat( $(`input[name="leadership"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
+                            stat.strength = Math.floor(((stat.strength * stat.commentCount + parseFloat($(`input[name="strength"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.heal = Math.floor(((stat.heal * stat.commentCount + parseFloat($(`input[name="heal"]:checked`).val())) / (stat.commentCount + 1) * 10) / 10);
+                            stat.direction = Math.floor(((stat.direction * stat.commentCount + parseFloat($(`input[name="direction"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.survival = Math.floor(((stat.survival * stat.commentCount + parseFloat($(`input[name="survival"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.teamwork = Math.floor(((stat.teamwork * stat.commentCount + parseFloat($(`input[name="teamwork"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.leadership = Math.floor(((stat.leadership * stat.commentCount + parseFloat($(`input[name="leadership"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
                             stat.commentCount = stat.commentCount + 1;
                             rData.tripMember[currentMemberIndex].stat = stat;
-                            console.log(stat)
+                            axios({
+                                method: 'put',
+                                url: '/tripManage',
+                                data: {
+                                    tripId: rData.selectedTrip.tripId,
+                                    currentMemberId: currentMemberId,
+                                    action: 'statComment',
+                                    stat: stat
+                                }
+                            }).then(function (res) {
+                                refreshMemberItem();
+                            }).catch(function (err) {
+                                console.log(err)
+                            })
                         }
-
+                        break;
+                    case 'publicItemProvide':
+                        var newProvider = true;
+                        var provideVal = parseInt($('#publicItemProvide input').val())
+                        rData.sharedItems[currentSharedItemIndex].itemCount.forEach((elm) => {
+                            if (elm.userId == sessionUserId) {
+                                newProvider = false;
+                                elm.itemCount = provideVal;
+                            }
+                        })
+                        if (newProvider === true && provideVal != 0) {
+                            rData.sharedItems[currentSharedItemIndex].itemCount.push(
+                                { userId: rData.sessionUserId, itemCount: provideVal }
+                            )
+                        }
                         axios({
                             method: 'put',
-                            url: '/stripManage',
+                            url: '/tripManage',
                             data: {
+                                action: 'publicItemProvide',
                                 tripId: rData.selectedTrip.tripId,
-                                currentMemberId: currentMemberId,
-                                action: 'statComment',
-                                stat: rData.tripMember[currentMemberIndex].stat    
+                                sharedItem: currentSharedItemName,
+                                userId: rData.sessionUserId,
+                                provideVal: provideVal,
+                                newProvider: newProvider
                             }
-                        }).then(function(res){
+                        }).then(function (res) {
                             refreshMemberItem();
-                        }).catch(function(err){
-                            console.log(err)
+                        }).catch(function (err) {
+                            console.log(err);
                         })
-
-
-                        console.log('apple');
+                        break;
                 }
             })
+
 
 
 
