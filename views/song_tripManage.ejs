@@ -348,7 +348,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">---</h5>
+                        <h4 class="modal-title">---</h4>
                     </div>
                     <div class="modal-body">
                         <div class="px-5 mb-4">
@@ -414,7 +414,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
             </div>
@@ -632,7 +632,7 @@
                         if (element.userId === rData.sessionUserId) {
                             $('#joinedMember tr').last().append('<td> --- </td>');
                         } else {
-                            $('#joinedMember tr').last().append('<td><a href="#" data-toggle="modal"data-target="#statComment">我要評分</a></td>')
+                            $('#joinedMember tr').last().append('<td><a href="#" class="scoreSheet" data-toggle="modal"data-target="#statComment">我要評分</a></td>')
                         }
                     } else {
                         $('#applyMember tbody').append(
@@ -710,7 +710,7 @@
 
 
                 })
-                
+
                 // 私人裝備清單
                 $('#privateItemList tbody').empty();
                 rData.privateItems.forEach((element) => {
@@ -726,13 +726,21 @@
                 $('.checkIcon, .cancelIcon').click(function () {
                     currentMemberIndex = $('.member').index($(this).closest('tr').get(0));
                     currentMemberId = rData.tripMember[currentMemberIndex].userId;
-                    console.log(currentMemberIndex);
-                    console.log(currentMemberId);
-                    console.log(rData.tripMember[currentMemberIndex].name)
+                })
+
+                // 評分表
+                $('.scoreSheet').click(function () {
+                    currentMemberIndex = $('.member').index($(this).closest('tr').get(0));
+                    currentMemberId = rData.tripMember[currentMemberIndex].userId;
+                    $('#statComment .modal-title').text(rData.tripMember[currentMemberIndex].name);
+
+                    var ability = ['strength', 'heal', 'direction', 'survival', 'teamwork', 'leadership'];
+                    ability.forEach((elm) => {
+                        $(`input[name=${elm}]`).prop('checked',false);
+                    })
+
 
                 })
-            
-                //評分表
             }
 
             // 行程列表
@@ -767,7 +775,6 @@
 
             // 彈跳視窗okbtn
             $('.okbtn').click(function () {
-                var theThis = this;
                 var modalId = $(this).closest(".modal").attr('id');
                 switch (modalId) {
                     case 'tripNameEdit':
@@ -844,7 +851,48 @@
                         }).catch(function (err) {
                             console.log(err);
                         })
-                    break;
+                        break;
+                    case 'statComment':
+                        var ability = ['strength', 'heal', 'direction', 'survival', 'teamwork', 'leadership'];
+                        var scoreSheetcheck = 1;
+                        ability.forEach((elm) => {
+                            if ($(`input[name=${elm}]:checked`).val() === undefined) {
+                                scoreSheetcheck = 0
+                            }
+                        })
+                        if (scoreSheetcheck === 0) {
+                            alert('請填寫每一筆資料。');
+                            break;
+                        } else {
+                            var stat = rData.tripMember[currentMemberIndex].stat;
+                            stat.strength = Math.floor((( stat.strength * stat.commentCount + parseFloat( $(`input[name="strength"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
+                            stat.heal = Math.floor((( stat.heal * stat.commentCount + parseFloat( $(`input[name="heal"]:checked`).val()))/ (stat.commentCount + 1) * 10) /10);
+                            stat.direction = Math.floor((( stat.direction * stat.commentCount + parseFloat( $(`input[name="direction"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
+                            stat.survival = Math.floor((( stat.survival * stat.commentCount + parseFloat( $(`input[name="survival"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
+                            stat.teamwork = Math.floor((( stat.teamwork * stat.commentCount + parseFloat( $(`input[name="teamwork"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
+                            stat.leadership = Math.floor((( stat.leadership * stat.commentCount + parseFloat( $(`input[name="leadership"]:checked`).val()))/ (stat.commentCount + 1) * 10) )/10;
+                            stat.commentCount = stat.commentCount + 1;
+                            rData.tripMember[currentMemberIndex].stat = stat;
+                            console.log(stat)
+                        }
+
+                        axios({
+                            method: 'put',
+                            url: '/stripManage',
+                            data: {
+                                tripId: rData.selectedTrip.tripId,
+                                currentMemberId: currentMemberId,
+                                action: 'statComment',
+                                stat: rData.tripMember[currentMemberIndex].stat    
+                            }
+                        }).then(function(res){
+                            refreshMemberItem();
+                        }).catch(function(err){
+                            console.log(err)
+                        })
+
+
+                        console.log('apple');
                 }
             })
 
