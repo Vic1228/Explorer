@@ -13,8 +13,8 @@ const { NULL } = require("mysql/lib/protocol/constants/types");
 // ==================================
 // ============= profile ============
 // ==================================
-// 查詢users表的資料
 
+// 查詢users表的資料
 var userProfile, userStats, spotId, x, y, login;
 lu_createTrip_router.get("/createTrip", function (req, res) {
   // 政霖 id , x , y
@@ -40,6 +40,8 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
         return res.render("lu_createTrip", obj);
       })
       .catch((err) => console.log(err));
+    }
+  });
 
     // let test1 = `SELECT * FROM users WHERE userId = ${req.session.userId}`;
     // connection.query(test1, (err, results, fields) => {
@@ -53,16 +55,12 @@ lu_createTrip_router.get("/createTrip", function (req, res) {
 
     //   });
     // });
-  }
-});
 
 // ==================================
 // ============= form ===============
 // ==================================
 
-
 // 傳送表單的資料進資料庫
-
 lu_createTrip_router.post("/response", function (req, res) {
   if (req.session.userId == undefined) {
     res.redirect("/login");
@@ -96,9 +94,6 @@ lu_createTrip_router.post("/response", function (req, res) {
       // TODO: 問寫return的用途
       // 傳入 行程表
       .then(() => {
-        schedule.forEach((value,index) => {
-                    
-        });
         for (var i = 0; i < schedule.length; i += 3) {
           let scheduleSQL = `INSERT INTO schedule (tripId, day, startTime, activity)
           VALUES ("${tripId}", "${schedule[i + 0]}", "${schedule[i + 1]}", "${schedule[i + 2]}")`;
