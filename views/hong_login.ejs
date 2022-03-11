@@ -16,10 +16,12 @@
 
     <div class="toast show" style="width: 0rem">
       <div
-        class= "alert alert-dark h4"
-        style= "padding: auto;; position: absolute; left:44%; bottom:80%; font-weight: bold; box-shadow:  4px 4px 8px 2px rgb(160, 117, 130); border-radius: 5%;"
+        class= "alert alert-warning h4"
+        style= "padding: auto;; position: absolute; left:35%; bottom:83%; font-weight: bold; box-shadow:  4px 4px 8px 2px rgb(160, 117, 130); border-radius: 3%;"
       >
-        <%= messages %>
+  <%= messages %>
+
+  
       </div>
     </div>
 
@@ -61,7 +63,7 @@
 
     <script>
 
- $(".alert").fadeTo(2000,0.6).slideUp(300, function() {
+ $(".alert").fadeTo(10000,0.6).slideUp(300, function() {
     $(this).alert('close');
  });
     </script>

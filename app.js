@@ -125,7 +125,7 @@ app.post("/login", function (req, res) {
       res.redirect("/");
     } else {
       console.log(result)
-      req.flash("fail", "登入失敗!!");
+      // req.flash("fail", "登入失敗!!");
       res.redirect("/login");
     }
   });
@@ -207,7 +207,7 @@ app.post("/register", function (req, res) {
             }
           });
           console.log("已新增帳戶");
-          req.flash("regisuccess", "註冊成功!!");
+          req.flash("regisuccess", "註冊成功，請至信箱認證，再做登入!!");
           res.redirect("/login");
         }
       });

@@ -6,20 +6,16 @@ router.get("/map", function (req, res) {
   res.render("hong_map.ejs");
 });
 
+// router.get("/login", function (req, res) {
+//   res.render("hong_login.ejs", { messages:req.flash("fail")});
+// });
 router.get("/login", function (req, res) {
-  res.render("hong_login.ejs", { messages:req.flash("fail")});
-});
-router.get("/login", function (req, res) {
-  res.render("hong_login.ejs", { message:req.flash("regisuccess")});
+  res.render("hong_login.ejs", { messages:req.flash("regisuccess")});
 });
 router.get("/signup", function (req, res) {
   res.render("hong_signup.ejs");
 });
 
-// router.get('/', function(req, res){
-//   // Get an array of flash messages by passing the key to req.flash()
-//   res.render('vic_homepage', { messages: req.flash('success') });
-// });
 // 洪碩呈
 // router.post("/register", (req, res) => {
 //   // 將資料INSERT INTO上去
