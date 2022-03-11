@@ -38,8 +38,10 @@ song_tripManage_router.put("/", function (req, res) {
       break;
     case 'memberApplyReject':
       conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.currentMemberId}`, function (err, rows) {
-        if (err) throw err;
-        res.send({ state: 'success' });
+        if (err) throw err; 
+        conn.query(`DELETE FROM shareditems WHERE userId = ${req.body.currentMemberId} AND tripId = ${req.body.tripId}`,function(err,rows){
+          res.send({ state: 'success' });
+        })
       })
       break;
     case 'statComment':
@@ -56,6 +58,26 @@ song_tripManage_router.put("/", function (req, res) {
           res.send({ state: 'success' });
         })
       break;
+    case 'publicItemProvide':
+      var newProvider = req.body.newProvider;
+      var provideVal = req.body.provideVal;
+      if (newProvider === true && provideVal != 0) {
+        conn.query(`INSERT INTO shareditems (tripId, userId, sharedItem, itemCount) 
+                    VALUES (${req.body.tripId},${req.body.userId},'${req.body.sharedItem}',${req.body.itemCount})`,
+          function (err, rows) {
+            res.send({ state: 'success' });
+          })
+      } else if (newProvider === false && provideVal != 0) {
+        conn.query(`UPDATE shareditems SET itemCount = ${req.body.itemCount} 
+                    WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'`,
+          function (err, rows) {
+            res.send({ state: 'success' });
+          })
+      } else if (newProvider === false && provideVal === 0) {
+        conn.query(`DELETE FROM shareditems WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'` )
+      } else {
+        res.send({ Hello: 'world!' })
+      }
   }
 })
 
@@ -151,13 +173,13 @@ song_tripManage_router.get("/", function (req, res) {
             userId: item.userId,
             positionState: item.positionState,
             stat: {
-              leadership: item.leadership,
-              teamwork: item.teamwork,
-              strength: item.strength,
-              heal: item.heal,
-              survival: item.survival,
-              direction: item.direction,
-              commentCount: item.commentCount,
+              leadership: Math.floor(item.leadership * 10) / 10,
+              teamwork: Math.floor(item.teamwork * 10) / 10,
+              strength: Math.floor(item.strength * 10) / 10,
+              heal: Math.floor(item.heal * 10) / 10,
+              survival: Math.floor(item.survival * 10) / 10,
+              direction: Math.floor(item.direction * 10) / 10,
+              commentCount: Math.floor(item.commentCount * 10) / 10,
             },
           });
         });
