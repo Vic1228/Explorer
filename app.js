@@ -4,6 +4,8 @@ var router = express.Router();
 var app = express();
 var session = require("express-session");
 var flash = require("connect-flash");
+const nodemailer = require('nodemailer')
+
 app.use(
   session({
     secret: "secret", // 對session id 相關的cookie 進行簽名
@@ -73,16 +75,18 @@ app.use(express.static("public"));
 app.use(express.static("style"));
 
 // =========== body-parser ===========
-
 var bodyParser = require("body-parser");
 const { RejectionError } = require("bluebird");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// 使用 session 中介軟體
-
-//連結資料庫
-
+// =========== nodemail ===========
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: "testmaill0009@gmail.com",
+      pass: "testtesttt"
+  }
+})
 // 使用者登入(舊)
 // app.post('/login', function (req, res) {
 //   compareEmail = 0;
@@ -112,16 +116,17 @@ app.post("/login", function (req, res) {
   const member = `select * from users where userEmail='${email}'and userPassword='${password}'`;
   // 比對
   connection.query(member, function (err, result, fields) {
-    if (result[0] == null) {
-      req.flash("fail", "登入失敗!!");
-      res.redirect("/login");
-    } else {
+    if (result[0] !== null&&result[0].islive == 1) {
+      console.log(result)
       let id = result[0].userId;
       req.session.userId = id;
       req.session.userName = result[0].userName;
-      // console.log("登入成功!");
       req.flash("success", "登入成功!!");
       res.redirect("/");
+    } else {
+      console.log(result)
+      req.flash("fail", "登入失敗!!");
+      res.redirect("/login");
     }
   });
 });
@@ -147,30 +152,94 @@ app.post("/login", function (req, res) {
 //   };
 //   res.redirect('/login'); //跳轉頁面
 // })
+
+// 使用者註冊
 app.post("/register", function (req, res) {
   const name = req.body.username;
   const email = req.body.useremail;
   const password = req.body.userpassword;
+
+  let pass = {
+    code: Math.floor(Math.random() * 1000000), //啟用碼，格式自己定義
+    date: new Date(Date.now() + 28800000), //註冊日期
+  };
+  let timee = pass.date.toISOString();
+  let timeee = timee.replace("T", " ").split(".")[0];
   // 比對
-  const custormers = `insert into users(userName,userEmail,userPassword)values('${name}','${email}','${password}')`;
+  const custormers = `insert into users(userName,userEmail,userPassword,islive,signupdate)values('${name}','${email}','${password}','0','${timeee}')`;
   const takeid = `select userId from users where userEmail='${email}'`;
   connection.query(custormers, (err1, result, field) => {
-    console.log(err1);
+    console.log(err1); //err1
     connection.query(takeid, (err2, result2, field) => {
-      console.log(err2);
+      console.log(err2); //err2
       const insertid = `insert into userstats (userId) values (${result2[0].userId})`;
       connection.query(insertid, (err3, result3, field) => {
-        console.log(err3);
+        console.log(err3); //err3
         if (result == undefined) {
           console.log("錯誤，已註冊過");
           res.render("signuperr");
         } else {
-          console.log("1 RECORD INSERTED");
+          req.session.code = pass.code;
+          let code2 = req.session.code;
+          console.log(code2);
+          // 寄驗證email
+          var options = {
+            //寄件者
+            from: "testemaill0009@gmail.com",
+            //收件者
+            to: `k603062684@gmail.com`,
+            //主旨
+            subject: "旅行蝸牛驗證信", // Subject line
+            //純文字
+            text: "旅行蝸牛驗證信", // plaintext body
+            //嵌入 html 的內文
+            html: 
+            `<h3>感謝您註冊，此為旅行蝸牛認證信</h3>
+            <a href="http://localhost:3000/check?email=${email}&code=${code2}">點我進行驗證</a>`,
+            //附件檔案
+            // attachments: []
+          };
+          transporter.sendMail(options, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log("訊息發送: " + info.response);
+            }
+          });
+          console.log("已新增帳戶");
           req.flash("regisuccess", "註冊成功!!");
           res.redirect("/login");
         }
       });
     });
+  });
+});
+
+app.get("/check", (req, res) => {
+  let codecheck = req.query.code;
+  // console.log(req.session.code);
+  let email = req.query.email;
+  // console.log(email);
+  // console.log(codecheck);
+  let sql = `select * from users where userEmail = '${email}'`;
+  connection.query(sql, (err, result) => {
+    let dateori = result[0].signupdate
+    let datenow = new Date(Date.now())
+    if (req.session.code == codecheck && datenow - dateori < 86400000) {
+      connection.query(
+        `UPDATE users SET islive ='1' WHERE userEmail = '${email}'`,
+        (err, result) => {
+          console.log(err);
+          console.log("nice");
+          res.send("認證成功");
+          req.session.code = null;
+        }
+      );
+    } else {
+      req.session.code = null;
+      console.log("not nice");
+      res.send("驗證失敗");
+    }
   });
 });
 
