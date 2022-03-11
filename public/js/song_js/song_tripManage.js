@@ -7,40 +7,6 @@ $(function () {
     document.getElementsByTagName('head')[0].appendChild(script);
 
     /*---------------------------------------------------------------*/
-    /*-------------------------- 左側navbar -------------------------*/
-    /*---------------------------------------------------------------*/
-    {
-        var navSlide = () => {
-            var burger = document.querySelector('.nav_burger');
-            var nav = document.querySelector('.nav_links_container');
-            var navlinks = document.querySelectorAll('.nav_links li');
-
-            burger.addEventListener('click', () => {
-                //Toggle Nav
-                nav.classList.toggle('nav_active');
-
-                //Animate Links
-                navlinks.forEach((link, index) => {
-                    if (link.style.animation) {
-                        link.style.animation = '';
-                        $('#blur_all').css({ 'backdrop-filter': 'none' });
-                        $('#blur_all').fadeOut(150);
-                    }
-                    else {
-                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 30 + 0.25}s`;
-                        $('#blur_all').css({ 'backdrop-filter': 'blur(20px)' });
-                        $('#blur_all').fadeIn(150);
-                    }
-                });
-
-                //Burger Animation
-                burger.classList.toggle('toggle');
-            });
-        }
-        navSlide();
-    }
-
-    /*---------------------------------------------------------------*/
     /*----------------------------- 聊天室 ---------------------------*/
     /*---------------------------------------------------------------*/
     {
@@ -109,7 +75,7 @@ $(function () {
             content: function () {
                 // var userName = $(this.closest('tr')).children('td:first-child').text();         
                 var test = $(this).children('ul').html().trim();
-                console.log(test.length)
+                // console.log(test.length)
                 if (test.length > 0) {
                     return test;
                 }
@@ -194,86 +160,88 @@ function hoverdiv(e, showStat) {
 }
 
 
+/*---------------------------------------------------------------*/
+/*-------------------------- input num --------------------------*/
+/*---------------------------------------------------------------*/
+(function() {
+    'use strict';
+    function ctrls() {
+      var _this = this;
+      this.counter = 0;
+      this.els = {
+        decrement: document.querySelector('.ctrl__button--decrement'),
+        counter: {
+          container: document.querySelector('.ctrl__counter'),
+          num: document.querySelector('.ctrl__counter-num'),
+          input: document.querySelector('.ctrl__counter-input')
+        },
+        increment: document.querySelector('.ctrl__button--increment')
+      };
+      this.decrement = function() {
+        var counter = _this.getCounter();
+        var nextCounter = (_this.counter > 0) ? --counter : counter;
+        _this.setCounter(nextCounter);
+      };
+      this.increment = function() {
+        var counter = _this.getCounter();
+        var nextCounter = (counter < 9999999999) ? ++counter : counter;
+        _this.setCounter(nextCounter);
+      };
+      this.getCounter = function() {
+        return _this.counter;
+      };
+      this.setCounter = function(nextCounter) {
+        _this.counter = nextCounter;
+      };
+      this.debounce = function(callback) {
+        setTimeout(callback, 100);
+      };
+      this.render = function(hideClassName, visibleClassName) {
+        _this.els.counter.num.classList.add(hideClassName);
+        setTimeout(function() {
+          _this.els.counter.num.innerText = _this.getCounter();
+          _this.els.counter.input.value = _this.getCounter();
+          _this.els.counter.num.classList.add(visibleClassName);
+        }, 100);
+        setTimeout(function() {
+          _this.els.counter.num.classList.remove(hideClassName);
+          _this.els.counter.num.classList.remove(visibleClassName);
+        }, 200);
+      };
+      this.ready = function() {
+        _this.els.decrement.addEventListener('click', function() {
+          _this.debounce(function() {
+            _this.decrement();
+            _this.render('is-decrement-hide', 'is-decrement-visible');
+          });
+        });
+        _this.els.increment.addEventListener('click', function() {
+          _this.debounce(function() {
+            _this.increment();
+            _this.render('is-increment-hide', 'is-increment-visible');
+          });
+        });
+        _this.els.counter.input.addEventListener('input', function(e) {
+          var parseValue = parseInt(e.target.value);
+          if (!isNaN(parseValue) && parseValue >= 0) {
+            _this.setCounter(parseValue);
+            _this.render();
+          }
+        });
+        _this.els.counter.input.addEventListener('focus', function(e) {
+          _this.els.counter.container.classList.add('is-input');
+        });
+        _this.els.counter.input.addEventListener('blur', function(e) {
+          _this.els.counter.container.classList.remove('is-input');
+          _this.render();
+        });
+      };
+    };
+    // init
+    var controls = new ctrls();
+    document.addEventListener('DOMContentLoaded', controls.ready);
+  })();
+
+
 // 裝備清單編輯
-{
-    const itineraryRow = `<tr>
-                <td class="form-td">
-                  <select name="schedule" id="" class="border-0 text-center h-100 form-input w-100"
-                    oninput="this.className = 'border-0 text-center h-100 form-input w-100'">
-                    <option value="" selected disabled>第?天</option>
-                    <option value="1">第1天</option>
-                    <option value="2">第2天</option>
-                    <option value="3">第3天</option>
-                    <option value="4">第4天</option>
-                  </select>
-                </td>
-                <td class="form-td"><input name="schedule" type="time" id=""
-                    class="text-center border-0 h-100 time-input form-input w-100"
-                    oninput="this.className = 'text-center border-0 h-100 time-input form-input w-100'">
-                </td>
-                <td class="form-td"><input name="schedule" class="h-100 w-75 border-0 act-input text-center form-input"
-                    type="text" class="border-0"
-                    oninput="this.className = 'h-100 w-75 border-0 act-input text-center form-input'" placeholder="活動名稱"
-                    style="margin-right: 1rem;">
-                  <p onclick="addItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                  <p onclick="deleteItineraryRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                </td>
-              </tr>`;
-
-    const privateItem = `<tr>
-                <td class="form-td"><input name="private" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="form-td"><input name="private" type="number"
-                    class="text-center border-0 w-25 h-100 form-input"
-                    oninput="this.className = 'text-center border-0 w-25 h-100 form-input'" style="margin-right: 1rem;">
-                  <p onclick="addPrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                  <p onclick="deletePrivateItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                </td>
-              </tr>`;
-    const sharedItem = `<tr>
-                <td class="form-td"><input name="shared" type="text" class="text-center border-0 h-100 form-input"
-                    placeholder="物品名稱" oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                <td class="form-td"><input name="shared" type="number" id=""
-                    class="text-center border-0 h-100 form-input w-50"
-                    oninput="this.className = 'text-center border-0 h-100 form-input w-50'" style="margin-right: 1rem;">
-                  <p onclick="addSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn">
-                    +</p>
-                  <p onclick="deleteSharedItemRow(this)" class="d-inline-block rounded-circle add-delete-btn table-btn"
-                    style="margin-inline: 1rem;">
-                    x</p>
-                </td>
-              </tr>`;
-
-    // 方法
-
-    // 增加列
-    function addItineraryRow(p) {
-        // $("#ItineraryTable>tbody").append(itineraryRow);
-        $(p).closest("tr").after(itineraryRow);
-    }
-    function addPrivateItemRow(p) {
-        $(p).closest("tr").after(privateItem);
-    }
-    function addSharedItemRow(p) {
-        $(p).closest("tr").after(sharedItem);
-    }
-
-    // 刪除列
-    // <p onclick="deleteItineraryRow(this)" 第165行
-    function deleteItineraryRow(p) {
-        $(p).closest("tr").remove();
-    }
-    function deletePrivateItemRow(p) {
-        $(p).closest("tr").remove();
-    }
-    function deleteSharedItemRow(p) {
-        $(p).closest("tr").remove();
-    }
-}
 
