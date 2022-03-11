@@ -223,7 +223,7 @@ function initMap() {
   });
 
   const req6 = {
-    placeId: "ChIJv2YdtvcJbzQR6NJ-AtqRcXE",
+    placeId: "ChIJQQw_XnmwcTQRJDTXr-gXYvk",
     fields: [
       "name",
       "formatted_address",
@@ -475,43 +475,43 @@ const mapData10 = {
 //點擊按鈕儲存資訊
 function createItem() {
   // localStorage.setItem("lat", JSON.stringify(mapData1));
-  location.href ="/createTrip?id=1&x=24.390898656065392&y=121.29828430484407";
+  location.href = "/createTrip?id=1&x=24.390898656065392&y=121.29828430484407";
 }
 function createItem2() {
   // localStorage.setItem("lat", JSON.stringify(mapData2));
-  location.href ="/createTrip?id=2&x=23.47062919259415&y=120.95754078838556";
+  location.href = "/createTrip?id=2&x=23.47062919259415&y=120.95754078838556";
 }
 function createItem3() {
   // localStorage.setItem("lat", JSON.stringify(mapData3));
-  location.href ="/createTrip?id=3&x=23.523021338969716&y=121.06433788893624";
+  location.href = "/createTrip?id=3&x=23.523021338969716&y=121.06433788893624";
 }
 function createItem4() {
   // localStorage.setItem("lat", JSON.stringify(mapData4));
-  location.href ="/createTrip?id=4&x=23.501737312030443&y=121.06011578839541";
+  location.href = "/createTrip?id=4&x=23.501737312030443&y=121.06011578839541";
 }
 function createItem5() {
   // localStorage.setItem("lat", JSON.stringify(mapData5));
-  location.href ="/createTrip?id=5&x=24.36154834568155&y=121.43400489656634";
+  location.href = "/createTrip?id=5&x=24.36154834568155&y=121.43400489656634";
 }
 
 function createItem6() {
-//   localStorage.setItem("lat", JSON.stringify(mapData6));
-location.href ="/createTrip?id=6&x=23.053576532492254&y=121.16468774454114";
+  //   localStorage.setItem("lat", JSON.stringify(mapData6));
+  location.href = "/createTrip?id=6&x=23.053576532492254&y=121.16468774454114";
 }
 
 function createItem7() {
   // localStorage.setItem("lat", JSON.stringify(mapData7));
-  location.href ="/createTrip?id=7&x=24.086616211283214&y=121.32290163515005";
+  location.href = "/createTrip?id=7&x=24.086616211283214&y=121.32290163515005";
 }
 function createItem8() {
   // localStorage.setItem("lat", JSON.stringify(mapData8));
-  location.href ="/createTrip?id=8&x=24.1821713408634&y=121.28121729655567";
+  location.href = "/createTrip?id=8&x=24.1821713408634&y=121.28121729655567";
 }
 function createItem9() {
   // localStorage.setItem("lat", JSON.stringify(mapData9));
-  location.href ="/createTrip?id=9&x=24.43388623086648&y=121.30534059610521";
+  location.href = "/createTrip?id=9&x=24.43388623086648&y=121.30534059610521";
 }
 function createItem10() {
   // localStorage.setItem("lat", JSON.stringify(mapData10));
-  location.href ="/createTrip?id=10&x=24.42883077088577&y=121.26698965801161";
+  location.href = "/createTrip?id=10&x=24.42883077088577&y=121.26698965801161";
 }
