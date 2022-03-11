@@ -38,8 +38,8 @@ song_tripManage_router.put("/", function (req, res) {
       break;
     case 'memberApplyReject':
       conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.currentMemberId}`, function (err, rows) {
-        if (err) throw err; 
-        conn.query(`DELETE FROM shareditems WHERE userId = ${req.body.currentMemberId} AND tripId = ${req.body.tripId}`,function(err,rows){
+        if (err) throw err;
+        conn.query(`DELETE FROM shareditems WHERE userId = ${req.body.currentMemberId} AND tripId = ${req.body.tripId}`, function (err, rows) {
           res.send({ state: 'success' });
         })
       })
@@ -63,22 +63,40 @@ song_tripManage_router.put("/", function (req, res) {
       var provideVal = req.body.provideVal;
       if (newProvider === true && provideVal != 0) {
         conn.query(`INSERT INTO shareditems (tripId, userId, sharedItem, itemCount) 
-                    VALUES (${req.body.tripId},${req.body.userId},'${req.body.sharedItem}',${req.body.itemCount})`,
+                    VALUES (${req.body.tripId},${req.body.userId},'${req.body.sharedItem}',${req.body.provideVal})`,
           function (err, rows) {
-            res.send({ state: 'success' });
+            res.send({ state: 'Insert success' });
           })
       } else if (newProvider === false && provideVal != 0) {
         conn.query(`UPDATE shareditems SET itemCount = ${req.body.itemCount} 
                     WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'`,
           function (err, rows) {
-            res.send({ state: 'success' });
+            res.send({ state: 'Update success' });
           })
       } else if (newProvider === false && provideVal === 0) {
-        conn.query(`DELETE FROM shareditems WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'` )
+        conn.query(`DELETE FROM shareditems WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'`,
+          function (err, rows) {
+            res.send({ state: 'Delete success' });
+          })
       } else {
         res.send({ Hello: 'world!' })
       }
+      break;
   }
+})
+
+
+song_tripManage_router.get("/quit", function (req, res) {
+  console.log(req.query.userId);
+  console.log(req.query.tripId);
+
+  conn.query(`DELETE FROM tripmembers WHERE userId = ${req.query.userId} AND tripId = ${req.query.tripId}`, function (err, rows) {
+    if (err) throw err;
+    conn.query(`DELETE FROM shareditems WHERE userId = ${req.query.userId} AND tripId = ${req.query.tripId}`, function (err, rows) {
+      if (err) throw err;
+      res.redirect('/');
+    })
+  })
 })
 
 
@@ -88,7 +106,7 @@ song_tripManage_router.get("/", function (req, res) {
   //   res.redirect("/login");
   // }
   // var userId = req.session.userId;
-  var userId = 6;
+  var userId = 2;
 
   var data = {
     sessionUserId: userId,
@@ -279,7 +297,7 @@ song_tripManage_router.get("/", function (req, res) {
       if (result8 != undefined) {
         data.selectedTrip.spotName = result8[0].spotName;
       }
-      console.log(data)
+      // console.log(data)
       return res.render("song_tripManage.ejs", { data: JSON.stringify(data) });
     })
     .catch((err) => console.log(err));

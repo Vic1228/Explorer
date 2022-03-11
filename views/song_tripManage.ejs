@@ -170,7 +170,6 @@
                                 </div>
                             </div>
                             <div id="itemList" class="container tab-pane fade">
-
                                 <h4 id="sharedItemMemberCount" class="tableTitle">公共裝備（團員人數： --- 人）
                                     <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
                                         data-target="#publicItemListEdit" title="限發起人編輯">
@@ -193,7 +192,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
                                 <br>
                                 <h4 class="tableTitle">私人裝備
                                     <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
@@ -252,17 +250,21 @@
                             noteText
                         </div>
                     </div>
+
+                    <button id="quitbtn" data-toggle="modal" data-target="#quitTrip">退出行程</button>
                 </div>
                 <!------- Rigtht: schedule End ------->
             </div>
         </div>
 
 
+
+
         <!--------- userStat --------->
         <!-- <div id="showStat"
         style="display:none; width:160px; height:160px; position:fixed; background-color: rgb(255, 255, 255);">
         <canvas id="myChart">9.5</canvas>
-    </div> -->
+        </div> -->
         <!-- <a href="#" id="statHover" onmouseover="hoverdiv(event,'showStat')" onmouseout="hoverdiv(event,'showStat')">9.7</a> -->
 
         <!---------------------------------------------------------------->
@@ -451,43 +453,47 @@
         <div id="publicItemListEdit" class="modal fade">
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
-                    <form action="">
-                        <div class="modal-header">
-                            <h5 class="modal-title">公共裝備清單編輯</h5>
-                        </div>
-                        <div class="modal-body">
-                            <table id="sharedItemTable" class="table table-bordered text-center">
+                    <div class="modal-body">
+                        <form action="post">
+                            <table id="sharedItemTable" class="table table-bordered text-center"
+                                style="border-color: rgb(58, 109, 154);">
                                 <thead>
-                                    <th class="h-100">
-                                        <h6>物品名稱</h6>
+                                    <th class="h-100"
+                                        style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                                        <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">
+                                            編輯公用裝備清單</h4>
                                     </th>
-                                    <th></th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <!-- TODO: 裝備名稱 -->
                                         <td class="form-td"><input name="shared" type="text"
-                                                class="text-center border-0 h-100 form-input" placeholder="物品名稱"
-                                                oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                                        <!-- TODO: 數量 -->
-                                        <td class="form-td">
-                                            <p onclick="addSharedItemRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn">
-                                                +</p>
+                                                class="text-center border-0 h-100 form-input" placeholder="裝備名稱"
+                                                oninput="this.className = 'text-center border-0 h-100 form-input'"
+                                                style="font-size: 1.4rem;">
                                             <p onclick="deleteSharedItemRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn"
-                                                style="margin-inline: 1rem; visibility:hidden">
+                                                class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
+                                                style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">
                                                 x</p>
+                                        </td>
+                                        <!-- TODO: 數量 -->
+                                    </tr>
+                                    <tr>
+                                        <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
+                                            style="background-color: rgb(58, 109, 154)">
+                                            <h5
+                                                style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">
+                                                +</h5>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -550,7 +556,8 @@
                     </div>
                     <div class="modal-body d-flex" style="justify-content: space-around;">
                         <ul>
-                            <li><input type="number"><span style="display: inline-block">&#8194&#8194個</span></li>
+                            <li><input type="number" min="0"><span style="display: inline-block">&#8194&#8194個</span>
+                            </li>
                         </ul>
 
                     </div>
@@ -561,6 +568,22 @@
                 </div>
             </div>
         </div>
+
+        <div id="quitTrip" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">是否確認退出此行程？</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <div id="chartContainer" class="" style="width:150px; height: 150px">
             <canvas id="myChart"></canvas>
@@ -680,8 +703,17 @@
                 $('#sharedItemMemberCount').empty();
                 $('#sharedItemMemberCount').append(
                     `公共裝備（團員人數： ${rData.memberCount} 人）
-                <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
+                    <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
                 )
+                $('#sharedItemTable tbody').empty();
+                $('#sharedItemTable tbody').append(
+                    `<tr>
+                        <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
+                            style="background-color: rgb(58, 109, 154)">
+                            <h5 style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">+</h5>
+                        </td>
+                    </tr>`
+                );
                 $('#publicItemList tbody').empty();
                 rData.sharedItems.forEach((element) => {
                     var itemCount = 0;
@@ -705,7 +737,7 @@
                     )
                     rData.tripMember.forEach((i) => {
                         element.itemCount.forEach((j) => {
-                            if (j.userId === i.userId && i.positionState > 0) {
+                            if (j.userId === i.userId && i.positionState > 0 && j.itemCount > 0) {
                                 $('#publicItemList ul').last().append(
                                     `<li class="superLi">
                                     <span class="superLeft">${i.name}</span>
@@ -717,6 +749,19 @@
                         })
                     })
 
+
+                    $('#sharedItemTable tr').last().before(
+                        `<tr>
+                            <td class="form-td">
+                                <input name="shared" type="text" class="text-center border-0 h-100 form-input"
+                                value="${element.sharedItem}" oninput="this.className = 'text-center border-0 h-100 form-input'" style="font-size: 1.4rem;">
+                                <p onclick="deleteSharedItemRow(this)"
+                                class="btn-effect d-inline-block rounded-circle add-delete-btn table-btn"
+                                style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">x
+                                </p>
+                            </td>
+                        </tr>`
+                    );
 
                 })
 
@@ -923,16 +968,24 @@
                             data: {
                                 action: 'publicItemProvide',
                                 tripId: rData.selectedTrip.tripId,
-                                sharedItem: currentSharedItemName,
                                 userId: rData.sessionUserId,
+                                sharedItem: currentSharedItemName,
                                 provideVal: provideVal,
                                 newProvider: newProvider
                             }
                         }).then(function (res) {
                             refreshMemberItem();
+                            console.log(res)
                         }).catch(function (err) {
                             console.log(err);
                         })
+                        break;
+                    case 'quitTrip':
+                        $.get('/tripManage/quit',
+                            {
+                                userId: rData.sessionUserId,
+                                tripId: rData.selectedTrip.tripId
+                            })
                         break;
                 }
             })
