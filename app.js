@@ -257,6 +257,6 @@ app.use("/tripsDay", tripsDayRouter);
 app.use("/tripsDate", tripsDateRouter);
 app.use("/tripinfo", tripsinfoRouter);
 app.use("/tripSignup", tripSignup);
+app.use("/tripManage", tripManage);
 app.use("/", yenpage);
 app.use("/", createTrip);
-app.use("/tripManage", tripManage);

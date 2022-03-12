@@ -85,28 +85,22 @@ song_tripManage_router.put("/", function (req, res) {
   }
 })
 
-
-song_tripManage_router.get("/quit", function (req, res) {
-  console.log(req.query.userId);
-  console.log(req.query.tripId);
-
-  conn.query(`DELETE FROM tripmembers WHERE userId = ${req.query.userId} AND tripId = ${req.query.tripId}`, function (err, rows) {
+song_tripManage_router.delete("/quit", function (req, res) {
+  conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.userId} AND tripId = ${req.body.tripId}`, function (err, rows) {
     if (err) throw err;
-    conn.query(`DELETE FROM shareditems WHERE userId = ${req.query.userId} AND tripId = ${req.query.tripId}`, function (err, rows) {
+    conn.query(`DELETE FROM shareditems WHERE userId = ${req.body.userId} AND tripId = ${req.body.tripId}`, function (err, rows) {
       if (err) throw err;
-      res.redirect('/');
+      res.end();
     })
   })
-})
-
-
+});
 
 song_tripManage_router.get("/", function (req, res) {
   // if (req.session.userId == undefined) {
   //   res.redirect("/login");
   // }
   // var userId = req.session.userId;
-  var userId = 2;
+  var userId = 1;
 
   var data = {
     sessionUserId: userId,
@@ -116,11 +110,7 @@ song_tripManage_router.get("/", function (req, res) {
     //以下為trip詳細資料
     selectedTrip: {},
     tripchatboard: [
-      {
-        userId: "",
-        chatTime: "",
-        chatMessage: "",
-      },
+
     ],
     tripMember: [],
     memberCount: null,
@@ -294,10 +284,26 @@ song_tripManage_router.get("/", function (req, res) {
       else return;
     })
     .then((result8) => {
-      if (result8 != undefined) {
+      if (result8 != undefined) { // 1.指派 spotName。     2. 查詢 selTrip 之留言板。若無selTrip，return。
         data.selectedTrip.spotName = result8[0].spotName;
+        var sql9 = `SELECT * FROM spotcomments WHERE tripId = ${data.selectedTrip.tripId} ORDER BY tripMessageTime`;
+        return conn.queryAsync(sql9);
+      } 
+      else return;
+    }).then((result9) => {
+      if (result9 != undefined) {
+        console.log(result9);
+        result9.forEach((elm)=>{
+          data.tripchatboard.push({
+            userId: "",
+            tripMessageTime: "",
+            tripMessageText: "",
+            tripImgNum: null
+
+          })
+        })
       }
-      // console.log(data)
+      //console.log(data) 
       return res.render("song_tripManage.ejs", { data: JSON.stringify(data) });
     })
     .catch((err) => console.log(err));

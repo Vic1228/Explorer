@@ -95,9 +95,18 @@
                         </ul>
                         <div id="tripManageTab" class="tab-content">
                             <div id="textBoardContainer" class="container tab-pane active">
-                                <div id="textBoard"></div>
+                                <div id="textBoard">
+                                    <div class="leftChat">
+                                        <div><img src="" alt=""></div>
+                                        <p></p>
+                                    </div>
+                                    <div class="rigthChat">   
+                                        <p></p>
+                                        <div><img src="" alt=""></div>
+                                    </div>
+                                </div>
                                 <div>
-                                    <form id="textSendContainer" action="">
+                                    <div id="textSendContainer" action="">
                                         <label class="col-1" id="uploadImgContainer">
                                             <input id="uploadImg" class="inputFile uploadImg" type="file"
                                                 accept=".png, .jpg, .jpeg" multiple>
@@ -117,7 +126,7 @@
                                             <img class="d-block" class="sendMessageIcon"
                                                 src="../public/img/song_img/send-message.png" alt="">
                                         </label>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                             <div id="tripMember" class="container tab-pane fade">
@@ -749,7 +758,6 @@
                         })
                     })
 
-
                     $('#sharedItemTable tr').last().before(
                         `<tr>
                             <td class="form-td">
@@ -981,15 +989,27 @@
                         })
                         break;
                     case 'quitTrip':
-                        $.get('/tripManage/quit',
-                            {
+                        axios({
+                            method: 'delete',
+                            url: '/tripManage/quit',
+                            data: {
                                 userId: rData.sessionUserId,
                                 tripId: rData.selectedTrip.tripId
-                            })
-                        break;
+                            }
+                        }).then(function(res){
+                            window.location.href = "/tripManage"
+                        }).catch(function (err) {
+                            console.log(err);
+                        })
+                    break;
                 }
             })
 
+
+            // 聊天室
+            function refreshChat(){
+
+            }
 
 
 
