@@ -100,7 +100,7 @@
                                         <div><img src="" alt=""></div>
                                         <p></p>
                                     </div>
-                                    <div class="rigthChat">   
+                                    <div class="rightChat">
                                         <p></p>
                                         <div><img src="" alt=""></div>
                                     </div>
@@ -122,7 +122,7 @@
                                             <input id="chatroomText" class="px-2" type="text" placeholder="留言...">
                                         </div>
                                         <label class="col-1">
-                                            <input class="d-none" type="button" value="submit">
+                                            <input id="sendMessage" class="d-none" type="submit">
                                             <img class="d-block" class="sendMessageIcon"
                                                 src="../public/img/song_img/send-message.png" alt="">
                                         </label>
@@ -896,7 +896,6 @@
                                 action: 'memberApplyConfirm'
                             }
                         }).then(function (res) {
-                            console.log(currentMemberIndex);
                             rData.tripMember[currentMemberIndex].positionState = 1;
                             refreshMemberItem();
                         }).catch(function (err) {
@@ -983,7 +982,6 @@
                             }
                         }).then(function (res) {
                             refreshMemberItem();
-                            console.log(res)
                         }).catch(function (err) {
                             console.log(err);
                         })
@@ -996,20 +994,56 @@
                                 userId: rData.sessionUserId,
                                 tripId: rData.selectedTrip.tripId
                             }
-                        }).then(function(res){
+                        }).then(function (res) {
                             window.location.href = "/tripManage"
                         }).catch(function (err) {
                             console.log(err);
                         })
-                    break;
+                        break;
                 }
             })
 
 
             // 聊天室
-            function refreshChat(){
-
+            refreshChat();
+            function refreshChat() {
+                $('#textBoard').empty()
+                rData.tripChatBoard.forEach((elm, idx) => {
+                    if (elm.userId === rData.sessionUserId) {
+                        $('#textBoard').append(
+                            `<p>${elm.tripMessageText}</p>
+                             <div><img src="" alt=""></div>
+                            `
+                        );
+                    } else {
+                        $('#textBoard').append(
+                            `<div><img src="" alt=""></div>
+                             <p>${elm.tripMessageText}</p>
+                            `
+                        );
+                    }
+                })
             }
+
+            $('#sendMessage').click(function () {
+                // console.log($('#uploadImg').val()==='');
+                // console.log($('#chatroomText').val()==='');
+
+                if ($('#uploadImg').val() != '') {
+                    var formData = new FormData();
+                    formData.append('image',$('#uploadImg').val());
+                    axios({
+                        method: "post",
+                        url: "/tripManage/uploadPhoto",
+                        data: formData,
+                        async: true,
+                        processData: false,
+                        contentType: "multipart/form-data" ,
+                        contextType: "application/json",
+                        cache: false,
+                    });
+                }
+            })
 
 
 

@@ -1,21 +1,45 @@
 // ---------------------- express----------------------
-var express = require("express");
-var song_tripManage_router = express.Router();
+const express = require("express");
+const song_tripManage_router = express.Router();
 
 // ---------------------- body-parser ----------------------
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 song_tripManage_router.use(bodyParser.json());
 song_tripManage_router.use(bodyParser.urlencoded({ extended: false }));
 
 // ---------------------- mysql ----------------------
-var conn = require("../db.js");
+const conn = require("../db.js");
 
 // ---------------------- bluebird ----------------------
-var bluebird = require("bluebird");
+const bluebird = require("bluebird");
 bluebird.promisifyAll(conn);
 
-// ---------------------- request ----------------------
+const multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./upload/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, "photo" + photoNumber + ".jpg");
+  },
+});
+const upload = multer({
+  storage: storage,
+  dest: "upload/",
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
+  fileFilter(req, file, callback) {
+    if (!file.mimetype.match(/^image/)) {
+      callback((new Error().message = "檔案格式錯誤"));
+    } else {
+      callback(null, true);
+    }
+  },
+});
 
+
+// ---------------------- request ---------------------
 song_tripManage_router.put("/", function (req, res) {
   switch (req.body.action) {
     case 'tripNameEdit':
@@ -95,6 +119,10 @@ song_tripManage_router.delete("/quit", function (req, res) {
   })
 });
 
+song_tripManage_router.post('/uploadPhoto',upload.array("file", 5),function (req, res){
+  console.log('apple')
+})
+
 song_tripManage_router.get("/", function (req, res) {
   // if (req.session.userId == undefined) {
   //   res.redirect("/login");
@@ -109,7 +137,7 @@ song_tripManage_router.get("/", function (req, res) {
     joinTripList: [],
     //以下為trip詳細資料
     selectedTrip: {},
-    tripchatboard: [
+    tripChatBoard: [
 
     ],
     tripMember: [],
@@ -118,7 +146,6 @@ song_tripManage_router.get("/", function (req, res) {
     privateItems: [],
     schedule: [],
     tripNotes: "",
-    apple: ''
   };
 
   conn.queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
@@ -288,22 +315,23 @@ song_tripManage_router.get("/", function (req, res) {
         data.selectedTrip.spotName = result8[0].spotName;
         var sql9 = `SELECT * FROM spotcomments WHERE tripId = ${data.selectedTrip.tripId} ORDER BY tripMessageTime`;
         return conn.queryAsync(sql9);
-      } 
+        return;
+      }
       else return;
-    }).then((result9) => {
+    })
+    .then((result9) => {
       if (result9 != undefined) {
         console.log(result9);
-        result9.forEach((elm)=>{
-          data.tripchatboard.push({
-            userId: "",
-            tripMessageTime: "",
-            tripMessageText: "",
-            tripImgNum: null
-
+        result9.forEach((elm) => {
+          data.tripChatBoard.push({
+            userId: elm.userId,
+            tripMessageTime: elm.tripMessageTime,
+            tripMessageText: elm.tripMessageText,
+            tripImgNum: elm.tripImgNum
           })
         })
       }
-      //console.log(data) 
+      console.log(data)
       return res.render("song_tripManage.ejs", { data: JSON.stringify(data) });
     })
     .catch((err) => console.log(err));
