@@ -108,8 +108,8 @@
                                 <div>
                                     <div id="textSendContainer" action="">
                                         <label class="col-1" id="uploadImgContainer">
-                                            <input id="uploadImg" class="inputFile uploadImg" type="file"
-                                                accept=".png, .jpg, .jpeg" multiple>
+                                            <input id="chooseImg" class="inputFile uploadImg" type="file"
+                                                accept=".png, .jpg, .jpeg">
                                             <img class="uploadImg d-block" src="../public/img/song_img/uploadImg.png"
                                                 alt="">
                                         </label>
@@ -119,7 +119,8 @@
                                                     src="../public/img/song_img/cancel.png" alt="">
                                                 <span></span>
                                             </div>
-                                            <input id="chatroomText" class="px-2" type="text" placeholder="留言...">
+                                            <input id="chatroomText" class="px-2" type="text" name="typetext"
+                                                placeholder="留言...">
                                         </div>
                                         <label class="col-1">
                                             <input id="sendMessage" class="d-none" type="submit">
@@ -127,6 +128,9 @@
                                                 src="../public/img/song_img/send-message.png" alt="">
                                         </label>
                                     </div>
+
+
+
                                 </div>
                             </div>
                             <div id="tripMember" class="container tab-pane fade">
@@ -1003,11 +1007,10 @@
                 }
             })
 
-
             // 聊天室
             refreshChat();
             function refreshChat() {
-                $('#textBoard').empty()
+                $('#textBoard').empty();
                 rData.tripChatBoard.forEach((elm, idx) => {
                     if (elm.userId === rData.sessionUserId) {
                         $('#textBoard').append(
@@ -1028,20 +1031,29 @@
             $('#sendMessage').click(function () {
                 // console.log($('#uploadImg').val()==='');
                 // console.log($('#chatroomText').val()==='');
-
                 if ($('#uploadImg').val() != '') {
                     var formData = new FormData();
-                    formData.append('image',$('#uploadImg').val());
+                    formData.append('image', chooseImg.files[0]);
                     axios({
                         method: "post",
-                        url: "/tripManage/uploadPhoto",
+                        url: "/tripManage/upload",
                         data: formData,
-                        async: true,
-                        processData: false,
-                        contentType: "multipart/form-data" ,
-                        contextType: "application/json",
-                        cache: false,
-                    });
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        }
+                    })
+                        .then(function (res) {
+                            $('#chooseImg').val(null);
+                            $('#fileCount').css({
+                                'width': '0%',
+                                'opacity': '0'
+                            });
+                            function hideFileCount() {
+                                $('#fileCount span').text(``);
+                                $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
+                            }
+                            setTimeout(hideFileCount, 250);
+                        });
                 }
             })
 

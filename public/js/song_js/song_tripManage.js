@@ -13,7 +13,6 @@ $(function () {
     $('#uploadImg').on('change', function (e) {
       // console.log(this.value);
       if (e.target.files.length > 0) {
-        console.log($('#uploadImg').val())
 
         $('#fileCount').css({
           'width': '100%'

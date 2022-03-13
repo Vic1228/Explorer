@@ -14,28 +14,21 @@ const conn = require("../db.js");
 const bluebird = require("bluebird");
 bluebird.promisifyAll(conn);
 
+
+// ---------------------- multer ----------------------
 const multer = require('multer');
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./upload/");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './upload/song_upload');
   },
-  filename: function (req, file, cb) {
-    cb(null, "photo" + photoNumber + ".jpg");
-  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, file.originalname);
+  }
 });
+
 const upload = multer({
   storage: storage,
-  dest: "upload/",
-  limits: {
-    fileSize: 2 * 1024 * 1024,
-  },
-  fileFilter(req, file, callback) {
-    if (!file.mimetype.match(/^image/)) {
-      callback((new Error().message = "檔案格式錯誤"));
-    } else {
-      callback(null, true);
-    }
-  },
 });
 
 
@@ -119,8 +112,8 @@ song_tripManage_router.delete("/quit", function (req, res) {
   })
 });
 
-song_tripManage_router.post('/uploadPhoto',upload.array("file", 5),function (req, res){
-  console.log('apple')
+song_tripManage_router.post('/upload',upload.single('image'),function (req, res, next) {
+  return res.send('Image uploaded!');
 })
 
 song_tripManage_router.get("/", function (req, res) {

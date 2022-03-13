@@ -73,6 +73,7 @@ app.use(express.static("nav"));
 app.use(express.static("footer"));
 app.use(express.static("public"));
 app.use(express.static("style"));
+app.use(express.static('upload'));
 
 // =========== body-parser ===========
 var bodyParser = require("body-parser");
