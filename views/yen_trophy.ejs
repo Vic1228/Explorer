@@ -22,49 +22,28 @@
   <!-- NAV BAR -->
   <!-- <div w3-include-HTML="./nav/nav.html"></div> -->
   <%- include('../nav/nav.html')%>
-  <!-- NAV BAR -->
-  <div style="height: 40vh;" class="ttop">
-    <img src="/public/img/yen/topword2.png" alt="" style="width: 30%; margin: auto; position: relative; left: 250px; top :45px;">
-  </div>
-  <div class="navDistance d-flex">
-    <div class="col-2"></div>
-    <div class="col-2 maincard1">
-      <img src="/img/yen/winner.png">
-      <h2>人氣王</h2>
-      <p>(評價次數最多)</p>
+    <!-- NAV BAR -->
+    <div style="height: 40vh;" class="ttop">
+      <img src="/public/img/yen/topword2.png" alt=""
+        style="width: 30%; margin: auto; position: relative; left: 250px; top :45px;">
     </div>
-    <div class="col-6 maincard2">
-      <div style="display: flex;">
-        <table class='table table-hover' id="tata">
-          <tr class="table-success">
-            <td class="frt">名次</th>
-            <td class="sec">冒險家</th>
-            <td class="thr">分數</th>
-          </tr>
-          <% json7.forEach((data,index)=>{%>
-            <%if(index<=4){%>
-              <tr>
-                <td class="frt">
-                  <%= index+1 +'.'%>
-                </td>
-                <td class="sec">
-                  <%= data.userName%>
-                </td>
-                <td class="thr">
-                  <%= data.commentCount%>
-                </td>
-              </tr>
-              <%}%>
-                <% }) %>
-        </table>
-        <table class="table table-hover" id="trtr">
-          <tr class="table-success">
-            <td class="frt">名次</th>
-            <td class="sec">冒險家</th>
-            <td class="thr">分數</th>
-          </tr>
-          <% json7.forEach((data,index)=>{%>
-            <%if(index>=5&&index<10){%>
+    <div class="navDistance d-flex">
+      <div class="col-2"></div>
+      <div class="col-2 maincard1">
+        <img src="/img/yen/winner.png">
+        <h2>人氣王</h2>
+        <p>(評價次數最多)</p>
+      </div>
+      <div class="col-6 maincard2">
+        <div style="display: flex;">
+          <table class='table' id="tata">
+            <tr class="" style="background-color: #3A6D9A;">
+              <th class="frt">名次</th>
+              <th class="sec">冒險家</th>
+              <th class="thr">分數</th>
+            </tr>
+            <% json7.forEach((data,index)=>{%>
+              <%if(index<=4){%>
                 <tr>
                   <td class="frt">
                     <%= index+1 +'.'%>
@@ -78,33 +57,15 @@
                 </tr>
                 <%}%>
                   <% }) %>
-        </table>
-      </div>
-      <div style="text-align: end;">
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
-          《查看更多...》
-        </button>
-      </div>
-    </div>
-    <div class="col-2"></div>
-  </div>
-  <!-- 彈跳視窗 -->
-  <!-- 人氣王 -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">人氣王</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
+          </table>
+          <table class="table" id="trtr">
+            <tr class="" style="background-color: #3A6D9A;">
+              <th class="frt">名次</th>
+              <th class="sec">冒險家</th>
+              <th class="thr">分數</th>
             </tr>
             <% json7.forEach((data,index)=>{%>
-              <%if(index>=10&&index<=19){%>
+              <%if(index>=5&&index<10){%>
                   <tr>
                     <td class="frt">
                       <%= index+1 +'.'%>
@@ -120,500 +81,538 @@
                     <% }) %>
           </table>
         </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+        <div style="text-align: end;">
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+            《查看更多...》
+          </button>
         </div>
       </div>
+      <div class="col-2"></div>
     </div>
-  </div>
-  <!-- 野猴子 -->
-  <div class="modal fade" id="myModal1">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">野猴子</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json1.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.strength%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 怪醫黑傑克 -->
-  <div class="modal fade" id="myModal2">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">怪醫黑傑克</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json2.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.heal%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 東方貝爺 -->
-  <div class="modal fade" id="myModal3">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">東方貝爺</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json3.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.survival%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 公車罷搭反方向 -->
-  <div class="modal fade" id="myModal4">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">公車不搭反方向</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json4.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.direction%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- CEO -->
-  <div class="modal fade" id="myModal5">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">CEO</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json5.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.leadership%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- 三個臭皮匠 -->
-  <div class="modal fade" id="myModal6">
-    <div class="modal-dialog" style="margin-top: 110px;">
-      <div class="modal-content">
-        <!-- Modal Header -->
-        <h2 class="" style="text-align: center; margin-top: 20px;">三個臭皮匠</h2>
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class='table table-hover'>
-            <tr class="">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json6.forEach((data,index)=>{%>
-              <%if(index<=9){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.teamwork%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn" data-bs-dismiss="modal">關閉</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 分界線 -->
-  <hr class="container">
-
-  <!-- 卡片 -->
-  <div class="container">
-    <div class="col-12 mid">
-      <!-- 猴子 -->
-      <div class="card1">
-        <div class="card11">
-          <img src="img/yen/monkey2.png">
-          <h4>野猴子</h4>
-          <p>(體能最高分)</p>
-        </div>
-        <div class="card12">
-          <table class='table table-hover'>
-            <tr class="" style="background-color: #0c3c74;">
-              <td class="frt" style="color: white;">名次</th>
-              <td class="sec" style="color: white;">冒險家</th>
-              <td class="thr" style="color: white;">分數</th>
-            </tr>
-            <% json1.forEach((data,index)=>{%>
-              <%if(index<5){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.strength%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-          <div style="text-align: end;">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal1"  style="background-color: #7ca4cb; color: white;">
-              《查看更多...》
-            </button>
+    <!-- 彈跳視窗 -->
+    <!-- 人氣王 -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">人氣王</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json7.forEach((data,index)=>{%>
+                <%if(index>=10&&index<=19){%>
+                    <tr>
+                      <td class="frt">
+                        <%= index+1 +'.'%>
+                      </td>
+                      <td class="sec">
+                        <%= data.userName%>
+                      </td>
+                      <td class="thr">
+                        <%= data.commentCount%>
+                      </td>
+                    </tr>
+                    <%}%>
+                      <% }) %>
+            </table>
           </div>
-        </div>
-      </div>
-      <!-- 醫生 -->
-      <div class="card1">
-        <div class="card11">
-          <img src="img/yen/doctor2.png">
-          <h4>怪醫黑傑克</h4>
-          <p>(醫術最高分)</p>
-        </div>
-        <div class="card12">
-          <table class='table table-hover'>
-            <tr class="" style="background-color: #7ca4cb;">
-              <td class="frt" style=" color: white;">名次</th>
-              <td class="sec" style=" color: white;">冒險家</th>
-              <td class="thr" style=" color: white;">分數</th>
-            </tr>
-            <% json2.forEach((data,index)=>{%>
-              <%if(index<5){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.heal%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-          <div style="text-align: end;">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal2"  style="background-color: #0c3c74; color: white;">
-              《查看更多...》
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- 求生 -->
-      <div class="card1">
-        <div class="card11">
-          <img src="img/yen/bonfire.png">
-          <h4>東方貝爺</h4>
-          <p>(求生技術最高分)</p>
-        </div>
-        <div class="card12">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json3.forEach((data,index)=>{%>
-              <%if(index<5){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.survival%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-          <div style="text-align: end;">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal3">
-              《查看更多...》
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- 方向感 -->
-      <div class="card1">
-        <div class="card11">
-          <img src="img/yen/compass.png">
-          <h4>公車不搭反方向</h4>
-          <p>(方向感最高分)</p>
-        </div>
-        <div class="card12">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json4.forEach((data,index)=>{%>
-              <%if(index<5){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.direction%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-          <div style="text-align: end;">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal4">
-              《查看更多...》
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- 領導 -->
-      <div class="card1">
-        <div class="card11">
-          <img src="img/yen/leader.jpg">
-          <h4>CEO</h4>
-          <p>(領導力最高分)</p>
-        </div>
-        <div class="card12">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json5.forEach((data,index)=>{%>
-              <%if(index<5){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.leadership%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-          <div style="text-align: end;">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal5">
-              《查看更多...》
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- 臭皮匠 -->
-      <div class="card1">
-        <div class="card11">
-          <img src="img/yen/team.png">
-          <h4>三個臭皮匠</h4>
-          <p>(團隊意識最高分)</p>
-        </div>
-        <div class="card12">
-          <table class='table table-hover'>
-            <tr class="table-success">
-              <td class="frt">名次</th>
-              <td class="sec">冒險家</th>
-              <td class="thr">分數</th>
-            </tr>
-            <% json6.forEach((data,index)=>{%>
-              <%if(index<5){%>
-                <tr>
-                  <td class="frt">
-                    <%= index+1 +'.'%>
-                  </td>
-                  <td class="sec">
-                    <%= data.userName%>
-                  </td>
-                  <td class="thr">
-                    <%= data.teamwork%>
-                  </td>
-                </tr>
-                <%}%>
-                  <% }) %>
-          </table>
-          <div style="text-align: end;">
-            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal6">
-              《查看更多...》
-            </button>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <!-- 野猴子 -->
+    <div class="modal fade" id="myModal1">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">野猴子</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json1.forEach((data,index)=>{%>
+                <%if(index<=9){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.strength%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 怪醫黑傑克 -->
+    <div class="modal fade" id="myModal2">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">怪醫黑傑克</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <td class="frt">名次</th>
+                <td class="sec">冒險家</th>
+                <td class="thr">分數</th>
+              </tr>
+              <% json2.forEach((data,index)=>{%>
+                <%if(index<=9){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.heal%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 東方貝爺 -->
+    <div class="modal fade" id="myModal3">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">東方貝爺</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <td class="frt">名次</th>
+                <td class="sec">冒險家</th>
+                <td class="thr">分數</th>
+              </tr>
+              <% json3.forEach((data,index)=>{%>
+                <%if(index<=9){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.survival%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 公車罷搭反方向 -->
+    <div class="modal fade" id="myModal4">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">公車不搭反方向</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <td class="frt">名次</th>
+                <td class="sec">冒險家</th>
+                <td class="thr">分數</th>
+              </tr>
+              <% json4.forEach((data,index)=>{%>
+                <%if(index<=9){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.direction%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CEO -->
+    <div class="modal fade" id="myModal5">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">CEO</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <td class="frt">名次</th>
+                <td class="sec">冒險家</th>
+                <td class="thr">分數</th>
+              </tr>
+              <% json5.forEach((data,index)=>{%>
+                <%if(index<=9){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.leadership%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 三個臭皮匠 -->
+    <div class="modal fade" id="myModal6">
+      <div class="modal-dialog" style="margin-top: 110px;">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <h2 class="" style="text-align: center; margin-top: 20px;">三個臭皮匠</h2>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <td class="frt">名次</th>
+                <td class="sec">冒險家</th>
+                <td class="thr">分數</th>
+              </tr>
+              <% json6.forEach((data,index)=>{%>
+                <%if(index<=9){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.teamwork%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分界線 -->
+    <hr class="container">
+
+    <!-- 卡片 -->
+    <div class="container">
+      <div class="col-12 mid">
+        <!-- 猴子 -->
+        <div class="card1">
+          <div class="card11">
+            <img src="img/yen/monkey2.png">
+            <h4>野猴子</h4>
+            <p>(體能最高分)</p>
+          </div>
+          <div class="card12">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json1.forEach((data,index)=>{%>
+                <%if(index<5){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.strength%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+            <div style="text-align: end;">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal1">
+                《查看更多...》
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 醫生 -->
+        <div class="card1">
+          <div class="card11">
+            <img src="img/yen/doctor2.png">
+            <h4>怪醫黑傑克</h4>
+            <p>(醫術最高分)</p>
+          </div>
+          <div class="card12">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json2.forEach((data,index)=>{%>
+                <%if(index<5){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.heal%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+            <div style="text-align: end;">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal2">
+                《查看更多...》
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 求生 -->
+        <div class="card1">
+          <div class="card11">
+            <img src="img/yen/bonfire.png">
+            <h4>東方貝爺</h4>
+            <p>(求生技術最高分)</p>
+          </div>
+          <div class="card12">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json3.forEach((data,index)=>{%>
+                <%if(index<5){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.survival%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+            <div style="text-align: end;">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal3">
+                《查看更多...》
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 方向感 -->
+        <div class="card1">
+          <div class="card11">
+            <img src="img/yen/compass.png">
+            <h4>公車不搭反方向</h4>
+            <p>(方向感最高分)</p>
+          </div>
+          <div class="card12">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json4.forEach((data,index)=>{%>
+                <%if(index<5){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.direction%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+            <div style="text-align: end;">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal4">
+                《查看更多...》
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 領導 -->
+        <div class="card1">
+          <div class="card11">
+            <img src="img/yen/leader.jpg">
+            <h4>CEO</h4>
+            <p>(領導力最高分)</p>
+          </div>
+          <div class="card12">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json5.forEach((data,index)=>{%>
+                <%if(index<5){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.leadership%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+            <div style="text-align: end;">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal5">
+                《查看更多...》
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- 臭皮匠 -->
+        <div class="card1">
+          <div class="card11">
+            <img src="img/yen/team.png">
+            <h4>三個臭皮匠</h4>
+            <p>(團隊意識最高分)</p>
+          </div>
+          <div class="card12">
+            <table class='table'>
+              <tr class="" style="background-color: #3A6D9A;">
+                <th class="frt">名次</th>
+                <th class="sec">冒險家</th>
+                <th class="thr">分數</th>
+              </tr>
+              <% json6.forEach((data,index)=>{%>
+                <%if(index<5){%>
+                  <tr>
+                    <td class="frt">
+                      <%= index+1 +'.'%>
+                    </td>
+                    <td class="sec">
+                      <%= data.userName%>
+                    </td>
+                    <td class="thr">
+                      <%= data.teamwork%>
+                    </td>
+                  </tr>
+                  <%}%>
+                    <% }) %>
+            </table>
+            <div style="text-align: end;">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal6">
+                《查看更多...》
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+    <!-- FOOTER -->
+    <div w3-include-HTML="./footer/footer.html" class=""></div>
+    <!-- FOOTER -->
+    <script>
+      var sessionUserId = Number('<%= sessionUserId %>')
+      console.log(sessionUserId);
+      if (sessionUserId == 0) {
+        $('#member').append(
+          '<li><a href="/login">登入／註冊</a></li>'
+        )
+      }
+      else {
+        $('#member').append(
+          '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
+        )
+      }
 
-
-  <!-- FOOTER -->
-  <div w3-include-HTML="./footer/footer.html" class=""></div>
-  <!-- FOOTER -->
-  <script>
-    var sessionUserId = Number('<%= sessionUserId %>')
-    console.log(sessionUserId);
-    if (sessionUserId == 0) {
-      $('#member').append(
-        '<li><a href="/login">登入／註冊</a></li>'
-      )
-    }
-    else {
-      $('#member').append(
-        '<li><a href="/profile">個人主頁</a></li>  <li><a href="/tripManage">行程管理</a></li>  <li><a href="/logout">登出</a></li>'
-      )
-    }
-
-  </script>
-  <script>
-    w3.includeHTML();
-  </script>
-  <script src="/js/yen1.js"></script>
-  <script src="./nav/nav.js"></script>
-  <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
+    </script>
+    <script>
+      w3.includeHTML();
+    </script>
+    <script src="/js/yen1.js"></script>
+    <script src="./nav/nav.js"></script>
+    <script src="./style/vendors/bootstrap-5.1.1/dist/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>

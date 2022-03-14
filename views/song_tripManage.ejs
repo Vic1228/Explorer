@@ -51,7 +51,7 @@
                 <!------- Left: trip select Start ------->
                 <div id="tripSelContainer" class="col-3">
                     <div id="createdTripContainer">
-                        <h4 data-toggle="collapse" data-target="#createdTripList">
+                        <h4 data-toggle="collapse" data-target="#createTripList">
                             發起的行程
                             <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
                         </h4>
@@ -60,8 +60,8 @@
                             <li> --- </li>
                         </ul>
                     </div>
-                    <div id="joinedTripContainer">
-                        <h4 data-toggle="collapse" data-target="#joinedTripList">參加的行程
+                    <div id="joinTripContainer">
+                        <h4 data-toggle="collapse" data-target="#joinTripList">參加的行程
                             <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
                         </h4>
                         <hr class="divider">
@@ -84,7 +84,8 @@
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#textBoardContainer">冒險團留言板</a>
+                                <a id="chatTab" class="nav-link active" data-toggle="tab"
+                                    href="#textBoardContainer">冒險團留言板</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tripMember">團員／待審核</a>
@@ -95,12 +96,21 @@
                         </ul>
                         <div id="tripManageTab" class="tab-content">
                             <div id="textBoardContainer" class="container tab-pane active">
-                                <div id="textBoard"></div>
+                                <div id="textBoard">
+                                    <div class="leftChatBox">
+                                        <div><img class="headshot" src="" alt=""></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="rightChatBox">
+                                        <div><img class="headshot" src="" alt=""></div>
+                                        <div></div>
+                                    </div>
+                                </div>
                                 <div>
-                                    <form id="textSendContainer" action="">
+                                    <div id="textSendContainer" action="">
                                         <label class="col-1" id="uploadImgContainer">
-                                            <input id="uploadImg" class="inputFile uploadImg" type="file"
-                                                accept=".png, .jpg, .jpeg" multiple>
+                                            <input id="chooseImg" class="inputFile uploadImg" type="file"
+                                                accept=".png, .jpg, .jpeg">
                                             <img class="uploadImg d-block" src="../public/img/song_img/uploadImg.png"
                                                 alt="">
                                         </label>
@@ -110,14 +120,18 @@
                                                     src="../public/img/song_img/cancel.png" alt="">
                                                 <span></span>
                                             </div>
-                                            <input id="chatroomText" class="px-2" type="text" placeholder="留言...">
+                                            <input id="chatroomText" class="px-2" type="text" name="typetext"
+                                                placeholder="留言...">
                                         </div>
                                         <label class="col-1">
-                                            <input class="d-none" type="button" value="submit">
+                                            <input id="sendMessage" class="d-none" type="submit">
                                             <img class="d-block" class="sendMessageIcon"
                                                 src="../public/img/song_img/send-message.png" alt="">
                                         </label>
-                                    </form>
+                                    </div>
+
+
+
                                 </div>
                             </div>
                             <div id="tripMember" class="container tab-pane fade">
@@ -170,7 +184,6 @@
                                 </div>
                             </div>
                             <div id="itemList" class="container tab-pane fade">
-
                                 <h4 id="sharedItemMemberCount" class="tableTitle">公共裝備（團員人數： --- 人）
                                     <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal"
                                         data-target="#publicItemListEdit" title="限發起人編輯">
@@ -193,7 +206,6 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
                                 <br>
                                 <h4 class="tableTitle">私人裝備
                                     <img class="edit" src="../public/img/song_img/edit.png" alt="edit" title="限發起人編輯"
@@ -252,17 +264,21 @@
                             noteText
                         </div>
                     </div>
+
+                    <button id="quitbtn" data-toggle="modal" data-target="#quitTrip">退出行程</button>
                 </div>
                 <!------- Rigtht: schedule End ------->
             </div>
         </div>
 
 
+
+
         <!--------- userStat --------->
         <!-- <div id="showStat"
         style="display:none; width:160px; height:160px; position:fixed; background-color: rgb(255, 255, 255);">
         <canvas id="myChart">9.5</canvas>
-    </div> -->
+        </div> -->
         <!-- <a href="#" id="statHover" onmouseover="hoverdiv(event,'showStat')" onmouseout="hoverdiv(event,'showStat')">9.7</a> -->
 
         <!---------------------------------------------------------------->
@@ -348,7 +364,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">---</h5>
+                        <h4 class="modal-title">---</h4>
                     </div>
                     <div class="modal-body">
                         <div class="px-5 mb-4">
@@ -414,7 +430,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">完成</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">返回</button>
                     </div>
                 </div>
             </div>
@@ -451,43 +467,47 @@
         <div id="publicItemListEdit" class="modal fade">
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
-                    <form action="">
-                        <div class="modal-header">
-                            <h5 class="modal-title">公共裝備清單編輯</h5>
-                        </div>
-                        <div class="modal-body">
-                            <table id="sharedItemTable" class="table table-bordered text-center">
+                    <div class="modal-body">
+                        <form action="post">
+                            <table id="sharedItemTable" class="table table-bordered text-center"
+                                style="border-color: rgb(58, 109, 154);">
                                 <thead>
-                                    <th class="h-100">
-                                        <h6>物品名稱</h6>
+                                    <th class="h-100"
+                                        style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                                        <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">
+                                            編輯公用裝備清單</h4>
                                     </th>
-                                    <th></th>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <!-- TODO: 裝備名稱 -->
                                         <td class="form-td"><input name="shared" type="text"
-                                                class="text-center border-0 h-100 form-input" placeholder="物品名稱"
-                                                oninput="this.className = 'text-center border-0 h-100 form-input'"></td>
-                                        <!-- TODO: 數量 -->
-                                        <td class="form-td">
-                                            <p onclick="addSharedItemRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn">
-                                                +</p>
+                                                class="text-center border-0 h-100 form-input" placeholder="裝備名稱"
+                                                oninput="this.className = 'text-center border-0 h-100 form-input'"
+                                                style="font-size: 1.4rem;">
                                             <p onclick="deleteSharedItemRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn"
-                                                style="margin-inline: 1rem; visibility:hidden">
+                                                class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
+                                                style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">
                                                 x</p>
+                                        </td>
+                                        <!-- TODO: 數量 -->
+                                    </tr>
+                                    <tr>
+                                        <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
+                                            style="background-color: rgb(58, 109, 154)">
+                                            <h5
+                                                style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">
+                                                +</h5>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -505,13 +525,16 @@
                                     <h6>物品名稱</h6>
                                 </th>
                                 <th>
-                                    <h6>數量</h6>
+                                    <h6>個數／１人</h6>
+                                </th>
+                                <th>
+                                    <h6>新增／刪除</h6>
                                 </th>
                             </thead>
                             <tbody>
                                 <tr>
                                     <!-- TODO: 裝備名稱 -->
-                                    <td><input type="text"></td>
+                                    <td><input placeholder="請輸入裝備名稱..." type="text"></td>
                                     <!-- TODO: 數量 -->
                                     <td>
                                         <div class='ctrl'>
@@ -523,9 +546,13 @@
                                             <div class='ctrl__button ctrl__button--increment'>+</div>
                                         </div>
                                     </td>
+                                    <td><img src="../public/img/song_img/cancel.png" class="cancelIcon mr-4" alt="">
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="plusbg py-2" style="background-color: rgb(230, 230, 230);"><img class="plus"
+                                src="../public/img/song_img/plus.png" alt=""></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
@@ -539,11 +566,12 @@
             <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">提供三人帳</h5>
+                        <h5 class="modal-title">---</h5>
                     </div>
                     <div class="modal-body d-flex" style="justify-content: space-around;">
                         <ul>
-                            <li><input type="text"><span style="display: inline-block">個</span></li>
+                            <li><input type="number" min="0"><span style="display: inline-block">&#8194&#8194個</span>
+                            </li>
                         </ul>
 
                     </div>
@@ -555,9 +583,25 @@
             </div>
         </div>
 
-        <div id="chartContainer" class="" style="width:150px; height: 150px">
-            <canvas id="myChart"></canvas>
+        <div id="quitTrip" class="modal fade">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">是否確認退出此行程？</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
+        <!-- <div id="chartContainer" class="" style="width:150px; height: 150px">
+            <canvas id="myChart"></canvas>
+        </div> -->
 
 
 
@@ -602,6 +646,8 @@
             // 重整人員物品
             var currentMemberIndex = -1;
             var currentMemberId = -1;
+            var currentSharedItemIndex = -1;
+            var currentSharedItemName = '';
             refreshMemberItem();
             function refreshMemberItem() {
                 // 行程成員
@@ -623,7 +669,7 @@
                         // 成員之公共裝備
                         rData.sharedItems.forEach((i) => {
                             i.itemCount.forEach((j) => {
-                                if (j.userId === element.userId) {
+                                if (j.userId === element.userId && j.itemCount > 0) {
                                     $('#joinedMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
                                 }
                             })
@@ -632,7 +678,7 @@
                         if (element.userId === rData.sessionUserId) {
                             $('#joinedMember tr').last().append('<td> --- </td>');
                         } else {
-                            $('#joinedMember tr').last().append('<td><a href="#" data-toggle="modal"data-target="#statComment">我要評分</a></td>')
+                            $('#joinedMember tr').last().append('<td><a href="#" class="scoreSheet" data-toggle="modal"data-target="#statComment">我要評分</a></td>')
                         }
                     } else {
                         $('#applyMember tbody').append(
@@ -657,7 +703,7 @@
                         // 所有人之公共裝備
                         rData.sharedItems.forEach((i) => {
                             i.itemCount.forEach((j) => {
-                                if (j.userId === element.userId) {
+                                if (j.userId === element.userId && j.itemCount > 0) {
                                     $('#applyMember ul').last().append(`<li>${i.sharedItem} &#8194&#8194&#8194 ${j.itemCount}</li>`)
                                 }
                             })
@@ -671,8 +717,17 @@
                 $('#sharedItemMemberCount').empty();
                 $('#sharedItemMemberCount').append(
                     `公共裝備（團員人數： ${rData.memberCount} 人）
-                <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
+                    <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
                 )
+                $('#sharedItemTable tbody').empty();
+                $('#sharedItemTable tbody').append(
+                    `<tr>
+                        <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
+                            style="background-color: rgb(58, 109, 154)">
+                            <h5 style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">+</h5>
+                        </td>
+                    </tr>`
+                );
                 $('#publicItemList tbody').empty();
                 rData.sharedItems.forEach((element) => {
                     var itemCount = 0;
@@ -680,7 +735,7 @@
                         itemCount += i.itemCount
                     })
                     $('#publicItemList tbody').append(
-                        `<tr valign="top">
+                        `<tr class="sharedItemDetail" valign="top">
                         <td>${element.sharedItem}</td>
                         <td>${itemCount}</td>
                         <td><ul></ul></td>
@@ -696,7 +751,7 @@
                     )
                     rData.tripMember.forEach((i) => {
                         element.itemCount.forEach((j) => {
-                            if (j.userId === i.userId && i.positionState > 0) {
+                            if (j.userId === i.userId && i.positionState > 0 && j.itemCount > 0) {
                                 $('#publicItemList ul').last().append(
                                     `<li class="superLi">
                                     <span class="superLeft">${i.name}</span>
@@ -708,9 +763,21 @@
                         })
                     })
 
+                    $('#sharedItemTable tr').last().before(
+                        `<tr>
+                            <td class="form-td">
+                                <input name="shared" type="text" class="text-center border-0 h-100 form-input"
+                                value="${element.sharedItem}" oninput="this.className = 'text-center border-0 h-100 form-input'" style="font-size: 1.4rem;">
+                                <p onclick="deleteSharedItemRow(this)"
+                                class="btn-effect d-inline-block rounded-circle add-delete-btn table-btn"
+                                style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">x
+                                </p>
+                            </td>
+                        </tr>`
+                    );
 
                 })
-                
+
                 // 私人裝備清單
                 $('#privateItemList tbody').empty();
                 rData.privateItems.forEach((element) => {
@@ -726,13 +793,26 @@
                 $('.checkIcon, .cancelIcon').click(function () {
                     currentMemberIndex = $('.member').index($(this).closest('tr').get(0));
                     currentMemberId = rData.tripMember[currentMemberIndex].userId;
-                    console.log(currentMemberIndex);
-                    console.log(currentMemberId);
-                    console.log(rData.tripMember[currentMemberIndex].name)
-
                 })
-            
-                //評分表
+
+                // 評分表
+                $('.scoreSheet').click(function () {
+                    currentMemberIndex = $('.member').index($(this).closest('tr').get(0));
+                    currentMemberId = rData.tripMember[currentMemberIndex].userId;
+                    $('#statComment .modal-title').text(rData.tripMember[currentMemberIndex].name);
+
+                    var ability = ['strength', 'heal', 'direction', 'survival', 'teamwork', 'leadership'];
+                    ability.forEach((elm) => {
+                        $(`input[name=${elm}]`).prop('checked', false);
+                    })
+                })
+
+                // 提供公共裝備
+                $('#publicItemList .plusIcon').click(function () {
+                    currentSharedItemIndex = $('.sharedItemDetail').index($(this).closest('tr').get(0))
+                    currentSharedItemName = $(this).closest('tr').children('td:first-child').text()
+                    $('#publicItemProvide h5').text(currentSharedItemName);
+                })
             }
 
             // 行程列表
@@ -767,7 +847,6 @@
 
             // 彈跳視窗okbtn
             $('.okbtn').click(function () {
-                var theThis = this;
                 var modalId = $(this).closest(".modal").attr('id');
                 switch (modalId) {
                     case 'tripNameEdit':
@@ -822,7 +901,6 @@
                                 action: 'memberApplyConfirm'
                             }
                         }).then(function (res) {
-                            console.log(currentMemberIndex);
                             rData.tripMember[currentMemberIndex].positionState = 1;
                             refreshMemberItem();
                         }).catch(function (err) {
@@ -844,13 +922,253 @@
                         }).catch(function (err) {
                             console.log(err);
                         })
-                    break;
+                        break;
+                    case 'statComment':
+                        var ability = ['strength', 'heal', 'direction', 'survival', 'teamwork', 'leadership'];
+                        var scoreSheetcheck = 1;
+                        ability.forEach((elm) => {
+                            if ($(`input[name=${elm}]:checked`).val() === undefined) {
+                                scoreSheetcheck = 0
+                            }
+                        })
+                        if (scoreSheetcheck === 0) {
+                            alert('請填寫每一筆資料。');
+                            break;
+                        } else {
+                            var stat = rData.tripMember[currentMemberIndex].stat;
+                            stat.strength = Math.floor(((stat.strength * stat.commentCount + parseFloat($(`input[name="strength"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.heal = Math.floor(((stat.heal * stat.commentCount + parseFloat($(`input[name="heal"]:checked`).val())) / (stat.commentCount + 1) * 10) / 10);
+                            stat.direction = Math.floor(((stat.direction * stat.commentCount + parseFloat($(`input[name="direction"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.survival = Math.floor(((stat.survival * stat.commentCount + parseFloat($(`input[name="survival"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.teamwork = Math.floor(((stat.teamwork * stat.commentCount + parseFloat($(`input[name="teamwork"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.leadership = Math.floor(((stat.leadership * stat.commentCount + parseFloat($(`input[name="leadership"]:checked`).val())) / (stat.commentCount + 1) * 10)) / 10;
+                            stat.commentCount = stat.commentCount + 1;
+                            rData.tripMember[currentMemberIndex].stat = stat;
+                            axios({
+                                method: 'put',
+                                url: '/tripManage',
+                                data: {
+                                    tripId: rData.selectedTrip.tripId,
+                                    currentMemberId: currentMemberId,
+                                    action: 'statComment',
+                                    stat: stat
+                                }
+                            }).then(function (res) {
+                                refreshMemberItem();
+                            }).catch(function (err) {
+                                console.log(err)
+                            })
+                        }
+                        break;
+                    case 'publicItemProvide':
+                        var newProvider = true;
+                        var provideVal = parseInt($('#publicItemProvide input').val())
+                        rData.sharedItems[currentSharedItemIndex].itemCount.forEach((elm) => {
+                            if (elm.userId == sessionUserId) {
+                                newProvider = false;
+                                elm.itemCount = provideVal;
+                            }
+                        })
+                        if (newProvider === true && provideVal != 0) {
+                            rData.sharedItems[currentSharedItemIndex].itemCount.push(
+                                { userId: rData.sessionUserId, itemCount: provideVal }
+                            )
+                        }
+                        axios({
+                            method: 'put',
+                            url: '/tripManage',
+                            data: {
+                                action: 'publicItemProvide',
+                                tripId: rData.selectedTrip.tripId,
+                                userId: rData.sessionUserId,
+                                sharedItem: currentSharedItemName,
+                                provideVal: provideVal,
+                                newProvider: newProvider
+                            }
+                        }).then(function (res) {
+                            refreshMemberItem();
+                        }).catch(function (err) {
+                            console.log(err);
+                        })
+                        break;
+                    case 'quitTrip':
+                        axios({
+                            method: 'delete',
+                            url: '/tripManage/quit',
+                            data: {
+                                userId: rData.sessionUserId,
+                                tripId: rData.selectedTrip.tripId
+                            }
+                        }).then(function (res) {
+                            window.location.href = "/tripManage"
+                        }).catch(function (err) {
+                            console.log(err);
+                        })
+                        break;
+                }
+            })
+
+            // 聊天室
+            refreshChat();
+            function refreshChat() {
+                $('#textBoard').empty();
+                rData.tripChatBoard.forEach((elm, idx) => {
+                    let headshot = `../public/img/yen/photo/${elm.userId}`;
+                    if (elm.userId === rData.sessionUserId) {
+                        $('#textBoard').append(
+                            `<div class="rightChatBox"></div> `
+                        );
+                        (elm.tripMessageText != null) ?
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div class="d-flex flex-row-reverse">
+                                    <div class="chatText">${elm.tripMessageText}</div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>    
+                                </div>`) :
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div class="d-flex flex-row-reverse">
+                                    <div class="chatImgBox"><img class="chatImg" src="../../upload/song_upload/${elm.tripImgName}"></div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>     
+                                </div>`);
+
+                    } else {
+                        $('#textBoard').append(
+                            `<div class="leftChatBox">
+                                <div class="headshotBox"><img class="headshot" src="" alt=""></div>
+                            </div>`
+                        );
+                        (elm.tripMessageText != null) ?
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div class="d-flex">
+                                    <div class="leftChat">
+                                        <div class="chatUserName">${elm.userName}</div>
+                                        <div class="chatText">${elm.tripMessageText}</div>
+                                    </div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>      
+                                </div>`) :
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div>
+                                    <div class="leftChat">
+                                        <div class="chatUserName">${elm.userName}</div>
+                                        <div class="chatImgBox"><img class="chatImg" src="../../upload/song_upload/${elm.tripImgName}"></div>
+                                    </div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>                        
+                                </div>`);
+                    }
+                })
+            }
+
+            $('#sendMessage').click(function () {
+                // console.log($('#uploadImg').val()==='');
+                // console.log($('#chatroomText').val()==='');
+                if ($('#chooseImg').val() != '') {
+                    var formData = new FormData();
+                    formData.append('image', chooseImg.files[0])
+                    formData.append('tripId', rData.selectedTrip.tripId)
+                    formData.append('tripName', rData.selectedTrip.tripName)
+                    formData.append('userId', rData.sessionUserId);
+                    formData.append('tripMessageTime', new Date().toISOString().slice(0, 19).replace('T', ' '))
+                    axios({
+                        method: "post",
+                        url: "/tripManage/upload",
+                        data: formData,
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        }
+                    }).then(function (res) {
+                        $('#chooseImg').val(null);
+                        $('#fileCount').css({ 'width': '0%', 'opacity': '0' });
+                        setTimeout(() => {
+                            $('#fileCount span').text(``);
+                            $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
+                        }, 250);
+                    });
+                } else if ($('#chatroomText').val() != '') {
+                    axios({
+                        method: "post",
+                        url: "/tripManage/uploadText",
+                        data: {
+                            text: $('#chatroomText').val(),
+                            tripId: rData.selectedTrip.tripId,
+                            userId: rData.sessionUserId,
+                            tripMessageTime: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                        }
+                    }).then(function (res) {
+                        $('#chatroomText').val('');
+                    })
                 }
             })
 
 
 
 
+
+            {
+                $('#chooseImg').on('change', function (e) {
+                    function showFileCount() {
+                        $('#fileCount').css({ 'width': '100%' });
+                        $('#chatroomText').css(({ 'width': '0%' }));
+                        setTimeout(() => {
+                            $('#fileCount span').text(`已選擇 ${e.target.files.length} 個檔案 `);
+                            $('#fileCount').css({ 'opacity': '1' });
+                            $('#chatroomText').css({ 'opacity': '0' });
+                        }, 250);
+                    }
+                    function hideFileCount() {
+                        $('#chooseImg').val(null);
+                        $('#fileCount').css({
+                            'width': '0%',
+                            'opacity': '0'
+                        });
+                        setTimeout(() => {
+                            $('#fileCount span').text(``);
+                            $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
+                        }, 250);
+                    }
+
+                    if (e.target.files.length > 0) {
+                        showFileCount();
+                        $('#fileCountCancel').on('click', () => {
+                            hideFileCount()
+                        });
+                    } else {
+                        hideFileCount();
+                    }
+                })
+            }
+
+            getChat();
+            function getChat() {
+                var myTimeout = function(){};
+                if ($('#chatTab').hasClass('active')) {
+                    axios({
+                        method: 'post',
+                        url: '/tripManage/getChat',
+                        data: {
+                            tripId: rData.selectedTrip.tripId,
+                            userId: rData.sessionUserId,
+                            tripMember: rData.tripMember
+                        },
+                    }).then(function (res) {
+                        rData.tripChatBoard = res.data.chatdata.tripChatBoard;
+                        refreshChat();
+                        console.log('apple')
+                        myTimeout = setTimeout(getChat, 500);
+                    })
+                } else {
+                    clearTimeout(myTimeout);
+                }
+            }  
+            $('#chatTab').click(function () {
+                getChat;
+             })
 
             // navbar判斷
             var sessionUserId = Number(`${rData.sessionUserId}`)

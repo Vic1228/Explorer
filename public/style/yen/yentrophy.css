@@ -1,138 +1,164 @@
-*{
-color: #393939;
+* {
+  color: #393939;
+}
+button.btn {
+  background-color: #3a6d9a;
+  color: white;
+  box-shadow: 2px 2px 5px #858484;
 }
 .ttop {
-    background-image: url(/public/img/yen/pexels-pixabay-355482.jpg);
-    background-size: 100%;
+  background-image: url(/public/img/yen/pexels-pixabay-355482.jpg);
+  background-size: 100%;
 }
 
+th {
+  color: white;
+}
+
+
+th.frt {
+  width: 70px;
+}
+
+th.sec {
+  width: 130px;
+  max-width: 150px;
+}
+
+th.thr {
+  text-align: end;
+  width: 70px;
+}
 
 /* 獎盃圖 */
 .maincard1 {
-    text-align: center;
-    margin: auto;
+  text-align: center;
+  margin: auto;
 }
 
 .maincard1 img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 200px;
-    height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
 }
 
 /* 大表格 */
 .maincard2 {
-    margin-left: 2vh;
-    font-size: 2.5vh;
+  margin-left: 2vh;
+  font-size: 2.5vh;
 }
 
 .maincard2 table {
-    font-size: 1.2em;
-    width: 45%;
+  font-size: 1.2em;
+  width: 45%;
 }
 
-#tata {}
+#tata {
+}
 
 #trtr {
-    margin-left: 2vw;
+  margin-left: 2vw;
 }
 
 .maincard2 .frt {
-    width: 80px;
+  width: 80px;
 }
 
 .maincard2 .sec {
-    width: 140px;
+  width: 140px;
 }
 
 .maincard2 .thr {
-    text-align: end;
+  text-align: end;
 }
 
 /* 彈跳視窗 */
 .modal-body table {
-    margin: auto;
-    font-size: 1.3em;
-    width: 65%;
+  margin: auto;
+  font-size: 1.3em;
+  width: 65%;
 }
 
-.modal-body .frt {}
+.modal-body .frt {
+}
 
-.modal-body .sec {}
+.modal-body .sec {
+}
 
 .modal-body .thr {
-    text-align: end;
+  text-align: end;
 }
-
 
 /* hr */
 hr.container {
-    margin-bottom: 50px;
-    border-top: 4px solid #252525;
+  margin-bottom: 50px;
+  border-top: 4px solid #252525;
 }
 
 /* ------------其他獎盃區--------------*/
 .mid {
-    margin: auto;
+  margin: auto;
 }
 
 .card1 {
-    float: left;
-    display: flex;
-    width: 36%;
-    margin-bottom: 7vh;
-    justify-content: space-between;
-    margin-left: 7%;
-    margin-right: 7%;
+  float: left;
+  display: flex;
+  width: 36%;
+  margin-bottom: 7vh;
+  justify-content: space-between;
+  margin-left: 7%;
+  margin-right: 7%;
 }
 
 .card11 {
-    margin: auto;
-    text-align: center;
+  margin: auto;
+  text-align: center;
 }
 
-.card11>h3 {
-    margin: 0;
+.card11 > h3 {
+  margin: 0;
 }
 
-.card11>p {
-    margin: 0;
+.card11 > p {
+  margin: 0;
 }
 
 .card11 img {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    height: 175px;
-    width: 175px;
-    margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  height: 175px;
+  width: 175px;
+  margin-bottom: 20px;
 }
 
 /* 獎盃表格 */
 .card12 {
-    position: relative;
+  position: relative;
 }
 
-.card12 td {}
+.card12 td {
+}
 
 .card12 table {
-    font-size: 1.4em;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    line-height: normal;
+  font-size: 1.4em;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  line-height: normal;
 }
 
 .card12 td.frt {
-    width: 70px;
+  width: 70px;
 }
 
 .card12 td.sec {
-    width: 130px;
-    max-width: 150px;
+  width: 130px;
+  max-width: 150px;
 }
 
 .card12 td.thr {
-    text-align: end;
-    width: 70px;
+  text-align: end;
+  width: 70px;
 }

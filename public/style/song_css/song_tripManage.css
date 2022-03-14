@@ -3,11 +3,16 @@
     padding: 0px;
     box-sizing: border-box;
     list-style: none;
+    color: rgb(0, 0, 60) 
     /* border: 3px solid tomato;   */
 }
 
+body{
+    position:relative
+}
+
 #section1 a {
-    color: rgb(28, 113, 241) !important;
+    color: rgb(0, 0, 120) !important;
     text-decoration: none !important;
 }
 
@@ -25,8 +30,8 @@ ul {
 
 
 img[class*="Icon"] {
-    width: 16px !important;
-    height: 16px !important;
+    width: 16px ;
+    height: 16px ;
     cursor: pointer;
 }
 
@@ -118,9 +123,12 @@ img[class*="Icon"] {
     border-radius: 10px 10px 0 0;
     border: 1px solid rgb(230, 230, 230);
     background: #ffffff;
-    box-shadow: inset 10px 10px 20px #e6e6e6,
-        inset -10px -10px 20px #ffffff;
+    /* box-shadow: inset 10px 10px 20px #e6e6e6,
+        inset -10px -10px 20px #ffffff; */
     height: 60vh;
+    padding:15px;
+    overflow-y: scroll;
+    background-color: rgb(136, 187, 253);
 
 }
 
@@ -197,6 +205,49 @@ img[class*="Icon"] {
     flex-direction: column;
     justify-content: space-around;
 }
+
+.headshotBox{
+    border-radius: 50px;
+}
+
+.headshot{
+    width:30px;
+    height: 30px;
+}
+
+.leftChatBox{
+    display: flex;
+}
+
+.leftChatBox .chatText{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding:5px 20px;
+    max-width: 200px;
+}
+
+.rightChatBox{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rightChatBox .chatText{
+    background-color: rgb(122, 253, 140);
+    border-radius: 20px;
+    padding:5px 20px;
+    max-width: 200px;
+}
+
+.chatImg{
+    max-width:200px;
+}
+
+.chatTimeBox{
+    display:flex;
+    flex-direction: column-reverse;
+}
+
+
 
 
 
@@ -285,6 +336,7 @@ th, td {
 
 /* ------- Rigtht: schedule Start ------- */
 #scheduleContainer {
+    position:relative;
     padding: 5vh 13vh;
     text-align: center;
 }
@@ -307,6 +359,7 @@ th, td {
 }
 
 #noteText {
+    margin-bottom: 70px;
     width: 90%;
     min-height: 100px;
     padding: 5px;
@@ -314,13 +367,43 @@ th, td {
     border: 1px solid rgb(230, 230, 230);
 }
 
+#quitbtn{
+    position: absolute;
+    right:80px;
+    bottom: 0px;
+    width: 100px;
+    height:40px;
+    background-color: white;
+    color:rgb(0, 0, 120);
+    font-size: 16px;
+    font-weight: 600;
+    border:2px solid rgb(0, 0, 120);
+    border-radius: 25px;
+    transition:all ease-in-out 100ms
+}
+
+#quitbtn:hover {
+    background-color: rgb(0, 0, 120);
+    color: white;
+
+}
+
+
 /* ---------- modal---------- */
 div[id*="ItemListEdit"] th:first-child, div[id*="ItemListEdit"] td:first-child {
     text-align: left;
 }
 
+.plus{
+    display: block;
+    width:18px;
+    height:18px;
+    cursor: pointer;
+}
+
+
 /* ---------- input type number ---------- */
-.ctrl {
+/* .ctrl {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
@@ -522,4 +605,4 @@ div[id*="ItemListEdit"] th:first-child, div[id*="ItemListEdit"] td:first-child {
         -webkit-transform: translateY(50px);
         transform: translateY(50px);
     }
-}
+} */

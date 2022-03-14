@@ -1,21 +1,38 @@
 // ---------------------- express----------------------
-var express = require("express");
-var song_tripManage_router = express.Router();
+const express = require("express");
+const song_tripManage_router = express.Router();
 
 // ---------------------- body-parser ----------------------
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 song_tripManage_router.use(bodyParser.json());
 song_tripManage_router.use(bodyParser.urlencoded({ extended: false }));
 
 // ---------------------- mysql ----------------------
-var conn = require("../db.js");
+const conn = require("../db.js");
 
 // ---------------------- bluebird ----------------------
-var bluebird = require("bluebird");
+const bluebird = require("bluebird");
 bluebird.promisifyAll(conn);
 
-// ---------------------- request ----------------------
 
+// ---------------------- multer ----------------------
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './upload/song_upload');
+  },
+  filename: (req, file, cb) => {
+    // console.log(file);
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({
+  storage: storage,
+});
+
+
+// ---------------------- request ---------------------
 song_tripManage_router.put("/", function (req, res) {
   switch (req.body.action) {
     case 'tripNameEdit':
@@ -37,13 +54,101 @@ song_tripManage_router.put("/", function (req, res) {
       })
       break;
     case 'memberApplyReject':
-      conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.currentMemberId}`, function(err,rows){
+      conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.currentMemberId}`, function (err, rows) {
         if (err) throw err;
-        res.send({ state: 'success' });
+        conn.query(`DELETE FROM shareditems WHERE userId = ${req.body.currentMemberId} AND tripId = ${req.body.tripId}`, function (err, rows) {
+          res.send({ state: 'success' });
+        })
       })
+      break;
+    case 'statComment':
+      conn.query(`UPDATE userstats SET leadership = ${req.body.stat.leadership},
+                                       teamwork   = ${req.body.stat.leadership},
+                                       strength   = ${req.body.stat.strength},
+                                       heal       = ${req.body.stat.heal},
+                                       survival   = ${req.body.stat.survival},
+                                       direction  = ${req.body.stat.direction},
+                                       commentCount  = ${req.body.stat.commentCount}
+                  WHERE userId = ${req.body.currentMemberId}`,
+        function (err, rows) {
+          if (err) throw err;
+          res.send({ state: 'success' });
+        })
+      break;
+    case 'publicItemProvide':
+      var newProvider = req.body.newProvider;
+      var provideVal = req.body.provideVal;
+      if (newProvider === true && provideVal != 0) {
+        conn.query(`INSERT INTO shareditems (tripId, userId, sharedItem, itemCount) 
+                    VALUES (${req.body.tripId},${req.body.userId},'${req.body.sharedItem}',${req.body.provideVal})`,
+          function (err, rows) {
+            res.send({ state: 'Insert success' });
+          })
+      } else if (newProvider === false && provideVal != 0) {
+        conn.query(`UPDATE shareditems SET itemCount = ${req.body.itemCount} 
+                    WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'`,
+          function (err, rows) {
+            res.send({ state: 'Update success' });
+          })
+      } else if (newProvider === false && provideVal === 0) {
+        conn.query(`DELETE FROM shareditems WHERE tripId = ${req.body.tripId} AND userId = ${req.body.userId} AND sharedItem = '${req.body.sharedItem}'`,
+          function (err, rows) {
+            res.send({ state: 'Delete success' });
+          })
+      } else {
+        res.send({ Hello: 'world!' })
+      }
+      break;
   }
 })
 
+song_tripManage_router.delete("/quit", function (req, res) {
+  conn.query(`DELETE FROM tripmembers WHERE userId = ${req.body.userId} AND tripId = ${req.body.tripId}`, function (err, rows) {
+    if (err) throw err;
+    conn.query(`DELETE FROM shareditems WHERE userId = ${req.body.userId} AND tripId = ${req.body.tripId}`, function (err, rows) {
+      if (err) throw err;
+      res.end();
+    })
+  })
+});
+
+song_tripManage_router.post('/upload', upload.single('image'), function (req, res, next) {
+  let sql = `INSERT INTO spotcomments (tripId, userId, tripMessageTime, tripMessageText,	tripImgName) VALUES (${req.body.tripId}, ${req.body.userId}, '${req.body.tripMessageTime}', NULL, '${req.file.filename}')`;
+  conn.query(sql, function () {
+    return res.send('Image uploaded!');
+  })
+})
+
+song_tripManage_router.post('/uploadText', function (req, res) {
+  let sql = `INSERT INTO spotcomments (tripId, userId, tripMessageTime, tripMessageText,	tripImgName) VALUES (${req.body.tripId}, ${req.body.userId}, '${req.body.tripMessageTime}', '${req.body.text}', NULL)`;
+  conn.query(sql, function () {
+    return res.send('text uploaded!');
+  })
+})
+
+song_tripManage_router.post('/getChat', function (req, res) {
+  let sql = `SELECT * FROM spotcomments WHERE tripId = ${req.body.tripId} ORDER BY tripMessageTime`;
+  let chatdata = { tripChatBoard: [] };
+  conn.query(sql, function (err, rows) {
+    if (rows != undefined) {
+      rows.forEach((elm1) => {
+        req.body.tripMember.forEach((elm2) => {
+          if (elm1.userId == elm2.userId) {
+            chatdata.tripChatBoard.push({
+              userId: elm1.userId,
+              userName: elm2.name,
+              tripMessageTime: elm1.tripMessageTime,
+              tripMessageText: elm1.tripMessageText,
+              tripImgName: elm1.tripImgName
+            })
+          }
+        })
+      })
+    }
+    res.send({chatdata: chatdata})
+
+  })
+})
 
 
 song_tripManage_router.get("/", function (req, res) {
@@ -60,12 +165,8 @@ song_tripManage_router.get("/", function (req, res) {
     joinTripList: [],
     //以下為trip詳細資料
     selectedTrip: {},
-    tripchatboard: [
-      {
-        userId: "",
-        chatTime: "",
-        chatMessage: "",
-      },
+    tripChatBoard: [
+
     ],
     tripMember: [],
     memberCount: null,
@@ -73,7 +174,6 @@ song_tripManage_router.get("/", function (req, res) {
     privateItems: [],
     schedule: [],
     tripNotes: "",
-    apple: ''
   };
 
   conn.queryAsync(`SELECT userName FROM users WHERE userId = ${userId}`)
@@ -136,13 +236,13 @@ song_tripManage_router.get("/", function (req, res) {
             userId: item.userId,
             positionState: item.positionState,
             stat: {
-              leadership: item.leadership,
-              teamwork: item.teamwork,
-              strength: item.strength,
-              heal: item.heal,
-              survival: item.survival,
-              direction: item.direction,
-              commentCount: item.commentCount,
+              leadership: Math.floor(item.leadership * 10) / 10,
+              teamwork: Math.floor(item.teamwork * 10) / 10,
+              strength: Math.floor(item.strength * 10) / 10,
+              heal: Math.floor(item.heal * 10) / 10,
+              survival: Math.floor(item.survival * 10) / 10,
+              direction: Math.floor(item.direction * 10) / 10,
+              commentCount: Math.floor(item.commentCount * 10) / 10,
             },
           });
         });
@@ -153,7 +253,6 @@ song_tripManage_router.get("/", function (req, res) {
       else return;
     })
     .then((result3) => {  // 1. 指派 data.公共裝備。      2. 查詢 selTrip 之私人裝備。若無selTrip，return。
-      console.log(result3)
       if (result3 != undefined) {
         for (let i = 0; i < result3.length; i++) {
           if (i == 0 || result3[i].sharedItem != result3[i - 1].sharedItem) {
@@ -240,10 +339,30 @@ song_tripManage_router.get("/", function (req, res) {
       else return;
     })
     .then((result8) => {
-      if (result8 != undefined) {
+      if (result8 != undefined) { // 1.指派 spotName。     2. 查詢 selTrip 之留言板。若無selTrip，return。
         data.selectedTrip.spotName = result8[0].spotName;
+        var sql9 = `SELECT * FROM spotcomments WHERE tripId = ${data.selectedTrip.tripId} ORDER BY tripMessageTime`;
+        return conn.queryAsync(sql9);
       }
-      // console.log(data)     
+      else return;
+    })
+    .then((result9) => {
+      if (result9 != undefined) {
+        result9.forEach((elm1) => {
+          data.tripMember.forEach((elm2) => {
+            if (elm1.userId == elm2.userId) {
+              data.tripChatBoard.push({
+                userId: elm1.userId,
+                userName: elm2.name,
+                tripMessageTime: elm1.tripMessageTime,
+                tripMessageText: elm1.tripMessageText,
+                tripImgName: elm1.tripImgName
+              })
+            }
+          })
+        })
+      }
+      console.log(data)
       return res.render("song_tripManage.ejs", { data: JSON.stringify(data) });
     })
     .catch((err) => console.log(err));
