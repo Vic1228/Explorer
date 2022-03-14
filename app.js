@@ -188,7 +188,7 @@ app.post("/register", function (req, res) {
             //寄件者
             from: "testemaill0009@gmail.com",
             //收件者
-            to: `k603062684@gmail.com`,
+            to: `${email}`,
             //主旨
             subject: "旅行蝸牛驗證信", // Subject line
             //純文字
