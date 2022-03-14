@@ -51,7 +51,7 @@
                 <!------- Left: trip select Start ------->
                 <div id="tripSelContainer" class="col-3">
                     <div id="createdTripContainer">
-                        <h4 data-toggle="collapse" data-target="#createdTripList">
+                        <h4 data-toggle="collapse" data-target="#createTripList">
                             發起的行程
                             <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
                         </h4>
@@ -60,8 +60,8 @@
                             <li> --- </li>
                         </ul>
                     </div>
-                    <div id="joinedTripContainer">
-                        <h4 data-toggle="collapse" data-target="#joinedTripList">參加的行程
+                    <div id="joinTripContainer">
+                        <h4 data-toggle="collapse" data-target="#joinTripList">參加的行程
                             <img class="downArrow" src="../public/img/song_img/down-arrow.png" alt="">
                         </h4>
                         <hr class="divider">
@@ -84,7 +84,8 @@
                     <div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#textBoardContainer">冒險團留言板</a>
+                                <a id="chatTab" class="nav-link active" data-toggle="tab"
+                                    href="#textBoardContainer">冒險團留言板</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tripMember">團員／待審核</a>
@@ -96,13 +97,13 @@
                         <div id="tripManageTab" class="tab-content">
                             <div id="textBoardContainer" class="container tab-pane active">
                                 <div id="textBoard">
-                                    <div class="leftChat">
-                                        <div><img src="" alt=""></div>
-                                        <p></p>
+                                    <div class="leftChatBox">
+                                        <div><img class="headshot" src="" alt=""></div>
+                                        <div></div>
                                     </div>
-                                    <div class="rightChat">
-                                        <p></p>
-                                        <div><img src="" alt=""></div>
+                                    <div class="rightChatBox">
+                                        <div><img class="headshot" src="" alt=""></div>
+                                        <div></div>
                                     </div>
                                 </div>
                                 <div>
@@ -598,9 +599,9 @@
 
 
 
-        <div id="chartContainer" class="" style="width:150px; height: 150px">
+        <!-- <div id="chartContainer" class="" style="width:150px; height: 150px">
             <canvas id="myChart"></canvas>
-        </div>
+        </div> -->
 
 
 
@@ -1012,18 +1013,54 @@
             function refreshChat() {
                 $('#textBoard').empty();
                 rData.tripChatBoard.forEach((elm, idx) => {
+                    let headshot = `../public/img/yen/photo/${elm.userId}`;
                     if (elm.userId === rData.sessionUserId) {
                         $('#textBoard').append(
-                            `<p>${elm.tripMessageText}</p>
-                             <div><img src="" alt=""></div>
-                            `
+                            `<div class="rightChatBox"></div> `
                         );
+                        (elm.tripMessageText != null) ?
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div class="d-flex flex-row-reverse">
+                                    <div class="chatText">${elm.tripMessageText}</div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>    
+                                </div>`) :
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div class="d-flex flex-row-reverse">
+                                    <div class="chatImgBox"><img class="chatImg" src="../../upload/song_upload/${elm.tripImgName}"></div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>     
+                                </div>`);
+
                     } else {
                         $('#textBoard').append(
-                            `<div><img src="" alt=""></div>
-                             <p>${elm.tripMessageText}</p>
-                            `
+                            `<div class="leftChatBox">
+                                <div class="headshotBox"><img class="headshot" src="" alt=""></div>
+                            </div>`
                         );
+                        (elm.tripMessageText != null) ?
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div class="d-flex">
+                                    <div class="leftChat">
+                                        <div class="chatUserName">${elm.userName}</div>
+                                        <div class="chatText">${elm.tripMessageText}</div>
+                                    </div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>      
+                                </div>`) :
+                            $('div[class$=ChatBox]:last-child').append(
+                                `<div>
+                                    <div class="leftChat">
+                                        <div class="chatUserName">${elm.userName}</div>
+                                        <div class="chatImgBox"><img class="chatImg" src="../../upload/song_upload/${elm.tripImgName}"></div>
+                                    </div>
+                                    <div class="chatTimeBox">
+                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                    </div>                        
+                                </div>`);
                     }
                 })
             }
@@ -1031,9 +1068,13 @@
             $('#sendMessage').click(function () {
                 // console.log($('#uploadImg').val()==='');
                 // console.log($('#chatroomText').val()==='');
-                if ($('#uploadImg').val() != '') {
+                if ($('#chooseImg').val() != '') {
                     var formData = new FormData();
-                    formData.append('image', chooseImg.files[0]);
+                    formData.append('image', chooseImg.files[0])
+                    formData.append('tripId', rData.selectedTrip.tripId)
+                    formData.append('tripName', rData.selectedTrip.tripName)
+                    formData.append('userId', rData.sessionUserId);
+                    formData.append('tripMessageTime', new Date().toISOString().slice(0, 19).replace('T', ' '))
                     axios({
                         method: "post",
                         url: "/tripManage/upload",
@@ -1041,25 +1082,93 @@
                         headers: {
                             "Content-Type": "multipart/form-data"
                         }
+                    }).then(function (res) {
+                        $('#chooseImg').val(null);
+                        $('#fileCount').css({ 'width': '0%', 'opacity': '0' });
+                        setTimeout(() => {
+                            $('#fileCount span').text(``);
+                            $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
+                        }, 250);
+                    });
+                } else if ($('#chatroomText').val() != '') {
+                    axios({
+                        method: "post",
+                        url: "/tripManage/uploadText",
+                        data: {
+                            text: $('#chatroomText').val(),
+                            tripId: rData.selectedTrip.tripId,
+                            userId: rData.sessionUserId,
+                            tripMessageTime: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                        }
+                    }).then(function (res) {
+                        $('#chatroomText').val('');
                     })
-                        .then(function (res) {
-                            $('#chooseImg').val(null);
-                            $('#fileCount').css({
-                                'width': '0%',
-                                'opacity': '0'
-                            });
-                            function hideFileCount() {
-                                $('#fileCount span').text(``);
-                                $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
-                            }
-                            setTimeout(hideFileCount, 250);
-                        });
                 }
             })
 
 
 
 
+
+            {
+                $('#chooseImg').on('change', function (e) {
+                    function showFileCount() {
+                        $('#fileCount').css({ 'width': '100%' });
+                        $('#chatroomText').css(({ 'width': '0%' }));
+                        setTimeout(() => {
+                            $('#fileCount span').text(`已選擇 ${e.target.files.length} 個檔案 `);
+                            $('#fileCount').css({ 'opacity': '1' });
+                            $('#chatroomText').css({ 'opacity': '0' });
+                        }, 250);
+                    }
+                    function hideFileCount() {
+                        $('#chooseImg').val(null);
+                        $('#fileCount').css({
+                            'width': '0%',
+                            'opacity': '0'
+                        });
+                        setTimeout(() => {
+                            $('#fileCount span').text(``);
+                            $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
+                        }, 250);
+                    }
+
+                    if (e.target.files.length > 0) {
+                        showFileCount();
+                        $('#fileCountCancel').on('click', () => {
+                            hideFileCount()
+                        });
+                    } else {
+                        hideFileCount();
+                    }
+                })
+            }
+
+            getChat();
+            function getChat() {
+                var myTimeout = function(){};
+                if ($('#chatTab').hasClass('active')) {
+                    axios({
+                        method: 'post',
+                        url: '/tripManage/getChat',
+                        data: {
+                            tripId: rData.selectedTrip.tripId,
+                            userId: rData.sessionUserId,
+                            tripMember: rData.tripMember
+                        },
+                    }).then(function (res) {
+                        rData.tripChatBoard = res.data.chatdata.tripChatBoard;
+                        refreshChat();
+                        console.log('apple')
+                        myTimeout = setTimeout(getChat, 500);
+                    })
+                } else {
+                    clearTimeout(myTimeout);
+                }
+            }  
+            $('#chatTab').click(function () {
+                getChat;
+             })
 
             // navbar判斷
             var sessionUserId = Number(`${rData.sessionUserId}`)

@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     cb(null, './upload/song_upload');
   },
   filename: (req, file, cb) => {
-    console.log(file);
+    // console.log(file);
     cb(null, file.originalname);
   }
 });
@@ -112,16 +112,51 @@ song_tripManage_router.delete("/quit", function (req, res) {
   })
 });
 
-song_tripManage_router.post('/upload',upload.single('image'),function (req, res, next) {
-  return res.send('Image uploaded!');
+song_tripManage_router.post('/upload', upload.single('image'), function (req, res, next) {
+  let sql = `INSERT INTO spotcomments (tripId, userId, tripMessageTime, tripMessageText,	tripImgName) VALUES (${req.body.tripId}, ${req.body.userId}, '${req.body.tripMessageTime}', NULL, '${req.file.filename}')`;
+  conn.query(sql, function () {
+    return res.send('Image uploaded!');
+  })
 })
+
+song_tripManage_router.post('/uploadText', function (req, res) {
+  let sql = `INSERT INTO spotcomments (tripId, userId, tripMessageTime, tripMessageText,	tripImgName) VALUES (${req.body.tripId}, ${req.body.userId}, '${req.body.tripMessageTime}', '${req.body.text}', NULL)`;
+  conn.query(sql, function () {
+    return res.send('text uploaded!');
+  })
+})
+
+song_tripManage_router.post('/getChat', function (req, res) {
+  let sql = `SELECT * FROM spotcomments WHERE tripId = ${req.body.tripId} ORDER BY tripMessageTime`;
+  let chatdata = { tripChatBoard: [] };
+  conn.query(sql, function (err, rows) {
+    if (rows != undefined) {
+      rows.forEach((elm1) => {
+        req.body.tripMember.forEach((elm2) => {
+          if (elm1.userId == elm2.userId) {
+            chatdata.tripChatBoard.push({
+              userId: elm1.userId,
+              userName: elm2.name,
+              tripMessageTime: elm1.tripMessageTime,
+              tripMessageText: elm1.tripMessageText,
+              tripImgName: elm1.tripImgName
+            })
+          }
+        })
+      })
+    }
+    res.send({chatdata: chatdata})
+
+  })
+})
+
 
 song_tripManage_router.get("/", function (req, res) {
   // if (req.session.userId == undefined) {
   //   res.redirect("/login");
   // }
   // var userId = req.session.userId;
-  var userId = 1;
+  var userId = 6;
 
   var data = {
     sessionUserId: userId,
@@ -308,19 +343,22 @@ song_tripManage_router.get("/", function (req, res) {
         data.selectedTrip.spotName = result8[0].spotName;
         var sql9 = `SELECT * FROM spotcomments WHERE tripId = ${data.selectedTrip.tripId} ORDER BY tripMessageTime`;
         return conn.queryAsync(sql9);
-        return;
       }
       else return;
     })
     .then((result9) => {
       if (result9 != undefined) {
-        console.log(result9);
-        result9.forEach((elm) => {
-          data.tripChatBoard.push({
-            userId: elm.userId,
-            tripMessageTime: elm.tripMessageTime,
-            tripMessageText: elm.tripMessageText,
-            tripImgNum: elm.tripImgNum
+        result9.forEach((elm1) => {
+          data.tripMember.forEach((elm2) => {
+            if (elm1.userId == elm2.userId) {
+              data.tripChatBoard.push({
+                userId: elm1.userId,
+                userName: elm2.name,
+                tripMessageTime: elm1.tripMessageTime,
+                tripMessageText: elm1.tripMessageText,
+                tripImgName: elm1.tripImgName
+              })
+            }
           })
         })
       }

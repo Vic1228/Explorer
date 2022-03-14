@@ -9,55 +9,7 @@ $(function () {
   /*---------------------------------------------------------------*/
   /*----------------------------- 聊天室 ---------------------------*/
   /*---------------------------------------------------------------*/
-  {
-    $('#uploadImg').on('change', function (e) {
-      // console.log(this.value);
-      if (e.target.files.length > 0) {
-
-        $('#fileCount').css({
-          'width': '100%'
-        });
-
-        $('#chatroomText').css(({
-          'width': '0%',
-        }));
-
-        function showFileCount() {
-          $('#fileCount span').text(`已選擇 ${e.target.files.length} 個檔案 `);
-          $('#fileCount').css({ 'opacity': '1' })
-          $('#chatroomText').css({ 'opacity': '0' })
-
-        }
-
-        setTimeout(showFileCount, 50);
-      } else {
-
-        $('#fileCount').css({
-          'width': '0%',
-          'opacity': '0'
-        });
-        function hideFileCount() {
-          $('#fileCount span').text(``);
-          $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
-        }
-        setTimeout(hideFileCount, 50);
-      }
-    })
-
-    $('#fileCountCancel').on('click', function (e) {
-      $('#uploadImg').val(null);
-
-      $('#fileCount').css({
-        'width': '0%',
-        'opacity': '0'
-      });
-      function hideFileCount() {
-        $('#fileCount span').text(``);
-        $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
-      }
-      setTimeout(hideFileCount, 250);
-    })
-  }
+  
 
 
 

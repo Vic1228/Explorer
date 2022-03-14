@@ -123,9 +123,12 @@ img[class*="Icon"] {
     border-radius: 10px 10px 0 0;
     border: 1px solid rgb(230, 230, 230);
     background: #ffffff;
-    box-shadow: inset 10px 10px 20px #e6e6e6,
-        inset -10px -10px 20px #ffffff;
+    /* box-shadow: inset 10px 10px 20px #e6e6e6,
+        inset -10px -10px 20px #ffffff; */
     height: 60vh;
+    padding:15px;
+    overflow-y: scroll;
+    background-color: rgb(136, 187, 253);
 
 }
 
@@ -202,6 +205,49 @@ img[class*="Icon"] {
     flex-direction: column;
     justify-content: space-around;
 }
+
+.headshotBox{
+    border-radius: 50px;
+}
+
+.headshot{
+    width:30px;
+    height: 30px;
+}
+
+.leftChatBox{
+    display: flex;
+}
+
+.leftChatBox .chatText{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding:5px 20px;
+    max-width: 200px;
+}
+
+.rightChatBox{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rightChatBox .chatText{
+    background-color: rgb(122, 253, 140);
+    border-radius: 20px;
+    padding:5px 20px;
+    max-width: 200px;
+}
+
+.chatImg{
+    max-width:200px;
+}
+
+.chatTimeBox{
+    display:flex;
+    flex-direction: column-reverse;
+}
+
+
 
 
 

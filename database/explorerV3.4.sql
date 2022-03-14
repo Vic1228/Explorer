@@ -99,7 +99,7 @@ INSERT INTO `shareditems` (`tripId`, `userId`, `sharedItem`, `itemCount`) VALUES
 CREATE TABLE `spotcomments` (
   `tripId` int(20) NOT NULL,
   `userId` int(20) NOT NULL,
-  `tripMessageDate` datetime NOT NULL,
+  `tripMessageTime` datetime NOT NULL,
   `tripMessageText` varchar(255) DEFAULT NULL,
   `tripImgNum` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -340,7 +340,7 @@ ALTER TABLE `shareditems`
 -- 資料表索引 `spotcomments`
 --
 ALTER TABLE `spotcomments`
-  ADD PRIMARY KEY (`tripId`,`userId`,`tripMessageDate`) USING BTREE,
+  ADD PRIMARY KEY (`tripId`,`userId`,`tripMessageTime`) USING BTREE,
   ADD KEY `userId` (`userId`);
 
 --
