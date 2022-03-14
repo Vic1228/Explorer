@@ -37,9 +37,6 @@
         display: flex;
       }
 
-      /* * {
-        outline: 1px solid blue;
-      } */
     </style>
   </head>
 
@@ -63,7 +60,7 @@
     <div class="container navDistance">
       <div class="row">
         <div class="col">
-          <div class="btn-group">
+          <div class="btn-group" >
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
@@ -71,7 +68,7 @@
               data-bs-toggle="dropdown"
               data-bs-auto-close="inside"
               aria-expanded="false"
-              style="border-radius: 20px"
+              style="border-radius: 20px ;background-color:#0C3C74 "
             >
               <span>　　目&emsp;&emsp;的&emsp;&emsp;地</span>
             </button>
@@ -107,7 +104,7 @@
               data-bs-toggle="dropdown"
               data-bs-auto-close="outside"
               aria-expanded="false"
-              style="border-radius: 20px"
+              style="border-radius: 20px ;background-color:#0C3C74"
             >
               <span>　　天&emsp;&emsp;&emsp;數</span>
             </button>
@@ -183,7 +180,7 @@
                 <p class="card-text">發起人: <%= element.userName %></p>
                 <button
                   class="btn btn-outline-secondary"
-                  style="width: 100px; margin-top: 8vh"
+                  style="width: 100px; margin-top: 8vh;"
                   onclick="mouse('<%= element.tripId %>')"
                 >
                   行程詳情
