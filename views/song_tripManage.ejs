@@ -599,9 +599,9 @@
 
 
 
-        <!-- <div id="chartContainer" class="" style="width:150px; height: 150px">
+        <div id="chartContainer" class="" style="width:150px; height: 150px">
             <canvas id="myChart"></canvas>
-        </div> -->
+        </div>
 
 
 
@@ -663,7 +663,7 @@
                             `<tr class="member">
                             <td>${element.name}</td>
                             <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視<ul class="d-none"></ul></a></td>
-                            <td><a href="#" class="statAvg">${statAvg}</a></td>
+                            <td><a href="#" class="statAvg" data-toggle="popover">${statAvg}</a></td>
                         </tr>`
                         )
                         // 成員之公共裝備
@@ -685,7 +685,7 @@
                             `<tr class="member">
                             <td>${element.name}</td>
                             <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視<ul class="d-none"></ul></a></td>
-                            <td><a href="#" class="statAvg">${statAvg}</a></td>
+                            <td><a href="#" class="statAvg" data-toggle="popover>${statAvg}</a></td>
                             <td>
                                 <div class="checkCancelContainer">
                                     <img class="checkIcon" 
@@ -1013,6 +1013,7 @@
             function refreshChat() {
                 $('#textBoard').empty();
                 rData.tripChatBoard.forEach((elm, idx) => {
+                    elm.tripMessageTime = elm.tripMessageTime.replace("T", " ").split(".")[0];
                     let headshot = `../public/img/yen/photo/${elm.userId}`;
                     if (elm.userId === rData.sessionUserId) {
                         $('#textBoard').append(
@@ -1037,7 +1038,7 @@
                     } else {
                         $('#textBoard').append(
                             `<div class="leftChatBox">
-                                <div class="headshotBox"><img class="headshot" src="" alt=""></div>
+                                <div class="headshotBox"><img class="headshot" src="../public/img/yen/photo/6.png" alt=""></div>
                             </div>`
                         );
                         (elm.tripMessageText != null) ?
@@ -1061,9 +1062,13 @@
                                         <div class="chatTime">${elm.tripMessageTime}</div> 
                                     </div>                        
                                 </div>`);
+
+                            
                     }
                 })
             }
+            
+
 
             $('#sendMessage').click(function () {
                 // console.log($('#uploadImg').val()==='');
@@ -1160,7 +1165,7 @@
                         rData.tripChatBoard = res.data.chatdata.tripChatBoard;
                         refreshChat();
                         console.log('apple')
-                        myTimeout = setTimeout(getChat, 500);
+                        // myTimeout = setTimeout(getChat, 500);
                     })
                 } else {
                     clearTimeout(myTimeout);

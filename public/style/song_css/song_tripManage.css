@@ -247,6 +247,21 @@ img[class*="Icon"] {
     flex-direction: column-reverse;
 }
 
+.headshotBox{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-right: 12px;
+
+}
+
+.headshot{
+    width: 100%;
+    height: auto;
+
+}
+
 
 
 

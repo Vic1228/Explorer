@@ -152,11 +152,11 @@ song_tripManage_router.post('/getChat', function (req, res) {
 
 
 song_tripManage_router.get("/", function (req, res) {
-  // if (req.session.userId == undefined) {
-  //   res.redirect("/login");
-  // }
-  // var userId = req.session.userId;
-  var userId = 6;
+  if (req.session.userId == undefined) {
+    res.redirect("/login");
+  }
+  var userId = req.session.userId;
+  // var userId = 6;
 
   var data = {
     sessionUserId: userId,
