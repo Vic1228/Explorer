@@ -4,7 +4,7 @@ var router = express.Router();
 var app = express();
 var session = require("express-session");
 var flash = require("connect-flash");
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 
 app.use(
   session({
@@ -73,7 +73,7 @@ app.use(express.static("nav"));
 app.use(express.static("footer"));
 app.use(express.static("public"));
 app.use(express.static("style"));
-app.use(express.static('upload'));
+app.use(express.static("upload"));
 
 // =========== body-parser ===========
 var bodyParser = require("body-parser");
@@ -82,12 +82,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // =========== nodemail ===========
 let transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
-      user: "testmaill0009@gmail.com",
-      pass: "testtesttt"
-  }
-})
+    user: "testmaill0009@gmail.com",
+    pass: "testtesttt",
+  },
+});
 // 使用者登入(舊)
 // app.post('/login', function (req, res) {
 //   compareEmail = 0;
@@ -117,15 +117,15 @@ app.post("/login", function (req, res) {
   const member = `select * from users where userEmail='${email}'and userPassword='${password}'`;
   // 比對
   connection.query(member, function (err, result, fields) {
-    if (result[0] !== null&&result[0].islive == 1) {
-      console.log(result)
+    if (result[0] !== null && result[0].islive == 1) {
+      console.log(result);
       let id = result[0].userId;
       req.session.userId = id;
       req.session.userName = result[0].userName;
       req.flash("success", "登入成功!!");
       res.redirect("/");
     } else {
-      console.log(result)
+      console.log(result);
       // req.flash("fail", "登入失敗!!");
       res.redirect("/login");
     }
@@ -194,8 +194,7 @@ app.post("/register", function (req, res) {
             //純文字
             text: "旅行蝸牛驗證信", // plaintext body
             //嵌入 html 的內文
-            html: 
-            `<h3>感謝您註冊，此為旅行蝸牛認證信</h3>
+            html: `<h3>感謝您註冊，此為旅行蝸牛認證信</h3>
             <a href="http://localhost:3000/check?email=${email}&code=${code2}">點我進行驗證</a>`,
             //附件檔案
             // attachments: []
@@ -224,9 +223,8 @@ app.get("/check", (req, res) => {
   // console.log(codecheck);
   let sql = `select * from users where userEmail = '${email}'`;
   connection.query(sql, (err, result) => {
-    let dateori = result[0].signupdate
-    let datenow = new Date(Date.now())
-    console.log(err)
+    let dateori = result[0].signupdate;
+    let datenow = new Date(Date.now());
     if (req.session.code == codecheck && datenow - dateori < 86400000) {
       connection.query(
         `UPDATE users SET islive ='1' WHERE userEmail = '${email}'`,
