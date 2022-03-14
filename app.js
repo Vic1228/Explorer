@@ -226,6 +226,7 @@ app.get("/check", (req, res) => {
   connection.query(sql, (err, result) => {
     let dateori = result[0].signupdate
     let datenow = new Date(Date.now())
+    console.log(err)
     if (req.session.code == codecheck && datenow - dateori < 86400000) {
       connection.query(
         `UPDATE users SET islive ='1' WHERE userEmail = '${email}'`,
