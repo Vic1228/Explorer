@@ -3,12 +3,12 @@
     padding: 0px;
     box-sizing: border-box;
     list-style: none;
-    color: rgb(0, 0, 60) 
-    /* border: 3px solid tomato;   */
+    color: rgb(0, 0, 60)
+        /* border: 3px solid tomato;   */
 }
 
-body{
-    position:relative
+body {
+    position: relative
 }
 
 #section1 a {
@@ -30,8 +30,8 @@ ul {
 
 
 img[class*="Icon"] {
-    width: 16px ;
-    height: 16px ;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 }
 
@@ -125,8 +125,9 @@ img[class*="Icon"] {
     background: #ffffff;
     /* box-shadow: inset 10px 10px 20px #e6e6e6,
         inset -10px -10px 20px #ffffff; */
-    height: 60vh;
-    padding:15px;
+    min-height: 60vh;
+    max-height: 80vh;
+    padding: 15px;
     overflow-y: scroll;
     background-color: rgb(136, 187, 253);
 
@@ -206,48 +207,87 @@ img[class*="Icon"] {
     justify-content: space-around;
 }
 
-.headshotBox{
+.currentChatDate:first-child {
+    margin-top: 3px;
+}
+
+.currentChatDate {
+    width: fit-content;
+    margin: 30px auto 5px auto;
+    padding: 3px 15px;
+    color: #ffffff;
+    font-size: small;
+    background-color: #7e7e7e56;
     border-radius: 50px;
 }
 
-.headshot{
-    width:30px;
-    height: 30px;
+.headshotBox {
+    width: 40px !important;
+    height:40px !important;
+    border-radius: 5px;
+
 }
 
-.leftChatBox{
+.headshot {
+    width: 100%;
+    height:100%;
+
+}
+
+.chatUserName {
+    font-size: small;
+    color: #3d3d3d;
+    margin-bottom: 3px;
+}
+
+div[class*=ChatBox] {
+    margin-bottom: 7px;
+}
+
+.leftChatBox {
     display: flex;
 }
 
-.leftChatBox .chatText{
+.leftChatBox .chatText {
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    padding:5px 20px;
+    padding: 5px 20px;
     max-width: 200px;
 }
 
-.rightChatBox{
+.rightChatBox {
     display: flex;
     flex-direction: row-reverse;
 }
 
-.rightChatBox .chatText{
+.rightChatBox .chatText {
     background-color: rgb(122, 253, 140);
     border-radius: 20px;
-    padding:5px 20px;
+    padding: 3px 20px;
     max-width: 200px;
 }
 
-.chatImg{
-    max-width:200px;
+.chatImg {
+    max-width: 200px;
 }
 
-.chatTimeBox{
-    display:flex;
+.chatImgBox {
+    margin-bottom: 10px;
+}
+
+.chatTimeBox {
+    margin-right: 5px;
+    margin-left: 5px;
+    display: flex;
     flex-direction: column-reverse;
 }
 
-.headshotBox{
+.chatTime {
+    color: #636363;
+    font-size: small;
+}
+
+.headshotBox {
     height: 50px;
     width: 50px;
     border-radius: 50px;
@@ -256,7 +296,7 @@ img[class*="Icon"] {
 
 }
 
-.headshot{
+.headshot {
     width: 100%;
     height: auto;
 
@@ -298,6 +338,10 @@ th, td {
 }
 
 /* ------裝備清單----- */
+.privateItemDetail td{
+    height:40px;
+}
+
 #itemList td {
     padding: 6px 0px
 }
@@ -351,7 +395,7 @@ th, td {
 
 /* ------- Rigtht: schedule Start ------- */
 #scheduleContainer {
-    position:relative;
+    position: relative;
     padding: 5vh 13vh;
     text-align: center;
 }
@@ -382,19 +426,19 @@ th, td {
     border: 1px solid rgb(230, 230, 230);
 }
 
-#quitbtn{
+#quitbtn {
     position: absolute;
-    right:80px;
+    right: 80px;
     bottom: 0px;
     width: 100px;
-    height:40px;
+    height: 40px;
     background-color: white;
-    color:rgb(0, 0, 120);
+    color: rgb(0, 0, 120);
     font-size: 16px;
     font-weight: 600;
-    border:2px solid rgb(0, 0, 120);
+    border: 2px solid rgb(0, 0, 120);
     border-radius: 25px;
-    transition:all ease-in-out 100ms
+    transition: all ease-in-out 100ms
 }
 
 #quitbtn:hover {
@@ -409,10 +453,10 @@ div[id*="ItemListEdit"] th:first-child, div[id*="ItemListEdit"] td:first-child {
     text-align: left;
 }
 
-.plus{
+.plus {
     display: block;
-    width:18px;
-    height:18px;
+    width: 18px;
+    height: 18px;
     cursor: pointer;
 }
 

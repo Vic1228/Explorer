@@ -156,7 +156,7 @@ song_tripManage_router.get("/", function (req, res) {
     res.redirect("/login");
   }
   var userId = req.session.userId;
-  // var userId = 6;
+  //var userId = 1;
 
   var data = {
     sessionUserId: userId,

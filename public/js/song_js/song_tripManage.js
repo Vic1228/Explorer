@@ -170,6 +170,4 @@ function deleteItineraryRow(p) {
 function deletePrivateItemRow(p) {
   $(p).closest("tr").remove();
 }
-function deleteSharedItemRow(p) {
-  $(p).closest("tr").remove();
-}
+

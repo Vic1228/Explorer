@@ -468,41 +468,51 @@
             <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <form action="post">
-                            <table id="sharedItemTable" class="table table-bordered text-center"
-                                style="border-color: rgb(58, 109, 154);">
-                                <thead>
-                                    <th class="h-100"
-                                        style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
-                                        <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">
-                                            編輯公用裝備清單</h4>
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <!-- TODO: 裝備名稱 -->
-                                        <td class="form-td"><input name="shared" type="text"
-                                                class="text-center border-0 h-100 form-input" placeholder="裝備名稱"
-                                                oninput="this.className = 'text-center border-0 h-100 form-input'"
-                                                style="font-size: 1.4rem;">
-                                            <p onclick="deleteSharedItemRow(this)"
-                                                class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
-                                                style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">
-                                                x</p>
-                                        </td>
-                                        <!-- TODO: 數量 -->
-                                    </tr>
-                                    <tr>
-                                        <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
-                                            style="background-color: rgb(58, 109, 154)">
-                                            <h5
-                                                style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">
-                                                +</h5>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </form>
+                        <table id="sharedItemTable" class="table table-bordered text-center"
+                            style="border-color: rgb(58, 109, 154);">
+                            <thead>
+                                <th class="h-100"
+                                    style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                                    <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">
+                                        編輯公用裝備</h4>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <!-- TODO: 裝備名稱 -->
+                                    <td class="form-td"><input name="shared" type="text"
+                                            class="text-center border-0 h-100 form-input" placeholder="裝備名稱"
+                                            oninput="this.className = 'text-center border-0 h-100 form-input'"
+                                            style="font-size: 1.4rem;">
+                                        <p onclick="deleteSharedItemRow(this)"
+                                            class="d-inline-block rounded-circle add-delete-btn table-btn btn-effect"
+                                            style="position: relative; left: 2.3rem; background-color: rgb(255, 80, 124);">
+                                            x</p>
+                                    </td>
+                                    <!-- TODO: 數量 -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <thead>
+                                <th class="h-100"
+                                    style="background-color: rgb(58, 109, 154); border-right: 1px solid white;">
+                                    <h4 class="m-auto text-white" style="font-size: 1.7rem; font-weight: bolder;">
+                                        新增公用裝備</h4>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
+                                        style="background-color: rgb(58, 109, 154)">
+                                        <h5
+                                            style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">
+                                            +</h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary okbtn" data-dismiss="modal">確認</button>
@@ -648,6 +658,7 @@
             var currentMemberId = -1;
             var currentSharedItemIndex = -1;
             var currentSharedItemName = '';
+            var deleteSharedItemNameArray = [];
             refreshMemberItem();
             function refreshMemberItem() {
                 // 行程成員
@@ -685,7 +696,7 @@
                             `<tr class="member">
                             <td>${element.name}</td>
                             <td><a href="#" class="itemPopover" data-toggle="popover">裝備清單檢視<ul class="d-none"></ul></a></td>
-                            <td><a href="#" class="statAvg" data-toggle="popover>${statAvg}</a></td>
+                            <td><a href="#" class="statAvg" data-toggle="popover">${statAvg}</a></td>
                             <td>
                                 <div class="checkCancelContainer">
                                     <img class="checkIcon" 
@@ -708,8 +719,6 @@
                                 }
                             })
                         })
-
-
                     }
                 })
 
@@ -720,19 +729,15 @@
                     <img class="edit" src="../public/img/song_img/edit.png" data-toggle="modal" data-target="#publicItemListEdit" title="限發起人編輯">`
                 )
                 $('#sharedItemTable tbody').empty();
-                $('#sharedItemTable tbody').append(
-                    `<tr>
-                        <td onclick="addSharedItemRow(this)" colspan="2" class="h-100 btn-effect"
-                            style="background-color: rgb(58, 109, 154)">
-                            <h5 style="cursor: pointer; color: whitesmoke; margin: auto; font-size: 1.7rem; font-weight: bolder; position: relative; left: 0.7rem;">+</h5>
-                        </td>
-                    </tr>`
-                );
                 $('#publicItemList tbody').empty();
                 rData.sharedItems.forEach((element) => {
                     var itemCount = 0;
                     element.itemCount.forEach((i) => {
-                        itemCount += i.itemCount
+                        rData.tripMember.forEach((j) => {
+                            if (i.userId == j.userId && j.positionState > 0) {
+                                itemCount += i.itemCount;
+                            }
+                        })
                     })
                     $('#publicItemList tbody').append(
                         `<tr class="sharedItemDetail" valign="top">
@@ -762,8 +767,7 @@
                             }
                         })
                     })
-
-                    $('#sharedItemTable tr').last().before(
+                    $('#sharedItemTable tbody').append(
                         `<tr>
                             <td class="form-td">
                                 <input name="shared" type="text" class="text-center border-0 h-100 form-input"
@@ -775,8 +779,13 @@
                             </td>
                         </tr>`
                     );
-
                 })
+
+                $('img[data-target="#publicItemListEdit"]').click(function () {
+                    deleteSharedItemNameArray = [];
+                    console.log('apple')
+                    refreshMemberItem();
+                });
 
                 // 私人裝備清單
                 $('#privateItemList tbody').empty();
@@ -813,6 +822,16 @@
                     currentSharedItemName = $(this).closest('tr').children('td:first-child').text()
                     $('#publicItemProvide h5').text(currentSharedItemName);
                 })
+            }
+
+
+            // 公共裝備modal
+            function deleteSharedItemRow(p) {
+                if ($(p).closest("table").attr('id') === 'sharedItemTable') {
+                    deleteSharedItemNameArray.push($(p).closest("tr").find('input[name=shared]').val());
+                    console.log(deleteSharedItemNameArray);
+                }
+                $(p).closest("tr").remove();
             }
 
             // 行程列表
@@ -1012,8 +1031,17 @@
             refreshChat();
             function refreshChat() {
                 $('#textBoard').empty();
+                var currentChatDate = '';
                 rData.tripChatBoard.forEach((elm, idx) => {
-                    elm.tripMessageTime = elm.tripMessageTime.replace("T", " ").split(".")[0];
+                    let textChatDate = elm.tripMessageTime.replace("T", " ").split(".")[0].slice(0, 10).replaceAll('-', '/');
+                    let textChatTime = elm.tripMessageTime.replace("T", " ").split(".")[0].slice(11, 16);
+                    if (currentChatDate != textChatDate) {
+                        currentChatDate = textChatDate;
+                        $('#textBoard').append(
+                            `<div class="currentChatDate">${currentChatDate}</div> `
+                        );
+                    }
+
                     let headshot = `../public/img/yen/photo/${elm.userId}`;
                     if (elm.userId === rData.sessionUserId) {
                         $('#textBoard').append(
@@ -1024,21 +1052,21 @@
                                 `<div class="d-flex flex-row-reverse">
                                     <div class="chatText">${elm.tripMessageText}</div>
                                     <div class="chatTimeBox">
-                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                        <div class="chatTime">${textChatTime}</div> 
                                     </div>    
                                 </div>`) :
                             $('div[class$=ChatBox]:last-child').append(
                                 `<div class="d-flex flex-row-reverse">
                                     <div class="chatImgBox"><img class="chatImg" src="../../upload/song_upload/${elm.tripImgName}"></div>
                                     <div class="chatTimeBox">
-                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                        <div class="chatTime">${textChatTime}</div> 
                                     </div>     
                                 </div>`);
 
                     } else {
                         $('#textBoard').append(
                             `<div class="leftChatBox">
-                                <div class="headshotBox"><img class="headshot" src="../public/img/yen/photo/6.png" alt=""></div>
+                                <div class="headshotBox"><img class="headshot" src="../public/img/yen/photo/${elm.userId}.png" alt=""></div>
                             </div>`
                         );
                         (elm.tripMessageText != null) ?
@@ -1049,7 +1077,7 @@
                                         <div class="chatText">${elm.tripMessageText}</div>
                                     </div>
                                     <div class="chatTimeBox">
-                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                        <div class="chatTime">${textChatTime}</div> 
                                     </div>      
                                 </div>`) :
                             $('div[class$=ChatBox]:last-child').append(
@@ -1059,16 +1087,14 @@
                                         <div class="chatImgBox"><img class="chatImg" src="../../upload/song_upload/${elm.tripImgName}"></div>
                                     </div>
                                     <div class="chatTimeBox">
-                                        <div class="chatTime">${elm.tripMessageTime}</div> 
+                                        <div class="chatTime">${textChatTime}</div> 
                                     </div>                        
                                 </div>`);
 
-                            
+
                     }
                 })
             }
-            
-
 
             $('#sendMessage').click(function () {
                 // console.log($('#uploadImg').val()==='');
@@ -1111,47 +1137,42 @@
                 }
             })
 
+            $('#chooseImg').on('change', function (e) {
+                function showFileCount() {
+                    $('#fileCount').css({ 'width': '100%' });
+                    $('#chatroomText').css(({ 'width': '0%' }));
+                    setTimeout(() => {
+                        $('#fileCount span').text(`已選擇 ${e.target.files.length} 個檔案 `);
+                        $('#fileCount').css({ 'opacity': '1' });
+                        $('#chatroomText').css({ 'opacity': '0' });
+                    }, 250);
+                }
+                function hideFileCount() {
+                    $('#chooseImg').val(null);
+                    $('#fileCount').css({
+                        'width': '0%',
+                        'opacity': '0'
+                    });
+                    setTimeout(() => {
+                        $('#fileCount span').text(``);
+                        $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
+                    }, 250);
+                }
 
+                if (e.target.files.length > 0) {
+                    showFileCount();
+                    $('#fileCountCancel').on('click', () => {
+                        hideFileCount()
+                    });
+                } else {
+                    hideFileCount();
+                }
+            })
 
-
-
-            {
-                $('#chooseImg').on('change', function (e) {
-                    function showFileCount() {
-                        $('#fileCount').css({ 'width': '100%' });
-                        $('#chatroomText').css(({ 'width': '0%' }));
-                        setTimeout(() => {
-                            $('#fileCount span').text(`已選擇 ${e.target.files.length} 個檔案 `);
-                            $('#fileCount').css({ 'opacity': '1' });
-                            $('#chatroomText').css({ 'opacity': '0' });
-                        }, 250);
-                    }
-                    function hideFileCount() {
-                        $('#chooseImg').val(null);
-                        $('#fileCount').css({
-                            'width': '0%',
-                            'opacity': '0'
-                        });
-                        setTimeout(() => {
-                            $('#fileCount span').text(``);
-                            $('#chatroomText').css({ 'opacity': '1', 'width': '100%' })
-                        }, 250);
-                    }
-
-                    if (e.target.files.length > 0) {
-                        showFileCount();
-                        $('#fileCountCancel').on('click', () => {
-                            hideFileCount()
-                        });
-                    } else {
-                        hideFileCount();
-                    }
-                })
-            }
 
             getChat();
             function getChat() {
-                var myTimeout = function(){};
+                var myTimeout = function () { };
                 if ($('#chatTab').hasClass('active')) {
                     axios({
                         method: 'post',
@@ -1165,15 +1186,15 @@
                         rData.tripChatBoard = res.data.chatdata.tripChatBoard;
                         refreshChat();
                         console.log('apple')
-                        // myTimeout = setTimeout(getChat, 500);
+                        myTimeout = setTimeout(getChat, 1000);
                     })
                 } else {
                     clearTimeout(myTimeout);
                 }
-            }  
+            }
             $('#chatTab').click(function () {
-                getChat;
-             })
+                getChat();
+            })
 
             // navbar判斷
             var sessionUserId = Number(`${rData.sessionUserId}`)
