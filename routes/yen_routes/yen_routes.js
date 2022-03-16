@@ -104,7 +104,7 @@ router.get("/profile", (req, res) => {
         // console.log(a)
         // console.log(b)
         var obj = Object.assign(a, b, c);
-        if (obj.commentCount == null || obj.commentCount < 3) {
+        if (obj.commentCount == null) {
           obj.commentCount = 0;
         }
         console.log(obj);
