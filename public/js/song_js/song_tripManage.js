@@ -90,6 +90,7 @@ $(function () {
       html: true,
       content: function () {
         chartBox = document.getElementById('chartContainer');
+        chartBox.classList.remove('d-none');
 
         
         return chartBox;
