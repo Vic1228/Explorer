@@ -125,8 +125,8 @@ img[class*="Icon"] {
     background: #ffffff;
     /* box-shadow: inset 10px 10px 20px #e6e6e6,
         inset -10px -10px 20px #ffffff; */
-    min-height: 60vh;
-    max-height: 80vh;
+    min-height: 55vh;
+    max-height: 55vh;
     padding: 15px;
     overflow-y: scroll;
     background-color: rgb(136, 187, 253);
