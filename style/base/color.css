@@ -1,0 +1,48 @@
+.colorPrimary {
+  color: #325372;
+}
+
+.colorPrimaryBack {
+  background-color: #325372;
+}
+
+.colorPLight {
+  color: #607fa1;
+}
+
+.colorPLightBack {
+  background-color: #607fa1;
+}
+
+.colorPDark {
+  color: #002b46;
+}
+
+.colorPDarkBack {
+  background-color: #002b46;
+}
+
+.colorSecondary {
+  color: #4c9acc;
+}
+
+.colorSecondaryBack {
+  background-color: #4c9acc;
+}
+
+.colorSLight {
+  color: #82cbff;
+}
+
+.colorSLightBack {
+  background-color: #82cbff;
+}
+
+.colorSDark {
+  color: #006c9b;
+}
+
+.colorSDarkBack {
+  background-color: #006c9b;
+}
+/*# sourceMappingURL=color.css.map */
